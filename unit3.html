@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MARTI301 Unit 3 — Enhanced Customer Experience</title>
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#1B2A4A;--teal:#00B388;--amber:#D4872C;--bg:#FAFBFC;--card:#FFF;--text:#1B2A4A;--muted:#6B7280;--border:#E5E7EB;--def-red:#C0392B}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;overflow-x:hidden}
+.hero{background:var(--navy);padding:2.5rem 2rem 2rem;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:var(--teal)}
+.hero-tag{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);font-weight:700;margin-bottom:.5rem}
+.hero h1{font-size:2.2rem;color:#fff;font-weight:700;line-height:1.2;margin-bottom:.4rem}
+.hero p{color:#94A3B8;font-size:.95rem;margin-bottom:.8rem}
+.hero .copy{color:#64748B;font-size:.8rem;font-style:italic}
+.hero-stats{display:flex;gap:2rem;margin-top:1rem}
+.hero-stat{text-align:center}
+.hero-stat .num{font-size:1.8rem;color:var(--teal);font-weight:700}
+.hero-stat .label{font-size:.7rem;color:#94A3B8;text-transform:uppercase;letter-spacing:.1em}
+.slib-set{margin-bottom:2.5rem}
+.slib-set-header{display:flex;align-items:center;gap:.6rem;margin-bottom:1rem;padding-left:.2rem;opacity:0;transform:translateX(-15px);transition:all .5s cubic-bezier(.16,1,.3,1)}
+.slib-set-header.visible{opacity:1;transform:translateX(0)}
+.slib-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.slib-set-title{font-size:1rem;font-weight:700}
+.slib-set-num{font-size:.7rem;color:var(--muted);background:#F1F5F9;padding:.15rem .5rem;border-radius:1rem;font-weight:600}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;opacity:0;transform:translateY(25px) scale(.97);transition:all .5s cubic-bezier(.16,1,.3,1);position:relative;display:flex;flex-direction:column}
+.card.visible{opacity:1;transform:translateY(0) scale(1)}
+.card:hover{transform:translateY(-4px) scale(1.01);box-shadow:0 12px 32px rgba(27,42,74,.1);border-color:transparent}
+.card-accent{height:3px;width:100%}
+.card-thumb{height:120px;background:#F8FAFC;display:flex;align-items:center;justify-content:center;padding:.8rem;overflow:hidden}
+.card-thumb svg{width:100%;height:100%;opacity:.7;transition:opacity .3s}
+.card:hover .card-thumb svg{opacity:1}
+.card-body{padding:.8rem .9rem .9rem;flex:1;display:flex;flex-direction:column}
+.card-title{font-size:.82rem;font-weight:700;line-height:1.3;margin-bottom:.25rem}
+.card-desc{font-size:.7rem;color:var(--muted);line-height:1.4;margin-bottom:.5rem;flex:1}
+.card-tag{display:inline-block;font-size:.6rem;font-weight:700;padding:.15rem .45rem;border-radius:4px;color:#fff;align-self:flex-start}
+.modal-overlay{position:fixed;inset:0;background:rgba(27,42,74,.5);z-index:200;opacity:0;pointer-events:none;transition:opacity .3s;display:flex;align-items:center;justify-content:center;padding:1rem}
+.modal-overlay.open{opacity:1;pointer-events:auto}
+.modal{background:#fff;border-radius:16px;max-width:560px;width:100%;max-height:85vh;overflow-y:auto;transform:translateY(20px) scale(.95);transition:transform .35s cubic-bezier(.16,1,.3,1);padding:0}
+.modal-overlay.open .modal{transform:translateY(0) scale(1)}
+.modal-accent{height:4px;border-radius:16px 16px 0 0}
+.modal-inner{padding:1.8rem 1.6rem}
+.modal-close{position:absolute;top:1rem;right:1rem;width:32px;height:32px;border-radius:50%;border:none;background:#F1F5F9;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;color:var(--muted);transition:background .2s}
+.modal-close:hover{background:#E2E8F0}
+.modal-slib{font-size:.7rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.3rem}
+.modal-title{font-size:1.4rem;font-weight:700;margin-bottom:.4rem}
+.modal-def{font-size:.9rem;color:var(--def-red);font-weight:600;line-height:1.5;margin-bottom:.7rem;border-left:3px solid var(--def-red);padding-left:.6rem}
+.modal-desc{font-size:.88rem;color:var(--muted);line-height:1.6;margin-bottom:.8rem}
+.modal-thumb{background:#F8FAFC;border-radius:10px;padding:1.5rem;margin-bottom:1.2rem;display:flex;align-items:center;justify-content:center}
+.modal-thumb svg{width:220px;height:140px}
+.modal-details{list-style:none;padding:0;margin-bottom:1rem}
+.modal-details li{font-size:.82rem;color:var(--text);padding:.4rem 0;border-bottom:1px solid #F1F5F9;display:flex;align-items:flex-start;gap:.5rem}
+.modal-details li::before{content:'\2022';color:var(--teal);font-weight:bold;flex-shrink:0;margin-top:1px}
+.modal-ref{background:#F8FAFC;border-radius:8px;padding:.7rem .9rem;font-size:.75rem;color:#475569;line-height:1.5;border-left:3px solid var(--teal)}
+.modal-ref-label{font-weight:700;font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:var(--teal);margin-bottom:.2rem}
+.footer{background:var(--navy);padding:2rem;text-align:center;color:#64748B;font-size:.75rem;margin-top:2rem}
+.footer strong{color:var(--teal)}
+@media(max-width:640px){.hero h1{font-size:1.5rem}.hero-stats{gap:1rem}.cards-grid{grid-template-columns:repeat(auto-fill,minmax(165px,1fr))}.card-thumb{height:90px}}</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-tag">MARTI301 &middot; Unit 3</div>
+  <h1>Enhanced Customer Experience</h1>
+  <p>Select any framework to explore it in detail</p>
+  <div class="copy">&copy; 2026 Dr. Hildegard Haas</div>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num">4</div><div class="label">Slibraries</div></div>
+    <div class="hero-stat"><div class="num">20</div><div class="label">Frameworks</div></div>
+    <div class="hero-stat"><div class="num">9&ndash;12</div><div class="label">Set Range</div></div>
+  </div>
+</header>
+<main style="padding:2rem 1.5rem 1rem">
+<div class="slib-set">
+      <div class="slib-set-header" data-anim>
+        <span class="slib-dot" style="background:#E85D4A"></span>
+        <span class="slib-set-title">Set 9 &mdash; Customer Journey & CX</span>
+        <span class="slib-set-num">5 frameworks</span>
+      </div>
+      <div class="cards-grid"><div class="card" data-anim style="transition-delay:0ms" onclick="openModal(FW[0])">
+          <div class="card-accent" style="background:#E85D4A"></div>
+          <div class="card-thumb" id="thumb-9-0"></div>
+          <div class="card-body">
+            <div class="card-title">Omnichannel Journey Map</div>
+            <div class="card-desc">Horizontal timeline with channels stacked and AI touchpoints</div>
+            <span class="card-tag" style="background:#E85D4A">Slibrary 9</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:80ms" onclick="openModal(FW[1])">
+          <div class="card-accent" style="background:#E85D4A"></div>
+          <div class="card-thumb" id="thumb-9-1"></div>
+          <div class="card-body">
+            <div class="card-title">CX Experience Pyramid</div>
+            <div class="card-desc">Functional → accessible → enjoyable—AI lifts each layer</div>
+            <span class="card-tag" style="background:#E85D4A">Slibrary 9</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:160ms" onclick="openModal(FW[2])">
+          <div class="card-accent" style="background:#E85D4A"></div>
+          <div class="card-thumb" id="thumb-9-2"></div>
+          <div class="card-body">
+            <div class="card-title">Service Blueprint</div>
+            <div class="card-desc">Frontstage vs. backstage swim lanes with line of visibility</div>
+            <span class="card-tag" style="background:#E85D4A">Slibrary 9</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:240ms" onclick="openModal(FW[3])">
+          <div class="card-accent" style="background:#E85D4A"></div>
+          <div class="card-thumb" id="thumb-9-3"></div>
+          <div class="card-body">
+            <div class="card-title">Touchpoint Matrix</div>
+            <div class="card-desc">Channel × journey stage heatmap showing interaction intensity</div>
+            <span class="card-tag" style="background:#E85D4A">Slibrary 9</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:320ms" onclick="openModal(FW[4])">
+          <div class="card-accent" style="background:#E85D4A"></div>
+          <div class="card-thumb" id="thumb-9-4"></div>
+          <div class="card-body">
+            <div class="card-title">Moments of Truth Timeline</div>
+            <div class="card-desc">Zero → First → Second → Ultimate MOT along customer journey</div>
+            <span class="card-tag" style="background:#E85D4A">Slibrary 9</span>
+          </div>
+        </div></div></div><div class="slib-set">
+      <div class="slib-set-header" data-anim>
+        <span class="slib-dot" style="background:#4F46E5"></span>
+        <span class="slib-set-title">Set 10 &mdash; Conversational AI & NLP</span>
+        <span class="slib-set-num">5 frameworks</span>
+      </div>
+      <div class="cards-grid"><div class="card" data-anim style="transition-delay:0ms" onclick="openModal(FW[5])">
+          <div class="card-accent" style="background:#4F46E5"></div>
+          <div class="card-thumb" id="thumb-10-0"></div>
+          <div class="card-body">
+            <div class="card-title">NLP Pipeline Diagram</div>
+            <div class="card-desc">Input → Tokenise → Parse → Understand → Respond with feedback</div>
+            <span class="card-tag" style="background:#4F46E5">Slibrary 10</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:80ms" onclick="openModal(FW[6])">
+          <div class="card-accent" style="background:#4F46E5"></div>
+          <div class="card-thumb" id="thumb-10-1"></div>
+          <div class="card-body">
+            <div class="card-title">Intent-Entity-Context Model</div>
+            <div class="card-desc">What does the user want? What parameters? What state?</div>
+            <span class="card-tag" style="background:#4F46E5">Slibrary 10</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:160ms" onclick="openModal(FW[7])">
+          <div class="card-accent" style="background:#4F46E5"></div>
+          <div class="card-thumb" id="thumb-10-2"></div>
+          <div class="card-body">
+            <div class="card-title">Chatbot Decision Tree</div>
+            <div class="card-desc">Branching flowchart from greeting with fallback to human</div>
+            <span class="card-tag" style="background:#4F46E5">Slibrary 10</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:240ms" onclick="openModal(FW[8])">
+          <div class="card-accent" style="background:#4F46E5"></div>
+          <div class="card-thumb" id="thumb-10-3"></div>
+          <div class="card-body">
+            <div class="card-title">Sentiment Analysis Spectrum</div>
+            <div class="card-desc">Negative → neutral → positive real-time mood tracking</div>
+            <span class="card-tag" style="background:#4F46E5">Slibrary 10</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:320ms" onclick="openModal(FW[9])">
+          <div class="card-accent" style="background:#4F46E5"></div>
+          <div class="card-thumb" id="thumb-10-4"></div>
+          <div class="card-body">
+            <div class="card-title">Human Escalation Flowchart</div>
+            <div class="card-desc">AI handles L1 → confidence check → human handoff with context</div>
+            <span class="card-tag" style="background:#4F46E5">Slibrary 10</span>
+          </div>
+        </div></div></div><div class="slib-set">
+      <div class="slib-set-header" data-anim>
+        <span class="slib-dot" style="background:#059669"></span>
+        <span class="slib-set-title">Set 11 &mdash; CX Metrics & Business Impact</span>
+        <span class="slib-set-num">5 frameworks</span>
+      </div>
+      <div class="cards-grid"><div class="card" data-anim style="transition-delay:0ms" onclick="openModal(FW[10])">
+          <div class="card-accent" style="background:#059669"></div>
+          <div class="card-thumb" id="thumb-11-0"></div>
+          <div class="card-body">
+            <div class="card-title">NPS-CSAT-CES Triangle</div>
+            <div class="card-desc">Three complementary lenses on customer experience measurement</div>
+            <span class="card-tag" style="background:#059669">Slibrary 11</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:80ms" onclick="openModal(FW[11])">
+          <div class="card-accent" style="background:#059669"></div>
+          <div class="card-thumb" id="thumb-11-1"></div>
+          <div class="card-body">
+            <div class="card-title">Churn Waterfall Chart</div>
+            <div class="card-desc">Starting customers → lost → retained with attrition drivers</div>
+            <span class="card-tag" style="background:#059669">Slibrary 11</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:160ms" onclick="openModal(FW[12])">
+          <div class="card-accent" style="background:#059669"></div>
+          <div class="card-thumb" id="thumb-11-2"></div>
+          <div class="card-body">
+            <div class="card-title">CLV-to-CAC Ratio</div>
+            <div class="card-desc">Lifetime value vs. acquisition cost—healthy ratio > 3:1</div>
+            <span class="card-tag" style="background:#059669">Slibrary 11</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:240ms" onclick="openModal(FW[13])">
+          <div class="card-accent" style="background:#059669"></div>
+          <div class="card-thumb" id="thumb-11-3"></div>
+          <div class="card-body">
+            <div class="card-title">Loyalty Loop Diagram</div>
+            <div class="card-desc">Consider → buy → enjoy → bond replacing the linear funnel</div>
+            <span class="card-tag" style="background:#059669">Slibrary 11</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:320ms" onclick="openModal(FW[14])">
+          <div class="card-accent" style="background:#059669"></div>
+          <div class="card-thumb" id="thumb-11-4"></div>
+          <div class="card-body">
+            <div class="card-title">CX-to-Revenue Bridge</div>
+            <div class="card-desc">CX metric → intermediate outcomes → revenue/EBIT impact</div>
+            <span class="card-tag" style="background:#059669">Slibrary 11</span>
+          </div>
+        </div></div></div><div class="slib-set">
+      <div class="slib-set-header" data-anim>
+        <span class="slib-dot" style="background:#7C3AED"></span>
+        <span class="slib-set-title">Set 12 &mdash; Marketing 6.0 & Immersive</span>
+        <span class="slib-set-num">5 frameworks</span>
+      </div>
+      <div class="cards-grid"><div class="card" data-anim style="transition-delay:0ms" onclick="openModal(FW[15])">
+          <div class="card-accent" style="background:#7C3AED"></div>
+          <div class="card-thumb" id="thumb-12-0"></div>
+          <div class="card-body">
+            <div class="card-title">Marketing Evolution Timeline</div>
+            <div class="card-desc">1.0 Product → 2.0 Customer → ... → 6.0 Immersive</div>
+            <span class="card-tag" style="background:#7C3AED">Slibrary 12</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:80ms" onclick="openModal(FW[16])">
+          <div class="card-accent" style="background:#7C3AED"></div>
+          <div class="card-thumb" id="thumb-12-1"></div>
+          <div class="card-body">
+            <div class="card-title">Phygital Experience Model</div>
+            <div class="card-desc">Physical + digital = phygital—seamless overlap zone</div>
+            <span class="card-tag" style="background:#7C3AED">Slibrary 12</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:160ms" onclick="openModal(FW[17])">
+          <div class="card-accent" style="background:#7C3AED"></div>
+          <div class="card-thumb" id="thumb-12-2"></div>
+          <div class="card-body">
+            <div class="card-title">Metaverse CX Framework</div>
+            <div class="card-desc">Hardware → platform → experience layers with avatars</div>
+            <span class="card-tag" style="background:#7C3AED">Slibrary 12</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:240ms" onclick="openModal(FW[18])">
+          <div class="card-accent" style="background:#7C3AED"></div>
+          <div class="card-thumb" id="thumb-12-3"></div>
+          <div class="card-body">
+            <div class="card-title">Spatial Computing Stack</div>
+            <div class="card-desc">AR/VR/MR/XR taxonomy with sensor → processing → display</div>
+            <span class="card-tag" style="background:#7C3AED">Slibrary 12</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:320ms" onclick="openModal(FW[19])">
+          <div class="card-accent" style="background:#7C3AED"></div>
+          <div class="card-thumb" id="thumb-12-4"></div>
+          <div class="card-body">
+            <div class="card-title">Kotler 6.0 Ecosystem Map</div>
+            <div class="card-desc">Five technologies centred on immersive customer value</div>
+            <span class="card-tag" style="background:#7C3AED">Slibrary 12</span>
+          </div>
+        </div></div></div>
+</main>
+<footer class="footer">
+  <strong>MARTI301</strong> &middot; AI in Investment &amp; Competitiveness &middot; &copy; 2026 Dr. Hildegard Haas<br>
+  Applying JD Meier&rsquo;s <strong>Thumbnail Thinking</strong> (2025) &middot; Unit 3: Enhanced Customer Experience
+</footer>
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modal"></div>
+</div>
+<script>
+const FW = [
+{"name":"Omnichannel Journey Map","def":"A visualisation tracing the customer's path across all channels from awareness through advocacy, identifying AI intervention points.","desc":"Horizontal timeline with channels stacked and AI touchpoints","shape":"pipeline","details":["Awareness → consideration → purchase → advocacy","Channels: web, app, store, call centre","AI touchpoints marked at each stage","Identifies gaps and friction points"],"ref":"Lemon, K.N. and Verhoef, P.C. (2016) 'Understanding customer experience throughout the customer journey', Journal of Marketing, 80(6), pp. 69–96.","slibTitle":"Customer Journey & CX","slibNum":9,"color":"#E85D4A"},
+{"name":"CX Experience Pyramid","def":"A three-tier model of customer needs: functional (meets needs), accessible (easy to use), and emotional (enjoyable)—with AI enhancing each layer.","desc":"Functional → accessible → enjoyable—AI lifts each layer","shape":"pyramid","details":["Base: meet needs (functional)","Middle: easy to use (accessible)","Top: enjoyable (emotional)","AI differentiates at each layer"],"ref":"Forrester Research (2016) The Customer Experience Pyramid. Forrester Research Inc.","slibTitle":"Customer Journey & CX","slibNum":9,"color":"#E85D4A"},
+{"name":"Service Blueprint","def":"A process diagram separating frontstage (customer-visible) from backstage (internal) actions with a line of visibility, mapping all support processes.","desc":"Frontstage vs. backstage swim lanes with line of visibility","shape":"layers","details":["Frontstage: customer-facing actions","Line of visibility separates front/back","Backstage: support processes","Shostack (1984); updated for AI era"],"ref":"Shostack, G.L. (1984) 'Designing services that deliver', Harvard Business Review, 62(1), pp. 133–139.","slibTitle":"Customer Journey & CX","slibNum":9,"color":"#E85D4A"},
+{"name":"Touchpoint Matrix","def":"A grid mapping customer journey stages against channels, with heatmap shading to reveal over-served and under-served interaction areas.","desc":"Channel × journey stage heatmap showing interaction intensity","shape":"matrix","details":["Reveals over-served and under-served areas","Heatmap colour coding by intensity","Prioritises where AI investment goes","Data-driven channel optimisation"],"ref":"Rawson, A., Duncan, E. and Jones, C. (2013) 'The truth about customer experience', Harvard Business Review, 91(9), pp. 90–98.","slibTitle":"Customer Journey & CX","slibNum":9,"color":"#E85D4A"},
+{"name":"Moments of Truth Timeline","def":"A framework identifying four critical customer decision points: Zero, First, Second, and Ultimate moments of truth.","desc":"Zero → First → Second → Ultimate MOT along customer journey","shape":"timeline","details":["Zero MOT: online research (Google)","First MOT: shelf or landing page","Second MOT: usage experience","Ultimate MOT: sharing and advocacy"],"ref":"Lecinski, J. (2011) Winning the Zero Moment of Truth. Google Inc.","slibTitle":"Customer Journey & CX","slibNum":9,"color":"#E85D4A"},
+{"name":"NLP Pipeline Diagram","def":"A sequential processing architecture: input → tokenisation → parsing → semantic understanding → response generation, with feedback for continuous improvement.","desc":"Input → Tokenise → Parse → Understand → Respond with feedback","shape":"pipeline","details":["Linear flow with feedback loop","Where LLMs transformed each step","Foundation for chatbot architecture","Pre-LLM vs. post-LLM comparison"],"ref":"Jurafsky, D. and Martin, J.H. (2023) Speech and Language Processing. 3rd edn. draft. Stanford University.","slibTitle":"Conversational AI & NLP","slibNum":10,"color":"#4F46E5"},
+{"name":"Intent-Entity-Context Model","def":"A natural language understanding framework decomposing user utterances into intent (goal), entities (parameters), and context (conversation state).","desc":"What does the user want? What parameters? What state?","shape":"triangle","details":["Intent: user's goal","Entity: key parameters","Context: conversation state","Core NLU triangle diagram"],"ref":"Jurafsky, D. and Martin, J.H. (2023) Speech and Language Processing. 3rd edn. draft. Stanford University.","slibTitle":"Conversational AI & NLP","slibNum":10,"color":"#4F46E5"},
+{"name":"Chatbot Decision Tree","def":"A branching dialogue architecture where intent classification nodes route conversations to responses, actions, or human escalation fallback paths.","desc":"Branching flowchart from greeting with fallback to human","shape":"tree","details":["Decision nodes: intent classification","Leaf nodes: responses or actions","Fallback paths to human agent","Designed for graceful degradation"],"ref":"McTear, M. (2020) Conversational AI: Dialogue Systems, Conversational Agents, and Chatbots. San Rafael: Morgan & Claypool.","slibTitle":"Conversational AI & NLP","slibNum":10,"color":"#4F46E5"},
+{"name":"Sentiment Analysis Spectrum","def":"A real-time measurement scale mapping customer language from negative through neutral to positive, with threshold-based alerts triggering interventions.","desc":"Negative → neutral → positive real-time mood tracking","shape":"spectrum","details":["Linear bar with threshold markers","Real-time customer mood tracking","Triggers alerts at negative thresholds","Feeds into CX dashboards"],"ref":"Liu, B. (2020) Sentiment Analysis: Mining Opinions, Sentiments, and Emotions. 2nd edn. Cambridge: Cambridge University Press.","slibTitle":"Conversational AI & NLP","slibNum":10,"color":"#4F46E5"},
+{"name":"Human Escalation Flowchart","def":"A confidence-gated handoff process where AI handles initial enquiries and transfers to human agents—with full context—when confidence falls below threshold.","desc":"AI handles L1 → confidence check → human handoff with context","shape":"tree","details":["Below confidence threshold → handoff","Context packet transfers with escalation","Balances efficiency with empathy","Key for high-stakes interactions"],"ref":"McTear, M. (2020) Conversational AI: Dialogue Systems, Conversational Agents, and Chatbots. San Rafael: Morgan & Claypool.","slibTitle":"Conversational AI & NLP","slibNum":10,"color":"#4F46E5"},
+{"name":"NPS-CSAT-CES Triangle","def":"Three complementary CX metrics: Net Promoter Score (loyalty), Customer Satisfaction (transaction), and Customer Effort Score (ease).","desc":"Three complementary lenses on customer experience measurement","shape":"triangle","details":["NPS: loyalty and advocacy (top)","CSAT: transaction satisfaction (left)","CES: customer effort score (right)","Use all three for complete picture"],"ref":"Reichheld, F.F. (2003) 'The one number you need to grow', Harvard Business Review, 81(12), pp. 46–54.","slibTitle":"CX Metrics & Business Impact","slibNum":11,"color":"#059669"},
+{"name":"Churn Waterfall Chart","def":"A cascading bar chart visualising customer attrition from starting base through specific loss drivers to retained count, quantifying revenue at risk.","desc":"Starting customers → lost → retained with attrition drivers","shape":"bars","details":["Waterfall bars show attrition drivers","AI predicts at-risk customer segments","Quantifies revenue at stake","Prioritises retention interventions"],"ref":"Ascarza, E. (2018) 'Retention futility: Targeting high-risk customers is not effective', Journal of Marketing Research, 55(1), pp. 80–98.","slibTitle":"CX Metrics & Business Impact","slibNum":11,"color":"#059669"},
+{"name":"CLV-to-CAC Ratio","def":"A unit economics diagnostic comparing Customer Lifetime Value to Customer Acquisition Cost; a healthy ratio exceeds 3:1.","desc":"Lifetime value vs. acquisition cost—healthy ratio > 3:1","shape":"bars","details":["Side-by-side comparison bars","Healthy business ratio > 3:1","AI optimises both sides simultaneously","Unit economics diagnostic thumbnail"],"ref":"Gupta, S. and Lehmann, D.R. (2005) Managing Customers as Investments. Upper Saddle River: Wharton School Publishing.","slibTitle":"CX Metrics & Business Impact","slibNum":11,"color":"#059669"},
+{"name":"Loyalty Loop Diagram","def":"A circular decision journey model—consider, buy, enjoy, bond—replacing the linear funnel for repeat customers.","desc":"Consider → buy → enjoy → bond replacing the linear funnel","shape":"cycle","details":["Circular replaces linear funnel","AI shortens re-entry to the loop","Focus on post-purchase experience","McKinsey consumer decision journey"],"ref":"Court, D. et al. (2009) 'The consumer decision journey', McKinsey Quarterly, June.","slibTitle":"CX Metrics & Business Impact","slibNum":11,"color":"#059669"},
+{"name":"CX-to-Revenue Bridge","def":"A translation model linking CX improvement metrics through intermediate outcomes to financial results.","desc":"CX metric → intermediate outcomes → revenue/EBIT impact","shape":"pipeline","details":["Left: CX improvement metric","Middle: churn, AOV, frequency outcomes","Right: revenue and EBIT impact","Builds the business case for CX AI"],"ref":"Program on Customer Strategy, Columbia Business School. Adapted for MARTI301.","slibTitle":"CX Metrics & Business Impact","slibNum":11,"color":"#059669"},
+{"name":"Marketing Evolution Timeline","def":"A six-era historical progression from product-centric marketing (1.0) to immersive marketing (6.0).","desc":"1.0 Product → 2.0 Customer → ... → 6.0 Immersive","shape":"timeline","details":["Six eras of marketing evolution","6.0: immersive and multisensory","AI + AR/VR + IoT convergence","Kotler, Kartajaya & Setiawan"],"ref":"Kotler, P., Kartajaya, H. and Setiawan, I. (2023) Marketing 6.0: The Future Is Immersive. Hoboken: Wiley.","slibTitle":"Marketing 6.0 & Immersive","slibNum":12,"color":"#7C3AED"},
+{"name":"Phygital Experience Model","def":"A Venn diagram concept where physical and digital experiences overlap to create seamless 'phygital' interactions, bridged by AI.","desc":"Physical + digital = phygital—seamless overlap zone","shape":"venn","details":["Venn diagram: physical ∩ digital","AI bridges the two worlds","Nike, IKEA, Sephora exemplars","Where the experience magic happens"],"ref":"Kotler, P., Kartajaya, H. and Setiawan, I. (2023) Marketing 6.0: The Future Is Immersive. Hoboken: Wiley.","slibTitle":"Marketing 6.0 & Immersive","slibNum":12,"color":"#7C3AED"},
+{"name":"Metaverse CX Framework","def":"A three-layer architecture for metaverse customer experiences: hardware, platform, and experience layer.","desc":"Hardware → platform → experience layers with avatars","shape":"layers","details":["Three architectural layers","Customer avatars interact with brand","Digital twins of products and spaces","Early-stage but high strategic potential"],"ref":"Ball, M. (2022) The Metaverse: And How It Will Revolutionize Everything. New York: Liveright.","slibTitle":"Marketing 6.0 & Immersive","slibNum":12,"color":"#7C3AED"},
+{"name":"Spatial Computing Stack","def":"A technology taxonomy (AR, VR, MR, XR) with a three-layer architecture: sensors, processors, displays.","desc":"AR/VR/MR/XR taxonomy with sensor → processing → display","shape":"layers","details":["Technology taxonomy clarification","Sensors → processing → display layers","AI enables real-time scene understanding","Apple Vision Pro, Meta Quest exemplars"],"ref":"Greenwold, S. (2003) Spatial Computing. MSc thesis, MIT.","slibTitle":"Marketing 6.0 & Immersive","slibNum":12,"color":"#7C3AED"},
+{"name":"Kotler 6.0 Ecosystem Map","def":"An interconnected system of five enabling technologies—AI, AR, VR, IoT, blockchain—centred on creating immersive customer value.","desc":"Five technologies centred on immersive customer value","shape":"network","details":["AI, AR, VR, IoT, blockchain","Interconnected ecosystem diagram","Centred on immersive customer value","Kotler et al. (2023) framework"],"ref":"Kotler, P., Kartajaya, H. and Setiawan, I. (2023) Marketing 6.0: The Future Is Immersive. Hoboken: Wiley.","slibTitle":"Marketing 6.0 & Immersive","slibNum":12,"color":"#7C3AED"}
+];
+
+const SVG={
+  pyramid:c=>`<svg viewBox="0 0 200 130"><polygon points="100,10 30,120 170,120" fill="none" stroke="${c}" stroke-width="2.5" opacity=".6"/><line x1="55" y1="80" x2="145" y2="80" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="72" y1="50" x2="128" y2="50" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  cycle:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="65" r="45" fill="none" stroke="${c}" stroke-width="2.5" opacity=".5"/><polygon points="140,40 148,52 132,50" fill="${c}" opacity=".6"/><polygon points="60,90 52,78 68,80" fill="${c}" opacity=".6"/><circle cx="100" cy="20" r="4" fill="${c}" opacity=".5"/><circle cx="145" cy="65" r="4" fill="${c}" opacity=".5"/><circle cx="100" cy="110" r="4" fill="${c}" opacity=".5"/><circle cx="55" cy="65" r="4" fill="${c}" opacity=".5"/></svg>`,
+  scurve:c=>`<svg viewBox="0 0 200 130"><path d="M20,110 C50,108 70,100 90,70 S140,15 180,12" fill="none" stroke="${c}" stroke-width="2.5" opacity=".6"/><line x1="20" y1="120" x2="185" y2="120" stroke="${c}" stroke-width="1" opacity=".2"/><line x1="18" y1="10" x2="18" y2="120" stroke="${c}" stroke-width="1" opacity=".2"/></svg>`,
+  matrix:c=>`<svg viewBox="0 0 200 130"><rect x="25" y="15" width="70" height="45" rx="4" fill="${c}" opacity=".12" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="105" y="15" width="70" height="45" rx="4" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="25" y="70" width="70" height="45" rx="4" fill="${c}" opacity=".08" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="105" y="70" width="70" height="45" rx="4" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  funnel:c=>`<svg viewBox="0 0 200 130"><path d="M30,15 L170,15 L135,120 L65,120 Z" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".5"/><line x1="50" y1="50" x2="150" y2="50" stroke="${c}" stroke-width="1" opacity=".3" stroke-dasharray="4"/><line x1="58" y1="80" x2="142" y2="80" stroke="${c}" stroke-width="1" opacity=".3" stroke-dasharray="4"/></svg>`,
+  bars:c=>`<svg viewBox="0 0 200 130"><rect x="25" y="70" width="30" height="50" rx="3" fill="${c}" opacity=".25"/><rect x="65" y="40" width="30" height="80" rx="3" fill="${c}" opacity=".4"/><rect x="105" y="55" width="30" height="65" rx="3" fill="${c}" opacity=".3"/><rect x="145" y="25" width="30" height="95" rx="3" fill="${c}" opacity=".5"/><line x1="20" y1="120" x2="180" y2="120" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  arrow:c=>`<svg viewBox="0 0 200 130"><path d="M15,40 L140,40 L140,20 L185,65 L140,110 L140,90 L15,90 Z" fill="${c}" opacity=".12" stroke="${c}" stroke-width="2" opacity=".4"/></svg>`,
+  diamond:c=>`<svg viewBox="0 0 200 130"><polygon points="100,10 180,65 100,120 20,65" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".5"/><circle cx="100" cy="65" r="15" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".4"/></svg>`,
+  circle:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="65" r="50" fill="${c}" opacity=".08" stroke="${c}" stroke-width="2" opacity=".4"/><circle cx="100" cy="65" r="30" fill="${c}" opacity=".12" stroke="${c}" stroke-width="1.5" opacity=".3"/><circle cx="100" cy="65" r="12" fill="${c}" opacity=".2"/></svg>`,
+  stairs:c=>`<svg viewBox="0 0 200 130"><path d="M20,110 L20,85 L65,85 L65,60 L110,60 L110,35 L155,35 L155,15 L180,15" fill="none" stroke="${c}" stroke-width="2.5" opacity=".5"/><rect x="20" y="85" width="45" height="25" fill="${c}" opacity=".08"/><rect x="65" y="60" width="45" height="50" fill="${c}" opacity=".1"/><rect x="110" y="35" width="45" height="75" fill="${c}" opacity=".13"/><rect x="155" y="15" width="25" height="95" fill="${c}" opacity=".16"/></svg>`,
+  pipeline:c=>`<svg viewBox="0 0 200 130"><rect x="10" y="45" width="35" height="40" rx="6" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="48" y1="65" x2="60" y2="65" stroke="${c}" stroke-width="2" opacity=".4"/><rect x="63" y="45" width="35" height="40" rx="6" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="101" y1="65" x2="113" y2="65" stroke="${c}" stroke-width="2" opacity=".4"/><rect x="116" y="45" width="35" height="40" rx="6" fill="${c}" opacity=".25" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="154" y1="65" x2="166" y2="65" stroke="${c}" stroke-width="2" opacity=".4"/><rect x="169" y="45" width="22" height="40" rx="6" fill="${c}" opacity=".3" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  split:c=>`<svg viewBox="0 0 200 130"><rect x="15" y="25" width="75" height="80" rx="8" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".3"/><rect x="110" y="25" width="75" height="80" rx="8" fill="${c}" opacity=".18" stroke="${c}" stroke-width="2" opacity=".3"/><line x1="100" y1="30" x2="100" y2="100" stroke="${c}" stroke-width="2" opacity=".3" stroke-dasharray="5"/></svg>`,
+  venn:c=>`<svg viewBox="0 0 200 130"><circle cx="78" cy="65" r="42" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".35"/><circle cx="122" cy="65" r="42" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".35"/></svg>`,
+  layers:c=>`<svg viewBox="0 0 200 130"><rect x="30" y="85" width="140" height="28" rx="5" fill="${c}" opacity=".1" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="30" y="50" width="140" height="28" rx="5" fill="${c}" opacity=".17" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="30" y="15" width="140" height="28" rx="5" fill="${c}" opacity=".25" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  tree:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="22" r="12" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".4"/><line x1="100" y1="34" x2="60" y2="65" stroke="${c}" stroke-width="1.5" opacity=".35"/><line x1="100" y1="34" x2="140" y2="65" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="60" cy="70" r="10" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><circle cx="140" cy="70" r="10" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="60" y1="80" x2="40" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="60" y1="80" x2="80" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="140" y1="80" x2="120" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="140" y1="80" x2="160" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><circle cx="40" cy="110" r="7" fill="${c}" opacity=".1"/><circle cx="80" cy="110" r="7" fill="${c}" opacity=".1"/><circle cx="120" cy="110" r="7" fill="${c}" opacity=".1"/><circle cx="160" cy="110" r="7" fill="${c}" opacity=".1"/></svg>`,
+  spectrum:c=>`<svg viewBox="0 0 200 130"><rect x="15" y="50" width="170" height="30" rx="15" fill="${c}" opacity=".1" stroke="${c}" stroke-width="1.5" opacity=".3"/><circle cx="45" cy="65" r="10" fill="${c}" opacity=".15"/><circle cx="100" cy="65" r="10" fill="${c}" opacity=".25"/><circle cx="155" cy="65" r="10" fill="${c}" opacity=".4"/></svg>`,
+  network:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="65" r="14" fill="${c}" opacity=".25" stroke="${c}" stroke-width="1.5" opacity=".4"/><circle cx="45" cy="30" r="9" fill="${c}" opacity=".15"/><circle cx="155" cy="30" r="9" fill="${c}" opacity=".15"/><circle cx="45" cy="100" r="9" fill="${c}" opacity=".15"/><circle cx="155" cy="100" r="9" fill="${c}" opacity=".15"/><line x1="90" y1="55" x2="52" y2="35" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="110" y1="55" x2="148" y2="35" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="90" y1="75" x2="52" y2="95" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="110" y1="75" x2="148" y2="95" stroke="${c}" stroke-width="1.5" opacity=".25"/></svg>`,
+  hexagon:c=>`<svg viewBox="0 0 200 130"><polygon points="100,10 160,37 160,93 100,120 40,93 40,37" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".4"/><polygon points="100,35 135,50 135,80 100,95 65,80 65,50" fill="${c}" opacity=".08" stroke="${c}" stroke-width="1" opacity=".2"/></svg>`,
+  triangle:c=>`<svg viewBox="0 0 200 130"><polygon points="100,15 170,115 30,115" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".4"/><circle cx="100" cy="40" r="5" fill="${c}" opacity=".3"/><circle cx="55" cy="100" r="5" fill="${c}" opacity=".3"/><circle cx="145" cy="100" r="5" fill="${c}" opacity=".3"/></svg>`,
+  timeline:c=>`<svg viewBox="0 0 200 130"><line x1="20" y1="65" x2="180" y2="65" stroke="${c}" stroke-width="2" opacity=".3"/><circle cx="40" cy="65" r="6" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="80" cy="65" r="6" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="120" cy="65" r="6" fill="${c}" opacity=".3" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="160" cy="65" r="6" fill="${c}" opacity=".4" stroke="${c}" stroke-width="1.5" opacity=".35"/><polygon points="178,60 185,65 178,70" fill="${c}" opacity=".4"/></svg>`,
+  iceberg:c=>`<svg viewBox="0 0 200 130"><line x1="15" y1="55" x2="185" y2="55" stroke="${c}" stroke-width="1" opacity=".2" stroke-dasharray="4"/><polygon points="75,55 125,55 100,20" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><polygon points="55,55 145,55 155,120 45,120" fill="${c}" opacity=".08" stroke="${c}" stroke-width="1.5" opacity=".25"/></svg>`
+};
+function getSVG(shape,color){return(SVG[shape]||SVG.matrix)(color)}
+document.getElementById('thumb-9-0').innerHTML=getSVG('pipeline','#E85D4A');
+document.getElementById('thumb-9-1').innerHTML=getSVG('pyramid','#E85D4A');
+document.getElementById('thumb-9-2').innerHTML=getSVG('layers','#E85D4A');
+document.getElementById('thumb-9-3').innerHTML=getSVG('matrix','#E85D4A');
+document.getElementById('thumb-9-4').innerHTML=getSVG('timeline','#E85D4A');
+document.getElementById('thumb-10-0').innerHTML=getSVG('pipeline','#4F46E5');
+document.getElementById('thumb-10-1').innerHTML=getSVG('triangle','#4F46E5');
+document.getElementById('thumb-10-2').innerHTML=getSVG('tree','#4F46E5');
+document.getElementById('thumb-10-3').innerHTML=getSVG('spectrum','#4F46E5');
+document.getElementById('thumb-10-4').innerHTML=getSVG('tree','#4F46E5');
+document.getElementById('thumb-11-0').innerHTML=getSVG('triangle','#059669');
+document.getElementById('thumb-11-1').innerHTML=getSVG('bars','#059669');
+document.getElementById('thumb-11-2').innerHTML=getSVG('bars','#059669');
+document.getElementById('thumb-11-3').innerHTML=getSVG('cycle','#059669');
+document.getElementById('thumb-11-4').innerHTML=getSVG('pipeline','#059669');
+document.getElementById('thumb-12-0').innerHTML=getSVG('timeline','#7C3AED');
+document.getElementById('thumb-12-1').innerHTML=getSVG('venn','#7C3AED');
+document.getElementById('thumb-12-2').innerHTML=getSVG('layers','#7C3AED');
+document.getElementById('thumb-12-3').innerHTML=getSVG('layers','#7C3AED');
+document.getElementById('thumb-12-4').innerHTML=getSVG('network','#7C3AED');
+
+
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('[data-anim]').forEach(el=>obs.observe(el));
+function openModal(fw){
+  const m=document.getElementById('modal');
+  m.innerHTML=`<div class="modal-accent" style="background:${fw.color}"></div><div class="modal-inner" style="position:relative">
+    <button class="modal-close" onclick="closeModal()">\u00d7</button>
+    <div class="modal-slib">Slibrary ${fw.slibNum} \u2014 ${fw.slibTitle}</div>
+    <div class="modal-title">${fw.name}</div>
+    <div class="modal-def">${fw.def}</div>
+    <div class="modal-desc">${fw.desc}</div>
+    <div class="modal-thumb">${getSVG(fw.shape,fw.color)}</div>
+    <ul class="modal-details">${fw.details.map(d=>`<li>${d}</li>`).join('')}</ul>
+    <div class="modal-ref"><div class="modal-ref-label">Reference</div>${fw.ref}</div>
+  </div>`;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow=''}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+</script>
+</body>
+</html>

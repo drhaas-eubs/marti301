@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MARTI301 Unit 1 — AI Strategy, Governance & Competitive Advantage</title>
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#1B2A4A;--teal:#00B388;--amber:#D4872C;--bg:#FAFBFC;--card:#FFF;--text:#1B2A4A;--muted:#6B7280;--border:#E5E7EB;--def-red:#C0392B}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;overflow-x:hidden}
+.hero{background:var(--navy);padding:2.5rem 2rem 2rem;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:var(--teal)}
+.hero-tag{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);font-weight:700;margin-bottom:.5rem}
+.hero h1{font-size:2.2rem;color:#fff;font-weight:700;line-height:1.2;margin-bottom:.4rem}
+.hero p{color:#94A3B8;font-size:.95rem;margin-bottom:.8rem}
+.hero .copy{color:#64748B;font-size:.8rem;font-style:italic}
+.hero-stats{display:flex;gap:2rem;margin-top:1rem}
+.hero-stat{text-align:center}
+.hero-stat .num{font-size:1.8rem;color:var(--teal);font-weight:700}
+.hero-stat .label{font-size:.7rem;color:#94A3B8;text-transform:uppercase;letter-spacing:.1em}
+.slib-set{margin-bottom:2.5rem}
+.slib-set-header{display:flex;align-items:center;gap:.6rem;margin-bottom:1rem;padding-left:.2rem;opacity:0;transform:translateX(-15px);transition:all .5s cubic-bezier(.16,1,.3,1)}
+.slib-set-header.visible{opacity:1;transform:translateX(0)}
+.slib-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.slib-set-title{font-size:1rem;font-weight:700}
+.slib-set-num{font-size:.7rem;color:var(--muted);background:#F1F5F9;padding:.15rem .5rem;border-radius:1rem;font-weight:600}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;opacity:0;transform:translateY(25px) scale(.97);transition:all .5s cubic-bezier(.16,1,.3,1);position:relative;display:flex;flex-direction:column}
+.card.visible{opacity:1;transform:translateY(0) scale(1)}
+.card:hover{transform:translateY(-4px) scale(1.01);box-shadow:0 12px 32px rgba(27,42,74,.1);border-color:transparent}
+.card-accent{height:3px;width:100%}
+.card-thumb{height:120px;background:#F8FAFC;display:flex;align-items:center;justify-content:center;padding:.8rem;overflow:hidden}
+.card-thumb svg{width:100%;height:100%;opacity:.7;transition:opacity .3s}
+.card:hover .card-thumb svg{opacity:1}
+.card-body{padding:.8rem .9rem .9rem;flex:1;display:flex;flex-direction:column}
+.card-title{font-size:.82rem;font-weight:700;line-height:1.3;margin-bottom:.25rem}
+.card-desc{font-size:.7rem;color:var(--muted);line-height:1.4;margin-bottom:.5rem;flex:1}
+.card-tag{display:inline-block;font-size:.6rem;font-weight:700;padding:.15rem .45rem;border-radius:4px;color:#fff;align-self:flex-start}
+.modal-overlay{position:fixed;inset:0;background:rgba(27,42,74,.5);z-index:200;opacity:0;pointer-events:none;transition:opacity .3s;display:flex;align-items:center;justify-content:center;padding:1rem}
+.modal-overlay.open{opacity:1;pointer-events:auto}
+.modal{background:#fff;border-radius:16px;max-width:560px;width:100%;max-height:85vh;overflow-y:auto;transform:translateY(20px) scale(.95);transition:transform .35s cubic-bezier(.16,1,.3,1);padding:0}
+.modal-overlay.open .modal{transform:translateY(0) scale(1)}
+.modal-accent{height:4px;border-radius:16px 16px 0 0}
+.modal-inner{padding:1.8rem 1.6rem}
+.modal-close{position:absolute;top:1rem;right:1rem;width:32px;height:32px;border-radius:50%;border:none;background:#F1F5F9;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;color:var(--muted);transition:background .2s}
+.modal-close:hover{background:#E2E8F0}
+.modal-slib{font-size:.7rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.3rem}
+.modal-title{font-size:1.4rem;font-weight:700;margin-bottom:.4rem}
+.modal-def{font-size:.9rem;color:var(--def-red);font-weight:600;line-height:1.5;margin-bottom:.7rem;border-left:3px solid var(--def-red);padding-left:.6rem}
+.modal-desc{font-size:.88rem;color:var(--muted);line-height:1.6;margin-bottom:.8rem}
+.modal-thumb{background:#F8FAFC;border-radius:10px;padding:1.5rem;margin-bottom:1.2rem;display:flex;align-items:center;justify-content:center}
+.modal-thumb svg{width:220px;height:140px}
+.modal-details{list-style:none;padding:0;margin-bottom:1rem}
+.modal-details li{font-size:.82rem;color:var(--text);padding:.4rem 0;border-bottom:1px solid #F1F5F9;display:flex;align-items:flex-start;gap:.5rem}
+.modal-details li::before{content:'\2022';color:var(--teal);font-weight:bold;flex-shrink:0;margin-top:1px}
+.modal-ref{background:#F8FAFC;border-radius:8px;padding:.7rem .9rem;font-size:.75rem;color:#475569;line-height:1.5;border-left:3px solid var(--teal)}
+.modal-ref-label{font-weight:700;font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:var(--teal);margin-bottom:.2rem}
+.footer{background:var(--navy);padding:2rem;text-align:center;color:#64748B;font-size:.75rem;margin-top:2rem}
+.footer strong{color:var(--teal)}
+@media(max-width:640px){.hero h1{font-size:1.5rem}.hero-stats{gap:1rem}.cards-grid{grid-template-columns:repeat(auto-fill,minmax(165px,1fr))}.card-thumb{height:90px}}</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-tag">MARTI301 &middot; Unit 1</div>
+  <h1>AI Strategy, Governance & Competitive Advantage</h1>
+  <p>Select any framework to explore it in detail</p>
+  <div class="copy">&copy; 2026 Dr. Hildegard Haas</div>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num">4</div><div class="label">Slibraries</div></div>
+    <div class="hero-stat"><div class="num">20</div><div class="label">Frameworks</div></div>
+    <div class="hero-stat"><div class="num">1&ndash;4</div><div class="label">Set Range</div></div>
+  </div>
+</header>
+<main style="padding:2rem 1.5rem 1rem">
+<div class="slib-set">
+      <div class="slib-set-header" data-anim>
+        <span class="slib-dot" style="background:#2563EB"></span>
+        <span class="slib-set-title">Set 1 &mdash; AI Strategy & Governance</span>
+        <span class="slib-set-num">5 frameworks</span>
+      </div>
+      <div class="cards-grid"><div class="card" data-anim style="transition-delay:0ms" onclick="openModal(FW[0])">
+          <div class="card-accent" style="background:#2563EB"></div>
+          <div class="card-thumb" id="thumb-1-0"></div>
+          <div class="card-body">
+            <div class="card-title">EU AI Act Risk Pyramid</div>
+            <div class="card-desc">Four-tier risk classification from unacceptable to minimal</div>
+            <span class="card-tag" style="background:#2563EB">Slibrary 1</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:80ms" onclick="openModal(FW[1])">
+          <div class="card-accent" style="background:#2563EB"></div>
+          <div class="card-thumb" id="thumb-1-1"></div>
+          <div class="card-body">
+            <div class="card-title">NIST AI RMF Lifecycle</div>
+            <div class="card-desc">Continuous risk management: Govern → Map → Measure → Manage</div>
+            <span class="card-tag" style="background:#2563EB">Slibrary 1</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:160ms" onclick="openModal(FW[2])">
+          <div class="card-accent" style="background:#2563EB"></div>
+          <div class="card-thumb" id="thumb-1-2"></div>
+          <div class="card-body">
+            <div class="card-title">Perez Techno-Economic S-Curve</div>
+            <div class="card-desc">Installation → turning point → deployment phases</div>
+            <span class="card-tag" style="background:#2563EB">Slibrary 1</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:240ms" onclick="openModal(FW[3])">
+          <div class="card-accent" style="background:#2563EB"></div>
+          <div class="card-thumb" id="thumb-1-3"></div>
+          <div class="card-body">
+            <div class="card-title">AI Maturity Staircase</div>
+            <div class="card-desc">Four stages from ad hoc to transformational AI adoption</div>
+            <span class="card-tag" style="background:#2563EB">Slibrary 1</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:320ms" onclick="openModal(FW[4])">
+          <div class="card-accent" style="background:#2563EB"></div>
+          <div class="card-thumb" id="thumb-1-4"></div>
+          <div class="card-body">
+            <div class="card-title">McKinsey AI High Performers</div>
+            <div class="card-desc">3× leadership buy-in drives growth + innovation objectives</div>
+            <span class="card-tag" style="background:#2563EB">Slibrary 1</span>
+          </div>
+        </div></div></div><div class="slib-set">
+      <div class="slib-set-header" data-anim>
+        <span class="slib-dot" style="background:#C0392B"></span>
+        <span class="slib-set-title">Set 2 &mdash; Competitive Advantage</span>
+        <span class="slib-set-num">5 frameworks</span>
+      </div>
+      <div class="cards-grid"><div class="card" data-anim style="transition-delay:0ms" onclick="openModal(FW[5])">
+          <div class="card-accent" style="background:#C0392B"></div>
+          <div class="card-thumb" id="thumb-2-0"></div>
+          <div class="card-body">
+            <div class="card-title">Porter's Five Forces</div>
+            <div class="card-desc">Industry structure analysis: rivalry, buyers, suppliers, entrants, substitutes</div>
+            <span class="card-tag" style="background:#C0392B">Slibrary 2</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:80ms" onclick="openModal(FW[6])">
+          <div class="card-accent" style="background:#C0392B"></div>
+          <div class="card-thumb" id="thumb-2-1"></div>
+          <div class="card-body">
+            <div class="card-title">VRIO Framework</div>
+            <div class="card-desc">Four-column filter: Valuable → Rare → Inimitable → Organized</div>
+            <span class="card-tag" style="background:#C0392B">Slibrary 2</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:160ms" onclick="openModal(FW[7])">
+          <div class="card-accent" style="background:#C0392B"></div>
+          <div class="card-thumb" id="thumb-2-2"></div>
+          <div class="card-body">
+            <div class="card-title">Porter's Value Chain</div>
+            <div class="card-desc">Primary and support activities creating margin</div>
+            <span class="card-tag" style="background:#C0392B">Slibrary 2</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:240ms" onclick="openModal(FW[8])">
+          <div class="card-accent" style="background:#C0392B"></div>
+          <div class="card-thumb" id="thumb-2-3"></div>
+          <div class="card-body">
+            <div class="card-title">Resource-Based View</div>
+            <div class="card-desc">Firm resources and capabilities drive competitive heterogeneity</div>
+            <span class="card-tag" style="background:#C0392B">Slibrary 2</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:320ms" onclick="openModal(FW[9])">
+          <div class="card-accent" style="background:#C0392B"></div>
+          <div class="card-thumb" id="thumb-2-4"></div>
+          <div class="card-body">
+            <div class="card-title">Disruption S-Curves</div>
+            <div class="card-desc">Incumbent vs. entrant performance trajectories over time</div>
+            <span class="card-tag" style="background:#C0392B">Slibrary 2</span>
+          </div>
+        </div></div></div><div class="slib-set">
+      <div class="slib-set-header" data-anim>
+        <span class="slib-dot" style="background:#D4872C"></span>
+        <span class="slib-set-title">Set 3 &mdash; AI Project Lifecycle</span>
+        <span class="slib-set-num">5 frameworks</span>
+      </div>
+      <div class="cards-grid"><div class="card" data-anim style="transition-delay:0ms" onclick="openModal(FW[10])">
+          <div class="card-accent" style="background:#D4872C"></div>
+          <div class="card-thumb" id="thumb-3-0"></div>
+          <div class="card-body">
+            <div class="card-title">CRISP-DM Cycle</div>
+            <div class="card-desc">Six-phase circular process for data mining and ML projects</div>
+            <span class="card-tag" style="background:#D4872C">Slibrary 3</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:80ms" onclick="openModal(FW[11])">
+          <div class="card-accent" style="background:#D4872C"></div>
+          <div class="card-thumb" id="thumb-3-1"></div>
+          <div class="card-body">
+            <div class="card-title">DDED Stage-Gate</div>
+            <div class="card-desc">Design → Develop → Evaluate → Deploy with go/no-go gates</div>
+            <span class="card-tag" style="background:#D4872C">Slibrary 3</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:160ms" onclick="openModal(FW[12])">
+          <div class="card-accent" style="background:#D4872C"></div>
+          <div class="card-thumb" id="thumb-3-2"></div>
+          <div class="card-body">
+            <div class="card-title">Build vs. Buy 2×2</div>
+            <div class="card-desc">Strategic value × capability matrix for AI sourcing decisions</div>
+            <span class="card-tag" style="background:#D4872C">Slibrary 3</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:240ms" onclick="openModal(FW[13])">
+          <div class="card-accent" style="background:#D4872C"></div>
+          <div class="card-thumb" id="thumb-3-3"></div>
+          <div class="card-body">
+            <div class="card-title">AI Failure Funnel</div>
+            <div class="card-desc">87% of AI projects never reach production—narrowing at each stage</div>
+            <span class="card-tag" style="background:#D4872C">Slibrary 3</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:320ms" onclick="openModal(FW[14])">
+          <div class="card-accent" style="background:#D4872C"></div>
+          <div class="card-thumb" id="thumb-3-4"></div>
+          <div class="card-body">
+            <div class="card-title">Data Readiness Ladder</div>
+            <div class="card-desc">Band D (hearsay) through Band A (production-grade) data quality</div>
+            <span class="card-tag" style="background:#D4872C">Slibrary 3</span>
+          </div>
+        </div></div></div><div class="slib-set">
+      <div class="slib-set-header" data-anim>
+        <span class="slib-dot" style="background:#27AE60"></span>
+        <span class="slib-set-title">Set 4 &mdash; Human-AI Collaboration</span>
+        <span class="slib-set-num">5 frameworks</span>
+      </div>
+      <div class="cards-grid"><div class="card" data-anim style="transition-delay:0ms" onclick="openModal(FW[15])">
+          <div class="card-accent" style="background:#27AE60"></div>
+          <div class="card-thumb" id="thumb-4-0"></div>
+          <div class="card-body">
+            <div class="card-title">Prediction-Judgment Split</div>
+            <div class="card-desc">AI = prediction engine, humans = judgment + action</div>
+            <span class="card-tag" style="background:#27AE60">Slibrary 4</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:80ms" onclick="openModal(FW[16])">
+          <div class="card-accent" style="background:#27AE60"></div>
+          <div class="card-thumb" id="thumb-4-1"></div>
+          <div class="card-body">
+            <div class="card-title">Centaur Model</div>
+            <div class="card-desc">Human + AI outperforms either alone—originated in chess</div>
+            <span class="card-tag" style="background:#27AE60">Slibrary 4</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:160ms" onclick="openModal(FW[17])">
+          <div class="card-accent" style="background:#27AE60"></div>
+          <div class="card-thumb" id="thumb-4-2"></div>
+          <div class="card-body">
+            <div class="card-title">Automation-Augmentation Spectrum</div>
+            <div class="card-desc">Full automation ← → full augmentation for task-level analysis</div>
+            <span class="card-tag" style="background:#27AE60">Slibrary 4</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:240ms" onclick="openModal(FW[18])">
+          <div class="card-accent" style="background:#27AE60"></div>
+          <div class="card-thumb" id="thumb-4-3"></div>
+          <div class="card-body">
+            <div class="card-title">BCG People Investment</div>
+            <div class="card-desc">High performers invest 2× in upskilling over replacing</div>
+            <span class="card-tag" style="background:#27AE60">Slibrary 4</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:320ms" onclick="openModal(FW[19])">
+          <div class="card-accent" style="background:#27AE60"></div>
+          <div class="card-thumb" id="thumb-4-4"></div>
+          <div class="card-body">
+            <div class="card-title">Human-in-the-Loop Feedback</div>
+            <div class="card-desc">AI output → human review → correction → continuous learning</div>
+            <span class="card-tag" style="background:#27AE60">Slibrary 4</span>
+          </div>
+        </div></div></div>
+</main>
+<footer class="footer">
+  <strong>MARTI301</strong> &middot; AI in Investment &amp; Competitiveness &middot; &copy; 2026 Dr. Hildegard Haas<br>
+  Applying JD Meier&rsquo;s <strong>Thumbnail Thinking</strong> (2025) &middot; Unit 1: AI Strategy, Governance & Competitive Advantage
+</footer>
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modal"></div>
+</div>
+<script>
+const FW = [
+{"name":"EU AI Act Risk Pyramid","def":"A four-tier regulatory classification that categorises AI systems by risk level, from unacceptable (prohibited) to minimal (voluntary codes).","desc":"Four-tier risk classification from unacceptable to minimal","shape":"pyramid","details":["Unacceptable risk → prohibited applications","High-risk → conformity assessment required","Limited risk → transparency obligations","Minimal risk → voluntary codes of conduct"],"ref":"European Parliament (2024) Regulation (EU) 2024/1689 laying down harmonised rules on artificial intelligence (AI Act). Official Journal of the European Union, L series.","slibTitle":"AI Strategy & Governance","slibNum":1,"color":"#2563EB"},
+{"name":"NIST AI RMF Lifecycle","def":"A voluntary risk management framework comprising four core functions—Govern, Map, Measure, Manage—applied in a continuous cycle to AI systems.","desc":"Continuous risk management: Govern → Map → Measure → Manage","shape":"cycle","details":["Four core functions in continuous loop","Risk-based, not prescriptive approach","Aligns with ISO and OECD principles","US voluntary standard for AI governance"],"ref":"National Institute of Standards and Technology (2023) Artificial Intelligence Risk Management Framework (AI RMF 1.0). NIST AI 100-1. Gaithersburg, MD: NIST.","slibTitle":"AI Strategy & Governance","slibNum":1,"color":"#2563EB"},
+{"name":"Perez Techno-Economic S-Curve","def":"A model showing how technological revolutions unfold in two phases—installation (speculative) and deployment (productive)—separated by a turning point.","desc":"Installation → turning point → deployment phases","shape":"scurve","details":["Installation phase driven by speculation","Turning point: bubble burst and reset","Deployment phase: production capital dominates","AI positioned at current turning point"],"ref":"Perez, C. (2002) Technological Revolutions and Financial Capital: The Dynamics of Bubbles and Golden Ages. Cheltenham: Edward Elgar.","slibTitle":"AI Strategy & Governance","slibNum":1,"color":"#2563EB"},
+{"name":"AI Maturity Staircase","def":"A four-stage progression model measuring an organisation's AI capability from ad hoc experimentation through to transformational, AI-native operations.","desc":"Four stages from ad hoc to transformational AI adoption","shape":"stairs","details":["Ad hoc: isolated experiments","Experimental: multiple pilots","Operational: production AI at scale","Transformational: AI-native organisation"],"ref":"Davenport, T.H. and Harris, J.G. (2017) Competing on Analytics: Updated, with a New Introduction. Boston: Harvard Business Review Press.","slibTitle":"AI Strategy & Governance","slibNum":1,"color":"#2563EB"},
+{"name":"McKinsey AI High Performers","def":"A benchmark comparison showing that AI high-performing organisations are 3× more likely to have strong senior leadership commitment to AI initiatives.","desc":"3× leadership buy-in drives growth + innovation objectives","shape":"bars","details":["High performers: 48% strong senior leadership commitment","79% pursue innovation as AI objective","Growth + innovation, not just efficiency","Source: McKinsey Global Survey 2025"],"ref":"McKinsey & Company (2025) The state of AI in 2025: Agents, innovation, and transformation. McKinsey Global Survey.","slibTitle":"AI Strategy & Governance","slibNum":1,"color":"#2563EB"},
+{"name":"Porter's Five Forces","def":"An industry analysis framework identifying five competitive forces—rivalry, buyer power, supplier power, threat of entrants, and substitutes—that shape profitability.","desc":"Industry structure analysis: rivalry, buyers, suppliers, entrants, substitutes","shape":"diamond","details":["Central rivalry surrounded by four forces","Maps industry profitability drivers","AI can shift each force dynamically","Porter (1979); foundation strategic tool"],"ref":"Porter, M.E. (1979) 'How competitive forces shape strategy', Harvard Business Review, 57(2), pp. 137–145.","slibTitle":"Competitive Advantage","slibNum":2,"color":"#C0392B"},
+{"name":"VRIO Framework","def":"A resource evaluation tool testing whether a firm's assets are Valuable, Rare, costly to Imitate, and supported by Organisation—yielding sustained competitive advantage.","desc":"Four-column filter: Valuable → Rare → Inimitable → Organized","shape":"funnel","details":["Sequential test for sustained advantage","Data and algorithms as rare resources","Organisation = governance + culture","Barney (1991); resource-based view"],"ref":"Barney, J.B. (1991) 'Firm resources and sustained competitive advantage', Journal of Management, 17(1), pp. 99–120.","slibTitle":"Competitive Advantage","slibNum":2,"color":"#C0392B"},
+{"name":"Porter's Value Chain","def":"A model decomposing a firm into primary and support activities to identify where value is created and where cost advantages or differentiation can be achieved.","desc":"Primary and support activities creating margin","shape":"arrow","details":["Arrow shape: inputs flow to margin","Primary: logistics, ops, marketing, service","Support: infrastructure, HR, tech, procurement","AI adds value at every activity node"],"ref":"Porter, M.E. (1985) Competitive Advantage: Creating and Sustaining Superior Performance. New York: Free Press.","slibTitle":"Competitive Advantage","slibNum":2,"color":"#C0392B"},
+{"name":"Resource-Based View","def":"A theory proposing that firms achieve competitive advantage through resources and capabilities that are heterogeneously distributed and imperfectly mobile across firms.","desc":"Firm resources and capabilities drive competitive heterogeneity","shape":"circle","details":["Heterogeneity: firms differ in resources","Immobility: resources hard to transfer","Data moats as modern RBV resources","Wernerfelt (1984); Barney (1991)"],"ref":"Wernerfelt, B. (1984) 'A resource-based view of the firm', Strategic Management Journal, 5(2), pp. 171–180.","slibTitle":"Competitive Advantage","slibNum":2,"color":"#C0392B"},
+{"name":"Disruption S-Curves","def":"A model of innovation trajectories where a new technology's performance curve eventually crosses and surpasses the incumbent's, signalling market disruption.","desc":"Incumbent vs. entrant performance trajectories over time","shape":"scurve","details":["Two intersecting S-curves","Crossing point signals disruption","Entrants start below market needs","Christensen (1997) innovation theory"],"ref":"Christensen, C.M. (1997) The Innovator's Dilemma: When New Technologies Cause Great Firms to Fail. Boston: Harvard Business School Press.","slibTitle":"Competitive Advantage","slibNum":2,"color":"#C0392B"},
+{"name":"CRISP-DM Cycle","def":"A six-phase, iterative methodology for data mining and ML projects: business understanding, data understanding, data preparation, modelling, evaluation, and deployment.","desc":"Six-phase circular process for data mining and ML projects","shape":"cycle","details":["Business Understanding → Data Understanding","Data Preparation → Modelling","Evaluation → Deployment","Industry standard since 1999"],"ref":"Wirth, R. and Hipp, J. (2000) 'CRISP-DM: Towards a standard process model for data mining', Proceedings of the 4th International Conference on the Practical Applications of Knowledge Discovery and Data Mining, pp. 29–39.","slibTitle":"AI Project Lifecycle","slibNum":3,"color":"#D4872C"},
+{"name":"DDED Stage-Gate","def":"A four-phase AI project framework—Design, Develop, Evaluate, Deploy—with go/no-go decision gates between each phase to ensure business alignment.","desc":"Design → Develop → Evaluate → Deploy with go/no-go gates","shape":"pipeline","details":["Four sequential phases","Go/no-go decision at each gate","Aligns AI with business case","MARTI301 core framework"],"ref":"Cooper, R.G. (2017) Winning at New Products: Creating Value Through Innovation. 5th edn. New York: Basic Books. Adapted for AI.","slibTitle":"AI Project Lifecycle","slibNum":3,"color":"#D4872C"},
+{"name":"Build vs. Buy 2×2","def":"A decision matrix plotting strategic value against internal capability to determine whether an AI solution should be built in-house, purchased, or partnered.","desc":"Strategic value × capability matrix for AI sourcing decisions","shape":"matrix","details":["High value + high capability = build","Low value + commodity = buy/partner","Guides resource allocation","Links to talent strategy (Unit 4)"],"ref":"Iansiti, M. and Lakhani, K.R. (2020) Competing in the Age of AI. Boston: Harvard Business Review Press.","slibTitle":"AI Project Lifecycle","slibNum":3,"color":"#D4872C"},
+{"name":"AI Failure Funnel","def":"An empirical observation that approximately 87% of AI projects never reach production, with attrition occurring at data, talent, and integration barriers.","desc":"87% of AI projects never reach production—narrowing at each stage","shape":"funnel","details":["Wide top: many ideas and pilots","Narrows at data, talent, integration barriers","Only 13% reach production deployment","Gartner / VentureBeat research data"],"ref":"VentureBeat (2019) 'Why do 87% of data science projects never make it into production?', VentureBeat, 19 July.","slibTitle":"AI Project Lifecycle","slibNum":3,"color":"#D4872C"},
+{"name":"Data Readiness Ladder","def":"A four-band classification of data maturity from Band D (hearsay, unverifiable) through Band A (production-grade, continuously maintained).","desc":"Band D (hearsay) through Band A (production-grade) data quality","shape":"stairs","details":["Band D: hearsay, unverifiable","Band C: cleaned and structured","Band B: task-ready for ML","Band A: production-grade, maintained"],"ref":"Lawrence, N.D. (2017) 'Data readiness levels', arXiv preprint arXiv:1705.02245.","slibTitle":"AI Project Lifecycle","slibNum":3,"color":"#D4872C"},
+{"name":"Prediction-Judgment Split","def":"A model positing that AI radically reduces the cost of prediction while the value of human judgment—deciding what to do with predictions—correspondingly increases.","desc":"AI = prediction engine, humans = judgment + action","shape":"split","details":["AI drops the cost of prediction","Humans provide judgment on actions","Complementary, not substitutive roles","Agrawal, Gans & Goldfarb (2018)"],"ref":"Agrawal, A., Gans, J. and Goldfarb, A. (2018) Prediction Machines: The Simple Economics of Artificial Intelligence. Boston: Harvard Business Review Press.","slibTitle":"Human-AI Collaboration","slibNum":4,"color":"#27AE60"},
+{"name":"Centaur Model","def":"A human-AI teaming concept, originating from chess, where the combined performance of human strategic oversight and AI computational power exceeds either alone.","desc":"Human + AI outperforms either alone—originated in chess","shape":"venn","details":["Kasparov's insight after Deep Blue","Strategic oversight + AI computational speed","Best results from genuine collaboration","Applicable across all business domains"],"ref":"Kasparov, G. (2017) Deep Thinking: Where Machine Intelligence Ends and Human Creativity Begins. London: John Murray.","slibTitle":"Human-AI Collaboration","slibNum":4,"color":"#27AE60"},
+{"name":"Automation-Augmentation Spectrum","def":"A continuum for analysing work at the task level, ranging from full automation (AI replaces the task) to full augmentation (AI enhances human performance).","desc":"Full automation ← → full augmentation for task-level analysis","shape":"spectrum","details":["Most roles sit in the middle","Task-level, not job-level analysis","AI handles routine; humans handle exceptions","Frey & Osborne framework reframed"],"ref":"Raisch, S. and Krakowski, S. (2021) 'Artificial intelligence and management: The automation-augmentation paradox', Academy of Management Review, 46(1), pp. 192–210.","slibTitle":"Human-AI Collaboration","slibNum":4,"color":"#27AE60"},
+{"name":"BCG People Investment","def":"Research finding that AI high-performing organisations invest approximately twice as much in workforce upskilling as in workforce replacement.","desc":"High performers invest 2× in upskilling over replacing","shape":"bars","details":["Reskilling > replacing for AI adoption","Culture + capability = successful adoption","Investment in change management critical","BCG / McKinsey (2025) research"],"ref":"Ransbotham, S. et al. (2020) 'Expanding AI's impact with organizational learning', MIT Sloan Management Review and BCG.","slibTitle":"Human-AI Collaboration","slibNum":4,"color":"#27AE60"},
+{"name":"Human-in-the-Loop Feedback","def":"A system design pattern in which AI outputs are reviewed, corrected, and approved by humans, creating a continuous learning loop that improves model accuracy and trust.","desc":"AI output → human review → correction → continuous learning","shape":"cycle","details":["Circular feedback between AI and human","Critical for high-stakes domains","Reduces bias and increases trust","Foundation of responsible AI deployment"],"ref":"Amershi, S. et al. (2019) 'Guidelines for human-AI interaction', Proceedings of the 2019 CHI Conference on Human Factors in Computing Systems, pp. 1–13.","slibTitle":"Human-AI Collaboration","slibNum":4,"color":"#27AE60"}
+];
+
+const SVG={
+  pyramid:c=>`<svg viewBox="0 0 200 130"><polygon points="100,10 30,120 170,120" fill="none" stroke="${c}" stroke-width="2.5" opacity=".6"/><line x1="55" y1="80" x2="145" y2="80" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="72" y1="50" x2="128" y2="50" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  cycle:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="65" r="45" fill="none" stroke="${c}" stroke-width="2.5" opacity=".5"/><polygon points="140,40 148,52 132,50" fill="${c}" opacity=".6"/><polygon points="60,90 52,78 68,80" fill="${c}" opacity=".6"/><circle cx="100" cy="20" r="4" fill="${c}" opacity=".5"/><circle cx="145" cy="65" r="4" fill="${c}" opacity=".5"/><circle cx="100" cy="110" r="4" fill="${c}" opacity=".5"/><circle cx="55" cy="65" r="4" fill="${c}" opacity=".5"/></svg>`,
+  scurve:c=>`<svg viewBox="0 0 200 130"><path d="M20,110 C50,108 70,100 90,70 S140,15 180,12" fill="none" stroke="${c}" stroke-width="2.5" opacity=".6"/><line x1="20" y1="120" x2="185" y2="120" stroke="${c}" stroke-width="1" opacity=".2"/><line x1="18" y1="10" x2="18" y2="120" stroke="${c}" stroke-width="1" opacity=".2"/></svg>`,
+  matrix:c=>`<svg viewBox="0 0 200 130"><rect x="25" y="15" width="70" height="45" rx="4" fill="${c}" opacity=".12" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="105" y="15" width="70" height="45" rx="4" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="25" y="70" width="70" height="45" rx="4" fill="${c}" opacity=".08" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="105" y="70" width="70" height="45" rx="4" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  funnel:c=>`<svg viewBox="0 0 200 130"><path d="M30,15 L170,15 L135,120 L65,120 Z" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".5"/><line x1="50" y1="50" x2="150" y2="50" stroke="${c}" stroke-width="1" opacity=".3" stroke-dasharray="4"/><line x1="58" y1="80" x2="142" y2="80" stroke="${c}" stroke-width="1" opacity=".3" stroke-dasharray="4"/></svg>`,
+  bars:c=>`<svg viewBox="0 0 200 130"><rect x="25" y="70" width="30" height="50" rx="3" fill="${c}" opacity=".25"/><rect x="65" y="40" width="30" height="80" rx="3" fill="${c}" opacity=".4"/><rect x="105" y="55" width="30" height="65" rx="3" fill="${c}" opacity=".3"/><rect x="145" y="25" width="30" height="95" rx="3" fill="${c}" opacity=".5"/><line x1="20" y1="120" x2="180" y2="120" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  arrow:c=>`<svg viewBox="0 0 200 130"><path d="M15,40 L140,40 L140,20 L185,65 L140,110 L140,90 L15,90 Z" fill="${c}" opacity=".12" stroke="${c}" stroke-width="2" opacity=".4"/></svg>`,
+  diamond:c=>`<svg viewBox="0 0 200 130"><polygon points="100,10 180,65 100,120 20,65" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".5"/><circle cx="100" cy="65" r="15" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".4"/></svg>`,
+  circle:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="65" r="50" fill="${c}" opacity=".08" stroke="${c}" stroke-width="2" opacity=".4"/><circle cx="100" cy="65" r="30" fill="${c}" opacity=".12" stroke="${c}" stroke-width="1.5" opacity=".3"/><circle cx="100" cy="65" r="12" fill="${c}" opacity=".2"/></svg>`,
+  stairs:c=>`<svg viewBox="0 0 200 130"><path d="M20,110 L20,85 L65,85 L65,60 L110,60 L110,35 L155,35 L155,15 L180,15" fill="none" stroke="${c}" stroke-width="2.5" opacity=".5"/><rect x="20" y="85" width="45" height="25" fill="${c}" opacity=".08"/><rect x="65" y="60" width="45" height="50" fill="${c}" opacity=".1"/><rect x="110" y="35" width="45" height="75" fill="${c}" opacity=".13"/><rect x="155" y="15" width="25" height="95" fill="${c}" opacity=".16"/></svg>`,
+  pipeline:c=>`<svg viewBox="0 0 200 130"><rect x="10" y="45" width="35" height="40" rx="6" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="48" y1="65" x2="60" y2="65" stroke="${c}" stroke-width="2" opacity=".4"/><rect x="63" y="45" width="35" height="40" rx="6" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="101" y1="65" x2="113" y2="65" stroke="${c}" stroke-width="2" opacity=".4"/><rect x="116" y="45" width="35" height="40" rx="6" fill="${c}" opacity=".25" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="154" y1="65" x2="166" y2="65" stroke="${c}" stroke-width="2" opacity=".4"/><rect x="169" y="45" width="22" height="40" rx="6" fill="${c}" opacity=".3" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  split:c=>`<svg viewBox="0 0 200 130"><rect x="15" y="25" width="75" height="80" rx="8" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".3"/><rect x="110" y="25" width="75" height="80" rx="8" fill="${c}" opacity=".18" stroke="${c}" stroke-width="2" opacity=".3"/><line x1="100" y1="30" x2="100" y2="100" stroke="${c}" stroke-width="2" opacity=".3" stroke-dasharray="5"/></svg>`,
+  venn:c=>`<svg viewBox="0 0 200 130"><circle cx="78" cy="65" r="42" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".35"/><circle cx="122" cy="65" r="42" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".35"/></svg>`,
+  layers:c=>`<svg viewBox="0 0 200 130"><rect x="30" y="85" width="140" height="28" rx="5" fill="${c}" opacity=".1" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="30" y="50" width="140" height="28" rx="5" fill="${c}" opacity=".17" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="30" y="15" width="140" height="28" rx="5" fill="${c}" opacity=".25" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  tree:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="22" r="12" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".4"/><line x1="100" y1="34" x2="60" y2="65" stroke="${c}" stroke-width="1.5" opacity=".35"/><line x1="100" y1="34" x2="140" y2="65" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="60" cy="70" r="10" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><circle cx="140" cy="70" r="10" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="60" y1="80" x2="40" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="60" y1="80" x2="80" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="140" y1="80" x2="120" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="140" y1="80" x2="160" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><circle cx="40" cy="110" r="7" fill="${c}" opacity=".1"/><circle cx="80" cy="110" r="7" fill="${c}" opacity=".1"/><circle cx="120" cy="110" r="7" fill="${c}" opacity=".1"/><circle cx="160" cy="110" r="7" fill="${c}" opacity=".1"/></svg>`,
+  spectrum:c=>`<svg viewBox="0 0 200 130"><rect x="15" y="50" width="170" height="30" rx="15" fill="${c}" opacity=".1" stroke="${c}" stroke-width="1.5" opacity=".3"/><circle cx="45" cy="65" r="10" fill="${c}" opacity=".15"/><circle cx="100" cy="65" r="10" fill="${c}" opacity=".25"/><circle cx="155" cy="65" r="10" fill="${c}" opacity=".4"/></svg>`,
+  network:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="65" r="14" fill="${c}" opacity=".25" stroke="${c}" stroke-width="1.5" opacity=".4"/><circle cx="45" cy="30" r="9" fill="${c}" opacity=".15"/><circle cx="155" cy="30" r="9" fill="${c}" opacity=".15"/><circle cx="45" cy="100" r="9" fill="${c}" opacity=".15"/><circle cx="155" cy="100" r="9" fill="${c}" opacity=".15"/><line x1="90" y1="55" x2="52" y2="35" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="110" y1="55" x2="148" y2="35" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="90" y1="75" x2="52" y2="95" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="110" y1="75" x2="148" y2="95" stroke="${c}" stroke-width="1.5" opacity=".25"/></svg>`,
+  hexagon:c=>`<svg viewBox="0 0 200 130"><polygon points="100,10 160,37 160,93 100,120 40,93 40,37" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".4"/><polygon points="100,35 135,50 135,80 100,95 65,80 65,50" fill="${c}" opacity=".08" stroke="${c}" stroke-width="1" opacity=".2"/></svg>`,
+  triangle:c=>`<svg viewBox="0 0 200 130"><polygon points="100,15 170,115 30,115" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".4"/><circle cx="100" cy="40" r="5" fill="${c}" opacity=".3"/><circle cx="55" cy="100" r="5" fill="${c}" opacity=".3"/><circle cx="145" cy="100" r="5" fill="${c}" opacity=".3"/></svg>`,
+  timeline:c=>`<svg viewBox="0 0 200 130"><line x1="20" y1="65" x2="180" y2="65" stroke="${c}" stroke-width="2" opacity=".3"/><circle cx="40" cy="65" r="6" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="80" cy="65" r="6" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="120" cy="65" r="6" fill="${c}" opacity=".3" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="160" cy="65" r="6" fill="${c}" opacity=".4" stroke="${c}" stroke-width="1.5" opacity=".35"/><polygon points="178,60 185,65 178,70" fill="${c}" opacity=".4"/></svg>`,
+  iceberg:c=>`<svg viewBox="0 0 200 130"><line x1="15" y1="55" x2="185" y2="55" stroke="${c}" stroke-width="1" opacity=".2" stroke-dasharray="4"/><polygon points="75,55 125,55 100,20" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><polygon points="55,55 145,55 155,120 45,120" fill="${c}" opacity=".08" stroke="${c}" stroke-width="1.5" opacity=".25"/></svg>`
+};
+function getSVG(shape,color){return(SVG[shape]||SVG.matrix)(color)}
+document.getElementById('thumb-1-0').innerHTML=getSVG('pyramid','#2563EB');
+document.getElementById('thumb-1-1').innerHTML=getSVG('cycle','#2563EB');
+document.getElementById('thumb-1-2').innerHTML=getSVG('scurve','#2563EB');
+document.getElementById('thumb-1-3').innerHTML=getSVG('stairs','#2563EB');
+document.getElementById('thumb-1-4').innerHTML=getSVG('bars','#2563EB');
+document.getElementById('thumb-2-0').innerHTML=getSVG('diamond','#C0392B');
+document.getElementById('thumb-2-1').innerHTML=getSVG('funnel','#C0392B');
+document.getElementById('thumb-2-2').innerHTML=getSVG('arrow','#C0392B');
+document.getElementById('thumb-2-3').innerHTML=getSVG('circle','#C0392B');
+document.getElementById('thumb-2-4').innerHTML=getSVG('scurve','#C0392B');
+document.getElementById('thumb-3-0').innerHTML=getSVG('cycle','#D4872C');
+document.getElementById('thumb-3-1').innerHTML=getSVG('pipeline','#D4872C');
+document.getElementById('thumb-3-2').innerHTML=getSVG('matrix','#D4872C');
+document.getElementById('thumb-3-3').innerHTML=getSVG('funnel','#D4872C');
+document.getElementById('thumb-3-4').innerHTML=getSVG('stairs','#D4872C');
+document.getElementById('thumb-4-0').innerHTML=getSVG('split','#27AE60');
+document.getElementById('thumb-4-1').innerHTML=getSVG('venn','#27AE60');
+document.getElementById('thumb-4-2').innerHTML=getSVG('spectrum','#27AE60');
+document.getElementById('thumb-4-3').innerHTML=getSVG('bars','#27AE60');
+document.getElementById('thumb-4-4').innerHTML=getSVG('cycle','#27AE60');
+
+
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('[data-anim]').forEach(el=>obs.observe(el));
+function openModal(fw){
+  const m=document.getElementById('modal');
+  m.innerHTML=`<div class="modal-accent" style="background:${fw.color}"></div><div class="modal-inner" style="position:relative">
+    <button class="modal-close" onclick="closeModal()">\u00d7</button>
+    <div class="modal-slib">Slibrary ${fw.slibNum} \u2014 ${fw.slibTitle}</div>
+    <div class="modal-title">${fw.name}</div>
+    <div class="modal-def">${fw.def}</div>
+    <div class="modal-desc">${fw.desc}</div>
+    <div class="modal-thumb">${getSVG(fw.shape,fw.color)}</div>
+    <ul class="modal-details">${fw.details.map(d=>`<li>${d}</li>`).join('')}</ul>
+    <div class="modal-ref"><div class="modal-ref-label">Reference</div>${fw.ref}</div>
+  </div>`;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow=''}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+</script>
+</body>
+</html>

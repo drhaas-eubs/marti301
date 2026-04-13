@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MARTI301 Unit 2 — ML & Data-Driven Decisions</title>
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#1B2A4A;--teal:#00B388;--amber:#D4872C;--bg:#FAFBFC;--card:#FFF;--text:#1B2A4A;--muted:#6B7280;--border:#E5E7EB;--def-red:#C0392B}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;overflow-x:hidden}
+.hero{background:var(--navy);padding:2.5rem 2rem 2rem;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:var(--teal)}
+.hero-tag{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);font-weight:700;margin-bottom:.5rem}
+.hero h1{font-size:2.2rem;color:#fff;font-weight:700;line-height:1.2;margin-bottom:.4rem}
+.hero p{color:#94A3B8;font-size:.95rem;margin-bottom:.8rem}
+.hero .copy{color:#64748B;font-size:.8rem;font-style:italic}
+.hero-stats{display:flex;gap:2rem;margin-top:1rem}
+.hero-stat{text-align:center}
+.hero-stat .num{font-size:1.8rem;color:var(--teal);font-weight:700}
+.hero-stat .label{font-size:.7rem;color:#94A3B8;text-transform:uppercase;letter-spacing:.1em}
+.slib-set{margin-bottom:2.5rem}
+.slib-set-header{display:flex;align-items:center;gap:.6rem;margin-bottom:1rem;padding-left:.2rem;opacity:0;transform:translateX(-15px);transition:all .5s cubic-bezier(.16,1,.3,1)}
+.slib-set-header.visible{opacity:1;transform:translateX(0)}
+.slib-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.slib-set-title{font-size:1rem;font-weight:700}
+.slib-set-num{font-size:.7rem;color:var(--muted);background:#F1F5F9;padding:.15rem .5rem;border-radius:1rem;font-weight:600}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;opacity:0;transform:translateY(25px) scale(.97);transition:all .5s cubic-bezier(.16,1,.3,1);position:relative;display:flex;flex-direction:column}
+.card.visible{opacity:1;transform:translateY(0) scale(1)}
+.card:hover{transform:translateY(-4px) scale(1.01);box-shadow:0 12px 32px rgba(27,42,74,.1);border-color:transparent}
+.card-accent{height:3px;width:100%}
+.card-thumb{height:120px;background:#F8FAFC;display:flex;align-items:center;justify-content:center;padding:.8rem;overflow:hidden}
+.card-thumb svg{width:100%;height:100%;opacity:.7;transition:opacity .3s}
+.card:hover .card-thumb svg{opacity:1}
+.card-body{padding:.8rem .9rem .9rem;flex:1;display:flex;flex-direction:column}
+.card-title{font-size:.82rem;font-weight:700;line-height:1.3;margin-bottom:.25rem}
+.card-desc{font-size:.7rem;color:var(--muted);line-height:1.4;margin-bottom:.5rem;flex:1}
+.card-tag{display:inline-block;font-size:.6rem;font-weight:700;padding:.15rem .45rem;border-radius:4px;color:#fff;align-self:flex-start}
+.modal-overlay{position:fixed;inset:0;background:rgba(27,42,74,.5);z-index:200;opacity:0;pointer-events:none;transition:opacity .3s;display:flex;align-items:center;justify-content:center;padding:1rem}
+.modal-overlay.open{opacity:1;pointer-events:auto}
+.modal{background:#fff;border-radius:16px;max-width:560px;width:100%;max-height:85vh;overflow-y:auto;transform:translateY(20px) scale(.95);transition:transform .35s cubic-bezier(.16,1,.3,1);padding:0}
+.modal-overlay.open .modal{transform:translateY(0) scale(1)}
+.modal-accent{height:4px;border-radius:16px 16px 0 0}
+.modal-inner{padding:1.8rem 1.6rem}
+.modal-close{position:absolute;top:1rem;right:1rem;width:32px;height:32px;border-radius:50%;border:none;background:#F1F5F9;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;color:var(--muted);transition:background .2s}
+.modal-close:hover{background:#E2E8F0}
+.modal-slib{font-size:.7rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.3rem}
+.modal-title{font-size:1.4rem;font-weight:700;margin-bottom:.4rem}
+.modal-def{font-size:.9rem;color:var(--def-red);font-weight:600;line-height:1.5;margin-bottom:.7rem;border-left:3px solid var(--def-red);padding-left:.6rem}
+.modal-desc{font-size:.88rem;color:var(--muted);line-height:1.6;margin-bottom:.8rem}
+.modal-thumb{background:#F8FAFC;border-radius:10px;padding:1.5rem;margin-bottom:1.2rem;display:flex;align-items:center;justify-content:center}
+.modal-thumb svg{width:220px;height:140px}
+.modal-details{list-style:none;padding:0;margin-bottom:1rem}
+.modal-details li{font-size:.82rem;color:var(--text);padding:.4rem 0;border-bottom:1px solid #F1F5F9;display:flex;align-items:flex-start;gap:.5rem}
+.modal-details li::before{content:'\2022';color:var(--teal);font-weight:bold;flex-shrink:0;margin-top:1px}
+.modal-ref{background:#F8FAFC;border-radius:8px;padding:.7rem .9rem;font-size:.75rem;color:#475569;line-height:1.5;border-left:3px solid var(--teal)}
+.modal-ref-label{font-weight:700;font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:var(--teal);margin-bottom:.2rem}
+.footer{background:var(--navy);padding:2rem;text-align:center;color:#64748B;font-size:.75rem;margin-top:2rem}
+.footer strong{color:var(--teal)}
+@media(max-width:640px){.hero h1{font-size:1.5rem}.hero-stats{gap:1rem}.cards-grid{grid-template-columns:repeat(auto-fill,minmax(165px,1fr))}.card-thumb{height:90px}}</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-tag">MARTI301 &middot; Unit 2</div>
+  <h1>ML & Data-Driven Decisions</h1>
+  <p>Select any framework to explore it in detail</p>
+  <div class="copy">&copy; 2026 Dr. Hildegard Haas</div>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num">4</div><div class="label">Slibraries</div></div>
+    <div class="hero-stat"><div class="num">20</div><div class="label">Frameworks</div></div>
+    <div class="hero-stat"><div class="num">5&ndash;8</div><div class="label">Set Range</div></div>
+  </div>
+</header>
+<main style="padding:2rem 1.5rem 1rem">
+<div class="slib-set">
+      <div class="slib-set-header" data-anim>
+        <span class="slib-dot" style="background:#0D9488"></span>
+        <span class="slib-set-title">Set 5 &mdash; ML Models & Techniques</span>
+        <span class="slib-set-num">5 frameworks</span>
+      </div>
+      <div class="cards-grid"><div class="card" data-anim style="transition-delay:0ms" onclick="openModal(FW[0])">
+          <div class="card-accent" style="background:#0D9488"></div>
+          <div class="card-thumb" id="thumb-5-0"></div>
+          <div class="card-body">
+            <div class="card-title">ML Learning Types Taxonomy</div>
+            <div class="card-desc">Supervised, unsupervised, and reinforcement learning branches</div>
+            <span class="card-tag" style="background:#0D9488">Slibrary 5</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:80ms" onclick="openModal(FW[1])">
+          <div class="card-accent" style="background:#0D9488"></div>
+          <div class="card-thumb" id="thumb-5-1"></div>
+          <div class="card-body">
+            <div class="card-title">Bias-Variance Tradeoff</div>
+            <div class="card-desc">U-shaped total error curve with sweet spot in the middle</div>
+            <span class="card-tag" style="background:#0D9488">Slibrary 5</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:160ms" onclick="openModal(FW[2])">
+          <div class="card-accent" style="background:#0D9488"></div>
+          <div class="card-thumb" id="thumb-5-2"></div>
+          <div class="card-body">
+            <div class="card-title">Confusion Matrix 2×2</div>
+            <div class="card-desc">TP/FP/FN/TN grid—precision, recall, F1 derive from it</div>
+            <span class="card-tag" style="background:#0D9488">Slibrary 5</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:240ms" onclick="openModal(FW[3])">
+          <div class="card-accent" style="background:#0D9488"></div>
+          <div class="card-thumb" id="thumb-5-3"></div>
+          <div class="card-body">
+            <div class="card-title">Feature Importance Chart</div>
+            <div class="card-desc">Horizontal bars ranked by weight—explainability for stakeholders</div>
+            <span class="card-tag" style="background:#0D9488">Slibrary 5</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:320ms" onclick="openModal(FW[4])">
+          <div class="card-accent" style="background:#0D9488"></div>
+          <div class="card-thumb" id="thumb-5-4"></div>
+          <div class="card-body">
+            <div class="card-title">Model Selection Flowchart</div>
+            <div class="card-desc">Decision tree: structured → regression/classification/clustering</div>
+            <span class="card-tag" style="background:#0D9488">Slibrary 5</span>
+          </div>
+        </div></div></div><div class="slib-set">
+      <div class="slib-set-header" data-anim>
+        <span class="slib-dot" style="background:#8E44AD"></span>
+        <span class="slib-set-title">Set 6 &mdash; Decision Intelligence</span>
+        <span class="slib-set-num">5 frameworks</span>
+      </div>
+      <div class="cards-grid"><div class="card" data-anim style="transition-delay:0ms" onclick="openModal(FW[5])">
+          <div class="card-accent" style="background:#8E44AD"></div>
+          <div class="card-thumb" id="thumb-6-0"></div>
+          <div class="card-body">
+            <div class="card-title">OODA Loop</div>
+            <div class="card-desc">Observe → Orient → Decide → Act—speed of cycle = advantage</div>
+            <span class="card-tag" style="background:#8E44AD">Slibrary 6</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:80ms" onclick="openModal(FW[6])">
+          <div class="card-accent" style="background:#8E44AD"></div>
+          <div class="card-thumb" id="thumb-6-1"></div>
+          <div class="card-body">
+            <div class="card-title">Weighted Decision Matrix</div>
+            <div class="card-desc">Criteria × weight scoring grid for transparent trade-offs</div>
+            <span class="card-tag" style="background:#8E44AD">Slibrary 6</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:160ms" onclick="openModal(FW[7])">
+          <div class="card-accent" style="background:#8E44AD"></div>
+          <div class="card-thumb" id="thumb-6-2"></div>
+          <div class="card-body">
+            <div class="card-title">Cynefin Framework</div>
+            <div class="card-desc">Simple → Complicated → Complex → Chaotic decision contexts</div>
+            <span class="card-tag" style="background:#8E44AD">Slibrary 6</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:240ms" onclick="openModal(FW[8])">
+          <div class="card-accent" style="background:#8E44AD"></div>
+          <div class="card-thumb" id="thumb-6-3"></div>
+          <div class="card-body">
+            <div class="card-title">IDSS Architecture Layers</div>
+            <div class="card-desc">Data → Analytics → UI layers with human judgment on top</div>
+            <span class="card-tag" style="background:#8E44AD">Slibrary 6</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:320ms" onclick="openModal(FW[9])">
+          <div class="card-accent" style="background:#8E44AD"></div>
+          <div class="card-thumb" id="thumb-6-4"></div>
+          <div class="card-body">
+            <div class="card-title">Prediction Machines Model</div>
+            <div class="card-desc">AI drops cost of prediction—judgment remains human domain</div>
+            <span class="card-tag" style="background:#8E44AD">Slibrary 6</span>
+          </div>
+        </div></div></div><div class="slib-set">
+      <div class="slib-set-header" data-anim>
+        <span class="slib-dot" style="background:#2563EB"></span>
+        <span class="slib-set-title">Set 7 &mdash; Data Strategy</span>
+        <span class="slib-set-num">5 frameworks</span>
+      </div>
+      <div class="cards-grid"><div class="card" data-anim style="transition-delay:0ms" onclick="openModal(FW[10])">
+          <div class="card-accent" style="background:#2563EB"></div>
+          <div class="card-thumb" id="thumb-7-0"></div>
+          <div class="card-body">
+            <div class="card-title">Data Value Chain</div>
+            <div class="card-desc">Collect → Store → Process → Analyse → Act with value increasing</div>
+            <span class="card-tag" style="background:#2563EB">Slibrary 7</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:80ms" onclick="openModal(FW[11])">
+          <div class="card-accent" style="background:#2563EB"></div>
+          <div class="card-thumb" id="thumb-7-1"></div>
+          <div class="card-body">
+            <div class="card-title">DIKW Pyramid</div>
+            <div class="card-desc">Data → Information → Knowledge → Wisdom hierarchy</div>
+            <span class="card-tag" style="background:#2563EB">Slibrary 7</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:160ms" onclick="openModal(FW[12])">
+          <div class="card-accent" style="background:#2563EB"></div>
+          <div class="card-thumb" id="thumb-7-2"></div>
+          <div class="card-body">
+            <div class="card-title">Data Flywheel</div>
+            <div class="card-desc">More data → better model → better product → more users → more data</div>
+            <span class="card-tag" style="background:#2563EB">Slibrary 7</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:240ms" onclick="openModal(FW[13])">
+          <div class="card-accent" style="background:#2563EB"></div>
+          <div class="card-thumb" id="thumb-7-3"></div>
+          <div class="card-body">
+            <div class="card-title">Data Quality Dimensions</div>
+            <div class="card-desc">Accuracy, completeness, consistency, timeliness, validity, uniqueness</div>
+            <span class="card-tag" style="background:#2563EB">Slibrary 7</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:320ms" onclick="openModal(FW[14])">
+          <div class="card-accent" style="background:#2563EB"></div>
+          <div class="card-thumb" id="thumb-7-4"></div>
+          <div class="card-body">
+            <div class="card-title">ETL Pipeline Diagram</div>
+            <div class="card-desc">Extract → Transform → Load from sources to data warehouse</div>
+            <span class="card-tag" style="background:#2563EB">Slibrary 7</span>
+          </div>
+        </div></div></div><div class="slib-set">
+      <div class="slib-set-header" data-anim>
+        <span class="slib-dot" style="background:#C0392B"></span>
+        <span class="slib-set-title">Set 8 &mdash; AI-Driven Marketing</span>
+        <span class="slib-set-num">5 frameworks</span>
+      </div>
+      <div class="cards-grid"><div class="card" data-anim style="transition-delay:0ms" onclick="openModal(FW[15])">
+          <div class="card-accent" style="background:#C0392B"></div>
+          <div class="card-thumb" id="thumb-8-0"></div>
+          <div class="card-body">
+            <div class="card-title">AI Marketing Funnel</div>
+            <div class="card-desc">Awareness → Consideration → Conversion with AI at every stage</div>
+            <span class="card-tag" style="background:#C0392B">Slibrary 8</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:80ms" onclick="openModal(FW[16])">
+          <div class="card-accent" style="background:#C0392B"></div>
+          <div class="card-thumb" id="thumb-8-1"></div>
+          <div class="card-body">
+            <div class="card-title">RFM Segmentation Matrix</div>
+            <div class="card-desc">Recency × Frequency × Monetary value customer clustering</div>
+            <span class="card-tag" style="background:#C0392B">Slibrary 8</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:160ms" onclick="openModal(FW[17])">
+          <div class="card-accent" style="background:#C0392B"></div>
+          <div class="card-thumb" id="thumb-8-2"></div>
+          <div class="card-body">
+            <div class="card-title">A/B Testing Framework</div>
+            <div class="card-desc">Control vs. treatment with statistical significance threshold</div>
+            <span class="card-tag" style="background:#C0392B">Slibrary 8</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:240ms" onclick="openModal(FW[18])">
+          <div class="card-accent" style="background:#C0392B"></div>
+          <div class="card-thumb" id="thumb-8-3"></div>
+          <div class="card-body">
+            <div class="card-title">Recommendation Engine</div>
+            <div class="card-desc">Collaborative + content-based filtering architecture</div>
+            <span class="card-tag" style="background:#C0392B">Slibrary 8</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:320ms" onclick="openModal(FW[19])">
+          <div class="card-accent" style="background:#C0392B"></div>
+          <div class="card-thumb" id="thumb-8-4"></div>
+          <div class="card-body">
+            <div class="card-title">Customer Lifetime Value</div>
+            <div class="card-desc">Revenue × margin × retention / discount rate over customer lifespan</div>
+            <span class="card-tag" style="background:#C0392B">Slibrary 8</span>
+          </div>
+        </div></div></div>
+</main>
+<footer class="footer">
+  <strong>MARTI301</strong> &middot; AI in Investment &amp; Competitiveness &middot; &copy; 2026 Dr. Hildegard Haas<br>
+  Applying JD Meier&rsquo;s <strong>Thumbnail Thinking</strong> (2025) &middot; Unit 2: ML & Data-Driven Decisions
+</footer>
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modal"></div>
+</div>
+<script>
+const FW = [
+{"name":"ML Learning Types Taxonomy","def":"A classification of machine learning into three paradigms: supervised (labelled data), unsupervised (pattern discovery), and reinforcement (reward-based) learning.","desc":"Supervised, unsupervised, and reinforcement learning branches","shape":"tree","details":["Supervised: labelled data → prediction","Unsupervised: patterns in unlabelled data","Reinforcement: reward-based learning","Tree diagram with three main branches"],"ref":"Bishop, C.M. (2006) Pattern Recognition and Machine Learning. New York: Springer.","slibTitle":"ML Models & Techniques","slibNum":5,"color":"#0D9488"},
+{"name":"Bias-Variance Tradeoff","def":"The principle that model prediction error comprises reducible bias (underfitting) and variance (overfitting), with total error minimised at their balance point.","desc":"U-shaped total error curve with sweet spot in the middle","shape":"scurve","details":["Low complexity = high bias (underfitting)","High complexity = high variance (overfitting)","Sweet spot minimises total error","Core ML model selection concept"],"ref":"Hastie, T., Tibshirani, R. and Friedman, J. (2009) The Elements of Statistical Learning. 2nd edn. New York: Springer.","slibTitle":"ML Models & Techniques","slibNum":5,"color":"#0D9488"},
+{"name":"Confusion Matrix 2×2","def":"A tabular evaluation of classifier performance showing true positives, false positives, false negatives, and true negatives, from which precision, recall, and F1 are derived.","desc":"TP/FP/FN/TN grid—precision, recall, F1 derive from it","shape":"matrix","details":["True Positives / False Positives","False Negatives / True Negatives","Precision, recall, F1 score derived","Core model evaluation thumbnail"],"ref":"Fawcett, T. (2006) 'An introduction to ROC analysis', Pattern Recognition Letters, 27(8), pp. 861–874.","slibTitle":"ML Models & Techniques","slibNum":5,"color":"#0D9488"},
+{"name":"Feature Importance Chart","def":"A ranked visualisation of input variables by their contribution to model predictions, enabling explainability and stakeholder communication.","desc":"Horizontal bars ranked by weight—explainability for stakeholders","shape":"bars","details":["Which inputs drive the model most?","Key for explainability (XAI)","Communicates ML to business leaders","SHAP values or permutation importance"],"ref":"Lundberg, S.M. and Lee, S.-I. (2017) 'A unified approach to interpreting model predictions', Advances in Neural Information Processing Systems, 30.","slibTitle":"ML Models & Techniques","slibNum":5,"color":"#0D9488"},
+{"name":"Model Selection Flowchart","def":"A decision tree guiding practitioners from data type and problem type to the appropriate machine learning algorithm family.","desc":"Decision tree: structured → regression/classification/clustering","shape":"tree","details":["Start: structured or unstructured data?","Branches by problem type","Guides non-technical stakeholders","Scikit-learn-style decision tree"],"ref":"Scikit-learn (2023) 'Choosing the right estimator', scikit-learn.org.","slibTitle":"ML Models & Techniques","slibNum":5,"color":"#0D9488"},
+{"name":"OODA Loop","def":"A decision-cycle model—Observe, Orient, Decide, Act—where competitive advantage derives from cycling through decisions faster than opponents.","desc":"Observe → Orient → Decide → Act—speed of cycle = advantage","shape":"cycle","details":["Speed of decision cycle = competitive edge","Agility in volatile markets","AI accelerates Observe and Orient phases","Boyd (1976); O'Callaghan (2023)"],"ref":"Boyd, J.R. (1976) Destruction and Creation. Cited in: O'Callaghan, M. (2023) Decision Intelligence. Boca Raton: CRC Press.","slibTitle":"Decision Intelligence","slibNum":6,"color":"#8E44AD"},
+{"name":"Weighted Decision Matrix","def":"A structured evaluation tool that scores options against weighted criteria, quantifying subjective trade-offs into a transparent, auditable decision.","desc":"Criteria × weight scoring grid for transparent trade-offs","shape":"matrix","details":["Quantifies subjective trade-offs","AI can automate the scoring layer","Transparent and auditable decisions","Standard decision analysis tool"],"ref":"O'Callaghan, M. (2023) Decision Intelligence: Human–Machine Integration for Decision-Making. Boca Raton: CRC Press.","slibTitle":"Decision Intelligence","slibNum":6,"color":"#8E44AD"},
+{"name":"Cynefin Framework","def":"A sense-making model categorising decision contexts as simple, complicated, complex, or chaotic—each requiring a different leadership approach.","desc":"Simple → Complicated → Complex → Chaotic decision contexts","shape":"matrix","details":["Match decision approach to context","AI excels in complicated domain","Complex domain needs experimentation","Snowden & Boone (2007)"],"ref":"Snowden, D.J. and Boone, M.E. (2007) 'A leader's framework for decision making', Harvard Business Review, 85(11), pp. 68–76.","slibTitle":"Decision Intelligence","slibNum":6,"color":"#8E44AD"},
+{"name":"IDSS Architecture Layers","def":"A three-layer architecture for Intelligent Decision Support Systems: data layer, analytics/AI layer, and user interface, with human judgment at the apex.","desc":"Data → Analytics → UI layers with human judgment on top","shape":"layers","details":["Three-layer architecture stack","Human judgment sits above all layers","AI augments, doesn't replace decisions","Core Unit 2 framework"],"ref":"Phillips-Wren, G. et al. (2021) 'Intelligent decision support systems in the era of big data', Knowledge-Based Systems, 227, 107222.","slibTitle":"Decision Intelligence","slibNum":6,"color":"#8E44AD"},
+{"name":"Prediction Machines Model","def":"An economic framework arguing that AI's primary function is to reduce the cost of prediction, thereby increasing the value of complements: judgment, data, and action.","desc":"AI drops cost of prediction—judgment remains human domain","shape":"split","details":["Prediction ≠ decision","Cheaper prediction raises value of judgment","Complements and data become more valuable","Agrawal, Gans & Goldfarb (2018)"],"ref":"Agrawal, A., Gans, J. and Goldfarb, A. (2018) Prediction Machines: The Simple Economics of Artificial Intelligence. Boston: Harvard Business Review Press.","slibTitle":"Decision Intelligence","slibNum":6,"color":"#8E44AD"},
+{"name":"Data Value Chain","def":"A linear model showing how raw data is transformed through collection, storage, processing, analysis, and action stages into business value.","desc":"Collect → Store → Process → Analyse → Act with value increasing","shape":"pipeline","details":["Linear arrow: value increases left to right","Where leakage occurs at each step","AI accelerates processing and analysis","Foundation for data monetisation"],"ref":"Porter, M.E. and Millar, V.E. (1985) 'How information gives you competitive advantage', Harvard Business Review, 63(4), pp. 149–160. Adapted for data.","slibTitle":"Data Strategy","slibNum":7,"color":"#2563EB"},
+{"name":"DIKW Pyramid","def":"A knowledge hierarchy arranging Data, Information, Knowledge, and Wisdom in ascending layers—volume decreases upward while insight and value increase.","desc":"Data → Information → Knowledge → Wisdom hierarchy","shape":"pyramid","details":["Volume decreases upward","AI accelerates D → I → K layers","Wisdom still requires human judgment","Ackoff (1989); classic knowledge mgmt"],"ref":"Ackoff, R.L. (1989) 'From data to wisdom', Journal of Applied Systems Analysis, 16(1), pp. 3–9.","slibTitle":"Data Strategy","slibNum":7,"color":"#2563EB"},
+{"name":"Data Flywheel","def":"A self-reinforcing virtuous cycle: more data improves models, better models improve products, better products attract users, more users generate more data.","desc":"More data → better model → better product → more users → more data","shape":"cycle","details":["Circular virtuous cycle","Self-reinforcing competitive advantage","Amazon, Netflix, Google exemplars","Explains winner-take-most dynamics"],"ref":"Ng, A. (2018) 'AI is the new electricity', Stanford University HAI.","slibTitle":"Data Strategy","slibNum":7,"color":"#2563EB"},
+{"name":"Data Quality Dimensions","def":"Six measurable attributes of data fitness: accuracy, completeness, consistency, timeliness, validity, and uniqueness—collectively determining data's fitness for purpose.","desc":"Accuracy, completeness, consistency, timeliness, validity, uniqueness","shape":"hexagon","details":["Six dimensions in hexagonal shape","Poor quality = garbage in, garbage out","Each dimension independently measurable","Foundation for data governance"],"ref":"Wang, R.Y. and Strong, D.M. (1996) 'Beyond accuracy: What data quality means to data consumers', Journal of Management Information Systems, 12(4), pp. 5–33.","slibTitle":"Data Strategy","slibNum":7,"color":"#2563EB"},
+{"name":"ETL Pipeline Diagram","def":"A data engineering workflow—Extract, Transform, Load—that moves data from heterogeneous sources into a structured analytical warehouse.","desc":"Extract → Transform → Load from sources to data warehouse","shape":"pipeline","details":["Sources on left, warehouse on right","Where AI automates transformation","Modern variant: ELT in cloud","Foundational data engineering visual"],"ref":"Kimball, R. and Ross, M. (2013) The Data Warehouse Toolkit. 3rd edn. Indianapolis: Wiley.","slibTitle":"Data Strategy","slibNum":7,"color":"#2563EB"},
+{"name":"AI Marketing Funnel","def":"An enhanced marketing funnel where AI automates or augments each stage—from predictive lead scoring at awareness through dynamic pricing at conversion.","desc":"Awareness → Consideration → Conversion with AI at every stage","shape":"funnel","details":["AI touchpoints at every funnel stage","Predictive lead scoring at top","Dynamic pricing at conversion","Gentsch (2019); Kotler et al."],"ref":"Gentsch, P. (2019) AI in Marketing, Sales and Service. Cham: Palgrave Macmillan.","slibTitle":"AI-Driven Marketing","slibNum":8,"color":"#C0392B"},
+{"name":"RFM Segmentation Matrix","def":"A customer segmentation method clustering buyers by Recency, Frequency, and Monetary value to identify high-value segments for targeted engagement.","desc":"Recency × Frequency × Monetary value customer clustering","shape":"matrix","details":["3D cube or heatmap thumbnail","Identifies high-value customer segments","Classic + ML-enhanced clustering","Foundation for personalisation"],"ref":"Fader, P.S., Hardie, B.G.S. and Lee, K.L. (2005) 'RFM and CLV: Using iso-value curves for customer base analysis', Journal of Marketing Research, 42(4), pp. 415–430.","slibTitle":"AI-Driven Marketing","slibNum":8,"color":"#C0392B"},
+{"name":"A/B Testing Framework","def":"An experimental design comparing a control group against one or more treatment variations to measure the causal impact of changes on key metrics.","desc":"Control vs. treatment with statistical significance threshold","shape":"split","details":["Split diagram: control vs. treatment","AI enables multi-armed bandits","Continuous optimisation cycle","Beyond simple A/B to multivariate"],"ref":"Kohavi, R., Tang, D. and Xu, Y. (2020) Trustworthy Online Controlled Experiments. Cambridge: Cambridge University Press.","slibTitle":"AI-Driven Marketing","slibNum":8,"color":"#C0392B"},
+{"name":"Recommendation Engine","def":"An algorithmic system combining collaborative filtering (user behaviour patterns) and content-based filtering to predict user preferences and personalise offerings.","desc":"Collaborative + content-based filtering architecture","shape":"network","details":["User-item interaction matrix","Collaborative + content-based hybrid","Drives 35% of Amazon revenue","Netflix Prize catalysed the field"],"ref":"Ricci, F. et al. (eds.) (2015) Recommender Systems Handbook. 2nd edn. New York: Springer.","slibTitle":"AI-Driven Marketing","slibNum":8,"color":"#C0392B"},
+{"name":"Customer Lifetime Value","def":"The present value of all future cash flows attributed to a customer relationship, calculated as revenue × margin × retention rate, discounted over time.","desc":"Revenue × margin × retention / discount rate over customer lifespan","shape":"scurve","details":["Curve: value over customer lifespan","AI predicts churn to protect CLV","Links acquisition cost to long-term value","Bridge to Unit 3 CX metrics"],"ref":"Gupta, S. and Lehmann, D.R. (2005) Managing Customers as Investments. Upper Saddle River: Wharton School Publishing.","slibTitle":"AI-Driven Marketing","slibNum":8,"color":"#C0392B"}
+];
+
+const SVG={
+  pyramid:c=>`<svg viewBox="0 0 200 130"><polygon points="100,10 30,120 170,120" fill="none" stroke="${c}" stroke-width="2.5" opacity=".6"/><line x1="55" y1="80" x2="145" y2="80" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="72" y1="50" x2="128" y2="50" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  cycle:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="65" r="45" fill="none" stroke="${c}" stroke-width="2.5" opacity=".5"/><polygon points="140,40 148,52 132,50" fill="${c}" opacity=".6"/><polygon points="60,90 52,78 68,80" fill="${c}" opacity=".6"/><circle cx="100" cy="20" r="4" fill="${c}" opacity=".5"/><circle cx="145" cy="65" r="4" fill="${c}" opacity=".5"/><circle cx="100" cy="110" r="4" fill="${c}" opacity=".5"/><circle cx="55" cy="65" r="4" fill="${c}" opacity=".5"/></svg>`,
+  scurve:c=>`<svg viewBox="0 0 200 130"><path d="M20,110 C50,108 70,100 90,70 S140,15 180,12" fill="none" stroke="${c}" stroke-width="2.5" opacity=".6"/><line x1="20" y1="120" x2="185" y2="120" stroke="${c}" stroke-width="1" opacity=".2"/><line x1="18" y1="10" x2="18" y2="120" stroke="${c}" stroke-width="1" opacity=".2"/></svg>`,
+  matrix:c=>`<svg viewBox="0 0 200 130"><rect x="25" y="15" width="70" height="45" rx="4" fill="${c}" opacity=".12" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="105" y="15" width="70" height="45" rx="4" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="25" y="70" width="70" height="45" rx="4" fill="${c}" opacity=".08" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="105" y="70" width="70" height="45" rx="4" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  funnel:c=>`<svg viewBox="0 0 200 130"><path d="M30,15 L170,15 L135,120 L65,120 Z" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".5"/><line x1="50" y1="50" x2="150" y2="50" stroke="${c}" stroke-width="1" opacity=".3" stroke-dasharray="4"/><line x1="58" y1="80" x2="142" y2="80" stroke="${c}" stroke-width="1" opacity=".3" stroke-dasharray="4"/></svg>`,
+  bars:c=>`<svg viewBox="0 0 200 130"><rect x="25" y="70" width="30" height="50" rx="3" fill="${c}" opacity=".25"/><rect x="65" y="40" width="30" height="80" rx="3" fill="${c}" opacity=".4"/><rect x="105" y="55" width="30" height="65" rx="3" fill="${c}" opacity=".3"/><rect x="145" y="25" width="30" height="95" rx="3" fill="${c}" opacity=".5"/><line x1="20" y1="120" x2="180" y2="120" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  arrow:c=>`<svg viewBox="0 0 200 130"><path d="M15,40 L140,40 L140,20 L185,65 L140,110 L140,90 L15,90 Z" fill="${c}" opacity=".12" stroke="${c}" stroke-width="2" opacity=".4"/></svg>`,
+  diamond:c=>`<svg viewBox="0 0 200 130"><polygon points="100,10 180,65 100,120 20,65" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".5"/><circle cx="100" cy="65" r="15" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".4"/></svg>`,
+  circle:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="65" r="50" fill="${c}" opacity=".08" stroke="${c}" stroke-width="2" opacity=".4"/><circle cx="100" cy="65" r="30" fill="${c}" opacity=".12" stroke="${c}" stroke-width="1.5" opacity=".3"/><circle cx="100" cy="65" r="12" fill="${c}" opacity=".2"/></svg>`,
+  stairs:c=>`<svg viewBox="0 0 200 130"><path d="M20,110 L20,85 L65,85 L65,60 L110,60 L110,35 L155,35 L155,15 L180,15" fill="none" stroke="${c}" stroke-width="2.5" opacity=".5"/><rect x="20" y="85" width="45" height="25" fill="${c}" opacity=".08"/><rect x="65" y="60" width="45" height="50" fill="${c}" opacity=".1"/><rect x="110" y="35" width="45" height="75" fill="${c}" opacity=".13"/><rect x="155" y="15" width="25" height="95" fill="${c}" opacity=".16"/></svg>`,
+  pipeline:c=>`<svg viewBox="0 0 200 130"><rect x="10" y="45" width="35" height="40" rx="6" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="48" y1="65" x2="60" y2="65" stroke="${c}" stroke-width="2" opacity=".4"/><rect x="63" y="45" width="35" height="40" rx="6" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="101" y1="65" x2="113" y2="65" stroke="${c}" stroke-width="2" opacity=".4"/><rect x="116" y="45" width="35" height="40" rx="6" fill="${c}" opacity=".25" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="154" y1="65" x2="166" y2="65" stroke="${c}" stroke-width="2" opacity=".4"/><rect x="169" y="45" width="22" height="40" rx="6" fill="${c}" opacity=".3" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  split:c=>`<svg viewBox="0 0 200 130"><rect x="15" y="25" width="75" height="80" rx="8" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".3"/><rect x="110" y="25" width="75" height="80" rx="8" fill="${c}" opacity=".18" stroke="${c}" stroke-width="2" opacity=".3"/><line x1="100" y1="30" x2="100" y2="100" stroke="${c}" stroke-width="2" opacity=".3" stroke-dasharray="5"/></svg>`,
+  venn:c=>`<svg viewBox="0 0 200 130"><circle cx="78" cy="65" r="42" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".35"/><circle cx="122" cy="65" r="42" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".35"/></svg>`,
+  layers:c=>`<svg viewBox="0 0 200 130"><rect x="30" y="85" width="140" height="28" rx="5" fill="${c}" opacity=".1" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="30" y="50" width="140" height="28" rx="5" fill="${c}" opacity=".17" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="30" y="15" width="140" height="28" rx="5" fill="${c}" opacity=".25" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  tree:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="22" r="12" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".4"/><line x1="100" y1="34" x2="60" y2="65" stroke="${c}" stroke-width="1.5" opacity=".35"/><line x1="100" y1="34" x2="140" y2="65" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="60" cy="70" r="10" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><circle cx="140" cy="70" r="10" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="60" y1="80" x2="40" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="60" y1="80" x2="80" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="140" y1="80" x2="120" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="140" y1="80" x2="160" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><circle cx="40" cy="110" r="7" fill="${c}" opacity=".1"/><circle cx="80" cy="110" r="7" fill="${c}" opacity=".1"/><circle cx="120" cy="110" r="7" fill="${c}" opacity=".1"/><circle cx="160" cy="110" r="7" fill="${c}" opacity=".1"/></svg>`,
+  spectrum:c=>`<svg viewBox="0 0 200 130"><rect x="15" y="50" width="170" height="30" rx="15" fill="${c}" opacity=".1" stroke="${c}" stroke-width="1.5" opacity=".3"/><circle cx="45" cy="65" r="10" fill="${c}" opacity=".15"/><circle cx="100" cy="65" r="10" fill="${c}" opacity=".25"/><circle cx="155" cy="65" r="10" fill="${c}" opacity=".4"/></svg>`,
+  network:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="65" r="14" fill="${c}" opacity=".25" stroke="${c}" stroke-width="1.5" opacity=".4"/><circle cx="45" cy="30" r="9" fill="${c}" opacity=".15"/><circle cx="155" cy="30" r="9" fill="${c}" opacity=".15"/><circle cx="45" cy="100" r="9" fill="${c}" opacity=".15"/><circle cx="155" cy="100" r="9" fill="${c}" opacity=".15"/><line x1="90" y1="55" x2="52" y2="35" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="110" y1="55" x2="148" y2="35" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="90" y1="75" x2="52" y2="95" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="110" y1="75" x2="148" y2="95" stroke="${c}" stroke-width="1.5" opacity=".25"/></svg>`,
+  hexagon:c=>`<svg viewBox="0 0 200 130"><polygon points="100,10 160,37 160,93 100,120 40,93 40,37" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".4"/><polygon points="100,35 135,50 135,80 100,95 65,80 65,50" fill="${c}" opacity=".08" stroke="${c}" stroke-width="1" opacity=".2"/></svg>`,
+  triangle:c=>`<svg viewBox="0 0 200 130"><polygon points="100,15 170,115 30,115" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".4"/><circle cx="100" cy="40" r="5" fill="${c}" opacity=".3"/><circle cx="55" cy="100" r="5" fill="${c}" opacity=".3"/><circle cx="145" cy="100" r="5" fill="${c}" opacity=".3"/></svg>`,
+  timeline:c=>`<svg viewBox="0 0 200 130"><line x1="20" y1="65" x2="180" y2="65" stroke="${c}" stroke-width="2" opacity=".3"/><circle cx="40" cy="65" r="6" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="80" cy="65" r="6" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="120" cy="65" r="6" fill="${c}" opacity=".3" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="160" cy="65" r="6" fill="${c}" opacity=".4" stroke="${c}" stroke-width="1.5" opacity=".35"/><polygon points="178,60 185,65 178,70" fill="${c}" opacity=".4"/></svg>`,
+  iceberg:c=>`<svg viewBox="0 0 200 130"><line x1="15" y1="55" x2="185" y2="55" stroke="${c}" stroke-width="1" opacity=".2" stroke-dasharray="4"/><polygon points="75,55 125,55 100,20" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><polygon points="55,55 145,55 155,120 45,120" fill="${c}" opacity=".08" stroke="${c}" stroke-width="1.5" opacity=".25"/></svg>`
+};
+function getSVG(shape,color){return(SVG[shape]||SVG.matrix)(color)}
+document.getElementById('thumb-5-0').innerHTML=getSVG('tree','#0D9488');
+document.getElementById('thumb-5-1').innerHTML=getSVG('scurve','#0D9488');
+document.getElementById('thumb-5-2').innerHTML=getSVG('matrix','#0D9488');
+document.getElementById('thumb-5-3').innerHTML=getSVG('bars','#0D9488');
+document.getElementById('thumb-5-4').innerHTML=getSVG('tree','#0D9488');
+document.getElementById('thumb-6-0').innerHTML=getSVG('cycle','#8E44AD');
+document.getElementById('thumb-6-1').innerHTML=getSVG('matrix','#8E44AD');
+document.getElementById('thumb-6-2').innerHTML=getSVG('matrix','#8E44AD');
+document.getElementById('thumb-6-3').innerHTML=getSVG('layers','#8E44AD');
+document.getElementById('thumb-6-4').innerHTML=getSVG('split','#8E44AD');
+document.getElementById('thumb-7-0').innerHTML=getSVG('pipeline','#2563EB');
+document.getElementById('thumb-7-1').innerHTML=getSVG('pyramid','#2563EB');
+document.getElementById('thumb-7-2').innerHTML=getSVG('cycle','#2563EB');
+document.getElementById('thumb-7-3').innerHTML=getSVG('hexagon','#2563EB');
+document.getElementById('thumb-7-4').innerHTML=getSVG('pipeline','#2563EB');
+document.getElementById('thumb-8-0').innerHTML=getSVG('funnel','#C0392B');
+document.getElementById('thumb-8-1').innerHTML=getSVG('matrix','#C0392B');
+document.getElementById('thumb-8-2').innerHTML=getSVG('split','#C0392B');
+document.getElementById('thumb-8-3').innerHTML=getSVG('network','#C0392B');
+document.getElementById('thumb-8-4').innerHTML=getSVG('scurve','#C0392B');
+
+
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('[data-anim]').forEach(el=>obs.observe(el));
+function openModal(fw){
+  const m=document.getElementById('modal');
+  m.innerHTML=`<div class="modal-accent" style="background:${fw.color}"></div><div class="modal-inner" style="position:relative">
+    <button class="modal-close" onclick="closeModal()">\u00d7</button>
+    <div class="modal-slib">Slibrary ${fw.slibNum} \u2014 ${fw.slibTitle}</div>
+    <div class="modal-title">${fw.name}</div>
+    <div class="modal-def">${fw.def}</div>
+    <div class="modal-desc">${fw.desc}</div>
+    <div class="modal-thumb">${getSVG(fw.shape,fw.color)}</div>
+    <ul class="modal-details">${fw.details.map(d=>`<li>${d}</li>`).join('')}</ul>
+    <div class="modal-ref"><div class="modal-ref-label">Reference</div>${fw.ref}</div>
+  </div>`;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow=''}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+</script>
+</body>
+</html>
