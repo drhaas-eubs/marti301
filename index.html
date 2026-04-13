@@ -7,33 +7,51 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{font-family:Arial,Helvetica,sans-serif;background:#FAFBFC;color:#1B2A4A;min-height:100vh}
-.hero{background:#1B2A4A;padding:3rem 2rem 2.5rem;text-align:center;position:relative}
+.hero{background:#1B2A4A;padding:2.5rem 2rem 2rem;text-align:center;position:relative}
 .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:#00B388}
 .hero-tag{font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:#D4872C;font-weight:700;margin-bottom:.6rem}
-.hero h1{font-size:2rem;color:#fff;font-weight:700;line-height:1.3;margin-bottom:.5rem}
-.hero p{color:#94A3B8;font-size:.95rem;max-width:600px;margin:0 auto .8rem}
-.hero .copy{color:#64748B;font-size:.75rem;font-style:italic}
-.stats{display:flex;justify-content:center;gap:2.5rem;margin-top:1.2rem}
+.hero h1{font-size:1.8rem;color:#fff;font-weight:700;line-height:1.3;margin-bottom:.5rem}
+.hero p{color:#94A3B8;font-size:.9rem;max-width:600px;margin:0 auto .6rem}
+.hero .copy{color:#64748B;font-size:.72rem;font-style:italic}
+.stats{display:flex;justify-content:center;gap:2rem;margin-top:1rem}
 .stat{text-align:center}
-.stat .num{font-size:1.6rem;color:#00B388;font-weight:700}
-.stat .label{font-size:.65rem;color:#94A3B8;text-transform:uppercase;letter-spacing:.1em}
-main{max-width:800px;margin:0 auto;padding:2rem 1.5rem 3rem}
-.section-title{font-size:1.1rem;font-weight:700;color:#1B2A4A;margin-bottom:1rem;padding-bottom:.4rem;border-bottom:2px solid #E5E7EB}
-.units-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem;margin-bottom:2.5rem}
-.unit-card{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:0;overflow:hidden;text-decoration:none;color:inherit;transition:all .3s cubic-bezier(.16,1,.3,1);display:block}
-.unit-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(27,42,74,.1);border-color:transparent}
-.unit-accent{height:4px}
-.unit-card-inner{padding:1.2rem 1.3rem}
-.unit-num{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.15em;margin-bottom:.3rem}
-.unit-name{font-size:1rem;font-weight:700;line-height:1.3;margin-bottom:.4rem;color:#1B2A4A}
-.unit-meta{font-size:.75rem;color:#6B7280;line-height:1.4}
-.unit-arrow{float:right;font-size:1.2rem;color:#00B388;margin-top:.2rem}
-.complete-link{display:block;background:#1B2A4A;color:#fff;text-align:center;padding:1rem;border-radius:12px;text-decoration:none;font-weight:700;font-size:.95rem;transition:background .2s;margin-bottom:1rem}
+.stat .num{font-size:1.5rem;color:#00B388;font-weight:700}
+.stat .label{font-size:.6rem;color:#94A3B8;text-transform:uppercase;letter-spacing:.1em}
+main{max-width:850px;margin:0 auto;padding:1.8rem 1.5rem 3rem}
+.section-title{font-size:1rem;font-weight:700;color:#1B2A4A;margin-bottom:.8rem;padding-bottom:.35rem;border-bottom:2px solid #E5E7EB;margin-top:2rem}
+.section-title:first-of-type{margin-top:0}
+
+/* Unit blocks */
+.unit-block{background:#fff;border:1px solid #E5E7EB;border-radius:12px;margin-bottom:1rem;overflow:hidden}
+.unit-block-header{display:flex;align-items:center;gap:.7rem;padding:1rem 1.2rem;cursor:pointer;transition:background .2s}
+.unit-block-header:hover{background:#F8FAFC}
+.unit-accent-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.unit-block-num{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;flex-shrink:0}
+.unit-block-title{font-size:.9rem;font-weight:700;flex:1}
+.unit-block-toggle{font-size:1.1rem;color:#94A3B8;transition:transform .3s;flex-shrink:0}
+.unit-block.open .unit-block-toggle{transform:rotate(180deg)}
+.unit-block-body{display:none;padding:0 1.2rem 1rem;border-top:1px solid #F1F5F9}
+.unit-block.open .unit-block-body{display:block}
+.material-row{display:flex;align-items:center;gap:.6rem;padding:.55rem 0;border-bottom:1px solid #F8FAFC;text-decoration:none;color:inherit;transition:background .15s;margin:0 -.4rem;padding-left:.4rem;padding-right:.4rem;border-radius:6px}
+.material-row:last-child{border-bottom:none}
+.material-row:hover{background:#F0FDF4}
+.mat-icon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;color:#fff;flex-shrink:0}
+.mat-icon.gallery{background:#00B388}
+.mat-icon.case{background:#D4872C}
+.mat-icon.read{background:#2563EB}
+.mat-icon.reflect{background:#8E44AD}
+.mat-label{flex:1}
+.mat-title{font-size:.8rem;font-weight:600}
+.mat-desc{font-size:.65rem;color:#6B7280}
+.mat-badge{font-size:.55rem;color:#94A3B8;background:#F1F5F9;padding:.15rem .4rem;border-radius:3px;flex-shrink:0}
+
+.complete-link{display:block;background:#1B2A4A;color:#fff;text-align:center;padding:.9rem;border-radius:10px;text-decoration:none;font-weight:700;font-size:.85rem;transition:background .2s;margin-top:.8rem}
 .complete-link:hover{background:#2D3E5C}
 .complete-link span{color:#00B388}
-footer{text-align:center;padding:2rem;color:#94A3B8;font-size:.7rem;border-top:1px solid #E5E7EB}
+
+footer{text-align:center;padding:1.5rem;color:#94A3B8;font-size:.65rem;border-top:1px solid #E5E7EB;margin-top:1rem}
 footer strong{color:#00B388}
-@media(max-width:500px){.hero h1{font-size:1.4rem}.stats{gap:1.5rem}.units-grid{grid-template-columns:1fr}}
+@media(max-width:500px){.hero h1{font-size:1.3rem}.stats{gap:1.2rem}}
 </style>
 </head>
 <body>
@@ -41,7 +59,7 @@ footer strong{color:#00B388}
 <header class="hero">
   <div class="hero-tag">MARTI301 — Masters Level 7</div>
   <h1>AI in Investment &amp; Competitiveness</h1>
-  <p>Interactive Framework Gallery — Select a unit to explore its visual toolkit</p>
+  <p>Interactive Framework Galleries &amp; Course Materials</p>
   <div class="copy">&copy; 2026 Dr. Hildegard Haas &middot; EU Business School</div>
   <div class="stats">
     <div class="stat"><div class="num">6</div><div class="label">Units</div></div>
@@ -51,62 +69,101 @@ footer strong{color:#00B388}
 </header>
 
 <main>
-  <div class="section-title">Unit Framework Galleries</div>
-  <div class="units-grid">
-    <a href="unit1.html" class="unit-card">
-      <div class="unit-accent" style="background:#2563EB"></div>
-      <div class="unit-card-inner">
-        <div class="unit-num" style="color:#2563EB">Unit 1 &middot; Slibraries 1–4</div>
-        <div class="unit-name">AI Strategy, Governance &amp; Competitive Advantage</div>
-        <div class="unit-meta">20 Frameworks <span class="unit-arrow">&rarr;</span></div>
-      </div>
-    </a>
-    <a href="unit2.html" class="unit-card">
-      <div class="unit-accent" style="background:#D4872C"></div>
-      <div class="unit-card-inner">
-        <div class="unit-num" style="color:#D4872C">Unit 2 &middot; Slibraries 5–8</div>
-        <div class="unit-name">ML &amp; Data-Driven Decisions</div>
-        <div class="unit-meta">20 Frameworks <span class="unit-arrow">&rarr;</span></div>
-      </div>
-    </a>
-    <a href="unit3.html" class="unit-card">
-      <div class="unit-accent" style="background:#E85D4A"></div>
-      <div class="unit-card-inner">
-        <div class="unit-num" style="color:#E85D4A">Unit 3 &middot; Slibraries 9–12</div>
-        <div class="unit-name">Enhanced Customer Experience</div>
-        <div class="unit-meta">20 Frameworks <span class="unit-arrow">&rarr;</span></div>
-      </div>
-    </a>
-    <a href="unit4.html" class="unit-card">
-      <div class="unit-accent" style="background:#3B82F6"></div>
-      <div class="unit-card-inner">
-        <div class="unit-num" style="color:#3B82F6">Unit 4 &middot; Slibraries 13–16</div>
-        <div class="unit-name">The Financial Side of AI</div>
-        <div class="unit-meta">20 Frameworks <span class="unit-arrow">&rarr;</span></div>
-      </div>
-    </a>
-    <a href="unit5.html" class="unit-card">
-      <div class="unit-accent" style="background:#475569"></div>
-      <div class="unit-card-inner">
-        <div class="unit-num" style="color:#475569">Unit 5 &middot; Slibraries 17–20</div>
-        <div class="unit-name">IP &amp; Value Creation through AI</div>
-        <div class="unit-meta">20 Frameworks <span class="unit-arrow">&rarr;</span></div>
-      </div>
-    </a>
-    <a href="unit6.html" class="unit-card">
-      <div class="unit-accent" style="background:#1D4ED8"></div>
-      <div class="unit-card-inner">
-        <div class="unit-num" style="color:#1D4ED8">Unit 6 &middot; Slibraries 21–24</div>
-        <div class="unit-name">Finance &amp; Investment Plans</div>
-        <div class="unit-meta">20 Frameworks <span class="unit-arrow">&rarr;</span></div>
-      </div>
-    </a>
-  </div>
+<div class="section-title">Course Units</div>
 
-  <div class="section-title">Complete Gallery</div>
-  <a href="complete.html" class="complete-link">
-    <span>&#9632;</span> Open Complete Gallery Wall &mdash; All 120 Frameworks
-  </a>
+<div class="unit-block open" id="u1">
+  <div class="unit-block-header" onclick="toggle('u1')">
+    <span class="unit-accent-dot" style="background:#2563EB"></span>
+    <span class="unit-block-num" style="color:#2563EB">Unit 1</span>
+    <span class="unit-block-title">AI Strategy, Governance &amp; Competitive Advantage</span>
+    <span class="unit-block-toggle">&#9662;</span>
+  </div>
+  <div class="unit-block-body">
+    <a href="unit1.html" class="material-row"><span class="mat-icon gallery">FG</span><span class="mat-label"><span class="mat-title">Framework Gallery</span><span class="mat-desc">20 interactive frameworks &middot; Slibraries 1&ndash;4</span></span><span class="mat-badge">HTML</span></a>
+    <a href="cases/Unit1_Case_NovaBanc.pdf" class="material-row"><span class="mat-icon case">CS</span><span class="mat-label"><span class="mat-title">Case: NovaBanc &mdash; To Automate or Augment?</span><span class="mat-desc">Mid-sized European bank facing AI strategy decision</span></span><span class="mat-badge">PDF</span></a>
+    <a href="prereading/Unit1_PreReading_AI_Maturity_Staircase.pdf" class="material-row"><span class="mat-icon read">PR</span><span class="mat-label"><span class="mat-title">Pre-Reading: Why Most AI Strategies Fail Before They Start</span><span class="mat-desc">Key framework: AI Maturity Staircase</span></span><span class="mat-badge">PDF</span></a>
+    <a href="reflections/Unit1_Reflection.pdf" class="material-row"><span class="mat-icon reflect">RF</span><span class="mat-label"><span class="mat-title">Reflection Prompt</span><span class="mat-desc">3 questions for independent study</span></span><span class="mat-badge">PDF</span></a>
+  </div>
+</div>
+
+<div class="unit-block" id="u2">
+  <div class="unit-block-header" onclick="toggle('u2')">
+    <span class="unit-accent-dot" style="background:#D4872C"></span>
+    <span class="unit-block-num" style="color:#D4872C">Unit 2</span>
+    <span class="unit-block-title">ML &amp; Data-Driven Decisions</span>
+    <span class="unit-block-toggle">&#9662;</span>
+  </div>
+  <div class="unit-block-body">
+    <a href="unit2.html" class="material-row"><span class="mat-icon gallery">FG</span><span class="mat-label"><span class="mat-title">Framework Gallery</span><span class="mat-desc">20 interactive frameworks &middot; Slibraries 5&ndash;8</span></span><span class="mat-badge">HTML</span></a>
+    <a href="cases/Unit2_Case_FreshCart.pdf" class="material-row"><span class="mat-icon case">CS</span><span class="mat-label"><span class="mat-title">Case: FreshCart &mdash; When the Algorithm Gets It Wrong</span><span class="mat-desc">Online grocery ML demand prediction failure</span></span><span class="mat-badge">PDF</span></a>
+    <a href="prereading/Unit2_PreReading_Confusion_Matrix.pdf" class="material-row"><span class="mat-icon read">PR</span><span class="mat-label"><span class="mat-title">Pre-Reading: The Confusion Matrix &mdash; Why Accuracy Is Not Enough</span><span class="mat-desc">Key framework: Confusion Matrix 2&times;2</span></span><span class="mat-badge">PDF</span></a>
+    <a href="reflections/Unit2_Reflection.pdf" class="material-row"><span class="mat-icon reflect">RF</span><span class="mat-label"><span class="mat-title">Reflection Prompt</span><span class="mat-desc">3 questions for independent study</span></span><span class="mat-badge">PDF</span></a>
+  </div>
+</div>
+
+<div class="unit-block" id="u3">
+  <div class="unit-block-header" onclick="toggle('u3')">
+    <span class="unit-accent-dot" style="background:#E85D4A"></span>
+    <span class="unit-block-num" style="color:#E85D4A">Unit 3</span>
+    <span class="unit-block-title">Enhanced Customer Experience</span>
+    <span class="unit-block-toggle">&#9662;</span>
+  </div>
+  <div class="unit-block-body">
+    <a href="unit3.html" class="material-row"><span class="mat-icon gallery">FG</span><span class="mat-label"><span class="mat-title">Framework Gallery</span><span class="mat-desc">20 interactive frameworks &middot; Slibraries 9&ndash;12</span></span><span class="mat-badge">HTML</span></a>
+    <a href="cases/Unit3_Case_MaisonLumiere.pdf" class="material-row"><span class="mat-icon case">CS</span><span class="mat-label"><span class="mat-title">Case: Maison Lumi&egrave;re &mdash; Luxury Meets the Algorithm</span><span class="mat-desc">French luxury fashion house AI-CX tension</span></span><span class="mat-badge">PDF</span></a>
+    <a href="prereading/Unit3_PreReading_NPS_CSAT_CES.pdf" class="material-row"><span class="mat-icon read">PR</span><span class="mat-label"><span class="mat-title">Pre-Reading: Beyond NPS &mdash; Measuring What Matters in CX</span><span class="mat-desc">Key framework: NPS-CSAT-CES Triangle</span></span><span class="mat-badge">PDF</span></a>
+    <a href="reflections/Unit3_Reflection.pdf" class="material-row"><span class="mat-icon reflect">RF</span><span class="mat-label"><span class="mat-title">Reflection Prompt</span><span class="mat-desc">3 questions for independent study</span></span><span class="mat-badge">PDF</span></a>
+  </div>
+</div>
+
+<div class="unit-block" id="u4">
+  <div class="unit-block-header" onclick="toggle('u4')">
+    <span class="unit-accent-dot" style="background:#3B82F6"></span>
+    <span class="unit-block-num" style="color:#3B82F6">Unit 4</span>
+    <span class="unit-block-title">The Financial Side of AI</span>
+    <span class="unit-block-toggle">&#9662;</span>
+  </div>
+  <div class="unit-block-body">
+    <a href="unit4.html" class="material-row"><span class="mat-icon gallery">FG</span><span class="mat-label"><span class="mat-title">Framework Gallery</span><span class="mat-desc">20 interactive frameworks &middot; Slibraries 13&ndash;16</span></span><span class="mat-badge">HTML</span></a>
+    <a href="cases/Unit4_Case_QuantEdge.pdf" class="material-row"><span class="mat-icon case">CS</span><span class="mat-label"><span class="mat-title">Case: QuantEdge &mdash; The Hidden Costs of AI Ambition</span><span class="mat-desc">Fintech credit scorer facing regulatory and cost pressure</span></span><span class="mat-badge">PDF</span></a>
+    <a href="prereading/Unit4_PreReading_TCO_Iceberg.pdf" class="material-row"><span class="mat-icon read">PR</span><span class="mat-label"><span class="mat-title">Pre-Reading: The AI Iceberg &mdash; What Your Business Case Is Not Telling You</span><span class="mat-desc">Key framework: Total Cost of AI Ownership</span></span><span class="mat-badge">PDF</span></a>
+    <a href="reflections/Unit4_Reflection.pdf" class="material-row"><span class="mat-icon reflect">RF</span><span class="mat-label"><span class="mat-title">Reflection Prompt</span><span class="mat-desc">3 questions for independent study</span></span><span class="mat-badge">PDF</span></a>
+  </div>
+</div>
+
+<div class="unit-block" id="u5">
+  <div class="unit-block-header" onclick="toggle('u5')">
+    <span class="unit-accent-dot" style="background:#475569"></span>
+    <span class="unit-block-num" style="color:#475569">Unit 5</span>
+    <span class="unit-block-title">IP &amp; Value Creation through AI</span>
+    <span class="unit-block-toggle">&#9662;</span>
+  </div>
+  <div class="unit-block-body">
+    <a href="unit5.html" class="material-row"><span class="mat-icon gallery">FG</span><span class="mat-label"><span class="mat-title">Framework Gallery</span><span class="mat-desc">20 interactive frameworks &middot; Slibraries 17&ndash;20</span></span><span class="mat-badge">HTML</span></a>
+    <a href="cases/Unit5_Case_SynthVision.pdf" class="material-row"><span class="mat-icon case">CS</span><span class="mat-label"><span class="mat-title">Case: SynthVision &mdash; Who Owns What AI Creates?</span><span class="mat-desc">Generative AI startup facing IP crises</span></span><span class="mat-badge">PDF</span></a>
+    <a href="prereading/Unit5_PreReading_Authorship_Decision_Tree.pdf" class="material-row"><span class="mat-icon read">PR</span><span class="mat-label"><span class="mat-title">Pre-Reading: Can AI Be an Author?</span><span class="mat-desc">Key framework: Authorship Decision Tree</span></span><span class="mat-badge">PDF</span></a>
+    <a href="reflections/Unit5_Reflection.pdf" class="material-row"><span class="mat-icon reflect">RF</span><span class="mat-label"><span class="mat-title">Reflection Prompt</span><span class="mat-desc">3 questions for independent study</span></span><span class="mat-badge">PDF</span></a>
+  </div>
+</div>
+
+<div class="unit-block" id="u6">
+  <div class="unit-block-header" onclick="toggle('u6')">
+    <span class="unit-accent-dot" style="background:#1D4ED8"></span>
+    <span class="unit-block-num" style="color:#1D4ED8">Unit 6</span>
+    <span class="unit-block-title">Finance &amp; Investment Plans</span>
+    <span class="unit-block-toggle">&#9662;</span>
+  </div>
+  <div class="unit-block-body">
+    <a href="unit6.html" class="material-row"><span class="mat-icon gallery">FG</span><span class="mat-label"><span class="mat-title">Framework Gallery</span><span class="mat-desc">20 interactive frameworks &middot; Slibraries 21&ndash;24</span></span><span class="mat-badge">HTML</span></a>
+    <a href="cases/Unit6_Case_MeridianCapital.pdf" class="material-row"><span class="mat-icon case">CS</span><span class="mat-label"><span class="mat-title">Case: Meridian Capital &mdash; Bridging the AI Implementation Gap</span><span class="mat-desc">Asset manager struggling with AI deployment</span></span><span class="mat-badge">PDF</span></a>
+    <a href="prereading/Unit6_PreReading_Planning_Implementation_Gap.pdf" class="material-row"><span class="mat-icon read">PR</span><span class="mat-label"><span class="mat-title">Pre-Reading: Why Investment Firms Struggle with AI</span><span class="mat-desc">Key framework: Planning vs. Implementation Gap</span></span><span class="mat-badge">PDF</span></a>
+    <a href="reflections/Unit6_Reflection.pdf" class="material-row"><span class="mat-icon reflect">RF</span><span class="mat-label"><span class="mat-title">Reflection Prompt</span><span class="mat-desc">3 questions for independent study</span></span><span class="mat-badge">PDF</span></a>
+  </div>
+</div>
+
+<div class="section-title">Complete Gallery</div>
+<a href="complete.html" class="complete-link"><span>&#9632;</span> All 120 Frameworks &mdash; Complete Gallery Wall</a>
+
 </main>
 
 <footer>
@@ -114,5 +171,8 @@ footer strong{color:#00B388}
   Applying JD Meier&rsquo;s <strong>Thumbnail Thinking</strong> (2025) across the entire course
 </footer>
 
+<script>
+function toggle(id){document.getElementById(id).classList.toggle('open')}
+</script>
 </body>
 </html>
