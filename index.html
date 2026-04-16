@@ -1,267 +1,499 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>MLUXR302 — Sustainable Value Creation in Fashion & Luxury</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MARTI301 — AI in Investment & Competitiveness</title>
 <style>
-:root{--teal:#00B894;--teal-d:#00695C;--bg:#f7f8fa;--text:#0f172a;--muted:#64748b;--white:#ffffff;--radius:12px;--shadow:0 1px 6px rgba(0,0,0,0.07);--shadow-lg:0 8px 28px rgba(0,0,0,0.13);}
-*{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
-a{color:inherit;text-decoration:none;}
-.container{max-width:1120px;margin:0 auto;padding:0 24px;}
-.topbar{background:#0f172a;color:rgba(255,255,255,0.5);font-size:11px;letter-spacing:.1em;text-align:center;padding:7px 0;}
-.topbar strong{color:var(--teal);}
-.site-header{background:var(--white);border-bottom:3px solid var(--teal);padding:16px 0;position:sticky;top:0;z-index:500;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
-.hdr-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
-.hdr-brand .code{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--teal);font-weight:700;}
-.hdr-brand .name{font-size:16px;font-weight:700;}
-.hdr-meta{font-size:12px;color:var(--muted);text-align:right;line-height:1.5;}
-.back-link{display:inline-flex;align-items:center;gap:6px;color:var(--teal-d);font-size:13px;font-weight:600;padding:10px 0;transition:gap .2s;}
-.back-link:hover{gap:10px;}
-.hero{padding:48px 0 36px;text-align:center;}
-.unit-pill{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:16px;}
-.hero h1{font-size:clamp(20px,4vw,36px);font-weight:800;margin-bottom:8px;line-height:1.2;}
-.hero .sub{font-size:15px;color:var(--muted);margin-bottom:6px;}
-.hero-hint{font-size:12px;color:var(--muted);margin-bottom:28px;font-style:italic;}
-.hero-stats{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;}
-.hero-stat .num{font-size:38px;font-weight:800;line-height:1;}
-.hero-stat .lbl{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:2px;}
-.itten-tag{display:inline-flex;align-items:center;gap:7px;font-size:12px;background:var(--white);padding:6px 14px;border-radius:20px;box-shadow:var(--shadow);margin-bottom:32px;}
-.itten-dot{width:10px;height:10px;border-radius:50%;}
-.set-section{margin-bottom:52px;}
-.set-hdr{display:flex;align-items:center;gap:12px;margin-bottom:18px;padding-bottom:10px;border-bottom:2px solid #e2e8f0;}
-.set-hdr h2{font-size:14px;font-weight:700;display:flex;align-items:center;gap:10px;}
-.set-num{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0;}
-.set-tag{font-size:11px;color:var(--muted);background:#f1f5f9;padding:2px 10px;border-radius:10px;margin-left:auto;}
-.fw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:14px;}
-.fw-card{background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);cursor:pointer;transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column;border-top:4px solid transparent;}
-.fw-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);}
-.fw-card-icon{padding:14px 16px 6px;line-height:1;}
-.fw-card-icon svg{display:block;width:56px;height:40px;}
-.fw-card-body{padding:0 16px 12px;flex:1;display:flex;flex-direction:column;}
-.fw-card-name{font-size:13px;font-weight:700;margin-bottom:5px;color:var(--text);line-height:1.3;}
-.fw-card-desc{font-size:11.5px;color:var(--muted);line-height:1.55;flex:1;}
-.fw-card-foot{display:flex;align-items:center;justify-content:space-between;padding:8px 16px 10px;border-top:1px solid #f0f0f0;margin-top:auto;}
-.fw-sl-badge{font-size:10px;font-weight:700;letter-spacing:.06em;padding:2px 8px;border-radius:8px;}
-.fw-arrow{font-size:13px;color:var(--muted);}
-.idx-hero{padding:60px 0 48px;text-align:center;}
-.idx-hero .school{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:10px;}
-.idx-hero h1{font-size:clamp(26px,5vw,50px);font-weight:800;line-height:1.15;margin-bottom:12px;}
-.idx-hero .tag{font-size:16px;color:var(--muted);margin-bottom:10px;}
-.idx-hero .itten-credit{font-size:12px;color:var(--muted);margin-bottom:30px;font-style:italic;}
-.idx-stats{display:flex;justify-content:center;gap:48px;flex-wrap:wrap;}
-.idx-stat .num{font-size:48px;font-weight:800;color:var(--teal);line-height:1;}
-.idx-stat .lbl{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:4px;}
-.itten-legend{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:24px 0 32px;}
-.itten-chip{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;padding:5px 12px;border-radius:20px;background:var(--white);box-shadow:var(--shadow);}
-.itten-chip-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
-.accordion{margin-bottom:10px;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);}
-.acc-hdr{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;cursor:pointer;transition:opacity .18s;}
-.acc-hdr:hover{opacity:.93;}
-.acc-meta{display:flex;flex-direction:column;gap:2px;}
-.acc-unit-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:rgba(255,255,255,.75);}
-.acc-itten{font-size:10px;color:rgba(255,255,255,.55);font-style:italic;}
-.acc-title{font-size:15px;font-weight:700;color:#fff;line-height:1.3;}
-.acc-chevron{font-size:17px;color:rgba(255,255,255,.65);transition:transform .28s;}
-.acc-hdr.open .acc-chevron{transform:rotate(180deg);}
-.acc-body{display:none;background:var(--white);}
-.acc-body.open{display:block;}
-.res-link{display:flex;align-items:center;gap:12px;padding:13px 22px;border-bottom:1px solid #f1f5f9;transition:background .13s;}
-.res-link:last-child{border-bottom:none;}
-.res-link:hover{background:#f8fafc;}
-.res-badge{font-size:10px;font-weight:700;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;}
-.res-title{font-size:14px;font-weight:700;margin-bottom:1px;}
-.res-meta{font-size:11px;color:var(--muted);}
-.res-tag{font-size:10px;color:var(--muted);background:#f1f5f9;padding:2px 8px;border-radius:6px;white-space:nowrap;}
-.phase-list{list-style:none;}
-.phase-item{display:flex;gap:14px;padding:18px 0;border-bottom:1px solid #f0f0f0;}
-.phase-item:last-child{border-bottom:none;}
-.phase-badge{font-size:10px;font-weight:700;letter-spacing:.07em;padding:4px 10px;border-radius:8px;height:fit-content;white-space:nowrap;}
-.phase-h{font-size:14px;font-weight:700;margin-bottom:4px;}
-.phase-p{font-size:13px;color:var(--muted);}
-.case-brand-hdr{padding:48px 0 28px;text-align:center;}
-.brand-name{font-size:48px;font-weight:900;letter-spacing:-2px;margin-bottom:8px;line-height:1;}
-.case-card{background:var(--white);border-radius:var(--radius);padding:32px;box-shadow:var(--shadow);margin-bottom:18px;}
-.case-card h2{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #f1f5f9;}
-.case-card p{font-size:14.5px;line-height:1.8;margin-bottom:10px;}
-.case-card ol{padding-left:18px;}
-.case-card li{font-size:14.5px;line-height:1.7;margin-bottom:8px;}
-.pr-card{background:var(--white);border-radius:var(--radius);padding:32px;box-shadow:var(--shadow);margin-bottom:18px;}
-.pr-card h2{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:12px;}
-.pr-card p{font-size:14.5px;line-height:1.8;margin-bottom:10px;}
-.kp-item{display:flex;gap:10px;margin-bottom:10px;align-items:flex-start;}
-.kp-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:7px;}
-.kp-text{font-size:14px;line-height:1.6;}
-.pr-prepare{border-radius:0 var(--radius) var(--radius) 0;padding:20px 24px;border-left:4px solid;margin-bottom:48px;}
-.pr-prepare-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;}
-.ref-cards{display:grid;gap:18px;}
-.ref-card{background:var(--white);border-radius:var(--radius);padding:26px 28px;box-shadow:var(--shadow);display:flex;gap:18px;align-items:flex-start;}
-.ref-num{font-size:32px;font-weight:900;line-height:1;opacity:.15;flex-shrink:0;width:40px;}
-.ref-card p{font-size:15px;line-height:1.75;}
-.ref-guide{border-radius:var(--radius);padding:20px 24px;margin-top:24px;margin-bottom:48px;}
-.ref-guide-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;}
-.ref-guide p{font-size:13.5px;line-height:1.7;}
-.cg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:9px;}
-.cg-card{background:var(--white);border-radius:8px;padding:12px 14px;box-shadow:0 1px 3px rgba(0,0,0,0.05);border-left:4px solid transparent;}
-.cg-name{font-size:12px;font-weight:700;margin-bottom:2px;}
-.cg-unit{font-size:10px;color:var(--muted);}
-.site-footer{margin-top:72px;border-top:3px solid var(--teal);padding:22px 0;text-align:center;font-size:12px;color:var(--muted);}
-.site-footer strong{color:var(--text);}
-@media(max-width:640px){.fw-grid{grid-template-columns:1fr 1fr;}.cg-grid{grid-template-columns:1fr 1fr;}}
-</style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1B2A4A;--teal:#00B388;--amber:#D4872C;--coral:#E85D4A;
+  --bg:#FAFBFC;--card:#FFF;--text:#1B2A4A;--muted:#6B7280;--border:#E5E7EB;
+  /* Itten-informed unit palette:
+     U1 Deep Blue   — trust, stability, orientation (governance & strategy)
+     U2 Amber/Orange — curiosity, energy, experimentation (data lab)
+     U3 Warm Red     — empathy, emotion, human connection (CX & role play)
+     U4 Steel Blue   — clarity, logic, analytical rigour (finance & hackathon)
+     U5 Slate        — neutrality, authority, justice (IP & moot court)
+     U6 Royal Blue   — mastery, confidence, completion (capstone)
+  */
+  --unit1:#1E40AF;--unit2:#B45309;--unit3:#BE123C;--unit4:#2563EB;--unit5:#475569;--unit6:#1D4ED8;
+  --unit1-light:#DBEAFE;--unit2-light:#FEF3C7;--unit3-light:#FFE4E6;--unit4-light:#E0F2FE;--unit5-light:#F1F5F9;--unit6-light:#DBEAFE;
+  --unit1-muted:#3B82F6;--unit2-muted:#D97706;--unit3-muted:#E11D48;--unit4-muted:#60A5FA;--unit5-muted:#64748B;--unit6-muted:#3B82F6;
+}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
 
-<style>
-#modal-overlay{position:fixed;inset:0;background:rgba(8,8,20,0.78);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);z-index:9000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity 0.22s;}
-#modal-overlay.active{opacity:1;pointer-events:all;}
-#modal-box{background:#ffffff;border-radius:16px;width:100%;max-width:660px;max-height:90vh;overflow-y:auto;box-shadow:0 28px 90px rgba(0,0,0,0.38);transform:translateY(20px) scale(0.97);transition:transform 0.22s;position:relative;}
-#modal-overlay.active #modal-box{transform:translateY(0) scale(1);}
-#modal-color-bar{height:5px;border-radius:16px 16px 0 0;}
-#modal-inner{padding:28px 32px 28px;}
-#modal-header{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:20px;}
-#modal-header-left{flex:1;}
-#modal-label-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap;}
-#m-slibrary-header{font-size:10px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:#888;}
-#m-unit-badge{font-size:10px;font-weight:700;letter-spacing:0.08em;padding:2px 9px;border-radius:8px;background:#f0f0f0;color:#666;}
-#m-title{font-size:24px;font-weight:800;color:#1a1a2e;line-height:1.2;margin-bottom:5px;font-family:Arial,Helvetica,sans-serif;}
-#m-itten-line{font-size:11px;color:#aaa;font-style:italic;}
-#modal-close{background:#f0f0f2;border:none;width:34px;height:34px;border-radius:50%;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#666;transition:background .15s,color .15s;}
-#modal-close:hover{background:#dde0e4;color:#333;}
-#modal-lead{border-left:4px solid #ccc;margin:0 0 14px;padding:12px 18px;border-radius:0 6px 6px 0;}
-#modal-lead p{font-size:15px;font-weight:700;font-style:italic;line-height:1.65;margin:0;font-family:Arial,Helvetica,sans-serif;}
-#m-sub-text{font-size:13px;color:#888;font-style:italic;margin-bottom:22px;line-height:1.5;}
-#modal-bullets{margin-bottom:24px;}
-.m-bullet-item{display:flex;align-items:baseline;gap:12px;padding:11px 0;}
-.m-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-top:2px;display:inline-block;background:#ccc;}
-.m-bullet-text{font-size:14px;line-height:1.65;color:#333;}
-.m-divider{border:none;border-top:1px solid #e8eaed;margin:0;}
-#modal-reference{border-radius:0 8px 8px 0;border-left:4px solid #ccc;padding:16px 20px;margin-top:4px;}
-#modal-ref-label{font-size:10px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:#888;margin-bottom:8px;}
-#m-ref-text{font-size:13px;line-height:1.75;color:#444;margin:0;}
-@media(max-width:580px){#modal-inner{padding:20px 18px 20px;}#m-title{font-size:19px;}}
+/* ─── HERO ──────────────────────────────────────────── */
+.hero{background:var(--navy);padding:3rem 2rem 2.5rem;text-align:center;position:relative}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:var(--teal)}
+.hero-pre{font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:var(--amber);font-weight:700;margin-bottom:.6rem}
+.hero h1{font-size:2.2rem;color:#fff;font-weight:700;line-height:1.2;margin-bottom:.3rem}
+.hero .sub{color:#94A3B8;font-size:1rem;margin-bottom:.6rem}
+.hero .copy{color:#64748B;font-size:.78rem;font-style:italic}
+.stats{display:flex;justify-content:center;gap:2.5rem;margin-top:1.5rem}
+.stat{text-align:center}
+.stat .n{font-size:2rem;color:var(--teal);font-weight:700;line-height:1}
+.stat .l{font-size:.65rem;color:#94A3B8;text-transform:uppercase;letter-spacing:.15em;margin-top:.2rem}
+
+/* ─── SEARCH ────────────────────────────────────────── */
+.search-wrap{max-width:900px;margin:1.5rem auto .5rem;padding:0 1.5rem}
+.search-box{position:relative}
+.search-box input{width:100%;padding:.7rem 1rem .7rem 2.6rem;border:1px solid var(--border);border-radius:10px;font-family:Arial,Helvetica,sans-serif;font-size:.9rem;background:#fff;color:var(--text);outline:none;transition:border-color .15s,box-shadow .15s}
+.search-box input:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(0,179,136,.12)}
+.search-box input::placeholder{color:#94A3B8}
+.search-icon{position:absolute;left:.85rem;top:50%;transform:translateY(-50%);color:#94A3B8;font-size:.95rem;pointer-events:none}
+.search-results{margin-top:.5rem;display:none}
+.search-results.active{display:block}
+.sr-item{display:flex;align-items:center;gap:.7rem;padding:.6rem .8rem;border-radius:8px;cursor:pointer;transition:background .1s}
+.sr-item:hover{background:#F1F5F9}
+.sr-badge{width:1.6rem;height:1.6rem;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;color:#fff;flex-shrink:0}
+.sr-title{font-size:.85rem;font-weight:600;color:var(--navy)}
+.sr-sub{font-size:.72rem;color:var(--muted)}
+.sr-empty{padding:.8rem;text-align:center;font-size:.85rem;color:var(--muted);font-style:italic}
+
+/* ─── SECTION LABEL ─────────────────────────────────── */
+.section-title{max-width:900px;margin:2rem auto 1rem;padding:0 1.5rem;font-size:1.1rem;color:var(--navy);font-weight:700}
+
+/* ─── UNIT ACCORDION ────────────────────────────────── */
+.units{max-width:900px;margin:0 auto 2rem;padding:0 1.5rem;display:flex;flex-direction:column;gap:.8rem}
+.unit{background:var(--card);border-radius:12px;border:1px solid var(--border);overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.unit.search-hidden{display:none}
+
+.unit-header{display:flex;align-items:center;gap:1rem;padding:1rem 1.2rem;cursor:pointer;user-select:none;transition:background .15s}
+.unit-header:hover{background:#F8FAFC}
+.unit-num{width:2.2rem;height:2.2rem;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:700;color:#fff;flex-shrink:0}
+.unit-info{flex:1;min-width:0}
+.unit-title{font-size:.95rem;font-weight:700;color:var(--navy);line-height:1.3}
+.unit-format{display:inline-block;font-size:.62rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:.12rem .45rem;border-radius:3px;margin-top:.2rem;color:var(--muted);background:#F1F5F9;border:1px solid var(--border)}
+.unit-toggle{font-size:1.2rem;color:var(--muted);transition:transform .2s;flex-shrink:0}
+.unit.open .unit-toggle{transform:rotate(180deg)}
+
+.unit-body{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.unit.open .unit-body{max-height:600px}
+.unit-links{padding:.4rem 1.2rem 1rem;display:flex;flex-direction:column;gap:.4rem}
+
+.link-card{display:flex;align-items:center;gap:.7rem;padding:.6rem .8rem;border-radius:8px;border:1px solid var(--border);transition:all .15s;text-decoration:none}
+.link-card:hover{border-color:var(--teal);box-shadow:0 2px 8px rgba(0,179,136,.1);transform:translateY(-1px)}
+.link-card.search-highlight{border-color:var(--teal);background:#F0FDF9}
+.link-badge{width:1.8rem;height:1.8rem;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;color:#fff;flex-shrink:0}
+.link-body{flex:1;min-width:0}
+.link-title{font-size:.85rem;font-weight:600;color:var(--navy)}
+.link-desc{font-size:.72rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.link-tag{font-size:.62rem;color:var(--muted);font-weight:500;flex-shrink:0}
+
+/* ─── GALLERY LINK ──────────────────────────────────── */
+.gallery-link{max-width:900px;margin:1rem auto 2rem;padding:0 1.5rem}
+.gallery-link a{display:block;padding:1rem 1.5rem;background:var(--navy);color:#fff;border-radius:10px;text-align:center;font-weight:700;font-size:.95rem;transition:all .15s}
+.gallery-link a:hover{background:#243656;transform:translateY(-1px)}
+.gallery-link a span{color:var(--teal)}
+
+/* ─── FOOTER ────────────────────────────────────────── */
+footer{background:var(--navy);padding:2rem;text-align:center;color:#64748B;font-size:.75rem}
+footer strong{color:var(--teal)}
+
+@media(max-width:600px){
+  .hero h1{font-size:1.5rem}
+  .stats{gap:1.5rem}
+  .stat .n{font-size:1.5rem}
+  .ped-grid{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
-<script>
-(function(){
-  document.addEventListener('contextmenu',e=>e.preventDefault());
-  ['copy','cut','paste'].forEach(ev=>document.addEventListener(ev,e=>e.preventDefault()));
-  document.addEventListener('keydown',e=>{
-    const k=e.key.toLowerCase(),c=e.ctrlKey||e.metaKey;
-    if(c&&(k==='c'||k==='x'||k==='v'||k==='s'||k==='u'||k==='a'||k==='p')){e.preventDefault();return false;}
-    if(e.key==='F12'||(c&&e.shiftKey&&(k==='i'||k==='j'||k==='c'))){e.preventDefault();return false;}
-  });
-  document.addEventListener('dragstart',e=>e.preventDefault());
-})();
-</script>
-<style>
-@media print{body *{visibility:hidden!important;}body::after{visibility:visible!important;content:'© Dr. Hildegard Haas | MLUXR302 | EU Business School — Printing not permitted.';display:block;font-size:18px;text-align:center;padding:80px 40px;font-family:Arial,sans-serif;}}
-body,*{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
-</style>
-<div class="topbar">
-  <strong>MLUXR302</strong> &nbsp;&middot;&nbsp; Sustainable Value Creation in Fashion &amp; Luxury
-  &nbsp;&middot;&nbsp;
-  &copy; 2026 Dr. Hildegard Haas &nbsp;&middot;&nbsp; EU Business School
-</div>
-<header class="site-header">
-  <div class="container hdr-inner">
-    <div class="hdr-brand">
-      <div class="code">MLUXR302 &middot; Masters Level 7 &middot; EU Business School</div>
-      <div class="name">Sustainable Value Creation in Fashion &amp; Luxury</div>
-    </div>
-    <div class="hdr-meta">Dr. Hildegard Haas<br/>hildegard.haas@euruni.edu &middot; www.euruni.edu</div>
+
+<!-- ═══════ HERO ═══════ -->
+<header class="hero">
+  <div class="hero-pre">MARTI301 — Masters Level 7</div>
+  <h1>AI in Investment &amp; Competitiveness</h1>
+  <div class="sub">Interactive Framework Galleries &amp; Course Materials</div>
+  <div class="copy">© 2026 Dr. Hildegard Haas · EU Business School</div>
+  <div class="stats">
+    <div class="stat"><div class="n">6</div><div class="l">Units</div></div>
+    <div class="stat"><div class="n">24</div><div class="l">Slibraries</div></div>
+    <div class="stat"><div class="n">120</div><div class="l">Frameworks</div></div>
   </div>
 </header>
-<main><div class="container">
 
-<div class="idx-hero"><div class="school">EU Business School &middot; Masters Level 7 &middot; FHEQ Level 7</div><h1>Sustainable Value Creation<br/>in Fashion &amp; Luxury</h1><p class="tag">Interactive Framework Galleries &middot; Session Materials &middot; Case Studies</p><p style="font-size:12px;color:var(--muted);margin-bottom:28px;">&copy; 2026 Dr. Hildegard Haas &middot; EU Business School &middot; www.euruni.edu</p><div class="idx-stats"><div class="idx-stat"><div class="num">6</div><div class="lbl">Units</div></div><div class="idx-stat"><div class="num">18</div><div class="lbl">Slibraries</div></div><div class="idx-stat"><div class="num">90</div><div class="lbl">Frameworks</div></div></div></div><div style="margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #e2e8f0;"><h2 style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);">Course Units &mdash; Click to Expand</h2></div><div class="accordion"><div class="acc-hdr" style="background:#2563EB"><div class="acc-meta"><div class="acc-unit-label">Unit 1</div><div class="acc-title">Introduction to Sustainability in Fashion & Luxury</div></div><div class="acc-chevron">&#9662;</div></div><div class="acc-body"><a class="res-link" href="unit1.html"><div class="res-badge" style="background:#2563EB">FG</div><div style="flex:1"><div class="res-title">Framework Gallery</div><div class="res-meta">15 frameworks &middot; Slibraries 1–3</div></div><div class="res-tag">HTML</div></a><a class="res-link" href="activities/Unit1_Activities.html"><div class="res-badge" style="background:#E74C3C">SA</div><div style="flex:1"><div class="res-title">Session Activities</div><div class="res-meta">7-phase session guide</div></div><div class="res-tag">HTML</div></a><a class="res-link" href="cases/Unit1_Case.html"><div class="res-badge" style="background:#D4872C">CS</div><div style="flex:1"><div class="res-title">Case: Patagonia</div><div class="res-meta">Worn Wear — 'Don't Buy This Jacket'</div></div><div class="res-tag">HTML</div></a><a class="res-link" href="prereading/Unit1_PreReading.html"><div class="res-badge" style="background:#2980B9">PR</div><div style="flex:1"><div class="res-title">Pre-Reading: Fashion Footprint Triangle</div><div class="res-meta">Why Fashion is the Second Most Polluting Industr…</div></div><div class="res-tag">HTML</div></a><a class="res-link" href="reflections/Unit1_Reflection.html"><div class="res-badge" style="background:#8E44AD">RF</div><div style="flex:1"><div class="res-title">Reflection Prompts</div><div class="res-meta">3 questions for independent study</div></div><div class="res-tag">HTML</div></a></div></div><div class="accordion"><div class="acc-hdr" style="background:#D4872C"><div class="acc-meta"><div class="acc-unit-label">Unit 2</div><div class="acc-title">Sustainable Materials and Production Methods</div></div><div class="acc-chevron">&#9662;</div></div><div class="acc-body"><a class="res-link" href="unit2.html"><div class="res-badge" style="background:#2563EB">FG</div><div style="flex:1"><div class="res-title">Framework Gallery</div><div class="res-meta">15 frameworks &middot; Slibraries 4–6</div></div><div class="res-tag">HTML</div></a><a class="res-link" href="activities/Unit2_Activities.html"><div class="res-badge" style="background:#E74C3C">SA</div><div style="flex:1"><div class="res-title">Session Activities</div><div class="res-meta">7-phase session guide</div></div><div class="res-tag">HTML</div></a><a class="res-link" href="cases/Unit2_Case.html"><div class="res-badge" style="background:#D4872C">CS</div><div style="flex:1"><div class="res-title">Case: Stella McCartney</div><div class="res-meta">No Leather, No Fur — Building a Luxury Brand on Material Ethics</div></div><div class="res-tag">HTML</div></a><a class="res-link" href="prereading/Unit2_PreReading.html"><div class="res-badge" style="background:#2980B9">PR</div><div style="flex:1"><div class="res-title">Pre-Reading: Life Cycle Assessment (LCA)</div><div class="res-meta">The Hidden Cost of a Cotton T-Shirt</div></div><div class="res-tag">HTML</div></a><a class="res-link" href="reflections/Unit2_Reflection.html"><div class="res-badge" style="background:#8E44AD">RF</div><div style="flex:1"><div class="res-title">Reflection Prompts</div><div class="res-meta">3 questions for independent study</div></div><div class="res-tag">HTML</div></a></div></div><div class="accordion"><div class="acc-hdr" style="background:#DC2626"><div class="acc-meta"><div class="acc-unit-label">Unit 3</div><div class="acc-title">Labour Rights and Working Conditions</div></div><div class="acc-chevron">&#9662;</div></div><div class="acc-body"><a class="res-link" href="unit3.html"><div class="res-badge" style="background:#2563EB">FG</div><div style="flex:1"><div class="res-title">Framework Gallery</div><div class="res-meta">15 frameworks &middot; Slibraries 7–9</div></div><div class="res-tag">HTML</div></a><a class="res-link" href="activities/Unit3_Activities.html"><div class="res-badge" style="background:#E74C3C">SA</div><div style="flex:1"><div class="res-title">Session Activities</div><div class="res-meta">7-phase session guide</div></div><div class="res-tag">HTML</div></a><a class="res-link" href="cases/Unit3_Case.html"><div class="res-badge" style="background:#D4872C">CS</div><div style="flex:1"><div class="res-title">Case: Adidas</div><div class="res-meta">Beyond Compliance: Adidas Worker Engagement Programme</div></div><div class="res-tag">HTML</div></a><a class="res-link" href="prereading/Unit3_PreReading.html"><div class="res-badge" style="background:#2980B9">PR</div><div style="flex:1"><div class="res-title">Pre-Reading: Bangladesh → International Accord on Fire and Building Safety</div><div class="res-meta">Rana Plaza: Ten Years On — What Changed?</div></div><div class="res-tag">HTML</div></a><a class="res-link" href="reflections/Unit3_Reflection.html"><div class="res-badge" style="background:#8E44AD">RF</div><div style="flex:1"><div class="res-title">Reflection Prompts</div><div class="res-meta">3 questions for independent study</div></div><div class="res-tag">HTML</div></a></div></div><div class="accordion"><div class="acc-hdr" style="background:#059669"><div class="acc-meta"><div class="acc-unit-label">Unit 4</div><div class="acc-title">Sustainability Performance of Leading Fashion & Luxury Brands</div></div><div class="acc-chevron">&#9662;</div></div><div class="acc-body"><a class="res-link" href="unit4.html"><div class="res-badge" style="background:#2563EB">FG</div><div style="flex:1"><div class="res-title">Framework Gallery</div><div class="res-meta">15 frameworks &middot; Slibraries 10–12</div></div><div class="res-tag">HTML</div></a><a class="res-link" href="activities/Unit4_Activities.html"><div class="res-badge" style="background:#E74C3C">SA</div><div style="flex:1"><div class="res-title">Session Activities</div><div class="res-meta">7-phase session guide</div></div><div class="res-tag">HTML</div></a><a class="res-link" href="cases/Unit4_Case.html"><div class="res-badge" style="background:#D4872C">CS</div><div style="flex:1"><div class="res-title">Case: Hermès</div><div class="res-meta">Longevity as Sustainability — The Birkin as the Antithesis of Fast Fashion</div></div><div class="res-tag">HTML</div></a><a class="res-link" href="prereading/Unit4_PreReading.html"><div class="res-badge" style="background:#2980B9">PR</div><div style="flex:1"><div class="res-title">Pre-Reading: Kering Environmental Profit & Loss (EP&L)</div><div class="res-meta">Can Luxury and Sustainability Co-Exist?</div></div><div class="res-tag">HTML</div></a><a class="res-link" href="reflections/Unit4_Reflection.html"><div class="res-badge" style="background:#8E44AD">RF</div><div style="flex:1"><div class="res-title">Reflection Prompts</div><div class="res-meta">3 questions for independent study</div></div><div class="res-tag">HTML</div></a></div></div><div class="accordion"><div class="acc-hdr" style="background:#7C3AED"><div class="acc-meta"><div class="acc-unit-label">Unit 5</div><div class="acc-title">Sustainable Strategy Development for Fashion & Luxury Brands</div></div><div class="acc-chevron">&#9662;</div></div><div class="acc-body"><a class="res-link" href="unit5.html"><div class="res-badge" style="background:#2563EB">FG</div><div style="flex:1"><div class="res-title">Framework Gallery</div><div class="res-meta">15 frameworks &middot; Slibraries 13–15</div></div><div class="res-tag">HTML</div></a><a class="res-link" href="activities/Unit5_Activities.html"><div class="res-badge" style="background:#E74C3C">SA</div><div style="flex:1"><div class="res-title">Session Activities</div><div class="res-meta">7-phase session guide</div></div><div class="res-tag">HTML</div></a><a class="res-link" href="cases/Unit5_Case.html"><div class="res-badge" style="background:#D4872C">CS</div><div style="flex:1"><div class="res-title">Case: Marine Serre</div><div class="res-meta">50% Upcycled — How a Paris Start-up Built Luxury from Waste</div></div><div class="res-tag">HTML</div></a><a class="res-link" href="prereading/Unit5_PreReading.html"><div class="res-badge" style="background:#2980B9">PR</div><div style="flex:1"><div class="res-title">Pre-Reading: Porter & Kramer Shared Value Framework</div><div class="res-meta">Creating Shared Value: Why Sustainability Must B…</div></div><div class="res-tag">HTML</div></a><a class="res-link" href="reflections/Unit5_Reflection.html"><div class="res-badge" style="background:#8E44AD">RF</div><div style="flex:1"><div class="res-title">Reflection Prompts</div><div class="res-meta">3 questions for independent study</div></div><div class="res-tag">HTML</div></a></div></div><div class="accordion"><div class="acc-hdr" style="background:#D97706"><div class="acc-meta"><div class="acc-unit-label">Unit 6</div><div class="acc-title">Communicating and Evaluating Sustainable Strategies & Future Trends</div></div><div class="acc-chevron">&#9662;</div></div><div class="acc-body"><a class="res-link" href="unit6.html"><div class="res-badge" style="background:#2563EB">FG</div><div style="flex:1"><div class="res-title">Framework Gallery</div><div class="res-meta">15 frameworks &middot; Slibraries 16–18</div></div><div class="res-tag">HTML</div></a><a class="res-link" href="activities/Unit6_Activities.html"><div class="res-badge" style="background:#E74C3C">SA</div><div style="flex:1"><div class="res-title">Session Activities</div><div class="res-meta">7-phase session guide</div></div><div class="res-tag">HTML</div></a><a class="res-link" href="cases/Unit6_Case.html"><div class="res-badge" style="background:#D4872C">CS</div><div style="flex:1"><div class="res-title">Case: Freitag</div><div class="res-meta">100% Circular — Truck Tarp Bags and a City-Wide Swap System</div></div><div class="res-tag">HTML</div></a><a class="res-link" href="prereading/Unit6_PreReading.html"><div class="res-badge" style="background:#2980B9">PR</div><div style="flex:1"><div class="res-title">Pre-Reading: EU Green Claims Directive 2024</div><div class="res-meta">The Green Claims Minefield — How Regulation Is R…</div></div><div class="res-tag">HTML</div></a><a class="res-link" href="reflections/Unit6_Reflection.html"><div class="res-badge" style="background:#8E44AD">RF</div><div style="flex:1"><div class="res-title">Reflection Prompts</div><div class="res-meta">3 questions for independent study</div></div><div class="res-tag">HTML</div></a></div></div><div style="text-align:center;margin:40px 0 60px;"><a href="complete.html" style="display:inline-flex;align-items:center;gap:10px;background:var(--text);color:#fff;padding:13px 30px;border-radius:28px;font-weight:700;font-size:14px;">&#9638; &nbsp; All 90 Frameworks &mdash; Complete Gallery Wall</a></div>
-</div></main>
-<footer class="site-footer">
-  <div class="container">
-    <strong>&copy; Dr. Hildegard Haas</strong> &middot; MLUXR302 Sustainable Value Creation in Fashion &amp; Luxury &middot; EU Business School<br/>
-    All rights reserved
+<!-- ═══════ SEARCH ═══════ -->
+<div class="search-wrap">
+  <div class="search-box">
+    <span class="search-icon">⌕</span>
+    <input type="text" id="searchInput" placeholder="Search frameworks, cases, activities, units…" autocomplete="off">
   </div>
-</footer>
+  <div class="search-results" id="searchResults"></div>
+</div>
 
-<div id="modal-overlay">
-  <div id="modal-box">
-    <div id="modal-color-bar"></div>
-    <div id="modal-inner">
-      <div id="modal-header">
-        <div id="modal-header-left">
-          <div id="modal-label-row">
-            <span id="m-slibrary-header"></span>
-            <span id="m-unit-badge"></span>
-          </div>
-          <h2 id="m-title"></h2>
-          <div id="m-itten-line"></div>
-        </div>
-        <button id="modal-close" aria-label="Close">&#x2715;</button>
+<!-- ═══════ UNITS ═══════ -->
+<div class="section-title">Course Units</div>
+
+<div class="units" id="unitContainer">
+
+  <!-- UNIT 1 — Deep Blue: trust, stability, orientation -->
+  <div class="unit open" data-unit="1">
+    <div class="unit-header" onclick="toggle(this)">
+      <div class="unit-num" style="background:var(--unit1)">1</div>
+      <div class="unit-info">
+        <div class="unit-title">AI Strategy, Governance &amp; Competitive Advantage</div>
+        <div class="unit-format">Guided Discovery</div>
       </div>
-      <blockquote id="modal-lead"><p id="m-lead-text"></p></blockquote>
-      <p id="m-sub-text"></p>
-      <div id="modal-bullets">
-        <div class="m-bullet-item"><span class="m-dot"></span><span class="m-bullet-text" id="m-b1"></span></div>
-        <hr class="m-divider"/>
-        <div class="m-bullet-item"><span class="m-dot"></span><span class="m-bullet-text" id="m-b2"></span></div>
-        <hr class="m-divider"/>
-        <div class="m-bullet-item"><span class="m-dot"></span><span class="m-bullet-text" id="m-b3"></span></div>
-        <hr class="m-divider"/>
-        <div class="m-bullet-item"><span class="m-dot"></span><span class="m-bullet-text" id="m-b4"></span></div>
-      </div>
-      <div id="modal-reference">
-        <div id="modal-ref-label">REFERENCE</div>
-        <p id="m-ref-text"></p>
+      <div class="unit-toggle">▾</div>
+    </div>
+    <div class="unit-body">
+      <div class="unit-links">
+        <a class="link-card" href="https://drhaas-eubs.github.io/marti301/unit1.html" data-search="framework gallery slibraries 1 2 3 4 AI strategy governance competitive advantage PESTEL porter dynamic capabilities EU AI Act NIST">
+          <div class="link-badge" style="background:var(--unit1)">FG</div>
+          <div class="link-body"><div class="link-title">Framework Gallery</div><div class="link-desc">20 interactive frameworks · Slibraries 1–4</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="https://drhaas-eubs.github.io/marti301/activities/Unit1_Activities.html" data-search="guided discovery session activities gallery exploration framework pitch case deep dive NovaBanc board presentation reflection">
+          <div class="link-badge" style="background:var(--unit1-muted)">GD</div>
+          <div class="link-body"><div class="link-title">Guided Discovery — Framework Exploration</div><div class="link-desc">7-phase session — gallery exploration, case deep dive, framework pitch</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="https://drhaas-eubs.github.io/marti301/cases/Unit1_Case.html" data-search="NovaBanc case study bank automate augment AI strategy investment european">
+          <div class="link-badge" style="background:#059669">CS</div>
+          <div class="link-body"><div class="link-title">Case: NovaBanc — To Automate or Augment?</div><div class="link-desc">Mid-sized European bank facing AI strategy decision</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="https://drhaas-eubs.github.io/marti301/prereading/Unit1_PreReading.html" data-search="pre-reading AI maturity staircase strategies fail">
+          <div class="link-badge" style="background:var(--amber)">PR</div>
+          <div class="link-body"><div class="link-title">Pre-Reading: Why Most AI Strategies Fail Before They Start</div><div class="link-desc">Key framework: AI Maturity Staircase</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="https://drhaas-eubs.github.io/marti301/reflections/Unit1_Reflection.html" data-search="reflection questions independent study">
+          <div class="link-badge" style="background:#7C3AED">RF</div>
+          <div class="link-body"><div class="link-title">Reflection Prompt</div><div class="link-desc">3 questions for independent study</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
       </div>
     </div>
   </div>
+
+  <!-- UNIT 2 — Amber/Orange: curiosity, energy, experimentation -->
+  <div class="unit" data-unit="2">
+    <div class="unit-header" onclick="toggle(this)">
+      <div class="unit-num" style="background:var(--unit2)">2</div>
+      <div class="unit-info">
+        <div class="unit-title">ML &amp; Data-Driven Decisions</div>
+        <div class="unit-format">Live Data Lab</div>
+      </div>
+      <div class="unit-toggle">▾</div>
+    </div>
+    <div class="unit-body">
+      <div class="unit-links">
+        <a class="link-card" href="https://drhaas-eubs.github.io/marti301/unit2.html" data-search="framework gallery slibraries 5 6 7 8 ML machine learning predictive decision intelligence data strategy marketing confusion matrix CRISP-DM">
+          <div class="link-badge" style="background:var(--unit2)">FG</div>
+          <div class="link-body"><div class="link-title">Framework Gallery</div><div class="link-desc">20 interactive frameworks · Slibraries 5–8</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="https://drhaas-eubs.github.io/marti301/activities/Unit2_Activities.html" data-search="data lab hands-on ML model selection CRISP-DM data audit bias check board pitch FreshCart random forest neural network">
+          <div class="link-badge" style="background:var(--unit2-muted)">DL</div>
+          <div class="link-body"><div class="link-title">Live Data Lab — Hands-on ML Decision-Making</div><div class="link-desc">Data audit, model selection, bias check, board pitch</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="https://drhaas-eubs.github.io/marti301/cases/Unit2_Case.html" data-search="FreshCart case study algorithm grocery demand prediction failure ML">
+          <div class="link-badge" style="background:#059669">CS</div>
+          <div class="link-body"><div class="link-title">Case: FreshCart — When the Algorithm Gets It Wrong</div><div class="link-desc">Online grocery ML demand prediction failure</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="https://drhaas-eubs.github.io/marti301/prereading/Unit2_PreReading.html" data-search="pre-reading confusion matrix accuracy precision recall">
+          <div class="link-badge" style="background:var(--amber)">PR</div>
+          <div class="link-body"><div class="link-title">Pre-Reading: The Confusion Matrix — Why Accuracy Is Not Enough</div><div class="link-desc">Key framework: Confusion Matrix 2×2</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="https://drhaas-eubs.github.io/marti301/reflections/Unit2_Reflection.html" data-search="reflection questions independent study">
+          <div class="link-badge" style="background:#7C3AED">RF</div>
+          <div class="link-body"><div class="link-title">Reflection Prompt</div><div class="link-desc">3 questions for independent study</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- UNIT 3 — Warm Red: empathy, emotion, human connection -->
+  <div class="unit" data-unit="3">
+    <div class="unit-header" onclick="toggle(this)">
+      <div class="unit-num" style="background:var(--unit3)">3</div>
+      <div class="unit-info">
+        <div class="unit-title">Enhanced Customer Experience</div>
+        <div class="unit-format">Role Play</div>
+      </div>
+      <div class="unit-toggle">▾</div>
+    </div>
+    <div class="unit-body">
+      <div class="unit-links">
+        <a class="link-card" href="https://drhaas-eubs.github.io/marti301/unit3.html" data-search="framework gallery slibraries 9 10 11 12 customer experience journey CX conversational AI NLP marketing 6.0 NPS CSAT CES">
+          <div class="link-badge" style="background:var(--unit3)">FG</div>
+          <div class="link-body"><div class="link-title">Framework Gallery</div><div class="link-desc">20 interactive frameworks · Slibraries 9–12</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="https://drhaas-eubs.github.io/marti301/activities/Unit3_Activities.html" data-search="role play CX crisis simulation luxury brand chatbot VIP client CXO CMO Maison Lumiere emergency meeting customer confrontation">
+          <div class="link-badge" style="background:var(--unit3-muted)">RP</div>
+          <div class="link-body"><div class="link-title">Role Play — CX Crisis Simulation</div><div class="link-desc">Luxury brand AI chatbot disaster — 6 roles, 3 scenes, real tensions</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="https://drhaas-eubs.github.io/marti301/cases/Unit3_Case.html" data-search="Maison Lumiere case study luxury fashion algorithm AI CX tension">
+          <div class="link-badge" style="background:#059669">CS</div>
+          <div class="link-body"><div class="link-title">Case: Maison Lumière — Luxury Meets the Algorithm</div><div class="link-desc">French luxury fashion house AI-CX tension</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="https://drhaas-eubs.github.io/marti301/prereading/Unit3_PreReading.html" data-search="pre-reading NPS CSAT CES beyond measuring CX customer experience metrics">
+          <div class="link-badge" style="background:var(--amber)">PR</div>
+          <div class="link-body"><div class="link-title">Pre-Reading: Beyond NPS — Measuring What Matters in CX</div><div class="link-desc">Key framework: NPS-CSAT-CES Triangle</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="https://drhaas-eubs.github.io/marti301/reflections/Unit3_Reflection.html" data-search="reflection questions independent study">
+          <div class="link-badge" style="background:#7C3AED">RF</div>
+          <div class="link-body"><div class="link-title">Reflection Prompt</div><div class="link-desc">3 questions for independent study</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- UNIT 4 — Steel Blue: clarity, logic, analytical rigour -->
+  <div class="unit" data-unit="4">
+    <div class="unit-header" onclick="toggle(this)">
+      <div class="unit-num" style="background:var(--unit4)">4</div>
+      <div class="unit-info">
+        <div class="unit-title">The Financial Side of AI</div>
+        <div class="unit-format">Mini-Hackathon</div>
+      </div>
+      <div class="unit-toggle">▾</div>
+    </div>
+    <div class="unit-body">
+      <div class="unit-links">
+        <a class="link-card" href="https://drhaas-eubs.github.io/marti301/unit4.html" data-search="framework gallery slibraries 13 14 15 16 financial markets risk management talent resources sustainable green AI total cost ownership">
+          <div class="link-badge" style="background:var(--unit4)">FG</div>
+          <div class="link-body"><div class="link-title">Framework Gallery</div><div class="link-desc">20 interactive frameworks · Slibraries 13–16</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="https://drhaas-eubs.github.io/marti301/activities/Unit4_Activities.html" data-search="mini hackathon AI investment plan constraint cards cost architecture risk matrix talent plan green AI QuantEdge BaFin board pitch">
+          <div class="link-badge" style="background:var(--unit4-muted)">HK</div>
+          <div class="link-body"><div class="link-title">Mini-Hackathon — AI Investment Under Pressure</div><div class="link-desc">Constraint cards, cost architecture, risk matrix, 5-min board pitch</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="https://drhaas-eubs.github.io/marti301/cases/Unit4_Case.html" data-search="QuantEdge case study fintech credit scorer regulatory cost pressure hidden costs AI ambition">
+          <div class="link-badge" style="background:#059669">CS</div>
+          <div class="link-body"><div class="link-title">Case: QuantEdge — The Hidden Costs of AI Ambition</div><div class="link-desc">Fintech credit scorer facing regulatory and cost pressure</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="https://drhaas-eubs.github.io/marti301/prereading/Unit4_PreReading.html" data-search="pre-reading AI iceberg business case total cost ownership">
+          <div class="link-badge" style="background:var(--amber)">PR</div>
+          <div class="link-body"><div class="link-title">Pre-Reading: The AI Iceberg — What Your Business Case Is Not Telling You</div><div class="link-desc">Key framework: Total Cost of AI Ownership</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="https://drhaas-eubs.github.io/marti301/reflections/Unit4_Reflection.html" data-search="reflection questions independent study">
+          <div class="link-badge" style="background:#7C3AED">RF</div>
+          <div class="link-body"><div class="link-title">Reflection Prompt</div><div class="link-desc">3 questions for independent study</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- UNIT 5 — Slate: neutrality, authority, justice -->
+  <div class="unit" data-unit="5">
+    <div class="unit-header" onclick="toggle(this)">
+      <div class="unit-num" style="background:var(--unit5)">5</div>
+      <div class="unit-info">
+        <div class="unit-title">IP &amp; Value Creation through AI</div>
+        <div class="unit-format">Moot Court</div>
+      </div>
+      <div class="unit-toggle">▾</div>
+    </div>
+    <div class="unit-body">
+      <div class="unit-links">
+        <a class="link-card" href="https://drhaas-eubs.github.io/marti301/unit5.html" data-search="framework gallery slibraries 17 18 19 20 copyright data IP strategy competition liability protection authorship patent trademark">
+          <div class="link-badge" style="background:var(--unit5)">FG</div>
+          <div class="link-body"><div class="link-title">Framework Gallery</div><div class="link-desc">20 interactive frameworks · Slibraries 17–20</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="https://drhaas-eubs.github.io/marti301/activities/Unit5_Activities.html" data-search="moot court mock trial AI copyright claimant defendant jury Arturo Vega SynthVision DreamForge IP infringement cross examination verdict">
+          <div class="link-badge" style="background:var(--unit5-muted)">MC</div>
+          <div class="link-body"><div class="link-title">Moot Court — AI Copyright Mock Trial</div><div class="link-desc">Arturo Vega v. SynthVision Inc. — claimant, defendant, jury</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="https://drhaas-eubs.github.io/marti301/cases/Unit5_Case.html" data-search="SynthVision case study generative AI startup IP crisis who owns what AI creates copyright">
+          <div class="link-badge" style="background:#059669">CS</div>
+          <div class="link-body"><div class="link-title">Case: SynthVision — Who Owns What AI Creates?</div><div class="link-desc">Generative AI startup facing IP crises</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="https://drhaas-eubs.github.io/marti301/prereading/Unit5_PreReading.html" data-search="pre-reading AI author authorship decision tree copyright creativity">
+          <div class="link-badge" style="background:var(--amber)">PR</div>
+          <div class="link-body"><div class="link-title">Pre-Reading: Can AI Be an Author?</div><div class="link-desc">Key framework: Authorship Decision Tree</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="https://drhaas-eubs.github.io/marti301/reflections/Unit5_Reflection.html" data-search="reflection questions independent study">
+          <div class="link-badge" style="background:#7C3AED">RF</div>
+          <div class="link-body"><div class="link-title">Reflection Prompt</div><div class="link-desc">3 questions for independent study</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- UNIT 6 — Royal Blue: mastery, confidence, completion -->
+  <div class="unit" data-unit="6">
+    <div class="unit-header" onclick="toggle(this)">
+      <div class="unit-num" style="background:var(--unit6)">6</div>
+      <div class="unit-info">
+        <div class="unit-title">Finance &amp; Investment Plans</div>
+        <div class="unit-format">Business Challenge · Capstone</div>
+      </div>
+      <div class="unit-toggle">▾</div>
+    </div>
+    <div class="unit-body">
+      <div class="unit-links">
+        <a class="link-card" href="https://drhaas-eubs.github.io/marti301/unit6.html" data-search="framework gallery slibraries 21 22 23 24 investment management portfolio optimisation ML financial analysis modelling plan implementation gap">
+          <div class="link-badge" style="background:var(--unit6)">FG</div>
+          <div class="link-body"><div class="link-title">Framework Gallery</div><div class="link-desc">20 interactive frameworks · Slibraries 21–24</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="https://drhaas-eubs.github.io/marti301/activities/Unit6_Activities.html" data-search="business challenge capstone integration AI investment plan Meridian Capital 10 million all units all slibraries investment committee presentation stress test">
+          <div class="link-badge" style="background:var(--unit6-muted)">BC</div>
+          <div class="link-body"><div class="link-title">Business Challenge — Capstone Integration</div><div class="link-desc">€10M AI investment plan — all 6 units, all 24 Slibraries, one mandate</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="https://drhaas-eubs.github.io/marti301/cases/Unit6_Case.html" data-search="Meridian Capital case study asset manager AI implementation gap deployment bridging">
+          <div class="link-badge" style="background:#059669">CS</div>
+          <div class="link-body"><div class="link-title">Case: Meridian Capital — Bridging the AI Implementation Gap</div><div class="link-desc">Asset manager struggling with AI deployment</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="https://drhaas-eubs.github.io/marti301/prereading/Unit6_PreReading.html" data-search="pre-reading investment firms struggle AI planning implementation gap">
+          <div class="link-badge" style="background:var(--amber)">PR</div>
+          <div class="link-body"><div class="link-title">Pre-Reading: Why Investment Firms Struggle with AI</div><div class="link-desc">Key framework: Planning vs. Implementation Gap</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+        <a class="link-card" href="https://drhaas-eubs.github.io/marti301/reflections/Unit6_Reflection.html" data-search="reflection questions independent study">
+          <div class="link-badge" style="background:#7C3AED">RF</div>
+          <div class="link-body"><div class="link-title">Reflection Prompt</div><div class="link-desc">3 questions for independent study</div></div>
+          <div class="link-tag">HTML</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
 </div>
 
+<!-- ═══════ COMPLETE GALLERY LINK ═══════ -->
+<div class="section-title">Complete Gallery</div>
+<div class="gallery-link">
+  <a href="https://drhaas-eubs.github.io/marti301/complete.html">
+    <span>■</span> All 120 Frameworks — Complete Gallery Wall
+  </a>
+</div>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer>
+  <strong>MARTI301</strong> · AI in Investment &amp; Competitiveness · © 2026 Dr. Hildegard Haas<br>
+  Applying JD Meier's <strong>Thumbnail Thinking</strong> (2025) across the entire course
+</footer>
+
+<!-- ═══════ SCRIPTS ═══════ -->
 <script>
-(function(){
-  var ov=document.getElementById('modal-overlay');
-  var bx=document.getElementById('modal-box');
-  function open(card){
-    var c=card.dataset.color, rgb=card.dataset.rgb;
-    document.getElementById('modal-color-bar').style.background=c;
-    var lead=document.getElementById('modal-lead');
-    lead.style.borderLeftColor=c;
-    lead.style.background='rgba('+rgb+',0.05)';
-    document.getElementById('m-lead-text').style.color=c;
-    document.querySelectorAll('.m-dot').forEach(function(d){d.style.background=c;});
-    var ref=document.getElementById('modal-reference');
-    ref.style.borderLeftColor=c;
-    ref.style.background='rgba('+rgb+',0.07)';
-    document.getElementById('modal-ref-label').style.color=c;
-    document.getElementById('m-slibrary-header').textContent='SLIBRARY '+card.dataset.sl+' — '+card.dataset.setname;
-    document.getElementById('m-unit-badge').textContent=card.dataset.unit;
-    document.getElementById('m-title').textContent=card.dataset.name;
-    document.getElementById('m-itten-line').textContent=card.dataset.itten;
-    document.getElementById('m-lead-text').textContent=card.dataset.lead;
-    document.getElementById('m-sub-text').textContent=card.dataset.sub;
-    document.getElementById('m-b1').textContent=card.dataset.b1;
-    document.getElementById('m-b2').textContent=card.dataset.b2;
-    document.getElementById('m-b3').textContent=card.dataset.b3;
-    document.getElementById('m-b4').textContent=card.dataset.b4;
-    document.getElementById('m-ref-text').innerHTML=card.dataset.ref;
-    ov.classList.add('active');
-    document.body.style.overflow='hidden';
-    bx.scrollTop=0;
+function toggle(header){
+  header.parentElement.classList.toggle('open');
+}
+
+/* ─── SEARCH ENGINE ─────────────────────────────────── */
+const searchInput = document.getElementById('searchInput');
+const searchResults = document.getElementById('searchResults');
+const units = document.querySelectorAll('.unit');
+
+// Build search index from DOM
+const searchIndex = [];
+document.querySelectorAll('.link-card[data-search]').forEach(card => {
+  const unit = card.closest('.unit');
+  const unitNum = unit.dataset.unit;
+  const unitTitle = unit.querySelector('.unit-title').textContent;
+  const title = card.querySelector('.link-title').textContent;
+  const desc = card.querySelector('.link-desc').textContent;
+  const badge = card.querySelector('.link-badge');
+  const badgeText = badge.textContent;
+  const badgeColor = badge.style.background;
+  const href = card.getAttribute('href');
+  const keywords = card.dataset.search;
+  const haystack = (title + ' ' + desc + ' ' + keywords + ' ' + unitTitle + ' unit ' + unitNum).toLowerCase();
+  searchIndex.push({ unitNum, unitTitle, title, desc, badgeText, badgeColor, href, haystack, card, unit });
+});
+
+let debounceTimer;
+searchInput.addEventListener('input', function(){
+  clearTimeout(debounceTimer);
+  debounceTimer = setTimeout(runSearch, 150);
+});
+
+function runSearch(){
+  const q = searchInput.value.trim().toLowerCase();
+
+  // Clear all highlights
+  document.querySelectorAll('.link-card.search-highlight').forEach(c => c.classList.remove('search-highlight'));
+  units.forEach(u => u.classList.remove('search-hidden'));
+
+  if(q.length < 2){
+    searchResults.classList.remove('active');
+    searchResults.innerHTML = '';
+    return;
   }
-  function close(){ov.classList.remove('active');document.body.style.overflow='';}
-  document.querySelectorAll('.fw-card').forEach(function(c){c.addEventListener('click',function(){open(c);});});
-  document.getElementById('modal-close').addEventListener('click',close);
-  ov.addEventListener('click',function(e){if(e.target===ov)close();});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
-})();
-</script>
-<script>
-document.querySelectorAll('.acc-hdr').forEach(function(h){
-  h.addEventListener('click',function(){
-    h.classList.toggle('open');
-    h.nextElementSibling.classList.toggle('open');
+
+  const terms = q.split(/\s+/);
+  const matches = searchIndex.filter(item =>
+    terms.every(t => item.haystack.includes(t))
+  );
+
+  if(matches.length === 0){
+    searchResults.innerHTML = '<div class="sr-empty">No results for "' + q.replace(/</g,'&lt;') + '"</div>';
+    searchResults.classList.add('active');
+    // Hide all units
+    units.forEach(u => u.classList.add('search-hidden'));
+    return;
+  }
+
+  // Show matching units only
+  const matchedUnits = new Set(matches.map(m => m.unitNum));
+  units.forEach(u => {
+    if(matchedUnits.has(u.dataset.unit)){
+      u.classList.remove('search-hidden');
+      u.classList.add('open');
+    } else {
+      u.classList.add('search-hidden');
+    }
   });
+
+  // Highlight matching cards
+  matches.forEach(m => m.card.classList.add('search-highlight'));
+
+  // Build dropdown
+  const html = matches.slice(0, 8).map(m =>
+    '<a class="sr-item" href="' + m.href + '">' +
+      '<div class="sr-badge" style="background:' + m.badgeColor + '">' + m.badgeText + '</div>' +
+      '<div><div class="sr-title">' + m.title + '</div><div class="sr-sub">Unit ' + m.unitNum + ' · ' + m.desc + '</div></div>' +
+    '</a>'
+  ).join('');
+
+  searchResults.innerHTML = html + (matches.length > 8 ? '<div class="sr-empty">' + (matches.length - 8) + ' more results…</div>' : '');
+  searchResults.classList.add('active');
+}
+
+// Close dropdown on outside click
+document.addEventListener('click', function(e){
+  if(!e.target.closest('.search-wrap')){
+    searchResults.classList.remove('active');
+  }
+});
+
+// Escape clears search
+searchInput.addEventListener('keydown', function(e){
+  if(e.key === 'Escape'){
+    searchInput.value = '';
+    runSearch();
+    searchInput.blur();
+  }
 });
 </script>
+
 </body>
 </html>
