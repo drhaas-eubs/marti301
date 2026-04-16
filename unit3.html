@@ -1,361 +1,372 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MARTI301 Unit 3 — Enhanced Customer Experience</title>
-<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--navy:#1B2A4A;--teal:#00B388;--amber:#D4872C;--bg:#FAFBFC;--card:#FFF;--text:#1B2A4A;--muted:#6B7280;--border:#E5E7EB;--def-red:#C0392B}
-html{scroll-behavior:smooth}
-body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;overflow-x:hidden}
-.hero{background:var(--navy);padding:2.5rem 2rem 2rem;position:relative;overflow:hidden}
-.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:var(--teal)}
-.hero-tag{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);font-weight:700;margin-bottom:.5rem}
-.hero h1{font-size:2.2rem;color:#fff;font-weight:700;line-height:1.2;margin-bottom:.4rem}
-.hero p{color:#94A3B8;font-size:.95rem;margin-bottom:.8rem}
-.hero .copy{color:#64748B;font-size:.8rem;font-style:italic}
-.hero-stats{display:flex;gap:2rem;margin-top:1rem}
-.hero-stat{text-align:center}
-.hero-stat .num{font-size:1.8rem;color:var(--teal);font-weight:700}
-.hero-stat .label{font-size:.7rem;color:#94A3B8;text-transform:uppercase;letter-spacing:.1em}
-.slib-set{margin-bottom:2.5rem}
-.slib-set-header{display:flex;align-items:center;gap:.6rem;margin-bottom:1rem;padding-left:.2rem;opacity:0;transform:translateX(-15px);transition:all .5s cubic-bezier(.16,1,.3,1)}
-.slib-set-header.visible{opacity:1;transform:translateX(0)}
-.slib-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
-.slib-set-title{font-size:1rem;font-weight:700}
-.slib-set-num{font-size:.7rem;color:var(--muted);background:#F1F5F9;padding:.15rem .5rem;border-radius:1rem;font-weight:600}
-.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
-.card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;opacity:0;transform:translateY(25px) scale(.97);transition:all .5s cubic-bezier(.16,1,.3,1);position:relative;display:flex;flex-direction:column}
-.card.visible{opacity:1;transform:translateY(0) scale(1)}
-.card:hover{transform:translateY(-4px) scale(1.01);box-shadow:0 12px 32px rgba(27,42,74,.1);border-color:transparent}
-.card-accent{height:3px;width:100%}
-.card-thumb{height:120px;background:#F8FAFC;display:flex;align-items:center;justify-content:center;padding:.8rem;overflow:hidden}
-.card-thumb svg{width:100%;height:100%;opacity:.7;transition:opacity .3s}
-.card:hover .card-thumb svg{opacity:1}
-.card-body{padding:.8rem .9rem .9rem;flex:1;display:flex;flex-direction:column}
-.card-title{font-size:.82rem;font-weight:700;line-height:1.3;margin-bottom:.25rem}
-.card-desc{font-size:.7rem;color:var(--muted);line-height:1.4;margin-bottom:.5rem;flex:1}
-.card-tag{display:inline-block;font-size:.6rem;font-weight:700;padding:.15rem .45rem;border-radius:4px;color:#fff;align-self:flex-start}
-.modal-overlay{position:fixed;inset:0;background:rgba(27,42,74,.5);z-index:200;opacity:0;pointer-events:none;transition:opacity .3s;display:flex;align-items:center;justify-content:center;padding:1rem}
-.modal-overlay.open{opacity:1;pointer-events:auto}
-.modal{background:#fff;border-radius:16px;max-width:560px;width:100%;max-height:85vh;overflow-y:auto;transform:translateY(20px) scale(.95);transition:transform .35s cubic-bezier(.16,1,.3,1);padding:0}
-.modal-overlay.open .modal{transform:translateY(0) scale(1)}
-.modal-accent{height:4px;border-radius:16px 16px 0 0}
-.modal-inner{padding:1.8rem 1.6rem}
-.modal-close{position:absolute;top:1rem;right:1rem;width:32px;height:32px;border-radius:50%;border:none;background:#F1F5F9;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;color:var(--muted);transition:background .2s}
-.modal-close:hover{background:#E2E8F0}
-.modal-slib{font-size:.7rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.3rem}
-.modal-title{font-size:1.4rem;font-weight:700;margin-bottom:.4rem}
-.modal-def{font-size:.9rem;color:var(--def-red);font-weight:600;line-height:1.5;margin-bottom:.7rem;border-left:3px solid var(--def-red);padding-left:.6rem}
-.modal-desc{font-size:.88rem;color:var(--muted);line-height:1.6;margin-bottom:.8rem}
-.modal-thumb{background:#F8FAFC;border-radius:10px;padding:1.5rem;margin-bottom:1.2rem;display:flex;align-items:center;justify-content:center}
-.modal-thumb svg{width:220px;height:140px}
-.modal-details{list-style:none;padding:0;margin-bottom:1rem}
-.modal-details li{font-size:.82rem;color:var(--text);padding:.4rem 0;border-bottom:1px solid #F1F5F9;display:flex;align-items:flex-start;gap:.5rem}
-.modal-details li::before{content:'\2022';color:var(--teal);font-weight:bold;flex-shrink:0;margin-top:1px}
-.modal-ref{background:#F8FAFC;border-radius:8px;padding:.7rem .9rem;font-size:.75rem;color:#475569;line-height:1.5;border-left:3px solid var(--teal)}
-.modal-ref-label{font-weight:700;font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:var(--teal);margin-bottom:.2rem}
-.footer{background:var(--navy);padding:2rem;text-align:center;color:#64748B;font-size:.75rem;margin-top:2rem}
-.footer strong{color:var(--teal)}
-@media(max-width:640px){.hero h1{font-size:1.5rem}.hero-stats{gap:1rem}.cards-grid{grid-template-columns:repeat(auto-fill,minmax(165px,1fr))}.card-thumb{height:90px}}</style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>MLUXR302 Unit 3 — Labour Rights and Working Conditions</title>
+<style>
+:root{--teal:#00B894;--teal-d:#00695C;--bg:#f7f8fa;--text:#0f172a;--muted:#64748b;--white:#ffffff;--radius:12px;--shadow:0 1px 6px rgba(0,0,0,0.07);--shadow-lg:0 8px 28px rgba(0,0,0,0.13);}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
+a{color:inherit;text-decoration:none;}
+.container{max-width:1120px;margin:0 auto;padding:0 24px;}
+.topbar{background:#0f172a;color:rgba(255,255,255,0.5);font-size:11px;letter-spacing:.1em;text-align:center;padding:7px 0;}
+.topbar strong{color:var(--teal);}
+.site-header{background:var(--white);border-bottom:3px solid var(--teal);padding:16px 0;position:sticky;top:0;z-index:500;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
+.hdr-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.hdr-brand .code{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--teal);font-weight:700;}
+.hdr-brand .name{font-size:16px;font-weight:700;}
+.hdr-meta{font-size:12px;color:var(--muted);text-align:right;line-height:1.5;}
+.back-link{display:inline-flex;align-items:center;gap:6px;color:var(--teal-d);font-size:13px;font-weight:600;padding:10px 0;transition:gap .2s;}
+.back-link:hover{gap:10px;}
+.hero{padding:48px 0 36px;text-align:center;}
+.unit-pill{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:16px;}
+.hero h1{font-size:clamp(20px,4vw,36px);font-weight:800;margin-bottom:8px;line-height:1.2;}
+.hero .sub{font-size:15px;color:var(--muted);margin-bottom:6px;}
+.hero-hint{font-size:12px;color:var(--muted);margin-bottom:28px;font-style:italic;}
+.hero-stats{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;}
+.hero-stat .num{font-size:38px;font-weight:800;line-height:1;}
+.hero-stat .lbl{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:2px;}
+.itten-tag{display:inline-flex;align-items:center;gap:7px;font-size:12px;background:var(--white);padding:6px 14px;border-radius:20px;box-shadow:var(--shadow);margin-bottom:32px;}
+.itten-dot{width:10px;height:10px;border-radius:50%;}
+.set-section{margin-bottom:52px;}
+.set-hdr{display:flex;align-items:center;gap:12px;margin-bottom:18px;padding-bottom:10px;border-bottom:2px solid #e2e8f0;}
+.set-hdr h2{font-size:14px;font-weight:700;display:flex;align-items:center;gap:10px;}
+.set-num{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0;}
+.set-tag{font-size:11px;color:var(--muted);background:#f1f5f9;padding:2px 10px;border-radius:10px;margin-left:auto;}
+.fw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:14px;}
+.fw-card{background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);cursor:pointer;transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column;border-top:4px solid transparent;}
+.fw-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);}
+.fw-card-icon{padding:14px 16px 6px;line-height:1;}
+.fw-card-icon svg{display:block;width:56px;height:40px;}
+.fw-card-body{padding:0 16px 12px;flex:1;display:flex;flex-direction:column;}
+.fw-card-name{font-size:13px;font-weight:700;margin-bottom:5px;color:var(--text);line-height:1.3;}
+.fw-card-desc{font-size:11.5px;color:var(--muted);line-height:1.55;flex:1;}
+.fw-card-foot{display:flex;align-items:center;justify-content:space-between;padding:8px 16px 10px;border-top:1px solid #f0f0f0;margin-top:auto;}
+.fw-sl-badge{font-size:10px;font-weight:700;letter-spacing:.06em;padding:2px 8px;border-radius:8px;}
+.fw-arrow{font-size:13px;color:var(--muted);}
+.idx-hero{padding:60px 0 48px;text-align:center;}
+.idx-hero .school{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:10px;}
+.idx-hero h1{font-size:clamp(26px,5vw,50px);font-weight:800;line-height:1.15;margin-bottom:12px;}
+.idx-hero .tag{font-size:16px;color:var(--muted);margin-bottom:10px;}
+.idx-hero .itten-credit{font-size:12px;color:var(--muted);margin-bottom:30px;font-style:italic;}
+.idx-stats{display:flex;justify-content:center;gap:48px;flex-wrap:wrap;}
+.idx-stat .num{font-size:48px;font-weight:800;color:var(--teal);line-height:1;}
+.idx-stat .lbl{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:4px;}
+.itten-legend{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:24px 0 32px;}
+.itten-chip{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;padding:5px 12px;border-radius:20px;background:var(--white);box-shadow:var(--shadow);}
+.itten-chip-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.accordion{margin-bottom:10px;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);}
+.acc-hdr{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;cursor:pointer;transition:opacity .18s;}
+.acc-hdr:hover{opacity:.93;}
+.acc-meta{display:flex;flex-direction:column;gap:2px;}
+.acc-unit-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:rgba(255,255,255,.75);}
+.acc-itten{font-size:10px;color:rgba(255,255,255,.55);font-style:italic;}
+.acc-title{font-size:15px;font-weight:700;color:#fff;line-height:1.3;}
+.acc-chevron{font-size:17px;color:rgba(255,255,255,.65);transition:transform .28s;}
+.acc-hdr.open .acc-chevron{transform:rotate(180deg);}
+.acc-body{display:none;background:var(--white);}
+.acc-body.open{display:block;}
+.res-link{display:flex;align-items:center;gap:12px;padding:13px 22px;border-bottom:1px solid #f1f5f9;transition:background .13s;}
+.res-link:last-child{border-bottom:none;}
+.res-link:hover{background:#f8fafc;}
+.res-badge{font-size:10px;font-weight:700;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;}
+.res-title{font-size:14px;font-weight:700;margin-bottom:1px;}
+.res-meta{font-size:11px;color:var(--muted);}
+.res-tag{font-size:10px;color:var(--muted);background:#f1f5f9;padding:2px 8px;border-radius:6px;white-space:nowrap;}
+.phase-list{list-style:none;}
+.phase-item{display:flex;gap:14px;padding:18px 0;border-bottom:1px solid #f0f0f0;}
+.phase-item:last-child{border-bottom:none;}
+.phase-badge{font-size:10px;font-weight:700;letter-spacing:.07em;padding:4px 10px;border-radius:8px;height:fit-content;white-space:nowrap;}
+.phase-h{font-size:14px;font-weight:700;margin-bottom:4px;}
+.phase-p{font-size:13px;color:var(--muted);}
+.case-brand-hdr{padding:48px 0 28px;text-align:center;}
+.brand-name{font-size:48px;font-weight:900;letter-spacing:-2px;margin-bottom:8px;line-height:1;}
+.case-card{background:var(--white);border-radius:var(--radius);padding:32px;box-shadow:var(--shadow);margin-bottom:18px;}
+.case-card h2{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #f1f5f9;}
+.case-card p{font-size:14.5px;line-height:1.8;margin-bottom:10px;}
+.case-card ol{padding-left:18px;}
+.case-card li{font-size:14.5px;line-height:1.7;margin-bottom:8px;}
+.pr-card{background:var(--white);border-radius:var(--radius);padding:32px;box-shadow:var(--shadow);margin-bottom:18px;}
+.pr-card h2{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:12px;}
+.pr-card p{font-size:14.5px;line-height:1.8;margin-bottom:10px;}
+.kp-item{display:flex;gap:10px;margin-bottom:10px;align-items:flex-start;}
+.kp-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:7px;}
+.kp-text{font-size:14px;line-height:1.6;}
+.pr-prepare{border-radius:0 var(--radius) var(--radius) 0;padding:20px 24px;border-left:4px solid;margin-bottom:48px;}
+.pr-prepare-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;}
+.ref-cards{display:grid;gap:18px;}
+.ref-card{background:var(--white);border-radius:var(--radius);padding:26px 28px;box-shadow:var(--shadow);display:flex;gap:18px;align-items:flex-start;}
+.ref-num{font-size:32px;font-weight:900;line-height:1;opacity:.15;flex-shrink:0;width:40px;}
+.ref-card p{font-size:15px;line-height:1.75;}
+.ref-guide{border-radius:var(--radius);padding:20px 24px;margin-top:24px;margin-bottom:48px;}
+.ref-guide-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;}
+.ref-guide p{font-size:13.5px;line-height:1.7;}
+.cg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:9px;}
+.cg-card{background:var(--white);border-radius:8px;padding:12px 14px;box-shadow:0 1px 3px rgba(0,0,0,0.05);border-left:4px solid transparent;}
+.cg-name{font-size:12px;font-weight:700;margin-bottom:2px;}
+.cg-unit{font-size:10px;color:var(--muted);}
+.site-footer{margin-top:72px;border-top:3px solid var(--teal);padding:22px 0;text-align:center;font-size:12px;color:var(--muted);}
+.site-footer strong{color:var(--text);}
+@media(max-width:640px){.fw-grid{grid-template-columns:1fr 1fr;}.cg-grid{grid-template-columns:1fr 1fr;}}
+</style>
+
+<style>
+#modal-overlay{position:fixed;inset:0;background:rgba(8,8,20,0.78);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);z-index:9000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity 0.22s;}
+#modal-overlay.active{opacity:1;pointer-events:all;}
+#modal-box{background:#ffffff;border-radius:16px;width:100%;max-width:660px;max-height:90vh;overflow-y:auto;box-shadow:0 28px 90px rgba(0,0,0,0.38);transform:translateY(20px) scale(0.97);transition:transform 0.22s;position:relative;}
+#modal-overlay.active #modal-box{transform:translateY(0) scale(1);}
+#modal-color-bar{height:5px;border-radius:16px 16px 0 0;}
+#modal-inner{padding:28px 32px 28px;}
+#modal-header{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:20px;}
+#modal-header-left{flex:1;}
+#modal-label-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap;}
+#m-slibrary-header{font-size:10px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:#888;}
+#m-unit-badge{font-size:10px;font-weight:700;letter-spacing:0.08em;padding:2px 9px;border-radius:8px;background:#f0f0f0;color:#666;}
+#m-title{font-size:24px;font-weight:800;color:#1a1a2e;line-height:1.2;margin-bottom:5px;font-family:Arial,Helvetica,sans-serif;}
+#m-itten-line{font-size:11px;color:#aaa;font-style:italic;}
+#modal-close{background:#f0f0f2;border:none;width:34px;height:34px;border-radius:50%;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#666;transition:background .15s,color .15s;}
+#modal-close:hover{background:#dde0e4;color:#333;}
+#modal-lead{border-left:4px solid #ccc;margin:0 0 14px;padding:12px 18px;border-radius:0 6px 6px 0;}
+#modal-lead p{font-size:15px;font-weight:700;font-style:italic;line-height:1.65;margin:0;font-family:Arial,Helvetica,sans-serif;}
+#m-sub-text{font-size:13px;color:#888;font-style:italic;margin-bottom:22px;line-height:1.5;}
+#modal-bullets{margin-bottom:24px;}
+.m-bullet-item{display:flex;align-items:baseline;gap:12px;padding:11px 0;}
+.m-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-top:2px;display:inline-block;background:#ccc;}
+.m-bullet-text{font-size:14px;line-height:1.65;color:#333;}
+.m-divider{border:none;border-top:1px solid #e8eaed;margin:0;}
+#modal-reference{border-radius:0 8px 8px 0;border-left:4px solid #ccc;padding:16px 20px;margin-top:4px;}
+#modal-ref-label{font-size:10px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:#888;margin-bottom:8px;}
+#m-ref-text{font-size:13px;line-height:1.75;color:#444;margin:0;}
+@media(max-width:580px){#modal-inner{padding:20px 18px 20px;}#m-title{font-size:19px;}}
+</style>
 </head>
 <body>
-
-<a href="./" style="display:block;background:#E6F7F3;padding:.65rem 1.5rem;text-decoration:none;font-size:.82rem;font-weight:700;color:#059669;border-bottom:2px solid #00B388">&#8592; Back to Course Overview</a>
-<header class="hero">
-  <div class="hero-tag">MARTI301 &middot; Unit 3</div>
-  <h1>Enhanced Customer Experience</h1>
-  <p>Select any framework to explore it in detail</p>
-  <div class="copy">&copy; 2026 Dr. Hildegard Haas</div>
-  <div class="hero-stats">
-    <div class="hero-stat"><div class="num">4</div><div class="label">Slibraries</div></div>
-    <div class="hero-stat"><div class="num">20</div><div class="label">Frameworks</div></div>
-    <div class="hero-stat"><div class="num">9&ndash;12</div><div class="label">Set Range</div></div>
+<script>
+(function(){
+  document.addEventListener('contextmenu',e=>e.preventDefault());
+  ['copy','cut','paste'].forEach(ev=>document.addEventListener(ev,e=>e.preventDefault()));
+  document.addEventListener('keydown',e=>{
+    const k=e.key.toLowerCase(),c=e.ctrlKey||e.metaKey;
+    if(c&&(k==='c'||k==='x'||k==='v'||k==='s'||k==='u'||k==='a'||k==='p')){e.preventDefault();return false;}
+    if(e.key==='F12'||(c&&e.shiftKey&&(k==='i'||k==='j'||k==='c'))){e.preventDefault();return false;}
+  });
+  document.addEventListener('dragstart',e=>e.preventDefault());
+})();
+</script>
+<style>
+@media print{body *{visibility:hidden!important;}body::after{visibility:visible!important;content:'© Dr. Hildegard Haas | MLUXR302 | EU Business School — Printing not permitted.';display:block;font-size:18px;text-align:center;padding:80px 40px;font-family:Arial,sans-serif;}}
+body,*{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
+</style>
+<div class="topbar">
+  <strong>MLUXR302</strong> &nbsp;&middot;&nbsp; Sustainable Value Creation in Fashion &amp; Luxury
+  &nbsp;&middot;&nbsp;
+  &copy; 2026 Dr. Hildegard Haas &nbsp;&middot;&nbsp; EU Business School
+</div>
+<header class="site-header">
+  <div class="container hdr-inner">
+    <div class="hdr-brand">
+      <div class="code">MLUXR302 &middot; Masters Level 7 &middot; EU Business School</div>
+      <div class="name">Sustainable Value Creation in Fashion &amp; Luxury</div>
+    </div>
+    <div class="hdr-meta">Dr. Hildegard Haas<br/>hildegard.haas@euruni.edu &middot; www.euruni.edu</div>
   </div>
 </header>
-<main style="padding:2rem 1.5rem 1rem">
-<div class="slib-set">
-      <div class="slib-set-header" data-anim>
-        <span class="slib-dot" style="background:#DC2626"></span>
-        <span class="slib-set-title">Set 9 &mdash; Customer Journey & CX</span>
-        <span class="slib-set-num">5 frameworks</span>
-      </div>
-      <div class="cards-grid"><div class="card" data-anim style="transition-delay:0ms" onclick="openModal(FW[0])">
-          <div class="card-accent" style="background:#DC2626"></div>
-          <div class="card-thumb" id="thumb-9-0"></div>
-          <div class="card-body">
-            <div class="card-title">Omnichannel Journey Map</div>
-            <div class="card-desc">Horizontal timeline with channels stacked and AI touchpoints</div>
-            <span class="card-tag" style="background:#DC2626">Slibrary 9</span>
-          </div>
-        </div><div class="card" data-anim style="transition-delay:80ms" onclick="openModal(FW[1])">
-          <div class="card-accent" style="background:#DC2626"></div>
-          <div class="card-thumb" id="thumb-9-1"></div>
-          <div class="card-body">
-            <div class="card-title">CX Experience Pyramid</div>
-            <div class="card-desc">Functional → accessible → enjoyable—AI lifts each layer</div>
-            <span class="card-tag" style="background:#DC2626">Slibrary 9</span>
-          </div>
-        </div><div class="card" data-anim style="transition-delay:160ms" onclick="openModal(FW[2])">
-          <div class="card-accent" style="background:#DC2626"></div>
-          <div class="card-thumb" id="thumb-9-2"></div>
-          <div class="card-body">
-            <div class="card-title">Service Blueprint</div>
-            <div class="card-desc">Frontstage vs. backstage swim lanes with line of visibility</div>
-            <span class="card-tag" style="background:#DC2626">Slibrary 9</span>
-          </div>
-        </div><div class="card" data-anim style="transition-delay:240ms" onclick="openModal(FW[3])">
-          <div class="card-accent" style="background:#DC2626"></div>
-          <div class="card-thumb" id="thumb-9-3"></div>
-          <div class="card-body">
-            <div class="card-title">Touchpoint Matrix</div>
-            <div class="card-desc">Channel × journey stage heatmap showing interaction intensity</div>
-            <span class="card-tag" style="background:#DC2626">Slibrary 9</span>
-          </div>
-        </div><div class="card" data-anim style="transition-delay:320ms" onclick="openModal(FW[4])">
-          <div class="card-accent" style="background:#DC2626"></div>
-          <div class="card-thumb" id="thumb-9-4"></div>
-          <div class="card-body">
-            <div class="card-title">Moments of Truth Timeline</div>
-            <div class="card-desc">Zero → First → Second → Ultimate MOT along customer journey</div>
-            <span class="card-tag" style="background:#DC2626">Slibrary 9</span>
-          </div>
-        </div></div></div><div class="slib-set">
-      <div class="slib-set-header" data-anim>
-        <span class="slib-dot" style="background:#2563EB"></span>
-        <span class="slib-set-title">Set 10 &mdash; Conversational AI & NLP</span>
-        <span class="slib-set-num">5 frameworks</span>
-      </div>
-      <div class="cards-grid"><div class="card" data-anim style="transition-delay:0ms" onclick="openModal(FW[5])">
-          <div class="card-accent" style="background:#2563EB"></div>
-          <div class="card-thumb" id="thumb-10-0"></div>
-          <div class="card-body">
-            <div class="card-title">NLP Pipeline Diagram</div>
-            <div class="card-desc">Input → Tokenise → Parse → Understand → Respond with feedback</div>
-            <span class="card-tag" style="background:#2563EB">Slibrary 10</span>
-          </div>
-        </div><div class="card" data-anim style="transition-delay:80ms" onclick="openModal(FW[6])">
-          <div class="card-accent" style="background:#2563EB"></div>
-          <div class="card-thumb" id="thumb-10-1"></div>
-          <div class="card-body">
-            <div class="card-title">Intent-Entity-Context Model</div>
-            <div class="card-desc">What does the user want? What parameters? What state?</div>
-            <span class="card-tag" style="background:#2563EB">Slibrary 10</span>
-          </div>
-        </div><div class="card" data-anim style="transition-delay:160ms" onclick="openModal(FW[7])">
-          <div class="card-accent" style="background:#2563EB"></div>
-          <div class="card-thumb" id="thumb-10-2"></div>
-          <div class="card-body">
-            <div class="card-title">Chatbot Decision Tree</div>
-            <div class="card-desc">Branching flowchart from greeting with fallback to human</div>
-            <span class="card-tag" style="background:#2563EB">Slibrary 10</span>
-          </div>
-        </div><div class="card" data-anim style="transition-delay:240ms" onclick="openModal(FW[8])">
-          <div class="card-accent" style="background:#2563EB"></div>
-          <div class="card-thumb" id="thumb-10-3"></div>
-          <div class="card-body">
-            <div class="card-title">Sentiment Analysis Spectrum</div>
-            <div class="card-desc">Negative → neutral → positive real-time mood tracking</div>
-            <span class="card-tag" style="background:#2563EB">Slibrary 10</span>
-          </div>
-        </div><div class="card" data-anim style="transition-delay:320ms" onclick="openModal(FW[9])">
-          <div class="card-accent" style="background:#2563EB"></div>
-          <div class="card-thumb" id="thumb-10-4"></div>
-          <div class="card-body">
-            <div class="card-title">Human Escalation Flowchart</div>
-            <div class="card-desc">AI handles L1 → confidence check → human handoff with context</div>
-            <span class="card-tag" style="background:#2563EB">Slibrary 10</span>
-          </div>
-        </div></div></div><div class="slib-set">
-      <div class="slib-set-header" data-anim>
-        <span class="slib-dot" style="background:#059669"></span>
-        <span class="slib-set-title">Set 11 &mdash; CX Metrics & Business Impact</span>
-        <span class="slib-set-num">5 frameworks</span>
-      </div>
-      <div class="cards-grid"><div class="card" data-anim style="transition-delay:0ms" onclick="openModal(FW[10])">
-          <div class="card-accent" style="background:#059669"></div>
-          <div class="card-thumb" id="thumb-11-0"></div>
-          <div class="card-body">
-            <div class="card-title">NPS-CSAT-CES Triangle</div>
-            <div class="card-desc">Three complementary lenses on customer experience measurement</div>
-            <span class="card-tag" style="background:#059669">Slibrary 11</span>
-          </div>
-        </div><div class="card" data-anim style="transition-delay:80ms" onclick="openModal(FW[11])">
-          <div class="card-accent" style="background:#059669"></div>
-          <div class="card-thumb" id="thumb-11-1"></div>
-          <div class="card-body">
-            <div class="card-title">Churn Waterfall Chart</div>
-            <div class="card-desc">Starting customers → lost → retained with attrition drivers</div>
-            <span class="card-tag" style="background:#059669">Slibrary 11</span>
-          </div>
-        </div><div class="card" data-anim style="transition-delay:160ms" onclick="openModal(FW[12])">
-          <div class="card-accent" style="background:#059669"></div>
-          <div class="card-thumb" id="thumb-11-2"></div>
-          <div class="card-body">
-            <div class="card-title">CLV-to-CAC Ratio</div>
-            <div class="card-desc">Lifetime value vs. acquisition cost—healthy ratio > 3:1</div>
-            <span class="card-tag" style="background:#059669">Slibrary 11</span>
-          </div>
-        </div><div class="card" data-anim style="transition-delay:240ms" onclick="openModal(FW[13])">
-          <div class="card-accent" style="background:#059669"></div>
-          <div class="card-thumb" id="thumb-11-3"></div>
-          <div class="card-body">
-            <div class="card-title">Loyalty Loop Diagram</div>
-            <div class="card-desc">Consider → buy → enjoy → bond replacing the linear funnel</div>
-            <span class="card-tag" style="background:#059669">Slibrary 11</span>
-          </div>
-        </div><div class="card" data-anim style="transition-delay:320ms" onclick="openModal(FW[14])">
-          <div class="card-accent" style="background:#059669"></div>
-          <div class="card-thumb" id="thumb-11-4"></div>
-          <div class="card-body">
-            <div class="card-title">CX-to-Revenue Bridge</div>
-            <div class="card-desc">CX metric → intermediate outcomes → revenue/EBIT impact</div>
-            <span class="card-tag" style="background:#059669">Slibrary 11</span>
-          </div>
-        </div></div></div><div class="slib-set">
-      <div class="slib-set-header" data-anim>
-        <span class="slib-dot" style="background:#7C3AED"></span>
-        <span class="slib-set-title">Set 12 &mdash; Marketing 6.0 & Immersive</span>
-        <span class="slib-set-num">5 frameworks</span>
-      </div>
-      <div class="cards-grid"><div class="card" data-anim style="transition-delay:0ms" onclick="openModal(FW[15])">
-          <div class="card-accent" style="background:#7C3AED"></div>
-          <div class="card-thumb" id="thumb-12-0"></div>
-          <div class="card-body">
-            <div class="card-title">Marketing Evolution Timeline</div>
-            <div class="card-desc">1.0 Product → 2.0 Customer → ... → 6.0 Immersive</div>
-            <span class="card-tag" style="background:#7C3AED">Slibrary 12</span>
-          </div>
-        </div><div class="card" data-anim style="transition-delay:80ms" onclick="openModal(FW[16])">
-          <div class="card-accent" style="background:#7C3AED"></div>
-          <div class="card-thumb" id="thumb-12-1"></div>
-          <div class="card-body">
-            <div class="card-title">Phygital Experience Model</div>
-            <div class="card-desc">Physical + digital = phygital—seamless overlap zone</div>
-            <span class="card-tag" style="background:#7C3AED">Slibrary 12</span>
-          </div>
-        </div><div class="card" data-anim style="transition-delay:160ms" onclick="openModal(FW[17])">
-          <div class="card-accent" style="background:#7C3AED"></div>
-          <div class="card-thumb" id="thumb-12-2"></div>
-          <div class="card-body">
-            <div class="card-title">Metaverse CX Framework</div>
-            <div class="card-desc">Hardware → platform → experience layers with avatars</div>
-            <span class="card-tag" style="background:#7C3AED">Slibrary 12</span>
-          </div>
-        </div><div class="card" data-anim style="transition-delay:240ms" onclick="openModal(FW[18])">
-          <div class="card-accent" style="background:#7C3AED"></div>
-          <div class="card-thumb" id="thumb-12-3"></div>
-          <div class="card-body">
-            <div class="card-title">Spatial Computing Stack</div>
-            <div class="card-desc">AR/VR/MR/XR taxonomy with sensor → processing → display</div>
-            <span class="card-tag" style="background:#7C3AED">Slibrary 12</span>
-          </div>
-        </div><div class="card" data-anim style="transition-delay:320ms" onclick="openModal(FW[19])">
-          <div class="card-accent" style="background:#7C3AED"></div>
-          <div class="card-thumb" id="thumb-12-4"></div>
-          <div class="card-body">
-            <div class="card-title">Kotler 6.0 Ecosystem Map</div>
-            <div class="card-desc">Five technologies centred on immersive customer value</div>
-            <span class="card-tag" style="background:#7C3AED">Slibrary 12</span>
-          </div>
-        </div></div></div>
-</main>
-<footer class="footer">
-  <strong>MARTI301</strong> &middot; AI in Investment &amp; Competitiveness &middot; &copy; 2026 Dr. Hildegard Haas<br>
-  Applying JD Meier&rsquo;s <strong>Thumbnail Thinking</strong> (2025) &middot; Unit 3: Enhanced Customer Experience
+<main><div class="container">
+<a class="back-link" href="index.html">&#8592; Course Overview</a>
+<div class="hero"><div class="unit-pill" style="background:rgba(220,38,38,0.1);color:#DC2626;">MLUXR302 &middot; Unit 3</div><h1>Labour Rights and Working Conditions</h1><p class="sub">Who Makes Our Clothes — Ethics, Accountability and Supply Chain Justice</p><p class="hero-hint">Click any framework card to open it in detail</p><div class="hero-stats"><div class="hero-stat"><div class="num" style="color:#DC2626">3</div><div class="lbl">Slibraries</div></div><div class="hero-stat"><div class="num" style="color:#DC2626">15</div><div class="lbl">Frameworks</div></div><div class="hero-stat"><div class="num" style="color:#DC2626">7–9</div><div class="lbl">Sets</div></div></div></div><div class="set-section"><div class="set-hdr"><h2><div class="set-num" style="background:#DC2626">7</div>Set 7 — Labour Standards</h2><span class="set-tag">5 frameworks &middot; click any card to explore</span></div><div class="fw-grid"><div class="fw-card" style="border-top-color:#DC2626;" data-color="#DC2626" data-rgb="220,38,38" data-sl="7" data-unit="MLUXR302 · Unit 3" data-setname="Labour Standards" data-name="ILO Core Conventions" data-itten="Itten: Carmine Red — Emotion, empathy" data-lead="The eight fundamental labour rights that all 187 ILO member states are obligated to respect — the non-negotiable floor of human dignity in any supply chain." data-sub="Four paired conventions: forced labour, child labour, discrimination, and freedom of association" data-b1="Forced labour (C29, C105) → prohibition on all forms of forced, compulsory or trafficked labour; obligations to penalise and eliminate forced labour practices" data-b2="Child labour (C138, C182) → minimum working age of 15 (or 14 in developing economies); immediate elimination of the worst forms of child labour (hazardous work, trafficking)" data-b3="Discrimination (C100, C111) → equal remuneration for work of equal value regardless of gender; non-discrimination in employment based on race, sex, religion, political opinion or national extraction" data-b4="Freedom of association (C87, C98) → rights to form and join trade unions; protection against anti-union discrimination; good faith collective bargaining between employers and worker representatives" data-ref="International Labour Organization (1998) <em>ILO Declaration on Fundamental Principles and Rights at Work</em>. Geneva: International Labour Office."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="28" cy="14" r="8" fill="#DC2626" opacity="0.8"/>
+  <circle cx="18" cy="28" r="6" fill="rgba(220,38,38,0.6)"/>
+  <circle cx="28" cy="28" r="6" fill="rgba(220,38,38,0.6)"/>
+  <circle cx="38" cy="28" r="6" fill="rgba(220,38,38,0.6)"/>
+  <text x="28" y="17" text-anchor="middle" font-size="5" fill="white" font-weight="900">ILO</text>
+  <text x="28" y="42" text-anchor="middle" font-size="4.5" fill="#DC2626" font-weight="700">8 CORE RIGHTS</text>
+</svg></div><div class="fw-card-body"><div class="fw-card-name">ILO Core Conventions</div><div class="fw-card-desc">Eight fundamental labour rights: forced labour, child labour, discrimination, freedom of association</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(220,38,38,0.12);color:#DC2626;">Slibrary 7</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#DC2626;" data-color="#DC2626" data-rgb="220,38,38" data-sl="7" data-unit="MLUXR302 · Unit 3" data-setname="Labour Standards" data-name="Living Wage vs. Minimum Wage" data-itten="Itten: Carmine Red — Emotion, empathy" data-lead="The critical distinction between the legal floor governments set and the income workers actually need to live with dignity — a gap that the fashion industry has exploited for four decades." data-sub="Minimum wage: legal floor · Living wage: sufficiency for basic human needs · Gap: fashion&#39;s accountability challenge" data-b1="Minimum wage → legally mandated wage floor, set by governments; in major garment-producing countries (Bangladesh, Cambodia, Myanmar) typically 40–60% below a living wage" data-b2="Living wage → income sufficient to cover basic needs: food, housing, clothing, healthcare, education, childcare, transport — with a small discretionary amount for emergencies" data-b3="The gap → a Bangladeshi garment worker earning the minimum wage of BDT 8,000/month earns approximately 40% of the WageIndicator living wage benchmark of BDT 20,000/month" data-b4="Brand implication → a living wage paid across a brand&#39;s Tier 1 factories would add approximately $0.30 to the retail price of a $30 T-shirt — less than 1% of the retail price" data-ref="Anker, R. and Anker, M. (2017) <em>Living Wages Around the World: Manual for Measurement</em>. Cheltenham: Edward Elgar Publishing."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
+  <rect x="10" y="4" width="14" height="32" rx="2" fill="#DC2626"/>
+  <rect x="32" y="18" width="14" height="18" rx="2" fill="rgba(220,38,38,0.4)" stroke="#DC2626" stroke-width="1.5"/>
+  <line x1="8" y1="4" x2="48" y2="4" stroke="#DC2626" stroke-width="1.5" stroke-dasharray="2,2"/>
+  <text x="17" y="10" text-anchor="middle" font-size="4" fill="white">LIVING</text>
+  <text x="39" y="24" text-anchor="middle" font-size="3.5" fill="#DC2626">MINIMUM</text>
+  <path d="M24,12 Q28,8 32,12" fill="none" stroke="#DC2626" stroke-width="1.5" stroke-dasharray="2,1"/>
+  <text x="28" y="42" text-anchor="middle" font-size="4.5" fill="#DC2626" font-weight="700">THE GAP</text>
+</svg></div><div class="fw-card-body"><div class="fw-card-name">Living Wage vs. Minimum Wage</div><div class="fw-card-desc">Gap analysis: garment workers earn 30-50% of a living wage in Bangladesh, Cambodia and Myanmar</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(220,38,38,0.12);color:#DC2626;">Slibrary 7</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#DC2626;" data-color="#DC2626" data-rgb="220,38,38" data-sl="7" data-unit="MLUXR302 · Unit 3" data-setname="Labour Standards" data-name="Rana Plaza Lessons Framework" data-itten="Itten: Carmine Red — Emotion, empathy" data-lead="The deadliest disaster in fashion history — 1,134 lives lost in a preventable collapse — transformed into a framework for structural accountability that redefined what brands owe workers they have never met." data-sub="1,134 deaths · 24 April 2013 · Dhaka, Bangladesh: the day fashion&#39;s liability became undeniable" data-b1="Prevention → structural safety inspections must be conducted by independent engineers with legal authority to order evacuations; warnings from workers and engineers must be acted upon" data-b2="Accountability → brands sourcing from a factory share responsibility for worker safety; the practice of denying knowledge of supplier conditions is no longer legally or morally credible" data-b3="Remedy → compensation funds must be established promptly and paid in full; the Rana Plaza Arrangement paid $30M to survivors and families within 24 months of the collapse" data-b4="Structural reform → the Bangladesh Accord created binding legal obligations; the shift from voluntary codes to mandatory due diligence is the direct legacy of Rana Plaza" data-ref="IndustriALL Global Union (2013) <em>The Bangladesh Accord on Fire and Building Safety</em>. Geneva: IndustriALL Global Union."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
+  <rect x="6" y="14" width="44" height="22" rx="2" fill="rgba(220,38,38,0.1)" stroke="#DC2626" stroke-width="1.5"/>
+  <rect x="10" y="10" width="8" height="26" rx="1" fill="rgba(220,38,38,0.3)" stroke="#DC2626" stroke-width="1"/>
+  <rect x="24" y="6" width="8" height="30" rx="1" fill="rgba(220,38,38,0.5)" stroke="#DC2626" stroke-width="1"/>
+  <rect x="38" y="14" width="8" height="22" rx="1" fill="rgba(220,38,38,0.35)" stroke="#DC2626" stroke-width="1"/>
+  <text x="28" y="42" text-anchor="middle" font-size="4.5" fill="#DC2626" font-weight="700">24 APR 2013</text>
+</svg></div><div class="fw-card-body"><div class="fw-card-name">Rana Plaza Lessons Framework</div><div class="fw-card-desc">2013 structural collapse → 1,134 deaths → Accord on Fire & Building Safety — systemic response model</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(220,38,38,0.12);color:#DC2626;">Slibrary 7</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#DC2626;" data-color="#DC2626" data-rgb="220,38,38" data-sl="7" data-unit="MLUXR302 · Unit 3" data-setname="Labour Standards" data-name="Forced Labour 11 Indicators" data-itten="Itten: Carmine Red — Emotion, empathy" data-lead="A practical diagnostic tool enabling investigators, auditors and brands to identify whether workers in a supply chain are working under coercion — across eleven distinct forms of control." data-sub="ILO&#39;s 11 indicators: the systematic identification of forced labour conditions" data-b1="Debt bondage → recruitment fees, advance payments or inflated food and accommodation charges create financial dependency that workers cannot repay — preventing them from leaving" data-b2="Document retention → confiscation of passports, ID cards or work permits by employers or labour recruiters restricting workers&#39; freedom of movement and right to exit employment" data-b3="Restriction of movement → physical confinement to factory dormitories, lockdown of accommodation, surveillance and sanctions for unauthorised movement outside designated areas" data-b4="Threats and intimidation → physical, psychological or financial threats directed at workers or their families to compel continued work against workers&#39; free will" data-ref="International Labour Organization (2012) <em>ILO Indicators of Forced Labour</em>. Geneva: International Labour Office, Special Action Programme to Combat Forced Labour."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
+  <rect x="16" y="4" width="24" height="18" rx="3" fill="rgba(220,38,38,0.15)" stroke="#DC2626" stroke-width="2"/>
+  <circle cx="28" cy="13" r="4" fill="#DC2626" opacity="0.7"/>
+  <rect x="20" y="22" width="16" height="14" rx="2" fill="#DC2626" opacity="0.8"/>
+  <text x="28" y="31" text-anchor="middle" font-size="5" fill="white" font-weight="900">11</text>
+  <text x="28" y="42" text-anchor="middle" font-size="4.5" fill="#DC2626" font-weight="700">ILO INDICATORS</text>
+</svg></div><div class="fw-card-body"><div class="fw-card-name">Forced Labour 11 Indicators</div><div class="fw-card-desc">ILO checklist: debt bondage, document retention, restriction of movement and more</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(220,38,38,0.12);color:#DC2626;">Slibrary 7</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#DC2626;" data-color="#DC2626" data-rgb="220,38,38" data-sl="7" data-unit="MLUXR302 · Unit 3" data-setname="Labour Standards" data-name="Gender Equity in Supply Chains" data-itten="Itten: Carmine Red — Emotion, empathy" data-lead="A structural analysis of the systematic disadvantage facing women workers in fashion supply chains — who represent 80% of garment workers but a fraction of those in positions of power or financial security." data-sub="80% women workers · 20% women managers · persistent wage, voice and safety gaps" data-b1="Representation paradox → women constitute 80% of the global garment workforce but are significantly underrepresented in supervisory positions, union leadership and brand management" data-b2="Wage gap → women in garment production earn 10–30% less than male peers performing equivalent work; occupational segregation concentrates women in lower-paid piece-rate roles" data-b3="Safety and harassment → women workers face disproportionate rates of verbal and physical harassment in factories; fear of reporting due to job insecurity and male-dominated management" data-b4="Brand accountability → IFC Women in Work Programme and UN Women&#39;s Empowerment Principles provide frameworks for brands to embed gender equity in supplier selection and development" data-ref="International Finance Corporation (2016) <em>Women in the Apparel Industry</em>. Washington, D.C.: IFC, World Bank Group."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="16" cy="12" r="6" fill="#DC2626" opacity="0.8"/>
+  <circle cx="28" cy="12" r="6" fill="#DC2626" opacity="0.8"/>
+  <circle cx="40" cy="12" r="6" fill="#DC2626" opacity="0.8"/>
+  <rect x="12" y="20" width="8" height="16" rx="2" fill="rgba(220,38,38,0.6)"/>
+  <rect x="24" y="20" width="8" height="16" rx="2" fill="rgba(220,38,38,0.6)"/>
+  <rect x="36" y="20" width="8" height="16" rx="2" fill="rgba(220,38,38,0.6)"/>
+  <text x="28" y="42" text-anchor="middle" font-size="4.5" fill="#DC2626" font-weight="700">80% WOMEN WORKERS</text>
+</svg></div><div class="fw-card-body"><div class="fw-card-name">Gender Equity in Supply Chains</div><div class="fw-card-desc">80% of garment workers are women; leadership gap, wage gap and harassment prevalence data</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(220,38,38,0.12);color:#DC2626;">Slibrary 7</span><span class="fw-arrow">&#8594;</span></div></div></div></div><div class="set-section"><div class="set-hdr"><h2><div class="set-num" style="background:#DC2626">8</div>Set 8 — Supply Chain Auditing</h2><span class="set-tag">5 frameworks &middot; click any card to explore</span></div><div class="fw-grid"><div class="fw-card" style="border-top-color:#DC2626;" data-color="#DC2626" data-rgb="220,38,38" data-sl="8" data-unit="MLUXR302 · Unit 3" data-setname="Supply Chain Auditing" data-name="Social Audit Pyramid" data-itten="Itten: Carmine Red — Emotion, empathy" data-lead="A critical framework exposing the limits of third-party social auditing as an accountability mechanism — and the path toward more effective forms of supply chain governance." data-sub="Self-declaration → checklist audit → systemic change: ascending levels of credibility and impact" data-b1="Level 1 — self-declaration → brand publishes a supplier code of conduct; no independent verification; lowest credibility; widely criticised as providing legal cover without accountability" data-b2="Level 2 — third-party audit → independent auditors (Bureau Veritas, SGS, Intertek) inspect factories against SMETA, SA8000 or bespoke standards; documented but transactional" data-b3="Level 3 — systemic change → worker-led verification, binding agreements (like the International Accord), participatory auditing and remediation with root-cause analysis" data-b4="Audit failure evidence → major labour abuses including Rana Plaza occurred in factories with valid social audit certificates; audit culture can create compliance performance rather than genuine improvement" data-ref="O&#39;Rourke, D. (2002) &#39;Monitoring the monitors: a critique of corporate third-party labour monitoring&#39;, in Jenkins, R., Pearson, R. and Seyfang, G. (eds) <em>Corporate Responsibility and Labour Rights</em>. London: Earthscan, pp. 196–208."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="28,4 52,40 4,40" fill="rgba(220,38,38,0.1)" stroke="#DC2626" stroke-width="1.5"/>
+  <line x1="16" y1="29" x2="40" y2="29" stroke="#DC2626" stroke-width="1.2"/>
+  <line x1="22" y1="18" x2="34" y2="18" stroke="#DC2626" stroke-width="1.2"/>
+  <text x="28" y="9" text-anchor="middle" font-size="4" fill="#DC2626">SYSTEMIC</text>
+  <text x="28" y="25" text-anchor="middle" font-size="4.5" fill="#DC2626">3rd PARTY</text>
+  <text x="28" y="37" text-anchor="middle" font-size="4.5" fill="#DC2626">SELF-DECL.</text>
+</svg></div><div class="fw-card-body"><div class="fw-card-name">Social Audit Pyramid</div><div class="fw-card-desc">Self-declaration → 3rd-party audit → systemic multi-stakeholder change — efficacy comparison</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(220,38,38,0.12);color:#DC2626;">Slibrary 8</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#DC2626;" data-color="#DC2626" data-rgb="220,38,38" data-sl="8" data-unit="MLUXR302 · Unit 3" data-setname="Supply Chain Auditing" data-name="SMETA 4-Pillar Audit" data-itten="Itten: Carmine Red — Emotion, empathy" data-lead="The most widely used social audit methodology in the world — a four-pillar assessment framework that examines labour, health and safety, environment, and business ethics simultaneously." data-sub="Labour · Health and Safety · Environment · Business Ethics: the four pillars of SMETA assessment" data-b1="Labour pillar → hours of work, wages and benefits, freedom of association, collective bargaining, child labour, forced labour, discrimination and disciplinary practices" data-b2="Health and Safety pillar → fire safety, structural safety, emergency procedures, machine guarding, personal protective equipment, first aid and worker health programmes" data-b3="Environment pillar → environmental management systems, chemical management, waste disposal, wastewater treatment and energy efficiency measures at factory level" data-b4="Business Ethics pillar → anti-bribery and corruption policies, sub-contracting disclosure, conflict of interest management and transparent business practices" data-ref="Sedex (2017) <em>SMETA Best Practice Guidance Version 6.1</em>. London: Sedex Global."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="28" cy="22" r="18" fill="rgba(220,38,38,0.1)" stroke="#DC2626" stroke-width="1.5"/>
+  <line x1="28" y1="4" x2="28" y2="40" stroke="#DC2626" stroke-width="1"/>
+  <line x1="10" y1="22" x2="46" y2="22" stroke="#DC2626" stroke-width="1"/>
+  <text x="19" y="16" text-anchor="middle" font-size="4" fill="#DC2626" font-weight="700">L</text>
+  <text x="37" y="16" text-anchor="middle" font-size="4" fill="#DC2626" font-weight="700">H&S</text>
+  <text x="19" y="32" text-anchor="middle" font-size="4" fill="#DC2626" font-weight="700">ENV</text>
+  <text x="37" y="32" text-anchor="middle" font-size="4" fill="#DC2626" font-weight="700">ETH</text>
+  <text x="28" y="44" text-anchor="middle" font-size="4.5" fill="#DC2626" font-weight="700">SMETA 4-PILLAR</text>
+</svg></div><div class="fw-card-body"><div class="fw-card-name">SMETA 4-Pillar Audit</div><div class="fw-card-desc">Labour, Health & Safety, Environment, Business Ethics — Sedex Members Ethical Trade Audit</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(220,38,38,0.12);color:#DC2626;">Slibrary 8</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#DC2626;" data-color="#DC2626" data-rgb="220,38,38" data-sl="8" data-unit="MLUXR302 · Unit 3" data-setname="Supply Chain Auditing" data-name="International Accord Evolution" data-itten="Itten: Carmine Red — Emotion, empathy" data-lead="The transformation of a disaster-response agreement into a permanent, legally binding global framework — the most significant structural reform in fashion&#39;s accountability history." data-sub="Bangladesh Accord (2013) → Global International Accord (2021): binding safety obligations beyond a single country" data-b1="Bangladesh Accord (2013) → signed by 200+ brands within weeks of Rana Plaza; legally binding structural safety inspections, remediation financing and worker complaint mechanism" data-b2="Accord outcomes → 1,600+ factories inspected; 150,000+ safety hazards identified and remediated; zero structural collapses in signatory factories during the five-year agreement period" data-b3="Transition (2018–2021) → responsibility transferred to the Bangladesh-government-owned Ready-Made Garment Sustainability Council (RSC) with continued brand financial participation" data-b4="International Accord (2021) → extended binding obligations to Pakistan; open to additional countries; enhanced worker representation; signed by 190+ brands as of 2024" data-ref="IndustriALL Global Union and UNI Global Union (2021) <em>International Accord for Health and Safety in the Textile and Garment Industry</em>. Geneva: IndustriALL Global Union."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="12" cy="22" r="8" fill="rgba(220,38,38,0.3)" stroke="#DC2626" stroke-width="1.5"/>
+  <line x1="20" y1="22" x2="36" y2="22" stroke="#DC2626" stroke-width="2"/>
+  <polygon points="34,19 42,22 34,25" fill="#DC2626"/>
+  <circle cx="44" cy="22" r="8" fill="#DC2626" opacity="0.8"/>
+  <text x="12" y="25" text-anchor="middle" font-size="4" fill="#DC2626" font-weight="700">2013</text>
+  <text x="44" y="25" text-anchor="middle" font-size="4" fill="white" font-weight="700">2021</text>
+  <text x="28" y="38" text-anchor="middle" font-size="4" fill="#DC2626">Bangladesh → Global</text>
+  <text x="28" y="44" text-anchor="middle" font-size="4.5" fill="#DC2626" font-weight="700">BINDING ACCORD</text>
+</svg></div><div class="fw-card-body"><div class="fw-card-name">International Accord Evolution</div><div class="fw-card-desc">Bangladesh Accord (2013) → Global International Accord (2021) — binding safety obligations for brands</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(220,38,38,0.12);color:#DC2626;">Slibrary 8</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#DC2626;" data-color="#DC2626" data-rgb="220,38,38" data-sl="8" data-unit="MLUXR302 · Unit 3" data-setname="Supply Chain Auditing" data-name="Fair Trade Certification" data-itten="Itten: Carmine Red — Emotion, empathy" data-lead="A trading partnership model that guarantees producers in developing countries fair prices, decent working conditions, and a premium investment fund controlled democratically by workers and farmers." data-sub="Fair price · Democratic governance · Fairtrade Premium: the three structural elements of fair trade" data-b1="Minimum price → guaranteed minimum purchase price regardless of global commodity price falls; provides smallholder income stability in volatile markets (cotton, coffee, cocoa)" data-b2="Fairtrade Premium → additional payment (typically 10–15% above minimum price) deposited into a democratically-managed worker/farmer fund for community investment" data-b3="Democratic governance → workers and farmers elect committees to control the Premium fund; decisions on how to invest (school, clinic, processing equipment) are made collectively" data-b4="Standards → Fairtrade Standards cover permitted inputs, environmental management, working conditions, wages, rights to organise and business development support" data-ref="Fairtrade International (2019) <em>Fairtrade Standard for Hired Labour</em>. Bonn: Fairtrade International."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
+  <path d="M28,4 L34,14 L46,16 L37,26 L39,38 L28,33 L17,38 L19,26 L10,16 L22,14 Z" fill="rgba(220,38,38,0.2)" stroke="#DC2626" stroke-width="1.5"/>
+  <circle cx="28" cy="22" r="8" fill="#DC2626" opacity="0.8"/>
+  <path d="M24,22 L27,25 L33,18" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <text x="28" y="44" text-anchor="middle" font-size="4.5" fill="#DC2626" font-weight="700">FAIR TRADE</text>
+</svg></div><div class="fw-card-body"><div class="fw-card-name">Fair Trade Certification</div><div class="fw-card-desc">Farmer/worker cooperative model + premium pricing + democratic governance structure</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(220,38,38,0.12);color:#DC2626;">Slibrary 8</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#DC2626;" data-color="#DC2626" data-rgb="220,38,38" data-sl="8" data-unit="MLUXR302 · Unit 3" data-setname="Supply Chain Auditing" data-name="ETI Base Code" data-itten="Itten: Carmine Red — Emotion, empathy" data-lead="Nine provisions for decent work, drawn from ILO conventions and adopted by the Ethical Trading Initiative in 1998 — the baseline standard used by over 100 major UK brands to assess supplier labour practices." data-sub="Nine provisions covering freely chosen employment through regular employment, used by 100+ brands" data-b1="Employment freely chosen → no forced, bonded or prison labour; workers free to leave with reasonable notice; no restrictions on freedom of movement or right to terminate employment" data-b2="Freedom of association → workers&#39; rights to join or form trade unions and bargain collectively must be respected; where law restricts these rights, brands must facilitate parallel means of representation" data-b3="Living wages → wages must meet basic needs and provide some discretionary income; unlawful deductions are prohibited; overtime must be voluntary and paid at premium rates" data-b4="Working hours → maximum 48 regular hours per week; overtime voluntary and capped at 12 hours per week; at least one rest day in seven; premium overtime rates apply" data-ref="Ethical Trading Initiative (1998, updated 2014) <em>The ETI Base Code</em>. London: Ethical Trading Initiative."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
+  <rect x="6" y="4" width="44" height="34" rx="4" fill="rgba(220,38,38,0.1)" stroke="#DC2626" stroke-width="1.5"/>
+  <circle cx="13" cy="11" r="2.5" fill="#DC2626" opacity="0.4"/>
+  <line x1="18" y1="11" x2="44" y2="11" stroke="rgba(220,38,38,0.4)" stroke-width="1.5"/><circle cx="13" cy="18" r="2.5" fill="#DC2626" opacity="0.55"/>
+  <line x1="18" y1="18" x2="44" y2="18" stroke="rgba(220,38,38,0.55)" stroke-width="1.5"/><circle cx="13" cy="25" r="2.5" fill="#DC2626" opacity="0.7"/>
+  <line x1="18" y1="25" x2="44" y2="25" stroke="rgba(220,38,38,0.7)" stroke-width="1.5"/><circle cx="13" cy="32" r="2.5" fill="#DC2626" opacity="0.85"/>
+  <line x1="18" y1="32" x2="44" y2="32" stroke="rgba(220,38,38,0.85)" stroke-width="1.5"/>
+  <text x="28" y="44" text-anchor="middle" font-size="4.5" fill="#DC2626" font-weight="700">ETI BASE CODE · 9</text>
+</svg></div><div class="fw-card-body"><div class="fw-card-name">ETI Base Code</div><div class="fw-card-desc">Ethical Trading Initiative: nine provisions for decent work used by 100+ UK brands</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(220,38,38,0.12);color:#DC2626;">Slibrary 8</span><span class="fw-arrow">&#8594;</span></div></div></div></div><div class="set-section"><div class="set-hdr"><h2><div class="set-num" style="background:#DC2626">9</div>Set 9 — Brand Accountability</h2><span class="set-tag">5 frameworks &middot; click any card to explore</span></div><div class="fw-grid"><div class="fw-card" style="border-top-color:#DC2626;" data-color="#DC2626" data-rgb="220,38,38" data-sl="9" data-unit="MLUXR302 · Unit 3" data-setname="Brand Accountability" data-name="Modern Slavery Act 2015" data-itten="Itten: Carmine Red — Emotion, empathy" data-lead="The UK legislation that made supply chain transparency a legal obligation for large businesses — requiring annual disclosure of what steps companies are taking to address forced labour and human trafficking." data-sub="£36M+ annual turnover threshold · mandatory annual Transparency Statement · Section 54" data-b1="Scope → applies to all commercial organisations supplying goods or services in the UK with annual turnover of £36 million or more — regardless of where they are incorporated" data-b2="Disclosure requirement → annual Transparency Statement, published on company website and linked from homepage; must address supply chain mapping, risk assessment, due diligence and remediation" data-b3="Section 54(5) content areas → company structure and supply chains; policies in relation to slavery and human trafficking; due diligence processes; risk assessment; key performance indicators" data-b4="Limitations → the Act requires disclosure but not action; there is no penalty for poor performance, only for non-disclosure; critics argue this creates a &#39;transparency without accountability&#39; regime" data-ref="HM Government (2015) <em>Modern Slavery Act 2015</em>. London: The Stationery Office, c. 30."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
+  <rect x="10" y="4" width="36" height="30" rx="3" fill="rgba(220,38,38,0.1)" stroke="#DC2626" stroke-width="2"/>
+  <text x="28" y="20" text-anchor="middle" font-size="9" fill="#DC2626" font-weight="900">MSA</text>
+  <text x="28" y="30" text-anchor="middle" font-size="5" fill="rgba(220,38,38,0.7)">2015</text>
+  <rect x="6" y="36" width="44" height="6" rx="2" fill="#DC2626" opacity="0.8"/>
+  <text x="28" y="41" text-anchor="middle" font-size="4" fill="white" font-weight="700">UK LAW · £36M+</text>
+</svg></div><div class="fw-card-body"><div class="fw-card-name">Modern Slavery Act 2015</div><div class="fw-card-desc">UK legislation: £36M+ annual revenue threshold → mandatory supply chain transparency statements</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(220,38,38,0.12);color:#DC2626;">Slibrary 9</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#DC2626;" data-color="#DC2626" data-rgb="220,38,38" data-sl="9" data-unit="MLUXR302 · Unit 3" data-setname="Brand Accountability" data-name="EU Due Diligence Directive" data-itten="Itten: Carmine Red — Emotion, empathy" data-lead="The most significant shift in fashion&#39;s legal landscape in a decade — mandatory human rights and environmental due diligence, moving from voluntary disclosure to legal liability." data-sub="Identify → Prevent → Mitigate → Remedy: four steps from obligation to enforcement" data-b1="Scope → applies to EU companies with 500+ employees and €150M+ global turnover, and to high-risk sector companies with 250+ employees and €40M+ turnover from 2024" data-b2="Due diligence obligation → companies must identify, prevent, mitigate and bring to an end adverse human rights and environmental impacts in their own operations and value chains" data-b3="Civil liability → companies can be held civilly liable and ordered to pay compensation for harms resulting from failures in due diligence — a fundamental shift from voluntary to enforceable obligation" data-b4="Supply chain scope → obligation extends upstream to suppliers and downstream to distributors; companies must engage suppliers in capacity-building and cannot simply terminate relationships" data-ref="European Parliament and Council of the European Union (2024) <em>Directive on Corporate Sustainability Due Diligence</em>. Brussels: Official Journal of the European Union, 2024/1760."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="28" cy="18" r="14" fill="rgba(220,38,38,0.1)" stroke="#DC2626" stroke-width="2"/>
+  <text x="28" y="22" text-anchor="middle" font-size="8" fill="#DC2626" font-weight="900">EU</text>
+  <text x="28" y="38" text-anchor="middle" font-size="4.5" fill="#DC2626" font-weight="700">DUE DILIGENCE</text>
+  <text x="28" y="44" text-anchor="middle" font-size="4" fill="#DC2626">2024 Directive</text>
+</svg></div><div class="fw-card-body"><div class="fw-card-name">EU Due Diligence Directive</div><div class="fw-card-desc">Mandatory human rights and environmental due diligence for large EU companies from 2024</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(220,38,38,0.12);color:#DC2626;">Slibrary 9</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#DC2626;" data-color="#DC2626" data-rgb="220,38,38" data-sl="9" data-unit="MLUXR302 · Unit 3" data-setname="Brand Accountability" data-name="Fashion Transparency Index" data-itten="Itten: Carmine Red — Emotion, empathy" data-lead="The annual accountability audit that scores 250 of the world&#39;s largest fashion brands on what they disclose about their social and environmental practices — a public accountability tool that brands cannot opt out of." data-sub="0–100 score across five pillars: the industry&#39;s most-watched transparency league table" data-b1="Five pillars → Policy and Commitments; Governance; Traceability; Know/Show/Fix (Spotlight Issues); and Social and Environmental Targets — each equally weighted" data-b2="Scoring methodology → researchers submit information requests to all 250 brands; brands not responding receive zero for undisclosed information — silence is scored as opacity" data-b3="2024 findings → average brand score is 24%; top scorers: Patagonia (73%), Nudie Jeans (72%), Veja (68%); luxury brands consistently score lowest — Hermès: 7%, Chanel: 0%" data-b4="Strategic use → brands increasingly use Fashion Transparency Index score as a KPI for sustainability teams; low scores create NGO, investor and media pressure that drives disclosure improvements" data-ref="Fashion Revolution (2024) <em>Fashion Transparency Index 2024</em>. London: Fashion Revolution."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
+  <rect x="4" y="8" width="48" height="28" rx="4" fill="rgba(220,38,38,0.1)" stroke="#DC2626" stroke-width="1.5"/>
+  <rect x="8" y="12" width="6" height="20" rx="2" fill="rgba(220,38,38,0.3)" stroke="#DC2626" stroke-width="1"/>
+  <rect x="18" y="16" width="6" height="16" rx="2" fill="rgba(220,38,38,0.4)" stroke="#DC2626" stroke-width="1"/>
+  <rect x="28" y="20" width="6" height="12" rx="2" fill="rgba(220,38,38,0.55)" stroke="#DC2626" stroke-width="1"/>
+  <rect x="38" y="24" width="6" height="8" rx="2" fill="#DC2626" opacity="0.7"/>
+  <text x="28" y="44" text-anchor="middle" font-size="4.5" fill="#DC2626" font-weight="700">0–100 SCORE</text>
+</svg></div><div class="fw-card-body"><div class="fw-card-name">Fashion Transparency Index</div><div class="fw-card-desc">0–100 brand scoring: disclosure of policies, suppliers, audit results and remediation</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(220,38,38,0.12);color:#DC2626;">Slibrary 9</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#DC2626;" data-color="#DC2626" data-rgb="220,38,38" data-sl="9" data-unit="MLUXR302 · Unit 3" data-setname="Brand Accountability" data-name="Worker Voice Mechanisms" data-itten="Itten: Carmine Red — Emotion, empathy" data-lead="The infrastructure of worker agency — the channels, protections and structures through which garment workers can raise concerns, report violations and influence the conditions of their employment." data-sub="Grievance channels · freedom of association · non-retaliation protection: the three pillars of effective worker voice" data-b1="Grievance channels → hotlines, suggestion boxes, worker committees and digital reporting platforms; effectiveness depends on worker trust, language accessibility and confidentiality protection" data-b2="Freedom of association → legally protected right to form and join trade unions; many garment-producing countries restrict this right in export processing zones, making alternative representation structures essential" data-b3="Non-retaliation protection → workers who raise concerns must be legally and contractually protected from dismissal, harassment or other sanctions; the credibility of the entire mechanism depends on this" data-b4="Brand obligation → brands should require suppliers to maintain effective grievance mechanisms as a contractual condition; audit grievance mechanism accessibility, not just existence" data-ref="International Labour Organization (2015) <em>Grievance Mechanisms for Business and Human Rights</em>. Geneva: International Labour Office."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
+  <path d="M6,8 Q6,4 10,4 L46,4 Q50,4 50,8 L50,26 Q50,30 46,30 L32,30 L28,36 L24,30 L10,30 Q6,30 6,26 Z" fill="rgba(220,38,38,0.15)" stroke="#DC2626" stroke-width="1.5"/>
+  <circle cx="19" cy="17" r="2.5" fill="#DC2626"/>
+  <circle cx="28" cy="17" r="2.5" fill="#DC2626"/>
+  <circle cx="37" cy="17" r="2.5" fill="#DC2626"/>
+  <text x="28" y="44" text-anchor="middle" font-size="4.5" fill="#DC2626" font-weight="700">WORKER VOICE</text>
+</svg></div><div class="fw-card-body"><div class="fw-card-name">Worker Voice Mechanisms</div><div class="fw-card-desc">Grievance channels, hotlines, workers' committees and freedom of association effectiveness matrix</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(220,38,38,0.12);color:#DC2626;">Slibrary 9</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#DC2626;" data-color="#DC2626" data-rgb="220,38,38" data-sl="9" data-unit="MLUXR302 · Unit 3" data-setname="Brand Accountability" data-name="Living Wage Benchmark Map" data-itten="Itten: Carmine Red — Emotion, empathy" data-lead="A country-by-country computation of the income workers need to live with dignity — the empirical foundation for brands making credible living wage commitments in their supply chains." data-sub="Anker methodology · WageIndicator · Asia Floor Wage: three complementary benchmark frameworks" data-b1="Anker methodology → bottom-up calculation: determine actual cost of a basic-but-decent standard of living in a specific location; add taxes and social contributions; divide by working hours" data-b2="WageIndicator Foundation → survey-based national living wage estimates, updated annually for 130+ countries; freely accessible at WageIndicator.org for brand and researcher use" data-b3="Asia Floor Wage → regional living wage benchmark for garment-producing Asian countries, calculated on purchasing power parity basis; widely used by trade unions and NGOs for advocacy" data-b4="Brand commitment → a credible living wage commitment requires: (1) a named benchmark; (2) a baseline measurement; (3) a time-bound target; and (4) annual public reporting of progress" data-ref="Anker, R. and Anker, M. (2017) <em>Living Wages Around the World: Manual for Measurement</em>. Cheltenham: Edward Elgar Publishing."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
+  <ellipse cx="28" cy="20" rx="22" ry="14" fill="rgba(220,38,38,0.1)" stroke="#DC2626" stroke-width="1.5"/>
+  <ellipse cx="28" cy="20" rx="22" ry="5" fill="none" stroke="rgba(220,38,38,0.3)" stroke-width="1"/>
+  <line x1="6" y1="20" x2="50" y2="20" stroke="rgba(220,38,38,0.3)" stroke-width="1"/>
+  <circle cx="20" cy="18" r="2.5" fill="#DC2626" opacity="0.8"/>
+  <circle cx="35" cy="22" r="2.5" fill="#DC2626" opacity="0.8"/>
+  <circle cx="28" cy="16" r="2.5" fill="#DC2626" opacity="0.8"/>
+  <text x="28" y="40" text-anchor="middle" font-size="4.5" fill="#DC2626" font-weight="700">GLOBAL BENCHMARKS</text>
+</svg></div><div class="fw-card-body"><div class="fw-card-name">Living Wage Benchmark Map</div><div class="fw-card-desc">Country-by-country living wage calculation — Asia Floor Wage, WageIndicator and Anker methodology</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(220,38,38,0.12);color:#DC2626;">Slibrary 9</span><span class="fw-arrow">&#8594;</span></div></div></div></div><p style="text-align:center;font-size:11px;color:var(--muted);margin-bottom:48px;"><strong>MLUXR302</strong> &middot; &copy; 2026 Dr. Hildegard Haas &middot; EU Business School</p>
+</div></main>
+<footer class="site-footer">
+  <div class="container">
+    <strong>&copy; Dr. Hildegard Haas</strong> &middot; MLUXR302 Sustainable Value Creation in Fashion &amp; Luxury &middot; EU Business School<br/>
+    All rights reserved
+  </div>
 </footer>
-<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
-  <div class="modal" id="modal"></div>
+
+<div id="modal-overlay">
+  <div id="modal-box">
+    <div id="modal-color-bar"></div>
+    <div id="modal-inner">
+      <div id="modal-header">
+        <div id="modal-header-left">
+          <div id="modal-label-row">
+            <span id="m-slibrary-header"></span>
+            <span id="m-unit-badge"></span>
+          </div>
+          <h2 id="m-title"></h2>
+          <div id="m-itten-line"></div>
+        </div>
+        <button id="modal-close" aria-label="Close">&#x2715;</button>
+      </div>
+      <blockquote id="modal-lead"><p id="m-lead-text"></p></blockquote>
+      <p id="m-sub-text"></p>
+      <div id="modal-bullets">
+        <div class="m-bullet-item"><span class="m-dot"></span><span class="m-bullet-text" id="m-b1"></span></div>
+        <hr class="m-divider"/>
+        <div class="m-bullet-item"><span class="m-dot"></span><span class="m-bullet-text" id="m-b2"></span></div>
+        <hr class="m-divider"/>
+        <div class="m-bullet-item"><span class="m-dot"></span><span class="m-bullet-text" id="m-b3"></span></div>
+        <hr class="m-divider"/>
+        <div class="m-bullet-item"><span class="m-dot"></span><span class="m-bullet-text" id="m-b4"></span></div>
+      </div>
+      <div id="modal-reference">
+        <div id="modal-ref-label">REFERENCE</div>
+        <p id="m-ref-text"></p>
+      </div>
+    </div>
+  </div>
 </div>
+
 <script>
-const FW = [
-{"name":"Omnichannel Journey Map","def":"A visualisation tracing the customer's path across all channels from awareness through advocacy, identifying AI intervention points.","desc":"Horizontal timeline with channels stacked and AI touchpoints","shape":"pipeline","details":["Awareness → consideration → purchase → advocacy","Channels: web, app, store, call centre","AI touchpoints marked at each stage","Identifies gaps and friction points"],"ref":"Lemon, K.N. and Verhoef, P.C. (2016) 'Understanding customer experience throughout the customer journey', Journal of Marketing, 80(6), pp. 69–96.","slibTitle":"Customer Journey & CX","slibNum":9,"color":"#DC2626"},
-{"name":"CX Experience Pyramid","def":"A three-tier model of customer needs: functional (meets needs), accessible (easy to use), and emotional (enjoyable)—with AI enhancing each layer.","desc":"Functional → accessible → enjoyable—AI lifts each layer","shape":"pyramid","details":["Base: meet needs (functional)","Middle: easy to use (accessible)","Top: enjoyable (emotional)","AI differentiates at each layer"],"ref":"Forrester Research (2016) The Customer Experience Pyramid. Forrester Research Inc.","slibTitle":"Customer Journey & CX","slibNum":9,"color":"#DC2626"},
-{"name":"Service Blueprint","def":"A process diagram separating frontstage (customer-visible) from backstage (internal) actions with a line of visibility, mapping all support processes.","desc":"Frontstage vs. backstage swim lanes with line of visibility","shape":"layers","details":["Frontstage: customer-facing actions","Line of visibility separates front/back","Backstage: support processes","Shostack (1984); updated for AI era"],"ref":"Shostack, G.L. (1984) 'Designing services that deliver', Harvard Business Review, 62(1), pp. 133–139.","slibTitle":"Customer Journey & CX","slibNum":9,"color":"#DC2626"},
-{"name":"Touchpoint Matrix","def":"A grid mapping customer journey stages against channels, with heatmap shading to reveal over-served and under-served interaction areas.","desc":"Channel × journey stage heatmap showing interaction intensity","shape":"matrix","details":["Reveals over-served and under-served areas","Heatmap colour coding by intensity","Prioritises where AI investment goes","Data-driven channel optimisation"],"ref":"Rawson, A., Duncan, E. and Jones, C. (2013) 'The truth about customer experience', Harvard Business Review, 91(9), pp. 90–98.","slibTitle":"Customer Journey & CX","slibNum":9,"color":"#DC2626"},
-{"name":"Moments of Truth Timeline","def":"A framework identifying four critical customer decision points: Zero, First, Second, and Ultimate moments of truth.","desc":"Zero → First → Second → Ultimate MOT along customer journey","shape":"timeline","details":["Zero MOT: online research (Google)","First MOT: shelf or landing page","Second MOT: usage experience","Ultimate MOT: sharing and advocacy"],"ref":"Lecinski, J. (2011) Winning the Zero Moment of Truth. Google Inc.","slibTitle":"Customer Journey & CX","slibNum":9,"color":"#DC2626"},
-{"name":"NLP Pipeline Diagram","def":"A sequential processing architecture: input → tokenisation → parsing → semantic understanding → response generation, with feedback for continuous improvement.","desc":"Input → Tokenise → Parse → Understand → Respond with feedback","shape":"pipeline","details":["Linear flow with feedback loop","Where LLMs transformed each step","Foundation for chatbot architecture","Pre-LLM vs. post-LLM comparison"],"ref":"Jurafsky, D. and Martin, J.H. (2023) Speech and Language Processing. 3rd edn. draft. Stanford University.","slibTitle":"Conversational AI & NLP","slibNum":10,"color":"#2563EB"},
-{"name":"Intent-Entity-Context Model","def":"A natural language understanding framework decomposing user utterances into intent (goal), entities (parameters), and context (conversation state).","desc":"What does the user want? What parameters? What state?","shape":"triangle","details":["Intent: user's goal","Entity: key parameters","Context: conversation state","Core NLU triangle diagram"],"ref":"Jurafsky, D. and Martin, J.H. (2023) Speech and Language Processing. 3rd edn. draft. Stanford University.","slibTitle":"Conversational AI & NLP","slibNum":10,"color":"#2563EB"},
-{"name":"Chatbot Decision Tree","def":"A branching dialogue architecture where intent classification nodes route conversations to responses, actions, or human escalation fallback paths.","desc":"Branching flowchart from greeting with fallback to human","shape":"tree","details":["Decision nodes: intent classification","Leaf nodes: responses or actions","Fallback paths to human agent","Designed for graceful degradation"],"ref":"McTear, M. (2020) Conversational AI: Dialogue Systems, Conversational Agents, and Chatbots. San Rafael: Morgan & Claypool.","slibTitle":"Conversational AI & NLP","slibNum":10,"color":"#2563EB"},
-{"name":"Sentiment Analysis Spectrum","def":"A real-time measurement scale mapping customer language from negative through neutral to positive, with threshold-based alerts triggering interventions.","desc":"Negative → neutral → positive real-time mood tracking","shape":"spectrum","details":["Linear bar with threshold markers","Real-time customer mood tracking","Triggers alerts at negative thresholds","Feeds into CX dashboards"],"ref":"Liu, B. (2020) Sentiment Analysis: Mining Opinions, Sentiments, and Emotions. 2nd edn. Cambridge: Cambridge University Press.","slibTitle":"Conversational AI & NLP","slibNum":10,"color":"#2563EB"},
-{"name":"Human Escalation Flowchart","def":"A confidence-gated handoff process where AI handles initial enquiries and transfers to human agents—with full context—when confidence falls below threshold.","desc":"AI handles L1 → confidence check → human handoff with context","shape":"tree","details":["Below confidence threshold → handoff","Context packet transfers with escalation","Balances efficiency with empathy","Key for high-stakes interactions"],"ref":"McTear, M. (2020) Conversational AI: Dialogue Systems, Conversational Agents, and Chatbots. San Rafael: Morgan & Claypool.","slibTitle":"Conversational AI & NLP","slibNum":10,"color":"#2563EB"},
-{"name":"NPS-CSAT-CES Triangle","def":"Three complementary CX metrics: Net Promoter Score (loyalty), Customer Satisfaction (transaction), and Customer Effort Score (ease).","desc":"Three complementary lenses on customer experience measurement","shape":"triangle","details":["NPS: loyalty and advocacy (top)","CSAT: transaction satisfaction (left)","CES: customer effort score (right)","Use all three for complete picture"],"ref":"Reichheld, F.F. (2003) 'The one number you need to grow', Harvard Business Review, 81(12), pp. 46–54.","slibTitle":"CX Metrics & Business Impact","slibNum":11,"color":"#059669"},
-{"name":"Churn Waterfall Chart","def":"A cascading bar chart visualising customer attrition from starting base through specific loss drivers to retained count, quantifying revenue at risk.","desc":"Starting customers → lost → retained with attrition drivers","shape":"bars","details":["Waterfall bars show attrition drivers","AI predicts at-risk customer segments","Quantifies revenue at stake","Prioritises retention interventions"],"ref":"Ascarza, E. (2018) 'Retention futility: Targeting high-risk customers is not effective', Journal of Marketing Research, 55(1), pp. 80–98.","slibTitle":"CX Metrics & Business Impact","slibNum":11,"color":"#059669"},
-{"name":"CLV-to-CAC Ratio","def":"A unit economics diagnostic comparing Customer Lifetime Value to Customer Acquisition Cost; a healthy ratio exceeds 3:1.","desc":"Lifetime value vs. acquisition cost—healthy ratio > 3:1","shape":"bars","details":["Side-by-side comparison bars","Healthy business ratio > 3:1","AI optimises both sides simultaneously","Unit economics diagnostic thumbnail"],"ref":"Gupta, S. and Lehmann, D.R. (2005) Managing Customers as Investments. Upper Saddle River: Wharton School Publishing.","slibTitle":"CX Metrics & Business Impact","slibNum":11,"color":"#059669"},
-{"name":"Loyalty Loop Diagram","def":"A circular decision journey model—consider, buy, enjoy, bond—replacing the linear funnel for repeat customers.","desc":"Consider → buy → enjoy → bond replacing the linear funnel","shape":"cycle","details":["Circular replaces linear funnel","AI shortens re-entry to the loop","Focus on post-purchase experience","McKinsey consumer decision journey"],"ref":"Court, D. et al. (2009) 'The consumer decision journey', McKinsey Quarterly, June.","slibTitle":"CX Metrics & Business Impact","slibNum":11,"color":"#059669"},
-{"name":"CX-to-Revenue Bridge","def":"A translation model linking CX improvement metrics through intermediate outcomes to financial results.","desc":"CX metric → intermediate outcomes → revenue/EBIT impact","shape":"pipeline","details":["Left: CX improvement metric","Middle: churn, AOV, frequency outcomes","Right: revenue and EBIT impact","Builds the business case for CX AI"],"ref":"Program on Customer Strategy, Columbia Business School. Adapted for MARTI301.","slibTitle":"CX Metrics & Business Impact","slibNum":11,"color":"#059669"},
-{"name":"Marketing Evolution Timeline","def":"A six-era historical progression from product-centric marketing (1.0) to immersive marketing (6.0).","desc":"1.0 Product → 2.0 Customer → ... → 6.0 Immersive","shape":"timeline","details":["Six eras of marketing evolution","6.0: immersive and multisensory","AI + AR/VR + IoT convergence","Kotler, Kartajaya & Setiawan"],"ref":"Kotler, P., Kartajaya, H. and Setiawan, I. (2023) Marketing 6.0: The Future Is Immersive. Hoboken: Wiley.","slibTitle":"Marketing 6.0 & Immersive","slibNum":12,"color":"#7C3AED"},
-{"name":"Phygital Experience Model","def":"A Venn diagram concept where physical and digital experiences overlap to create seamless 'phygital' interactions, bridged by AI.","desc":"Physical + digital = phygital—seamless overlap zone","shape":"venn","details":["Venn diagram: physical ∩ digital","AI bridges the two worlds","Nike, IKEA, Sephora exemplars","Where the experience magic happens"],"ref":"Kotler, P., Kartajaya, H. and Setiawan, I. (2023) Marketing 6.0: The Future Is Immersive. Hoboken: Wiley.","slibTitle":"Marketing 6.0 & Immersive","slibNum":12,"color":"#7C3AED"},
-{"name":"Metaverse CX Framework","def":"A three-layer architecture for metaverse customer experiences: hardware, platform, and experience layer.","desc":"Hardware → platform → experience layers with avatars","shape":"layers","details":["Three architectural layers","Customer avatars interact with brand","Digital twins of products and spaces","Early-stage but high strategic potential"],"ref":"Ball, M. (2022) The Metaverse: And How It Will Revolutionize Everything. New York: Liveright.","slibTitle":"Marketing 6.0 & Immersive","slibNum":12,"color":"#7C3AED"},
-{"name":"Spatial Computing Stack","def":"A technology taxonomy (AR, VR, MR, XR) with a three-layer architecture: sensors, processors, displays.","desc":"AR/VR/MR/XR taxonomy with sensor → processing → display","shape":"layers","details":["Technology taxonomy clarification","Sensors → processing → display layers","AI enables real-time scene understanding","Apple Vision Pro, Meta Quest exemplars"],"ref":"Greenwold, S. (2003) Spatial Computing. MSc thesis, MIT.","slibTitle":"Marketing 6.0 & Immersive","slibNum":12,"color":"#7C3AED"},
-{"name":"Kotler 6.0 Ecosystem Map","def":"An interconnected system of five enabling technologies—AI, AR, VR, IoT, blockchain—centred on creating immersive customer value.","desc":"Five technologies centred on immersive customer value","shape":"network","details":["AI, AR, VR, IoT, blockchain","Interconnected ecosystem diagram","Centred on immersive customer value","Kotler et al. (2023) framework"],"ref":"Kotler, P., Kartajaya, H. and Setiawan, I. (2023) Marketing 6.0: The Future Is Immersive. Hoboken: Wiley.","slibTitle":"Marketing 6.0 & Immersive","slibNum":12,"color":"#7C3AED"}
-];
-
-const SVG={
-  pyramid:c=>`<svg viewBox="0 0 200 130"><polygon points="100,10 30,120 170,120" fill="none" stroke="${c}" stroke-width="2.5" opacity=".6"/><line x1="55" y1="80" x2="145" y2="80" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="72" y1="50" x2="128" y2="50" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
-  cycle:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="65" r="45" fill="none" stroke="${c}" stroke-width="2.5" opacity=".5"/><polygon points="140,40 148,52 132,50" fill="${c}" opacity=".6"/><polygon points="60,90 52,78 68,80" fill="${c}" opacity=".6"/><circle cx="100" cy="20" r="4" fill="${c}" opacity=".5"/><circle cx="145" cy="65" r="4" fill="${c}" opacity=".5"/><circle cx="100" cy="110" r="4" fill="${c}" opacity=".5"/><circle cx="55" cy="65" r="4" fill="${c}" opacity=".5"/></svg>`,
-  scurve:c=>`<svg viewBox="0 0 200 130"><path d="M20,110 C50,108 70,100 90,70 S140,15 180,12" fill="none" stroke="${c}" stroke-width="2.5" opacity=".6"/><line x1="20" y1="120" x2="185" y2="120" stroke="${c}" stroke-width="1" opacity=".2"/><line x1="18" y1="10" x2="18" y2="120" stroke="${c}" stroke-width="1" opacity=".2"/></svg>`,
-  matrix:c=>`<svg viewBox="0 0 200 130"><rect x="25" y="15" width="70" height="45" rx="4" fill="${c}" opacity=".12" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="105" y="15" width="70" height="45" rx="4" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="25" y="70" width="70" height="45" rx="4" fill="${c}" opacity=".08" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="105" y="70" width="70" height="45" rx="4" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
-  funnel:c=>`<svg viewBox="0 0 200 130"><path d="M30,15 L170,15 L135,120 L65,120 Z" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".5"/><line x1="50" y1="50" x2="150" y2="50" stroke="${c}" stroke-width="1" opacity=".3" stroke-dasharray="4"/><line x1="58" y1="80" x2="142" y2="80" stroke="${c}" stroke-width="1" opacity=".3" stroke-dasharray="4"/></svg>`,
-  bars:c=>`<svg viewBox="0 0 200 130"><rect x="25" y="70" width="30" height="50" rx="3" fill="${c}" opacity=".25"/><rect x="65" y="40" width="30" height="80" rx="3" fill="${c}" opacity=".4"/><rect x="105" y="55" width="30" height="65" rx="3" fill="${c}" opacity=".3"/><rect x="145" y="25" width="30" height="95" rx="3" fill="${c}" opacity=".5"/><line x1="20" y1="120" x2="180" y2="120" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
-  arrow:c=>`<svg viewBox="0 0 200 130"><path d="M15,40 L140,40 L140,20 L185,65 L140,110 L140,90 L15,90 Z" fill="${c}" opacity=".12" stroke="${c}" stroke-width="2" opacity=".4"/></svg>`,
-  diamond:c=>`<svg viewBox="0 0 200 130"><polygon points="100,10 180,65 100,120 20,65" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".5"/><circle cx="100" cy="65" r="15" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".4"/></svg>`,
-  circle:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="65" r="50" fill="${c}" opacity=".08" stroke="${c}" stroke-width="2" opacity=".4"/><circle cx="100" cy="65" r="30" fill="${c}" opacity=".12" stroke="${c}" stroke-width="1.5" opacity=".3"/><circle cx="100" cy="65" r="12" fill="${c}" opacity=".2"/></svg>`,
-  stairs:c=>`<svg viewBox="0 0 200 130"><path d="M20,110 L20,85 L65,85 L65,60 L110,60 L110,35 L155,35 L155,15 L180,15" fill="none" stroke="${c}" stroke-width="2.5" opacity=".5"/><rect x="20" y="85" width="45" height="25" fill="${c}" opacity=".08"/><rect x="65" y="60" width="45" height="50" fill="${c}" opacity=".1"/><rect x="110" y="35" width="45" height="75" fill="${c}" opacity=".13"/><rect x="155" y="15" width="25" height="95" fill="${c}" opacity=".16"/></svg>`,
-  pipeline:c=>`<svg viewBox="0 0 200 130"><rect x="10" y="45" width="35" height="40" rx="6" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="48" y1="65" x2="60" y2="65" stroke="${c}" stroke-width="2" opacity=".4"/><rect x="63" y="45" width="35" height="40" rx="6" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="101" y1="65" x2="113" y2="65" stroke="${c}" stroke-width="2" opacity=".4"/><rect x="116" y="45" width="35" height="40" rx="6" fill="${c}" opacity=".25" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="154" y1="65" x2="166" y2="65" stroke="${c}" stroke-width="2" opacity=".4"/><rect x="169" y="45" width="22" height="40" rx="6" fill="${c}" opacity=".3" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
-  split:c=>`<svg viewBox="0 0 200 130"><rect x="15" y="25" width="75" height="80" rx="8" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".3"/><rect x="110" y="25" width="75" height="80" rx="8" fill="${c}" opacity=".18" stroke="${c}" stroke-width="2" opacity=".3"/><line x1="100" y1="30" x2="100" y2="100" stroke="${c}" stroke-width="2" opacity=".3" stroke-dasharray="5"/></svg>`,
-  venn:c=>`<svg viewBox="0 0 200 130"><circle cx="78" cy="65" r="42" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".35"/><circle cx="122" cy="65" r="42" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".35"/></svg>`,
-  layers:c=>`<svg viewBox="0 0 200 130"><rect x="30" y="85" width="140" height="28" rx="5" fill="${c}" opacity=".1" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="30" y="50" width="140" height="28" rx="5" fill="${c}" opacity=".17" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="30" y="15" width="140" height="28" rx="5" fill="${c}" opacity=".25" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
-  tree:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="22" r="12" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".4"/><line x1="100" y1="34" x2="60" y2="65" stroke="${c}" stroke-width="1.5" opacity=".35"/><line x1="100" y1="34" x2="140" y2="65" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="60" cy="70" r="10" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><circle cx="140" cy="70" r="10" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="60" y1="80" x2="40" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="60" y1="80" x2="80" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="140" y1="80" x2="120" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="140" y1="80" x2="160" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><circle cx="40" cy="110" r="7" fill="${c}" opacity=".1"/><circle cx="80" cy="110" r="7" fill="${c}" opacity=".1"/><circle cx="120" cy="110" r="7" fill="${c}" opacity=".1"/><circle cx="160" cy="110" r="7" fill="${c}" opacity=".1"/></svg>`,
-  spectrum:c=>`<svg viewBox="0 0 200 130"><rect x="15" y="50" width="170" height="30" rx="15" fill="${c}" opacity=".1" stroke="${c}" stroke-width="1.5" opacity=".3"/><circle cx="45" cy="65" r="10" fill="${c}" opacity=".15"/><circle cx="100" cy="65" r="10" fill="${c}" opacity=".25"/><circle cx="155" cy="65" r="10" fill="${c}" opacity=".4"/></svg>`,
-  network:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="65" r="14" fill="${c}" opacity=".25" stroke="${c}" stroke-width="1.5" opacity=".4"/><circle cx="45" cy="30" r="9" fill="${c}" opacity=".15"/><circle cx="155" cy="30" r="9" fill="${c}" opacity=".15"/><circle cx="45" cy="100" r="9" fill="${c}" opacity=".15"/><circle cx="155" cy="100" r="9" fill="${c}" opacity=".15"/><line x1="90" y1="55" x2="52" y2="35" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="110" y1="55" x2="148" y2="35" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="90" y1="75" x2="52" y2="95" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="110" y1="75" x2="148" y2="95" stroke="${c}" stroke-width="1.5" opacity=".25"/></svg>`,
-  hexagon:c=>`<svg viewBox="0 0 200 130"><polygon points="100,10 160,37 160,93 100,120 40,93 40,37" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".4"/><polygon points="100,35 135,50 135,80 100,95 65,80 65,50" fill="${c}" opacity=".08" stroke="${c}" stroke-width="1" opacity=".2"/></svg>`,
-  triangle:c=>`<svg viewBox="0 0 200 130"><polygon points="100,15 170,115 30,115" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".4"/><circle cx="100" cy="40" r="5" fill="${c}" opacity=".3"/><circle cx="55" cy="100" r="5" fill="${c}" opacity=".3"/><circle cx="145" cy="100" r="5" fill="${c}" opacity=".3"/></svg>`,
-  timeline:c=>`<svg viewBox="0 0 200 130"><line x1="20" y1="65" x2="180" y2="65" stroke="${c}" stroke-width="2" opacity=".3"/><circle cx="40" cy="65" r="6" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="80" cy="65" r="6" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="120" cy="65" r="6" fill="${c}" opacity=".3" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="160" cy="65" r="6" fill="${c}" opacity=".4" stroke="${c}" stroke-width="1.5" opacity=".35"/><polygon points="178,60 185,65 178,70" fill="${c}" opacity=".4"/></svg>`,
-  iceberg:c=>`<svg viewBox="0 0 200 130"><line x1="15" y1="55" x2="185" y2="55" stroke="${c}" stroke-width="1" opacity=".2" stroke-dasharray="4"/><polygon points="75,55 125,55 100,20" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><polygon points="55,55 145,55 155,120 45,120" fill="${c}" opacity=".08" stroke="${c}" stroke-width="1.5" opacity=".25"/></svg>`
-};
-function getSVG(shape,color){return(SVG[shape]||SVG.matrix)(color)}
-document.getElementById('thumb-9-0').innerHTML=getSVG('pipeline','#DC2626');
-document.getElementById('thumb-9-1').innerHTML=getSVG('pyramid','#DC2626');
-document.getElementById('thumb-9-2').innerHTML=getSVG('layers','#DC2626');
-document.getElementById('thumb-9-3').innerHTML=getSVG('matrix','#DC2626');
-document.getElementById('thumb-9-4').innerHTML=getSVG('timeline','#DC2626');
-document.getElementById('thumb-10-0').innerHTML=getSVG('pipeline','#2563EB');
-document.getElementById('thumb-10-1').innerHTML=getSVG('triangle','#2563EB');
-document.getElementById('thumb-10-2').innerHTML=getSVG('tree','#2563EB');
-document.getElementById('thumb-10-3').innerHTML=getSVG('spectrum','#2563EB');
-document.getElementById('thumb-10-4').innerHTML=getSVG('tree','#2563EB');
-document.getElementById('thumb-11-0').innerHTML=getSVG('triangle','#059669');
-document.getElementById('thumb-11-1').innerHTML=getSVG('bars','#059669');
-document.getElementById('thumb-11-2').innerHTML=getSVG('bars','#059669');
-document.getElementById('thumb-11-3').innerHTML=getSVG('cycle','#059669');
-document.getElementById('thumb-11-4').innerHTML=getSVG('pipeline','#059669');
-document.getElementById('thumb-12-0').innerHTML=getSVG('timeline','#7C3AED');
-document.getElementById('thumb-12-1').innerHTML=getSVG('venn','#7C3AED');
-document.getElementById('thumb-12-2').innerHTML=getSVG('layers','#7C3AED');
-document.getElementById('thumb-12-3').innerHTML=getSVG('layers','#7C3AED');
-document.getElementById('thumb-12-4').innerHTML=getSVG('network','#7C3AED');
-
-
-const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
-document.querySelectorAll('[data-anim]').forEach(el=>obs.observe(el));
-function openModal(fw){
-  const m=document.getElementById('modal');
-  m.innerHTML=`<div class="modal-accent" style="background:${fw.color}"></div><div class="modal-inner" style="position:relative">
-    <button class="modal-close" onclick="closeModal()">\u00d7</button>
-    <div class="modal-slib">Slibrary ${fw.slibNum} \u2014 ${fw.slibTitle}</div>
-    <div class="modal-title">${fw.name}</div>
-    <div class="modal-def">${fw.def}</div>
-    <div class="modal-desc">${fw.desc}</div>
-    <div class="modal-thumb">${getSVG(fw.shape,fw.color)}</div>
-    <ul class="modal-details">${fw.details.map(d=>`<li>${d}</li>`).join('')}</ul>
-    <div class="modal-ref"><div class="modal-ref-label">Reference</div>${fw.ref}</div>
-  </div>`;
-  document.getElementById('modalOverlay').classList.add('open');
-  document.body.style.overflow='hidden';
-}
-function closeModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow=''}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+(function(){
+  var ov=document.getElementById('modal-overlay');
+  var bx=document.getElementById('modal-box');
+  function open(card){
+    var c=card.dataset.color, rgb=card.dataset.rgb;
+    document.getElementById('modal-color-bar').style.background=c;
+    var lead=document.getElementById('modal-lead');
+    lead.style.borderLeftColor=c;
+    lead.style.background='rgba('+rgb+',0.05)';
+    document.getElementById('m-lead-text').style.color=c;
+    document.querySelectorAll('.m-dot').forEach(function(d){d.style.background=c;});
+    var ref=document.getElementById('modal-reference');
+    ref.style.borderLeftColor=c;
+    ref.style.background='rgba('+rgb+',0.07)';
+    document.getElementById('modal-ref-label').style.color=c;
+    document.getElementById('m-slibrary-header').textContent='SLIBRARY '+card.dataset.sl+' — '+card.dataset.setname;
+    document.getElementById('m-unit-badge').textContent=card.dataset.unit;
+    document.getElementById('m-title').textContent=card.dataset.name;
+    document.getElementById('m-itten-line').textContent=card.dataset.itten;
+    document.getElementById('m-lead-text').textContent=card.dataset.lead;
+    document.getElementById('m-sub-text').textContent=card.dataset.sub;
+    document.getElementById('m-b1').textContent=card.dataset.b1;
+    document.getElementById('m-b2').textContent=card.dataset.b2;
+    document.getElementById('m-b3').textContent=card.dataset.b3;
+    document.getElementById('m-b4').textContent=card.dataset.b4;
+    document.getElementById('m-ref-text').innerHTML=card.dataset.ref;
+    ov.classList.add('active');
+    document.body.style.overflow='hidden';
+    bx.scrollTop=0;
+  }
+  function close(){ov.classList.remove('active');document.body.style.overflow='';}
+  document.querySelectorAll('.fw-card').forEach(function(c){c.addEventListener('click',function(){open(c);});});
+  document.getElementById('modal-close').addEventListener('click',close);
+  ov.addEventListener('click',function(e){if(e.target===ov)close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+})();
+</script>
+<script>
+document.querySelectorAll('.acc-hdr').forEach(function(h){
+  h.addEventListener('click',function(){
+    h.classList.toggle('open');
+    h.nextElementSibling.classList.toggle('open');
+  });
+});
 </script>
 </body>
 </html>

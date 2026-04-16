@@ -1,361 +1,397 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MARTI301 Unit 2 — ML & Data-Driven Decisions</title>
-<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--navy:#1B2A4A;--teal:#00B388;--amber:#D4872C;--bg:#FAFBFC;--card:#FFF;--text:#1B2A4A;--muted:#6B7280;--border:#E5E7EB;--def-red:#DC2626}
-html{scroll-behavior:smooth}
-body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;overflow-x:hidden}
-.hero{background:var(--navy);padding:2.5rem 2rem 2rem;position:relative;overflow:hidden}
-.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:var(--teal)}
-.hero-tag{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);font-weight:700;margin-bottom:.5rem}
-.hero h1{font-size:2.2rem;color:#fff;font-weight:700;line-height:1.2;margin-bottom:.4rem}
-.hero p{color:#94A3B8;font-size:.95rem;margin-bottom:.8rem}
-.hero .copy{color:#64748B;font-size:.8rem;font-style:italic}
-.hero-stats{display:flex;gap:2rem;margin-top:1rem}
-.hero-stat{text-align:center}
-.hero-stat .num{font-size:1.8rem;color:var(--teal);font-weight:700}
-.hero-stat .label{font-size:.7rem;color:#94A3B8;text-transform:uppercase;letter-spacing:.1em}
-.slib-set{margin-bottom:2.5rem}
-.slib-set-header{display:flex;align-items:center;gap:.6rem;margin-bottom:1rem;padding-left:.2rem;opacity:0;transform:translateX(-15px);transition:all .5s cubic-bezier(.16,1,.3,1)}
-.slib-set-header.visible{opacity:1;transform:translateX(0)}
-.slib-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
-.slib-set-title{font-size:1rem;font-weight:700}
-.slib-set-num{font-size:.7rem;color:var(--muted);background:#F1F5F9;padding:.15rem .5rem;border-radius:1rem;font-weight:600}
-.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
-.card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;opacity:0;transform:translateY(25px) scale(.97);transition:all .5s cubic-bezier(.16,1,.3,1);position:relative;display:flex;flex-direction:column}
-.card.visible{opacity:1;transform:translateY(0) scale(1)}
-.card:hover{transform:translateY(-4px) scale(1.01);box-shadow:0 12px 32px rgba(27,42,74,.1);border-color:transparent}
-.card-accent{height:3px;width:100%}
-.card-thumb{height:120px;background:#F8FAFC;display:flex;align-items:center;justify-content:center;padding:.8rem;overflow:hidden}
-.card-thumb svg{width:100%;height:100%;opacity:.7;transition:opacity .3s}
-.card:hover .card-thumb svg{opacity:1}
-.card-body{padding:.8rem .9rem .9rem;flex:1;display:flex;flex-direction:column}
-.card-title{font-size:.82rem;font-weight:700;line-height:1.3;margin-bottom:.25rem}
-.card-desc{font-size:.7rem;color:var(--muted);line-height:1.4;margin-bottom:.5rem;flex:1}
-.card-tag{display:inline-block;font-size:.6rem;font-weight:700;padding:.15rem .45rem;border-radius:4px;color:#fff;align-self:flex-start}
-.modal-overlay{position:fixed;inset:0;background:rgba(27,42,74,.5);z-index:200;opacity:0;pointer-events:none;transition:opacity .3s;display:flex;align-items:center;justify-content:center;padding:1rem}
-.modal-overlay.open{opacity:1;pointer-events:auto}
-.modal{background:#fff;border-radius:16px;max-width:560px;width:100%;max-height:85vh;overflow-y:auto;transform:translateY(20px) scale(.95);transition:transform .35s cubic-bezier(.16,1,.3,1);padding:0}
-.modal-overlay.open .modal{transform:translateY(0) scale(1)}
-.modal-accent{height:4px;border-radius:16px 16px 0 0}
-.modal-inner{padding:1.8rem 1.6rem}
-.modal-close{position:absolute;top:1rem;right:1rem;width:32px;height:32px;border-radius:50%;border:none;background:#F1F5F9;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;color:var(--muted);transition:background .2s}
-.modal-close:hover{background:#E2E8F0}
-.modal-slib{font-size:.7rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.3rem}
-.modal-title{font-size:1.4rem;font-weight:700;margin-bottom:.4rem}
-.modal-def{font-size:.9rem;color:var(--def-red);font-weight:600;line-height:1.5;margin-bottom:.7rem;border-left:3px solid var(--def-red);padding-left:.6rem}
-.modal-desc{font-size:.88rem;color:var(--muted);line-height:1.6;margin-bottom:.8rem}
-.modal-thumb{background:#F8FAFC;border-radius:10px;padding:1.5rem;margin-bottom:1.2rem;display:flex;align-items:center;justify-content:center}
-.modal-thumb svg{width:220px;height:140px}
-.modal-details{list-style:none;padding:0;margin-bottom:1rem}
-.modal-details li{font-size:.82rem;color:var(--text);padding:.4rem 0;border-bottom:1px solid #F1F5F9;display:flex;align-items:flex-start;gap:.5rem}
-.modal-details li::before{content:'\2022';color:var(--teal);font-weight:bold;flex-shrink:0;margin-top:1px}
-.modal-ref{background:#F8FAFC;border-radius:8px;padding:.7rem .9rem;font-size:.75rem;color:#475569;line-height:1.5;border-left:3px solid var(--teal)}
-.modal-ref-label{font-weight:700;font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:var(--teal);margin-bottom:.2rem}
-.footer{background:var(--navy);padding:2rem;text-align:center;color:#64748B;font-size:.75rem;margin-top:2rem}
-.footer strong{color:var(--teal)}
-@media(max-width:640px){.hero h1{font-size:1.5rem}.hero-stats{gap:1rem}.cards-grid{grid-template-columns:repeat(auto-fill,minmax(165px,1fr))}.card-thumb{height:90px}}</style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>MLUXR302 Unit 2 — Sustainable Materials and Production Methods</title>
+<style>
+:root{--teal:#00B894;--teal-d:#00695C;--bg:#f7f8fa;--text:#0f172a;--muted:#64748b;--white:#ffffff;--radius:12px;--shadow:0 1px 6px rgba(0,0,0,0.07);--shadow-lg:0 8px 28px rgba(0,0,0,0.13);}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
+a{color:inherit;text-decoration:none;}
+.container{max-width:1120px;margin:0 auto;padding:0 24px;}
+.topbar{background:#0f172a;color:rgba(255,255,255,0.5);font-size:11px;letter-spacing:.1em;text-align:center;padding:7px 0;}
+.topbar strong{color:var(--teal);}
+.site-header{background:var(--white);border-bottom:3px solid var(--teal);padding:16px 0;position:sticky;top:0;z-index:500;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
+.hdr-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.hdr-brand .code{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--teal);font-weight:700;}
+.hdr-brand .name{font-size:16px;font-weight:700;}
+.hdr-meta{font-size:12px;color:var(--muted);text-align:right;line-height:1.5;}
+.back-link{display:inline-flex;align-items:center;gap:6px;color:var(--teal-d);font-size:13px;font-weight:600;padding:10px 0;transition:gap .2s;}
+.back-link:hover{gap:10px;}
+.hero{padding:48px 0 36px;text-align:center;}
+.unit-pill{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:16px;}
+.hero h1{font-size:clamp(20px,4vw,36px);font-weight:800;margin-bottom:8px;line-height:1.2;}
+.hero .sub{font-size:15px;color:var(--muted);margin-bottom:6px;}
+.hero-hint{font-size:12px;color:var(--muted);margin-bottom:28px;font-style:italic;}
+.hero-stats{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;}
+.hero-stat .num{font-size:38px;font-weight:800;line-height:1;}
+.hero-stat .lbl{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:2px;}
+.itten-tag{display:inline-flex;align-items:center;gap:7px;font-size:12px;background:var(--white);padding:6px 14px;border-radius:20px;box-shadow:var(--shadow);margin-bottom:32px;}
+.itten-dot{width:10px;height:10px;border-radius:50%;}
+.set-section{margin-bottom:52px;}
+.set-hdr{display:flex;align-items:center;gap:12px;margin-bottom:18px;padding-bottom:10px;border-bottom:2px solid #e2e8f0;}
+.set-hdr h2{font-size:14px;font-weight:700;display:flex;align-items:center;gap:10px;}
+.set-num{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0;}
+.set-tag{font-size:11px;color:var(--muted);background:#f1f5f9;padding:2px 10px;border-radius:10px;margin-left:auto;}
+.fw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:14px;}
+.fw-card{background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);cursor:pointer;transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column;border-top:4px solid transparent;}
+.fw-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);}
+.fw-card-icon{padding:14px 16px 6px;line-height:1;}
+.fw-card-icon svg{display:block;width:56px;height:40px;}
+.fw-card-body{padding:0 16px 12px;flex:1;display:flex;flex-direction:column;}
+.fw-card-name{font-size:13px;font-weight:700;margin-bottom:5px;color:var(--text);line-height:1.3;}
+.fw-card-desc{font-size:11.5px;color:var(--muted);line-height:1.55;flex:1;}
+.fw-card-foot{display:flex;align-items:center;justify-content:space-between;padding:8px 16px 10px;border-top:1px solid #f0f0f0;margin-top:auto;}
+.fw-sl-badge{font-size:10px;font-weight:700;letter-spacing:.06em;padding:2px 8px;border-radius:8px;}
+.fw-arrow{font-size:13px;color:var(--muted);}
+.idx-hero{padding:60px 0 48px;text-align:center;}
+.idx-hero .school{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:10px;}
+.idx-hero h1{font-size:clamp(26px,5vw,50px);font-weight:800;line-height:1.15;margin-bottom:12px;}
+.idx-hero .tag{font-size:16px;color:var(--muted);margin-bottom:10px;}
+.idx-hero .itten-credit{font-size:12px;color:var(--muted);margin-bottom:30px;font-style:italic;}
+.idx-stats{display:flex;justify-content:center;gap:48px;flex-wrap:wrap;}
+.idx-stat .num{font-size:48px;font-weight:800;color:var(--teal);line-height:1;}
+.idx-stat .lbl{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:4px;}
+.itten-legend{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:24px 0 32px;}
+.itten-chip{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;padding:5px 12px;border-radius:20px;background:var(--white);box-shadow:var(--shadow);}
+.itten-chip-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.accordion{margin-bottom:10px;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);}
+.acc-hdr{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;cursor:pointer;transition:opacity .18s;}
+.acc-hdr:hover{opacity:.93;}
+.acc-meta{display:flex;flex-direction:column;gap:2px;}
+.acc-unit-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:rgba(255,255,255,.75);}
+.acc-itten{font-size:10px;color:rgba(255,255,255,.55);font-style:italic;}
+.acc-title{font-size:15px;font-weight:700;color:#fff;line-height:1.3;}
+.acc-chevron{font-size:17px;color:rgba(255,255,255,.65);transition:transform .28s;}
+.acc-hdr.open .acc-chevron{transform:rotate(180deg);}
+.acc-body{display:none;background:var(--white);}
+.acc-body.open{display:block;}
+.res-link{display:flex;align-items:center;gap:12px;padding:13px 22px;border-bottom:1px solid #f1f5f9;transition:background .13s;}
+.res-link:last-child{border-bottom:none;}
+.res-link:hover{background:#f8fafc;}
+.res-badge{font-size:10px;font-weight:700;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;}
+.res-title{font-size:14px;font-weight:700;margin-bottom:1px;}
+.res-meta{font-size:11px;color:var(--muted);}
+.res-tag{font-size:10px;color:var(--muted);background:#f1f5f9;padding:2px 8px;border-radius:6px;white-space:nowrap;}
+.phase-list{list-style:none;}
+.phase-item{display:flex;gap:14px;padding:18px 0;border-bottom:1px solid #f0f0f0;}
+.phase-item:last-child{border-bottom:none;}
+.phase-badge{font-size:10px;font-weight:700;letter-spacing:.07em;padding:4px 10px;border-radius:8px;height:fit-content;white-space:nowrap;}
+.phase-h{font-size:14px;font-weight:700;margin-bottom:4px;}
+.phase-p{font-size:13px;color:var(--muted);}
+.case-brand-hdr{padding:48px 0 28px;text-align:center;}
+.brand-name{font-size:48px;font-weight:900;letter-spacing:-2px;margin-bottom:8px;line-height:1;}
+.case-card{background:var(--white);border-radius:var(--radius);padding:32px;box-shadow:var(--shadow);margin-bottom:18px;}
+.case-card h2{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #f1f5f9;}
+.case-card p{font-size:14.5px;line-height:1.8;margin-bottom:10px;}
+.case-card ol{padding-left:18px;}
+.case-card li{font-size:14.5px;line-height:1.7;margin-bottom:8px;}
+.pr-card{background:var(--white);border-radius:var(--radius);padding:32px;box-shadow:var(--shadow);margin-bottom:18px;}
+.pr-card h2{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:12px;}
+.pr-card p{font-size:14.5px;line-height:1.8;margin-bottom:10px;}
+.kp-item{display:flex;gap:10px;margin-bottom:10px;align-items:flex-start;}
+.kp-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:7px;}
+.kp-text{font-size:14px;line-height:1.6;}
+.pr-prepare{border-radius:0 var(--radius) var(--radius) 0;padding:20px 24px;border-left:4px solid;margin-bottom:48px;}
+.pr-prepare-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;}
+.ref-cards{display:grid;gap:18px;}
+.ref-card{background:var(--white);border-radius:var(--radius);padding:26px 28px;box-shadow:var(--shadow);display:flex;gap:18px;align-items:flex-start;}
+.ref-num{font-size:32px;font-weight:900;line-height:1;opacity:.15;flex-shrink:0;width:40px;}
+.ref-card p{font-size:15px;line-height:1.75;}
+.ref-guide{border-radius:var(--radius);padding:20px 24px;margin-top:24px;margin-bottom:48px;}
+.ref-guide-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;}
+.ref-guide p{font-size:13.5px;line-height:1.7;}
+.cg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:9px;}
+.cg-card{background:var(--white);border-radius:8px;padding:12px 14px;box-shadow:0 1px 3px rgba(0,0,0,0.05);border-left:4px solid transparent;}
+.cg-name{font-size:12px;font-weight:700;margin-bottom:2px;}
+.cg-unit{font-size:10px;color:var(--muted);}
+.site-footer{margin-top:72px;border-top:3px solid var(--teal);padding:22px 0;text-align:center;font-size:12px;color:var(--muted);}
+.site-footer strong{color:var(--text);}
+@media(max-width:640px){.fw-grid{grid-template-columns:1fr 1fr;}.cg-grid{grid-template-columns:1fr 1fr;}}
+</style>
+
+<style>
+#modal-overlay{position:fixed;inset:0;background:rgba(8,8,20,0.78);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);z-index:9000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity 0.22s;}
+#modal-overlay.active{opacity:1;pointer-events:all;}
+#modal-box{background:#ffffff;border-radius:16px;width:100%;max-width:660px;max-height:90vh;overflow-y:auto;box-shadow:0 28px 90px rgba(0,0,0,0.38);transform:translateY(20px) scale(0.97);transition:transform 0.22s;position:relative;}
+#modal-overlay.active #modal-box{transform:translateY(0) scale(1);}
+#modal-color-bar{height:5px;border-radius:16px 16px 0 0;}
+#modal-inner{padding:28px 32px 28px;}
+#modal-header{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:20px;}
+#modal-header-left{flex:1;}
+#modal-label-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap;}
+#m-slibrary-header{font-size:10px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:#888;}
+#m-unit-badge{font-size:10px;font-weight:700;letter-spacing:0.08em;padding:2px 9px;border-radius:8px;background:#f0f0f0;color:#666;}
+#m-title{font-size:24px;font-weight:800;color:#1a1a2e;line-height:1.2;margin-bottom:5px;font-family:Arial,Helvetica,sans-serif;}
+#m-itten-line{font-size:11px;color:#aaa;font-style:italic;}
+#modal-close{background:#f0f0f2;border:none;width:34px;height:34px;border-radius:50%;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#666;transition:background .15s,color .15s;}
+#modal-close:hover{background:#dde0e4;color:#333;}
+#modal-lead{border-left:4px solid #ccc;margin:0 0 14px;padding:12px 18px;border-radius:0 6px 6px 0;}
+#modal-lead p{font-size:15px;font-weight:700;font-style:italic;line-height:1.65;margin:0;font-family:Arial,Helvetica,sans-serif;}
+#m-sub-text{font-size:13px;color:#888;font-style:italic;margin-bottom:22px;line-height:1.5;}
+#modal-bullets{margin-bottom:24px;}
+.m-bullet-item{display:flex;align-items:baseline;gap:12px;padding:11px 0;}
+.m-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-top:2px;display:inline-block;background:#ccc;}
+.m-bullet-text{font-size:14px;line-height:1.65;color:#333;}
+.m-divider{border:none;border-top:1px solid #e8eaed;margin:0;}
+#modal-reference{border-radius:0 8px 8px 0;border-left:4px solid #ccc;padding:16px 20px;margin-top:4px;}
+#modal-ref-label{font-size:10px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:#888;margin-bottom:8px;}
+#m-ref-text{font-size:13px;line-height:1.75;color:#444;margin:0;}
+@media(max-width:580px){#modal-inner{padding:20px 18px 20px;}#m-title{font-size:19px;}}
+</style>
 </head>
 <body>
-
-<a href="./" style="display:block;background:#E6F7F3;padding:.65rem 1.5rem;text-decoration:none;font-size:.82rem;font-weight:700;color:#059669;border-bottom:2px solid #00B388">&#8592; Back to Course Overview</a>
-<header class="hero">
-  <div class="hero-tag">MARTI301 &middot; Unit 2</div>
-  <h1>ML & Data-Driven Decisions</h1>
-  <p>Select any framework to explore it in detail</p>
-  <div class="copy">&copy; 2026 Dr. Hildegard Haas</div>
-  <div class="hero-stats">
-    <div class="hero-stat"><div class="num">4</div><div class="label">Slibraries</div></div>
-    <div class="hero-stat"><div class="num">20</div><div class="label">Frameworks</div></div>
-    <div class="hero-stat"><div class="num">5&ndash;8</div><div class="label">Set Range</div></div>
+<script>
+(function(){
+  document.addEventListener('contextmenu',e=>e.preventDefault());
+  ['copy','cut','paste'].forEach(ev=>document.addEventListener(ev,e=>e.preventDefault()));
+  document.addEventListener('keydown',e=>{
+    const k=e.key.toLowerCase(),c=e.ctrlKey||e.metaKey;
+    if(c&&(k==='c'||k==='x'||k==='v'||k==='s'||k==='u'||k==='a'||k==='p')){e.preventDefault();return false;}
+    if(e.key==='F12'||(c&&e.shiftKey&&(k==='i'||k==='j'||k==='c'))){e.preventDefault();return false;}
+  });
+  document.addEventListener('dragstart',e=>e.preventDefault());
+})();
+</script>
+<style>
+@media print{body *{visibility:hidden!important;}body::after{visibility:visible!important;content:'© Dr. Hildegard Haas | MLUXR302 | EU Business School — Printing not permitted.';display:block;font-size:18px;text-align:center;padding:80px 40px;font-family:Arial,sans-serif;}}
+body,*{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
+</style>
+<div class="topbar">
+  <strong>MLUXR302</strong> &nbsp;&middot;&nbsp; Sustainable Value Creation in Fashion &amp; Luxury
+  &nbsp;&middot;&nbsp;
+  &copy; 2026 Dr. Hildegard Haas &nbsp;&middot;&nbsp; EU Business School
+</div>
+<header class="site-header">
+  <div class="container hdr-inner">
+    <div class="hdr-brand">
+      <div class="code">MLUXR302 &middot; Masters Level 7 &middot; EU Business School</div>
+      <div class="name">Sustainable Value Creation in Fashion &amp; Luxury</div>
+    </div>
+    <div class="hdr-meta">Dr. Hildegard Haas<br/>hildegard.haas@euruni.edu &middot; www.euruni.edu</div>
   </div>
 </header>
-<main style="padding:2rem 1.5rem 1rem">
-<div class="slib-set">
-      <div class="slib-set-header" data-anim>
-        <span class="slib-dot" style="background:#D4872C"></span>
-        <span class="slib-set-title">Set 5 &mdash; ML Models & Techniques</span>
-        <span class="slib-set-num">5 frameworks</span>
-      </div>
-      <div class="cards-grid"><div class="card" data-anim style="transition-delay:0ms" onclick="openModal(FW[0])">
-          <div class="card-accent" style="background:#D4872C"></div>
-          <div class="card-thumb" id="thumb-5-0"></div>
-          <div class="card-body">
-            <div class="card-title">ML Learning Types Taxonomy</div>
-            <div class="card-desc">Supervised, unsupervised, and reinforcement learning branches</div>
-            <span class="card-tag" style="background:#D4872C">Slibrary 5</span>
-          </div>
-        </div><div class="card" data-anim style="transition-delay:80ms" onclick="openModal(FW[1])">
-          <div class="card-accent" style="background:#D4872C"></div>
-          <div class="card-thumb" id="thumb-5-1"></div>
-          <div class="card-body">
-            <div class="card-title">Bias-Variance Tradeoff</div>
-            <div class="card-desc">U-shaped total error curve with sweet spot in the middle</div>
-            <span class="card-tag" style="background:#D4872C">Slibrary 5</span>
-          </div>
-        </div><div class="card" data-anim style="transition-delay:160ms" onclick="openModal(FW[2])">
-          <div class="card-accent" style="background:#D4872C"></div>
-          <div class="card-thumb" id="thumb-5-2"></div>
-          <div class="card-body">
-            <div class="card-title">Confusion Matrix 2×2</div>
-            <div class="card-desc">TP/FP/FN/TN grid—precision, recall, F1 derive from it</div>
-            <span class="card-tag" style="background:#D4872C">Slibrary 5</span>
-          </div>
-        </div><div class="card" data-anim style="transition-delay:240ms" onclick="openModal(FW[3])">
-          <div class="card-accent" style="background:#D4872C"></div>
-          <div class="card-thumb" id="thumb-5-3"></div>
-          <div class="card-body">
-            <div class="card-title">Feature Importance Chart</div>
-            <div class="card-desc">Horizontal bars ranked by weight—explainability for stakeholders</div>
-            <span class="card-tag" style="background:#D4872C">Slibrary 5</span>
-          </div>
-        </div><div class="card" data-anim style="transition-delay:320ms" onclick="openModal(FW[4])">
-          <div class="card-accent" style="background:#D4872C"></div>
-          <div class="card-thumb" id="thumb-5-4"></div>
-          <div class="card-body">
-            <div class="card-title">Model Selection Flowchart</div>
-            <div class="card-desc">Decision tree: structured → regression/classification/clustering</div>
-            <span class="card-tag" style="background:#D4872C">Slibrary 5</span>
-          </div>
-        </div></div></div><div class="slib-set">
-      <div class="slib-set-header" data-anim>
-        <span class="slib-dot" style="background:#7C3AED"></span>
-        <span class="slib-set-title">Set 6 &mdash; Decision Intelligence</span>
-        <span class="slib-set-num">5 frameworks</span>
-      </div>
-      <div class="cards-grid"><div class="card" data-anim style="transition-delay:0ms" onclick="openModal(FW[5])">
-          <div class="card-accent" style="background:#7C3AED"></div>
-          <div class="card-thumb" id="thumb-6-0"></div>
-          <div class="card-body">
-            <div class="card-title">OODA Loop</div>
-            <div class="card-desc">Observe → Orient → Decide → Act—speed of cycle = advantage</div>
-            <span class="card-tag" style="background:#7C3AED">Slibrary 6</span>
-          </div>
-        </div><div class="card" data-anim style="transition-delay:80ms" onclick="openModal(FW[6])">
-          <div class="card-accent" style="background:#7C3AED"></div>
-          <div class="card-thumb" id="thumb-6-1"></div>
-          <div class="card-body">
-            <div class="card-title">Weighted Decision Matrix</div>
-            <div class="card-desc">Criteria × weight scoring grid for transparent trade-offs</div>
-            <span class="card-tag" style="background:#7C3AED">Slibrary 6</span>
-          </div>
-        </div><div class="card" data-anim style="transition-delay:160ms" onclick="openModal(FW[7])">
-          <div class="card-accent" style="background:#7C3AED"></div>
-          <div class="card-thumb" id="thumb-6-2"></div>
-          <div class="card-body">
-            <div class="card-title">Cynefin Framework</div>
-            <div class="card-desc">Simple → Complicated → Complex → Chaotic decision contexts</div>
-            <span class="card-tag" style="background:#7C3AED">Slibrary 6</span>
-          </div>
-        </div><div class="card" data-anim style="transition-delay:240ms" onclick="openModal(FW[8])">
-          <div class="card-accent" style="background:#7C3AED"></div>
-          <div class="card-thumb" id="thumb-6-3"></div>
-          <div class="card-body">
-            <div class="card-title">IDSS Architecture Layers</div>
-            <div class="card-desc">Data → Analytics → UI layers with human judgment on top</div>
-            <span class="card-tag" style="background:#7C3AED">Slibrary 6</span>
-          </div>
-        </div><div class="card" data-anim style="transition-delay:320ms" onclick="openModal(FW[9])">
-          <div class="card-accent" style="background:#7C3AED"></div>
-          <div class="card-thumb" id="thumb-6-4"></div>
-          <div class="card-body">
-            <div class="card-title">Prediction Machines Model</div>
-            <div class="card-desc">AI drops cost of prediction—judgment remains human domain</div>
-            <span class="card-tag" style="background:#7C3AED">Slibrary 6</span>
-          </div>
-        </div></div></div><div class="slib-set">
-      <div class="slib-set-header" data-anim>
-        <span class="slib-dot" style="background:#2563EB"></span>
-        <span class="slib-set-title">Set 7 &mdash; Data Strategy</span>
-        <span class="slib-set-num">5 frameworks</span>
-      </div>
-      <div class="cards-grid"><div class="card" data-anim style="transition-delay:0ms" onclick="openModal(FW[10])">
-          <div class="card-accent" style="background:#2563EB"></div>
-          <div class="card-thumb" id="thumb-7-0"></div>
-          <div class="card-body">
-            <div class="card-title">Data Value Chain</div>
-            <div class="card-desc">Collect → Store → Process → Analyse → Act with value increasing</div>
-            <span class="card-tag" style="background:#2563EB">Slibrary 7</span>
-          </div>
-        </div><div class="card" data-anim style="transition-delay:80ms" onclick="openModal(FW[11])">
-          <div class="card-accent" style="background:#2563EB"></div>
-          <div class="card-thumb" id="thumb-7-1"></div>
-          <div class="card-body">
-            <div class="card-title">DIKW Pyramid</div>
-            <div class="card-desc">Data → Information → Knowledge → Wisdom hierarchy</div>
-            <span class="card-tag" style="background:#2563EB">Slibrary 7</span>
-          </div>
-        </div><div class="card" data-anim style="transition-delay:160ms" onclick="openModal(FW[12])">
-          <div class="card-accent" style="background:#2563EB"></div>
-          <div class="card-thumb" id="thumb-7-2"></div>
-          <div class="card-body">
-            <div class="card-title">Data Flywheel</div>
-            <div class="card-desc">More data → better model → better product → more users → more data</div>
-            <span class="card-tag" style="background:#2563EB">Slibrary 7</span>
-          </div>
-        </div><div class="card" data-anim style="transition-delay:240ms" onclick="openModal(FW[13])">
-          <div class="card-accent" style="background:#2563EB"></div>
-          <div class="card-thumb" id="thumb-7-3"></div>
-          <div class="card-body">
-            <div class="card-title">Data Quality Dimensions</div>
-            <div class="card-desc">Accuracy, completeness, consistency, timeliness, validity, uniqueness</div>
-            <span class="card-tag" style="background:#2563EB">Slibrary 7</span>
-          </div>
-        </div><div class="card" data-anim style="transition-delay:320ms" onclick="openModal(FW[14])">
-          <div class="card-accent" style="background:#2563EB"></div>
-          <div class="card-thumb" id="thumb-7-4"></div>
-          <div class="card-body">
-            <div class="card-title">ETL Pipeline Diagram</div>
-            <div class="card-desc">Extract → Transform → Load from sources to data warehouse</div>
-            <span class="card-tag" style="background:#2563EB">Slibrary 7</span>
-          </div>
-        </div></div></div><div class="slib-set">
-      <div class="slib-set-header" data-anim>
-        <span class="slib-dot" style="background:#DC2626"></span>
-        <span class="slib-set-title">Set 8 &mdash; AI-Driven Marketing</span>
-        <span class="slib-set-num">5 frameworks</span>
-      </div>
-      <div class="cards-grid"><div class="card" data-anim style="transition-delay:0ms" onclick="openModal(FW[15])">
-          <div class="card-accent" style="background:#DC2626"></div>
-          <div class="card-thumb" id="thumb-8-0"></div>
-          <div class="card-body">
-            <div class="card-title">AI Marketing Funnel</div>
-            <div class="card-desc">Awareness → Consideration → Conversion with AI at every stage</div>
-            <span class="card-tag" style="background:#DC2626">Slibrary 8</span>
-          </div>
-        </div><div class="card" data-anim style="transition-delay:80ms" onclick="openModal(FW[16])">
-          <div class="card-accent" style="background:#DC2626"></div>
-          <div class="card-thumb" id="thumb-8-1"></div>
-          <div class="card-body">
-            <div class="card-title">RFM Segmentation Matrix</div>
-            <div class="card-desc">Recency × Frequency × Monetary value customer clustering</div>
-            <span class="card-tag" style="background:#DC2626">Slibrary 8</span>
-          </div>
-        </div><div class="card" data-anim style="transition-delay:160ms" onclick="openModal(FW[17])">
-          <div class="card-accent" style="background:#DC2626"></div>
-          <div class="card-thumb" id="thumb-8-2"></div>
-          <div class="card-body">
-            <div class="card-title">A/B Testing Framework</div>
-            <div class="card-desc">Control vs. treatment with statistical significance threshold</div>
-            <span class="card-tag" style="background:#DC2626">Slibrary 8</span>
-          </div>
-        </div><div class="card" data-anim style="transition-delay:240ms" onclick="openModal(FW[18])">
-          <div class="card-accent" style="background:#DC2626"></div>
-          <div class="card-thumb" id="thumb-8-3"></div>
-          <div class="card-body">
-            <div class="card-title">Recommendation Engine</div>
-            <div class="card-desc">Collaborative + content-based filtering architecture</div>
-            <span class="card-tag" style="background:#DC2626">Slibrary 8</span>
-          </div>
-        </div><div class="card" data-anim style="transition-delay:320ms" onclick="openModal(FW[19])">
-          <div class="card-accent" style="background:#DC2626"></div>
-          <div class="card-thumb" id="thumb-8-4"></div>
-          <div class="card-body">
-            <div class="card-title">Customer Lifetime Value</div>
-            <div class="card-desc">Revenue × margin × retention / discount rate over customer lifespan</div>
-            <span class="card-tag" style="background:#DC2626">Slibrary 8</span>
-          </div>
-        </div></div></div>
-</main>
-<footer class="footer">
-  <strong>MARTI301</strong> &middot; AI in Investment &amp; Competitiveness &middot; &copy; 2026 Dr. Hildegard Haas<br>
-  Applying JD Meier&rsquo;s <strong>Thumbnail Thinking</strong> (2025) &middot; Unit 2: ML & Data-Driven Decisions
+<main><div class="container">
+<a class="back-link" href="index.html">&#8592; Course Overview</a>
+<div class="hero"><div class="unit-pill" style="background:rgba(212,135,44,0.1);color:#D4872C;">MLUXR302 &middot; Unit 2</div><h1>Sustainable Materials and Production Methods</h1><p class="sub">From Fibre to Finished Garment — Life Cycle Thinking</p><p class="hero-hint">Click any framework card to open it in detail</p><div class="hero-stats"><div class="hero-stat"><div class="num" style="color:#D4872C">3</div><div class="lbl">Slibraries</div></div><div class="hero-stat"><div class="num" style="color:#D4872C">15</div><div class="lbl">Frameworks</div></div><div class="hero-stat"><div class="num" style="color:#D4872C">4–6</div><div class="lbl">Sets</div></div></div></div><div class="set-section"><div class="set-hdr"><h2><div class="set-num" style="background:#D4872C">4</div>Set 4 — Materials Assessment</h2><span class="set-tag">5 frameworks &middot; click any card to explore</span></div><div class="fw-grid"><div class="fw-card" style="border-top-color:#D4872C;" data-color="#D4872C" data-rgb="212,135,44" data-sl="4" data-unit="MLUXR302 · Unit 2" data-setname="Materials Assessment" data-name="Life Cycle Assessment (LCA)" data-itten="Itten: Deep Orange — Analysis, applied thinking" data-lead="The gold standard for measuring a product&#39;s true environmental impact — a systematic accounting of every input and output, from raw material extraction to final disposal." data-sub="Cradle-to-grave accounting: raw materials → processing → manufacturing → use → end-of-life" data-b1="Goal and scope → define the system boundary: cradle-to-grave (full lifecycle), cradle-to-gate (production only), or cradle-to-cradle (includes recovery)" data-b2="Life cycle inventory → quantify all material and energy inputs and all waste and emission outputs at each stage of the product&#39;s lifecycle" data-b3="Impact assessment → convert inventory data into environmental impact categories: global warming potential, water consumption, land use, toxicity, eutrophication" data-b4="Interpretation → identify hotspots and guide decision-making; for a cotton T-shirt, consumer washing accounts for 39% of lifetime carbon — redirecting communication and product design" data-ref="ISO (2006) <em>ISO 14040: Environmental Management — Life Cycle Assessment — Principles and Framework</em>. Geneva: International Organization for Standardization."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
+  <path d="M28,6 A18,18 0 1,1 27.9,6" fill="none" stroke="rgba(212,135,44,0.2)" stroke-width="12" stroke-linecap="round"/>
+  <path d="M28,6 A18,18 0 0,1 46,22" fill="none" stroke="#D4872C" stroke-width="12" stroke-linecap="round"/>
+  <polygon points="46,15 50,26 38,26" fill="#D4872C"/>
+  <circle cx="28" cy="24" r="6" fill="white"/>
+  <text x="28" y="27" text-anchor="middle" font-size="5.5" fill="#D4872C" font-weight="900">LCA</text>
+  <text x="28" y="42" text-anchor="middle" font-size="4" fill="#D4872C">ISO 14040</text>
+</svg></div><div class="fw-card-body"><div class="fw-card-name">Life Cycle Assessment (LCA)</div><div class="fw-card-desc">Cradle-to-grave environmental accounting across raw material, production, use and end-of-life</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(212,135,44,0.12);color:#D4872C;">Slibrary 4</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#D4872C;" data-color="#D4872C" data-rgb="212,135,44" data-sl="4" data-unit="MLUXR302 · Unit 2" data-setname="Materials Assessment" data-name="Higg Materials Sustainability Index" data-itten="Itten: Deep Orange — Analysis, applied thinking" data-lead="A comparative scoring system that quantifies the environmental impact of textile fibres and materials, enabling brands to make data-driven material substitution decisions." data-sub="0–100 impact score across eight environmental indicators: compare, choose, improve" data-b1="Scope → assesses fibres and materials across eight impact categories: global warming potential, water scarcity, energy use, fossil fuel depletion, and eutrophication" data-b2="Application → brands use MSI scores to rank material options within a product category; lower score = lower environmental impact = preferred material choice" data-b3="Controversy → in 2022 the Norwegian Consumer Authority found H&M&#39;s consumer-facing MSI claims misleading; MSI is a raw material assessment, not a finished-product environmental label" data-b4="Evolution → 2.0 update incorporates updated science and industry feedback; brands advised to use MSI as an internal decision-making tool rather than a direct consumer claim" data-ref="Sustainable Apparel Coalition (2020) <em>Higg Materials Sustainability Index (Higg MSI): Overview and Methodology</em>. San Francisco: SAC."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
+  <rect x="4" y="8" width="48" height="24" rx="4" fill="rgba(212,135,44,0.1)" stroke="#D4872C" stroke-width="1.5"/>
+  <rect x="7" y="11" width="12" height="18" rx="2" fill="#D4872C"/>
+  <rect x="22" y="17" width="12" height="12" rx="2" fill="rgba(212,135,44,0.55)"/>
+  <rect x="37" y="22" width="12" height="7" rx="2" fill="rgba(212,135,44,0.25)" stroke="#D4872C" stroke-width="1"/>
+  <text x="13" y="22" text-anchor="middle" font-size="5" fill="white" font-weight="700">A</text>
+  <text x="28" y="25" text-anchor="middle" font-size="5" fill="white" font-weight="700">B</text>
+  <text x="43" y="27" text-anchor="middle" font-size="5" fill="#D4872C" font-weight="700">C</text>
+  <text x="28" y="42" text-anchor="middle" font-size="4" fill="#D4872C">Higg MSI · SAC</text>
+</svg></div><div class="fw-card-body"><div class="fw-card-name">Higg Materials Sustainability Index</div><div class="fw-card-desc">Comparative scoring tool for fibre environmental impact — used by 200+ global brands</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(212,135,44,0.12);color:#D4872C;">Slibrary 4</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#D4872C;" data-color="#D4872C" data-rgb="212,135,44" data-sl="4" data-unit="MLUXR302 · Unit 2" data-setname="Materials Assessment" data-name="Fiber Impact Matrix" data-itten="Itten: Deep Orange — Analysis, applied thinking" data-lead="A strategic mapping tool that positions textile fibres on two critical sustainability axes — renewability and biodegradability — revealing the trade-offs inherent in every material choice." data-sub="Renewability × Biodegradability: four quadrants that define the material sustainability landscape" data-b1="Renewable + biodegradable → natural fibres: linen, hemp, wool (sustainably grazed), organic cotton — best end-of-life, but variable upstream impacts" data-b2="Renewable + non-biodegradable → regenerated cellulosics: lyocell (Tencel), conventional viscose — bio-based but persistent in environment without industrial composting" data-b3="Non-renewable + non-biodegradable → synthetic fibres: polyester, nylon, acrylic — fossil-based, microplastic-shedding, dominant in fashion at 65% of global fibre production" data-b4="Next-generation quadrant → bio-fabricated materials (Mylo, Microsilk, lab-grown collagen) aim for renewable + biodegradable performance with synthetic durability" data-ref="Textile Exchange (2023) <em>Preferred Fiber and Materials: Market Report 2023</em>. Lamesa, TX: Textile Exchange."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
+  <rect x="4" y="4" width="24" height="17" rx="2" fill="#D4872C" opacity="0.7"/>
+  <rect x="28" y="4" width="24" height="17" rx="2" fill="rgba(212,135,44,0.35)" stroke="#D4872C" stroke-width="1"/>
+  <rect x="4" y="23" width="24" height="17" rx="2" fill="rgba(212,135,44,0.35)" stroke="#D4872C" stroke-width="1"/>
+  <rect x="28" y="23" width="24" height="17" rx="2" fill="rgba(212,135,44,0.12)" stroke="#D4872C" stroke-width="1"/>
+  <text x="16" y="15" text-anchor="middle" font-size="4" fill="white" font-weight="700">IDEAL</text>
+  <text x="40" y="15" text-anchor="middle" font-size="3.5" fill="#D4872C">Renew/</text>
+  <text x="40" y="19" text-anchor="middle" font-size="3.5" fill="#D4872C">Not bio</text>
+  <text x="16" y="32" text-anchor="middle" font-size="3.5" fill="#D4872C">Bio/</text>
+  <text x="16" y="36" text-anchor="middle" font-size="3.5" fill="#D4872C">Not ren</text>
+  <text x="40" y="34" text-anchor="middle" font-size="3.5" fill="rgba(212,135,44,0.6)">SYNTH</text>
+  <text x="28" y="43" text-anchor="middle" font-size="4" fill="#D4872C">Renew ↔ Bio</text>
+</svg></div><div class="fw-card-body"><div class="fw-card-name">Fiber Impact Matrix</div><div class="fw-card-desc">Renewability vs. biodegradability 2×2: natural, synthetic, semi-synthetic and next-gen fibres</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(212,135,44,0.12);color:#D4872C;">Slibrary 4</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#D4872C;" data-color="#D4872C" data-rgb="212,135,44" data-sl="4" data-unit="MLUXR302 · Unit 2" data-setname="Materials Assessment" data-name="Organic vs. Conventional Cotton" data-itten="Itten: Deep Orange — Analysis, applied thinking" data-lead="The most scrutinised material comparison in sustainable fashion — revealing that organic certification delivers significant environmental benefits, but with a land-use trade-off that complicates the verdict." data-sub="70% less water · zero synthetic pesticides · 20% lower yield: the environmental arithmetic of organic cotton" data-b1="Water → organic cotton cultivation uses 91% less water than conventional, primarily because rain-fed systems replace irrigated production in certified supply chains" data-b2="Chemistry → zero synthetic pesticides and fertilisers protect soil microbiomes, farmer health and local waterways; eliminates the 16% of world insecticide use attributed to conventional cotton" data-b3="Yield trade-off → 20–25% lower yield per hectare means more land is required to produce the same volume — a critical consideration in land-scarce regions" data-b4="Certification integrity → GOTS (Global Organic Textile Standard) is the most rigorous certification, covering the full supply chain from field to finished product" data-ref="Textile Exchange (2022) <em>Organic Cotton Market Report 2022</em>. Lamesa, TX: Textile Exchange."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
+  <path d="M20,8 Q14,14 16,22 Q20,30 20,36" fill="none" stroke="#D4872C" stroke-width="2" stroke-linecap="round"/>
+  <ellipse cx="20" cy="8" rx="6" ry="5" fill="rgba(212,135,44,0.3)" stroke="#D4872C" stroke-width="1.5"/>
+  <ellipse cx="12" cy="16" rx="5" ry="4" fill="rgba(212,135,44,0.3)" stroke="#D4872C" stroke-width="1.5"/>
+  <ellipse cx="26" cy="14" rx="5" ry="4" fill="rgba(212,135,44,0.3)" stroke="#D4872C" stroke-width="1.5"/>
+  <text x="38" y="18" text-anchor="middle" font-size="5" fill="#D4872C" font-weight="700">−91%</text>
+  <text x="38" y="24" text-anchor="middle" font-size="4" fill="#D4872C">water</text>
+  <text x="38" y="30" text-anchor="middle" font-size="5" fill="#D4872C" font-weight="700">0</text>
+  <text x="38" y="36" text-anchor="middle" font-size="4" fill="#D4872C">pesticide</text>
+  <text x="28" y="44" text-anchor="middle" font-size="4" fill="#D4872C">Organic Cotton</text>
+</svg></div><div class="fw-card-body"><div class="fw-card-name">Organic vs. Conventional Cotton</div><div class="fw-card-desc">70% less water, no synthetic pesticides — but yield trade-offs and certification complexity</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(212,135,44,0.12);color:#D4872C;">Slibrary 4</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#D4872C;" data-color="#D4872C" data-rgb="212,135,44" data-sl="4" data-unit="MLUXR302 · Unit 2" data-setname="Materials Assessment" data-name="Leather Alternatives Spectrum" data-itten="Itten: Deep Orange — Analysis, applied thinking" data-lead="A rapidly evolving material landscape offering alternatives to bovine leather at every price and performance point — from commodity polyurethane to cutting-edge bio-fabrication." data-sub="PU → plant-based → mycelium → lab-grown: a spectrum from incumbent to next-generation" data-b1="PU/PVC alternatives → lowest cost, widest availability, but fossil-based (typically 50% polyurethane), non-biodegradable, and emit VOCs during production and use" data-b2="Plant-based alternatives → Piñatex (pineapple leaf), AppleSkin, corn-based: bio-derived, compostable in industrial conditions, commercially available, but lower performance durability" data-b3="Mycelium leather → Mylo (Bolt Threads), Reishi: grown from mushroom roots in 6–14 days, biodegradable, performance comparable to leather; scaling to commercial volumes is the key challenge" data-b4="Lab-grown collagen → Modern Meadow, Provenance Bio: bio-fabricated animal collagen without animals; identical material properties; currently at laboratory and limited commercial scale" data-ref="Grand View Research (2023) <em>Leather Goods Market Size, Share and Trends Analysis Report 2023–2030</em>. San Francisco: Grand View Research."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
+  <rect x="3" y="16" width="50" height="12" rx="6" fill="rgba(212,135,44,0.1)" stroke="#D4872C" stroke-width="1.5"/>
+  <circle cx="10" cy="22" r="5" fill="rgba(212,135,44,0.25)" stroke="#D4872C" stroke-width="1"/>
+  <circle cx="24" cy="22" r="5" fill="rgba(212,135,44,0.5)" stroke="#D4872C" stroke-width="1"/>
+  <circle cx="38" cy="22" r="5" fill="#D4872C" opacity="0.75"/>
+  <circle cx="50" cy="22" r="4" fill="#D4872C"/>
+  <text x="10" y="35" text-anchor="middle" font-size="3.5" fill="#D4872C">PU</text>
+  <text x="24" y="35" text-anchor="middle" font-size="3.5" fill="#D4872C">Plant</text>
+  <text x="38" y="35" text-anchor="middle" font-size="3.5" fill="#D4872C">Mylio</text>
+  <text x="50" y="35" text-anchor="middle" font-size="3.5" fill="#D4872C">Lab</text>
+  <text x="28" y="10" text-anchor="middle" font-size="5" fill="#D4872C" font-weight="700">PU → LAB</text>
+</svg></div><div class="fw-card-body"><div class="fw-card-name">Leather Alternatives Spectrum</div><div class="fw-card-desc">PU → plant-based (Mylo, Piñatex) → lab-grown — performance, cost and scalability compared</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(212,135,44,0.12);color:#D4872C;">Slibrary 4</span><span class="fw-arrow">&#8594;</span></div></div></div></div><div class="set-section"><div class="set-hdr"><h2><div class="set-num" style="background:#D4872C">5</div>Set 5 — Production Methods</h2><span class="set-tag">5 frameworks &middot; click any card to explore</span></div><div class="fw-grid"><div class="fw-card" style="border-top-color:#D4872C;" data-color="#D4872C" data-rgb="212,135,44" data-sl="5" data-unit="MLUXR302 · Unit 2" data-setname="Production Methods" data-name="Cradle to Cradle (C2C)" data-itten="Itten: Deep Orange — Analysis, applied thinking" data-lead="A design philosophy that eliminates the concept of waste entirely — every material at end of product life is food for another process, either biological or technical." data-sub="Technical cycle: recover and remanufacture synthetic materials · Biological cycle: return organic materials safely to soil" data-b1="Biological cycle → organic materials (natural fibres, plant-based materials) designed to safely biodegrade and return nutrients to soil; no toxic additives that contaminate the loop" data-b2="Technical cycle → synthetic materials (metals, plastics, synthetics) designed to be recovered and remanufactured indefinitely at the same quality level — not downcycled" data-b3="Waste equals food → every material output is designed as a valued input for another process; waste is a design flaw, not an operational inevitability" data-b4="Certification → Cradle to Cradle Products Innovation Institute awards Bronze to Platinum certification across five categories: material health, material reutilisation, renewable energy, water stewardship and social fairness" data-ref="Braungart, M. and McDonough, W. (2002) <em>Cradle to Cradle: Remaking the Way We Make Things</em>. New York: North Point Press."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10,22 Q10,6 28,6 Q46,6 46,22" fill="none" stroke="#D4872C" stroke-width="3" stroke-linecap="round"/>
+  <polygon points="46,15 52,24 40,26" fill="#D4872C"/>
+  <path d="M46,22 Q46,38 28,38 Q10,38 10,22" fill="none" stroke="rgba(212,135,44,0.5)" stroke-width="3" stroke-linecap="round"/>
+  <polygon points="10,29 4,20 16,18" fill="rgba(212,135,44,0.5)"/>
+  <text x="28" y="25" text-anchor="middle" font-size="5" fill="#D4872C" font-weight="900">C2C</text>
+  <text x="28" y="44" text-anchor="middle" font-size="4" fill="#D4872C">Braungart 2002</text>
+</svg></div><div class="fw-card-body"><div class="fw-card-name">Cradle to Cradle (C2C)</div><div class="fw-card-desc">Technical cycle: reclaim synthetic materials | Biological cycle: return organic materials safely</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(212,135,44,0.12);color:#D4872C;">Slibrary 5</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#D4872C;" data-color="#D4872C" data-rgb="212,135,44" data-sl="5" data-unit="MLUXR302 · Unit 2" data-setname="Production Methods" data-name="Waterless Dyeing Technology" data-itten="Itten: Deep Orange — Analysis, applied thinking" data-lead="A transformative production technology that eliminates water from the dyeing process entirely, using supercritical CO₂ as the dyeing medium and delivering simultaneous reductions in water, energy and chemical use." data-sub="Supercritical CO₂ replaces water: zero effluent, 50% less energy, same colour quality" data-b1="Process → CO₂ heated above its critical point (31°C, 74 bar) becomes a supercritical fluid that dissolves synthetic dye and penetrates polyester fibre without water" data-b2="Resource savings → eliminates water consumption and wastewater discharge entirely; reduces energy use by 50%; eliminates dye-carrier chemicals and finishing chemicals" data-b3="CO₂ recovery → supercritical CO₂ is recovered and reused at rates above 95%, making the process genuinely circular for the solvent medium" data-b4="Current limitation → technology is proven for polyester fibres; application to natural fibres (cotton, wool) requires further development; capital investment is significant" data-ref="DyeCoo Textile Systems (2021) <em>DyeCoo: Waterless Dyeing Technology Overview</em>. Weesp: DyeCoo Textile Systems."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
+  <rect x="8" y="10" width="40" height="24" rx="5" fill="rgba(212,135,44,0.1)" stroke="#D4872C" stroke-width="1.5"/>
+  <text x="28" y="26" text-anchor="middle" font-size="9" fill="#D4872C" font-weight="900">CO₂</text>
+  <line x1="8" y1="22" x2="3" y2="22" stroke="#D4872C" stroke-width="1.5"/>
+  <polygon points="3,19 3,25 7,22" fill="#D4872C"/>
+  <text x="28" y="40" text-anchor="middle" font-size="4.5" fill="#D4872C" font-weight="700">0 WATER · −50% E</text>
+</svg></div><div class="fw-card-body"><div class="fw-card-name">Waterless Dyeing Technology</div><div class="fw-card-desc">DyeCoo CO₂ dyeing eliminates water and uses 50% less energy than conventional methods</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(212,135,44,0.12);color:#D4872C;">Slibrary 5</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#D4872C;" data-color="#D4872C" data-rgb="212,135,44" data-sl="5" data-unit="MLUXR302 · Unit 2" data-setname="Production Methods" data-name="Zero-Waste Pattern Making" data-itten="Itten: Deep Orange — Analysis, applied thinking" data-lead="A design-led approach that eliminates the 15% of fabric typically wasted in conventional garment cutting, through algorithmic pattern optimisation and modular design thinking." data-sub="Conventional cutting wastes 15% of fabric → zero-waste design targets 100% fabric utilisation" data-b1="The problem → conventional pattern making generates 15% fabric waste (a sleeve here, a facing there); at industry scale this represents billions of kilograms of textile waste annually" data-b2="Algorithmic nesting → digital marker-making software optimises pattern piece placement across fabric width, reducing waste from 15% toward 2–5% in conventional practice" data-b3="Modular design → garments engineered so every off-cut becomes an integral design element: a pocket, a detail, a trim; the constraint becomes the creative brief" data-b4="Design pioneers → Holly McQuillan, Timo Rissanen and Yeohlee Teng have demonstrated that zero-waste garments can be commercially viable and aesthetically sophisticated" data-ref="McQuillan, H. and Rissanen, T. (2011) <em>Zero Waste Fashion Design</em>. London: Bloomsbury Publishing."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
+  <rect x="4" y="4" width="48" height="32" rx="3" fill="rgba(212,135,44,0.1)" stroke="#D4872C" stroke-width="1.5"/>
+  <polygon points="4,4 28,4 4,20" fill="#D4872C" opacity="0.6"/>
+  <polygon points="28,4 52,4 52,14" fill="rgba(212,135,44,0.5)"/>
+  <polygon points="4,20 20,20 4,36" fill="rgba(212,135,44,0.4)"/>
+  <polygon points="20,20 52,14 52,36 20,36" fill="rgba(212,135,44,0.25)" stroke="#D4872C" stroke-width="1"/>
+  <text x="28" y="42" text-anchor="middle" font-size="4.5" fill="#D4872C" font-weight="700">100% UTILISATION</text>
+</svg></div><div class="fw-card-body"><div class="fw-card-name">Zero-Waste Pattern Making</div><div class="fw-card-desc">Digital nesting and modular design push fabric utilisation from 85% to near 100%</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(212,135,44,0.12);color:#D4872C;">Slibrary 5</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#D4872C;" data-color="#D4872C" data-rgb="212,135,44" data-sl="5" data-unit="MLUXR302 · Unit 2" data-setname="Production Methods" data-name="Slow vs. Fast Fashion Model" data-itten="Itten: Deep Orange — Analysis, applied thinking" data-lead="A fundamental business model opposition that determines volume, velocity, material quality, labour cost and environmental impact — and reveals that price-per-item conceals the true cost of clothing." data-sub="52 micro-seasons vs. 2 collections · throughput vs. longevity · trend vs. craft" data-b1="Fast fashion → 52+ micro-seasons annually, garment lifespan of 7–10 wears, price-sensitive commodity, designed for disposal, global supply chains optimised for speed" data-b2="Slow fashion → 2 considered collections annually, design for durability and longevity, higher price point, transparent sourcing, emphasis on material quality and craft" data-b3="Price per wear → a €200 slow fashion garment worn 200 times costs €1/wear; a €20 fast fashion garment worn 10 times costs €2/wear — the economics of quality favour longevity" data-b4="Industry tension → 60% of global fashion market volume is fast fashion; the sustainability transition requires a &#39;great slowdown&#39; in production that challenges established revenue models" data-ref="Fletcher, K. (2008) <em>Sustainable Fashion and Textiles: Design Journeys</em>. London: Earthscan."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
+  <rect x="4" y="8" width="20" height="28" rx="3" fill="#D4872C" opacity="0.7"/>
+  <rect x="32" y="16" width="20" height="20" rx="3" fill="rgba(212,135,44,0.3)" stroke="#D4872C" stroke-width="1.5"/>
+  <text x="14" y="20" text-anchor="middle" font-size="4" fill="white" font-weight="700">SLOW</text>
+  <text x="14" y="27" text-anchor="middle" font-size="9" fill="white" font-weight="900">2</text>
+  <text x="14" y="34" text-anchor="middle" font-size="4" fill="white">seasons</text>
+  <text x="42" y="25" text-anchor="middle" font-size="4" fill="#D4872C" font-weight="700">FAST</text>
+  <text x="42" y="31" text-anchor="middle" font-size="7" fill="#D4872C" font-weight="900">52</text>
+  <text x="28" y="43" text-anchor="middle" font-size="4" fill="#D4872C">Fletcher 2008</text>
+</svg></div><div class="fw-card-body"><div class="fw-card-name">Slow vs. Fast Fashion Model</div><div class="fw-card-desc">Throughput, price point, longevity and labour cost contrasted across business models</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(212,135,44,0.12);color:#D4872C;">Slibrary 5</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#D4872C;" data-color="#D4872C" data-rgb="212,135,44" data-sl="5" data-unit="MLUXR302 · Unit 2" data-setname="Production Methods" data-name="Supply Chain Transparency Tiers" data-itten="Itten: Deep Orange — Analysis, applied thinking" data-lead="A structural map of fashion supply chains revealing that accountability and visibility decrease sharply as you move upstream — from visible factory to invisible raw material." data-sub="Tier 1: visible · Tier 2: partial · Tier 3: opaque · Tier 4: invisible" data-b1="Tier 1 — cut, make, trim factories → most visible and most audited; brands typically know their Tier 1 suppliers and conduct annual social compliance audits" data-b2="Tier 2 — fabric mills and wet processing facilities → partially visible; brand knowledge drops significantly; dyeing and finishing facilities often not mapped" data-b3="Tier 3 — yarn spinning and fibre processing → largely invisible; few brands can name Tier 3 suppliers; chemical inputs and water use concentrated here" data-b4="Tier 4 — raw material extraction and farming → almost entirely invisible to brands; yet environmental impact (pesticide use, land, water) and social risk (smallholder farmers, migrant workers) is highest" data-ref="Global Fashion Agenda (2017) <em>Pulse of the Fashion Industry</em>. Copenhagen: Global Fashion Agenda and Boston Consulting Group."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
+  <rect x="4" y="4" width="48" height="8" rx="2" fill="#D4872C"/>
+  <rect x="4" y="14" width="38" height="7" rx="2" fill="rgba(212,135,44,0.65)"/>
+  <rect x="4" y="23" width="26" height="7" rx="2" fill="rgba(212,135,44,0.4)"/>
+  <rect x="4" y="32" width="14" height="7" rx="2" fill="rgba(212,135,44,0.2)" stroke="#D4872C" stroke-width="1"/>
+  <text x="28" y="10" text-anchor="middle" font-size="5" fill="white" font-weight="700">TIER 1 — visible</text>
+  <text x="23" y="19" text-anchor="middle" font-size="4.5" fill="white">TIER 2</text>
+  <text x="17" y="28" text-anchor="middle" font-size="4.5" fill="white">TIER 3</text>
+  <text x="11" y="37" text-anchor="middle" font-size="4" fill="#D4872C">T4</text>
+</svg></div><div class="fw-card-body"><div class="fw-card-name">Supply Chain Transparency Tiers</div><div class="fw-card-desc">Tier 1 (cut & sew) through Tier 4 (raw material) — visibility and accountability model</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(212,135,44,0.12);color:#D4872C;">Slibrary 5</span><span class="fw-arrow">&#8594;</span></div></div></div></div><div class="set-section"><div class="set-hdr"><h2><div class="set-num" style="background:#D4872C">6</div>Set 6 — Circular Innovation</h2><span class="set-tag">5 frameworks &middot; click any card to explore</span></div><div class="fw-grid"><div class="fw-card" style="border-top-color:#D4872C;" data-color="#D4872C" data-rgb="212,135,44" data-sl="6" data-unit="MLUXR302 · Unit 2" data-setname="Circular Innovation" data-name="Ellen MacArthur Butterfly Diagram" data-itten="Itten: Deep Orange — Analysis, applied thinking" data-lead="The defining visual framework of the circular economy — a butterfly showing two distinct nutrient loops, each designed to keep materials at their highest value indefinitely." data-sub="Left wing: biological cycle · Right wing: technical cycle · Inner loops always preferred" data-b1="Biological cycle (left wing) → organic materials (cotton, wool, leather) designed to safely biodegrade and return nutrients to soil through composting or anaerobic digestion" data-b2="Technical cycle (right wing) → synthetic materials (polyester, nylon, metals) designed to be recovered and remanufactured indefinitely without quality loss" data-b3="Inner loops are most valuable → reuse and maintenance preserve more value than remanufacturing; remanufacturing preserves more value than recycling; recycling more than landfill" data-b4="Fashion application → the challenge is that most textiles are blended (polyester-cotton), making separation and routing to the correct loop technically and economically difficult" data-ref="Ellen MacArthur Foundation (2013) <em>Towards the Circular Economy, Volume 1</em>. Isle of Wight: Ellen MacArthur Foundation."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
+  <path d="M28,22 Q14,6 4,10 Q14,22 28,22" fill="rgba(212,135,44,0.3)" stroke="#D4872C" stroke-width="1.5"/>
+  <path d="M28,22 Q14,32 4,36 Q14,22 28,22" fill="rgba(212,135,44,0.5)" stroke="#D4872C" stroke-width="1.5"/>
+  <path d="M28,22 Q42,6 52,10 Q42,22 28,22" fill="rgba(212,135,44,0.3)" stroke="#D4872C" stroke-width="1.5"/>
+  <path d="M28,22 Q42,32 52,36 Q42,22 28,22" fill="rgba(212,135,44,0.5)" stroke="#D4872C" stroke-width="1.5"/>
+  <circle cx="28" cy="22" r="4" fill="#D4872C"/>
+  <text x="12" y="41" text-anchor="middle" font-size="3.5" fill="#D4872C">BIO</text>
+  <text x="44" y="41" text-anchor="middle" font-size="3.5" fill="#D4872C">TECH</text>
+</svg></div><div class="fw-card-body"><div class="fw-card-name">Ellen MacArthur Butterfly Diagram</div><div class="fw-card-desc">Biological nutrient loop ← → Technical nutrient loop — the circular economy blueprint</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(212,135,44,0.12);color:#D4872C;">Slibrary 6</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#D4872C;" data-color="#D4872C" data-rgb="212,135,44" data-sl="6" data-unit="MLUXR302 · Unit 2" data-setname="Circular Innovation" data-name="Upcycling Value Hierarchy" data-itten="Itten: Deep Orange — Analysis, applied thinking" data-lead="A strategic framework for end-of-life material decisions that ranks interventions by the value they preserve — establishing that the best recyclable is one that never needs to be recycled." data-sub="Reuse → Repair → Upcycle → Recycle → Downcycle → Landfill: preserve the most value possible" data-b1="Reuse → highest value: direct reuse of the product as-is; no energy, no processing, full material and design integrity preserved (charity shops, Vestiaire Collective, Hermès Victoria)" data-b2="Repair and maintenance → second highest: extend product life through repair services, alterations and care; Patagonia Ironclad Guarantee, Nudie Jeans Free Repairs" data-b3="Upcycling → third: transform waste into a higher-value product; Marine Serre&#39;s vintage tea-towel dresses; Freitag truck tarp bags — waste becomes premium" data-b4="Recycling and downcycling → lowest recovery option: mechanical recycling degrades fibre quality; most recycled polyester is downcycled to lower-value applications, not circular" data-ref="McDonough, W. and Braungart, M. (2002) <em>Cradle to Cradle: Remaking the Way We Make Things</em>. New York: North Point Press."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
+  <rect x="4" y="34" width="48" height="6" rx="2" fill="rgba(212,135,44,0.15)" stroke="#D4872C" stroke-width="1"/>
+  <rect x="8" y="26" width="40" height="6" rx="2" fill="rgba(212,135,44,0.3)"/>
+  <rect x="12" y="18" width="32" height="6" rx="2" fill="rgba(212,135,44,0.5)"/>
+  <rect x="16" y="10" width="24" height="6" rx="2" fill="rgba(212,135,44,0.7)"/>
+  <rect x="20" y="4" width="16" height="5" rx="2" fill="#D4872C"/>
+  <text x="28" y="9" text-anchor="middle" font-size="3.5" fill="white" font-weight="700">REUSE</text>
+  <text x="28" y="15" text-anchor="middle" font-size="3.5" fill="white">REPAIR</text>
+  <text x="28" y="23" text-anchor="middle" font-size="3.5" fill="white">UPCYCLE</text>
+  <text x="28" y="31" text-anchor="middle" font-size="3.5" fill="#D4872C">RECYCLE</text>
+  <text x="28" y="39" text-anchor="middle" font-size="3.5" fill="rgba(212,135,44,0.5)">LANDFILL</text>
+</svg></div><div class="fw-card-body"><div class="fw-card-name">Upcycling Value Hierarchy</div><div class="fw-card-desc">Reuse → Repair → Upcycle → Downcycle → Recycle — value preservation priority order</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(212,135,44,0.12);color:#D4872C;">Slibrary 6</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#D4872C;" data-color="#D4872C" data-rgb="212,135,44" data-sl="6" data-unit="MLUXR302 · Unit 2" data-setname="Circular Innovation" data-name="Regenerative Agriculture" data-itten="Itten: Deep Orange — Analysis, applied thinking" data-lead="A farming philosophy that goes beyond sustainability — not merely sustaining natural systems but actively restoring soil health, biodiversity, carbon sequestration and water cycles." data-sub="Beyond sustainable: growing food and fibre while rebuilding the natural systems that support life" data-b1="Soil health → regenerative practices (cover cropping, composting, minimal tillage, rotational grazing) rebuild soil microbiome, structure and organic carbon — reversing degradation" data-b2="Carbon sequestration → healthy soils store carbon; Rodale Institute estimates that regenerative agriculture globally could sequester more than 100% of current annual CO₂ emissions" data-b3="Biodiversity → polyculture, hedgerows, wildlife corridors and no synthetic inputs restore insect populations, bird populations and ecosystem services within and around farm boundaries" data-b4="Fashion application → Patagonia&#39;s RWS (Responsible Wool Standard) and regenerative cotton programmes; Eileen Fisher and Stella McCartney are investing in verified regenerative fibre supply chains" data-ref="Rodale Institute (2014) <em>Regenerative Organic Agriculture and Climate Change</em>. Kutztown, PA: Rodale Institute."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
+  <path d="M28,38 Q28,20 20,12" fill="none" stroke="#D4872C" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M20,12 Q14,6 8,8 Q14,16 20,12" fill="rgba(212,135,44,0.4)" stroke="#D4872C" stroke-width="1.5"/>
+  <path d="M20,18 Q26,10 34,8 Q28,18 20,18" fill="rgba(212,135,44,0.5)" stroke="#D4872C" stroke-width="1.5"/>
+  <path d="M22,24 Q30,18 38,20 Q32,28 22,24" fill="rgba(212,135,44,0.35)" stroke="#D4872C" stroke-width="1.5"/>
+  <rect x="4" y="38" width="48" height="6" rx="2" fill="#D4872C" opacity="0.8"/>
+  <text x="28" y="43" text-anchor="middle" font-size="4" fill="white" font-weight="700">REGENERATE SOIL</text>
+</svg></div><div class="fw-card-body"><div class="fw-card-name">Regenerative Agriculture</div><div class="fw-card-desc">Beyond sustainable sourcing to soil restoration, biodiversity and carbon sequestration</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(212,135,44,0.12);color:#D4872C;">Slibrary 6</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#D4872C;" data-color="#D4872C" data-rgb="212,135,44" data-sl="6" data-unit="MLUXR302 · Unit 2" data-setname="Circular Innovation" data-name="ZDHC Chemical Management" data-itten="Itten: Deep Orange — Analysis, applied thinking" data-lead="An industry-wide initiative to eliminate hazardous chemicals from fashion&#39;s wet processing supply chain — the most toxic phase of garment production." data-sub="Zero Discharge of Hazardous Chemicals: roadmap, restricted substances list and wastewater verification" data-b1="MRSL → the Manufacturing Restricted Substances List: 11 chemical groups (azo dyes, formaldehyde, heavy metals, phthalates, etc.) prohibited from use in wet processing" data-b2="Roadmap → brands, chemical suppliers and manufacturers commit to a phased MRSL compliance timeline with annual verification milestones from 2011 to 2020+" data-b3="Wastewater testing → factory effluent tested to confirm that restricted substances are not discharged into waterways — the verification mechanism distinguishing ZDHC from self-declaration" data-b4="Fashion signatories → ZDHC is now supported by 250+ brands including H&M, Inditex, Nike, adidas, Burberry — covering the majority of global production volume" data-ref="ZDHC (2020) <em>ZDHC Manufacturing Restricted Substances List (MRSL) Version 2.0</em>. Amsterdam: ZDHC Foundation."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
+  <path d="M20,4 L20,20 Q20,36 28,36 Q36,36 36,20 L36,4 Z" fill="rgba(212,135,44,0.2)" stroke="#D4872C" stroke-width="2"/>
+  <line x1="15" y1="12" x2="41" y2="12" stroke="#D4872C" stroke-width="1.5"/>
+  <circle cx="28" cy="26" r="5" fill="#D4872C" opacity="0.7"/>
+  <line x1="26" y1="24" x2="30" y2="28" stroke="white" stroke-width="2"/>
+  <line x1="30" y1="24" x2="26" y2="28" stroke="white" stroke-width="2"/>
+  <text x="28" y="43" text-anchor="middle" font-size="4.5" fill="#D4872C" font-weight="700">ZDHC MRSL</text>
+</svg></div><div class="fw-card-body"><div class="fw-card-name">ZDHC Chemical Management</div><div class="fw-card-desc">Zero Discharge of Hazardous Chemicals — roadmap for wet processing detoxification</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(212,135,44,0.12);color:#D4872C;">Slibrary 6</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#D4872C;" data-color="#D4872C" data-rgb="212,135,44" data-sl="6" data-unit="MLUXR302 · Unit 2" data-setname="Circular Innovation" data-name="Material Passport System" data-itten="Itten: Deep Orange — Analysis, applied thinking" data-lead="A digital identity for every product that tracks fibre composition, chemical content and disassembly instructions throughout its entire lifetime — enabling informed decisions at every stage from resale to recycling." data-sub="Digital product identity: material origin → composition → chemical inventory → end-of-life routing" data-b1="Data content → material type and origin, chemical inventory (aligned to ZDHC MRSL), fibre blend percentages, disassembly instructions, repair guidance and recycling routing" data-b2="Access mechanism → QR code, NFC tag or RFID embedded in product label; scannable at any point in the supply chain, resale market or waste processing facility" data-b3="Value creation → enables informed resale (correct care), accurate sorting at end-of-life (correct recycling route) and verification of sustainability claims (brand accountability)" data-b4="EU DPP mandate → the EU Ecodesign Regulation for Sustainable Products (2024) requires Digital Product Passports for textiles from 2025; Freitag and Pangaia are early adopters" data-ref="European Commission (2022) <em>Regulation of the European Parliament and of the Council Establishing a Framework for Setting Ecodesign Requirements for Sustainable Products</em>. Brussels: European Commission, COM/2022/142."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
+  <rect x="8" y="4" width="40" height="30" rx="4" fill="rgba(212,135,44,0.1)" stroke="#D4872C" stroke-width="2"/>
+  <rect x="12" y="8" width="10" height="10" rx="1" fill="#D4872C"/>
+  <rect x="12" y="20" width="10" height="10" rx="1" fill="rgba(212,135,44,0.4)"/>
+  <line x1="26" y1="10" x2="44" y2="10" stroke="#D4872C" stroke-width="1.5"/>
+  <line x1="26" y1="14" x2="40" y2="14" stroke="rgba(212,135,44,0.5)" stroke-width="1"/>
+  <line x1="26" y1="22" x2="44" y2="22" stroke="rgba(212,135,44,0.5)" stroke-width="1"/>
+  <line x1="26" y1="26" x2="38" y2="26" stroke="rgba(212,135,44,0.35)" stroke-width="1"/>
+  <rect x="10" y="37" width="36" height="5" rx="2" fill="#D4872C" opacity="0.8"/>
+  <text x="28" y="41" text-anchor="middle" font-size="4" fill="white" font-weight="700">DIGITAL PASSPORT</text>
+</svg></div><div class="fw-card-body"><div class="fw-card-name">Material Passport System</div><div class="fw-card-desc">Digital product identity tracking fibre origin, chemistry and disassembly instructions at end-of-life</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(212,135,44,0.12);color:#D4872C;">Slibrary 6</span><span class="fw-arrow">&#8594;</span></div></div></div></div><p style="text-align:center;font-size:11px;color:var(--muted);margin-bottom:48px;"><strong>MLUXR302</strong> &middot; &copy; 2026 Dr. Hildegard Haas &middot; EU Business School</p>
+</div></main>
+<footer class="site-footer">
+  <div class="container">
+    <strong>&copy; Dr. Hildegard Haas</strong> &middot; MLUXR302 Sustainable Value Creation in Fashion &amp; Luxury &middot; EU Business School<br/>
+    All rights reserved
+  </div>
 </footer>
-<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
-  <div class="modal" id="modal"></div>
+
+<div id="modal-overlay">
+  <div id="modal-box">
+    <div id="modal-color-bar"></div>
+    <div id="modal-inner">
+      <div id="modal-header">
+        <div id="modal-header-left">
+          <div id="modal-label-row">
+            <span id="m-slibrary-header"></span>
+            <span id="m-unit-badge"></span>
+          </div>
+          <h2 id="m-title"></h2>
+          <div id="m-itten-line"></div>
+        </div>
+        <button id="modal-close" aria-label="Close">&#x2715;</button>
+      </div>
+      <blockquote id="modal-lead"><p id="m-lead-text"></p></blockquote>
+      <p id="m-sub-text"></p>
+      <div id="modal-bullets">
+        <div class="m-bullet-item"><span class="m-dot"></span><span class="m-bullet-text" id="m-b1"></span></div>
+        <hr class="m-divider"/>
+        <div class="m-bullet-item"><span class="m-dot"></span><span class="m-bullet-text" id="m-b2"></span></div>
+        <hr class="m-divider"/>
+        <div class="m-bullet-item"><span class="m-dot"></span><span class="m-bullet-text" id="m-b3"></span></div>
+        <hr class="m-divider"/>
+        <div class="m-bullet-item"><span class="m-dot"></span><span class="m-bullet-text" id="m-b4"></span></div>
+      </div>
+      <div id="modal-reference">
+        <div id="modal-ref-label">REFERENCE</div>
+        <p id="m-ref-text"></p>
+      </div>
+    </div>
+  </div>
 </div>
+
 <script>
-const FW = [
-{"name":"ML Learning Types Taxonomy","def":"A classification of machine learning into three paradigms: supervised (labelled data), unsupervised (pattern discovery), and reinforcement (reward-based) learning.","desc":"Supervised, unsupervised, and reinforcement learning branches","shape":"tree","details":["Supervised: labelled data → prediction","Unsupervised: patterns in unlabelled data","Reinforcement: reward-based learning","Tree diagram with three main branches"],"ref":"Bishop, C.M. (2006) Pattern Recognition and Machine Learning. New York: Springer.","slibTitle":"ML Models & Techniques","slibNum":5,"color":"#D4872C"},
-{"name":"Bias-Variance Tradeoff","def":"The principle that model prediction error comprises reducible bias (underfitting) and variance (overfitting), with total error minimised at their balance point.","desc":"U-shaped total error curve with sweet spot in the middle","shape":"scurve","details":["Low complexity = high bias (underfitting)","High complexity = high variance (overfitting)","Sweet spot minimises total error","Core ML model selection concept"],"ref":"Hastie, T., Tibshirani, R. and Friedman, J. (2009) The Elements of Statistical Learning. 2nd edn. New York: Springer.","slibTitle":"ML Models & Techniques","slibNum":5,"color":"#D4872C"},
-{"name":"Confusion Matrix 2×2","def":"A tabular evaluation of classifier performance showing true positives, false positives, false negatives, and true negatives, from which precision, recall, and F1 are derived.","desc":"TP/FP/FN/TN grid—precision, recall, F1 derive from it","shape":"matrix","details":["True Positives / False Positives","False Negatives / True Negatives","Precision, recall, F1 score derived","Core model evaluation thumbnail"],"ref":"Fawcett, T. (2006) 'An introduction to ROC analysis', Pattern Recognition Letters, 27(8), pp. 861–874.","slibTitle":"ML Models & Techniques","slibNum":5,"color":"#D4872C"},
-{"name":"Feature Importance Chart","def":"A ranked visualisation of input variables by their contribution to model predictions, enabling explainability and stakeholder communication.","desc":"Horizontal bars ranked by weight—explainability for stakeholders","shape":"bars","details":["Which inputs drive the model most?","Key for explainability (XAI)","Communicates ML to business leaders","SHAP values or permutation importance"],"ref":"Lundberg, S.M. and Lee, S.-I. (2017) 'A unified approach to interpreting model predictions', Advances in Neural Information Processing Systems, 30.","slibTitle":"ML Models & Techniques","slibNum":5,"color":"#D4872C"},
-{"name":"Model Selection Flowchart","def":"A decision tree guiding practitioners from data type and problem type to the appropriate machine learning algorithm family.","desc":"Decision tree: structured → regression/classification/clustering","shape":"tree","details":["Start: structured or unstructured data?","Branches by problem type","Guides non-technical stakeholders","Scikit-learn-style decision tree"],"ref":"Scikit-learn (2023) 'Choosing the right estimator', scikit-learn.org.","slibTitle":"ML Models & Techniques","slibNum":5,"color":"#D4872C"},
-{"name":"OODA Loop","def":"A decision-cycle model—Observe, Orient, Decide, Act—where competitive advantage derives from cycling through decisions faster than opponents.","desc":"Observe → Orient → Decide → Act—speed of cycle = advantage","shape":"cycle","details":["Speed of decision cycle = competitive edge","Agility in volatile markets","AI accelerates Observe and Orient phases","Boyd (1976); O'Callaghan (2023)"],"ref":"Boyd, J.R. (1976) Destruction and Creation. Cited in: O'Callaghan, M. (2023) Decision Intelligence. Boca Raton: CRC Press.","slibTitle":"Decision Intelligence","slibNum":6,"color":"#7C3AED"},
-{"name":"Weighted Decision Matrix","def":"A structured evaluation tool that scores options against weighted criteria, quantifying subjective trade-offs into a transparent, auditable decision.","desc":"Criteria × weight scoring grid for transparent trade-offs","shape":"matrix","details":["Quantifies subjective trade-offs","AI can automate the scoring layer","Transparent and auditable decisions","Standard decision analysis tool"],"ref":"O'Callaghan, M. (2023) Decision Intelligence: Human–Machine Integration for Decision-Making. Boca Raton: CRC Press.","slibTitle":"Decision Intelligence","slibNum":6,"color":"#7C3AED"},
-{"name":"Cynefin Framework","def":"A sense-making model categorising decision contexts as simple, complicated, complex, or chaotic—each requiring a different leadership approach.","desc":"Simple → Complicated → Complex → Chaotic decision contexts","shape":"matrix","details":["Match decision approach to context","AI excels in complicated domain","Complex domain needs experimentation","Snowden & Boone (2007)"],"ref":"Snowden, D.J. and Boone, M.E. (2007) 'A leader's framework for decision making', Harvard Business Review, 85(11), pp. 68–76.","slibTitle":"Decision Intelligence","slibNum":6,"color":"#7C3AED"},
-{"name":"IDSS Architecture Layers","def":"A three-layer architecture for Intelligent Decision Support Systems: data layer, analytics/AI layer, and user interface, with human judgment at the apex.","desc":"Data → Analytics → UI layers with human judgment on top","shape":"layers","details":["Three-layer architecture stack","Human judgment sits above all layers","AI augments, doesn't replace decisions","Core Unit 2 framework"],"ref":"Phillips-Wren, G. et al. (2021) 'Intelligent decision support systems in the era of big data', Knowledge-Based Systems, 227, 107222.","slibTitle":"Decision Intelligence","slibNum":6,"color":"#7C3AED"},
-{"name":"Prediction Machines Model","def":"An economic framework arguing that AI's primary function is to reduce the cost of prediction, thereby increasing the value of complements: judgment, data, and action.","desc":"AI drops cost of prediction—judgment remains human domain","shape":"split","details":["Prediction ≠ decision","Cheaper prediction raises value of judgment","Complements and data become more valuable","Agrawal, Gans & Goldfarb (2018)"],"ref":"Agrawal, A., Gans, J. and Goldfarb, A. (2018) Prediction Machines: The Simple Economics of Artificial Intelligence. Boston: Harvard Business Review Press.","slibTitle":"Decision Intelligence","slibNum":6,"color":"#7C3AED"},
-{"name":"Data Value Chain","def":"A linear model showing how raw data is transformed through collection, storage, processing, analysis, and action stages into business value.","desc":"Collect → Store → Process → Analyse → Act with value increasing","shape":"pipeline","details":["Linear arrow: value increases left to right","Where leakage occurs at each step","AI accelerates processing and analysis","Foundation for data monetisation"],"ref":"Porter, M.E. and Millar, V.E. (1985) 'How information gives you competitive advantage', Harvard Business Review, 63(4), pp. 149–160. Adapted for data.","slibTitle":"Data Strategy","slibNum":7,"color":"#2563EB"},
-{"name":"DIKW Pyramid","def":"A knowledge hierarchy arranging Data, Information, Knowledge, and Wisdom in ascending layers—volume decreases upward while insight and value increase.","desc":"Data → Information → Knowledge → Wisdom hierarchy","shape":"pyramid","details":["Volume decreases upward","AI accelerates D → I → K layers","Wisdom still requires human judgment","Ackoff (1989); classic knowledge mgmt"],"ref":"Ackoff, R.L. (1989) 'From data to wisdom', Journal of Applied Systems Analysis, 16(1), pp. 3–9.","slibTitle":"Data Strategy","slibNum":7,"color":"#2563EB"},
-{"name":"Data Flywheel","def":"A self-reinforcing virtuous cycle: more data improves models, better models improve products, better products attract users, more users generate more data.","desc":"More data → better model → better product → more users → more data","shape":"cycle","details":["Circular virtuous cycle","Self-reinforcing competitive advantage","Amazon, Netflix, Google exemplars","Explains winner-take-most dynamics"],"ref":"Ng, A. (2018) 'AI is the new electricity', Stanford University HAI.","slibTitle":"Data Strategy","slibNum":7,"color":"#2563EB"},
-{"name":"Data Quality Dimensions","def":"Six measurable attributes of data fitness: accuracy, completeness, consistency, timeliness, validity, and uniqueness—collectively determining data's fitness for purpose.","desc":"Accuracy, completeness, consistency, timeliness, validity, uniqueness","shape":"hexagon","details":["Six dimensions in hexagonal shape","Poor quality = garbage in, garbage out","Each dimension independently measurable","Foundation for data governance"],"ref":"Wang, R.Y. and Strong, D.M. (1996) 'Beyond accuracy: What data quality means to data consumers', Journal of Management Information Systems, 12(4), pp. 5–33.","slibTitle":"Data Strategy","slibNum":7,"color":"#2563EB"},
-{"name":"ETL Pipeline Diagram","def":"A data engineering workflow—Extract, Transform, Load—that moves data from heterogeneous sources into a structured analytical warehouse.","desc":"Extract → Transform → Load from sources to data warehouse","shape":"pipeline","details":["Sources on left, warehouse on right","Where AI automates transformation","Modern variant: ELT in cloud","Foundational data engineering visual"],"ref":"Kimball, R. and Ross, M. (2013) The Data Warehouse Toolkit. 3rd edn. Indianapolis: Wiley.","slibTitle":"Data Strategy","slibNum":7,"color":"#2563EB"},
-{"name":"AI Marketing Funnel","def":"An enhanced marketing funnel where AI automates or augments each stage—from predictive lead scoring at awareness through dynamic pricing at conversion.","desc":"Awareness → Consideration → Conversion with AI at every stage","shape":"funnel","details":["AI touchpoints at every funnel stage","Predictive lead scoring at top","Dynamic pricing at conversion","Gentsch (2019); Kotler et al."],"ref":"Gentsch, P. (2019) AI in Marketing, Sales and Service. Cham: Palgrave Macmillan.","slibTitle":"AI-Driven Marketing","slibNum":8,"color":"#DC2626"},
-{"name":"RFM Segmentation Matrix","def":"A customer segmentation method clustering buyers by Recency, Frequency, and Monetary value to identify high-value segments for targeted engagement.","desc":"Recency × Frequency × Monetary value customer clustering","shape":"matrix","details":["3D cube or heatmap thumbnail","Identifies high-value customer segments","Classic + ML-enhanced clustering","Foundation for personalisation"],"ref":"Fader, P.S., Hardie, B.G.S. and Lee, K.L. (2005) 'RFM and CLV: Using iso-value curves for customer base analysis', Journal of Marketing Research, 42(4), pp. 415–430.","slibTitle":"AI-Driven Marketing","slibNum":8,"color":"#DC2626"},
-{"name":"A/B Testing Framework","def":"An experimental design comparing a control group against one or more treatment variations to measure the causal impact of changes on key metrics.","desc":"Control vs. treatment with statistical significance threshold","shape":"split","details":["Split diagram: control vs. treatment","AI enables multi-armed bandits","Continuous optimisation cycle","Beyond simple A/B to multivariate"],"ref":"Kohavi, R., Tang, D. and Xu, Y. (2020) Trustworthy Online Controlled Experiments. Cambridge: Cambridge University Press.","slibTitle":"AI-Driven Marketing","slibNum":8,"color":"#DC2626"},
-{"name":"Recommendation Engine","def":"An algorithmic system combining collaborative filtering (user behaviour patterns) and content-based filtering to predict user preferences and personalise offerings.","desc":"Collaborative + content-based filtering architecture","shape":"network","details":["User-item interaction matrix","Collaborative + content-based hybrid","Drives 35% of Amazon revenue","Netflix Prize catalysed the field"],"ref":"Ricci, F. et al. (eds.) (2015) Recommender Systems Handbook. 2nd edn. New York: Springer.","slibTitle":"AI-Driven Marketing","slibNum":8,"color":"#DC2626"},
-{"name":"Customer Lifetime Value","def":"The present value of all future cash flows attributed to a customer relationship, calculated as revenue × margin × retention rate, discounted over time.","desc":"Revenue × margin × retention / discount rate over customer lifespan","shape":"scurve","details":["Curve: value over customer lifespan","AI predicts churn to protect CLV","Links acquisition cost to long-term value","Bridge to Unit 3 CX metrics"],"ref":"Gupta, S. and Lehmann, D.R. (2005) Managing Customers as Investments. Upper Saddle River: Wharton School Publishing.","slibTitle":"AI-Driven Marketing","slibNum":8,"color":"#DC2626"}
-];
-
-const SVG={
-  pyramid:c=>`<svg viewBox="0 0 200 130"><polygon points="100,10 30,120 170,120" fill="none" stroke="${c}" stroke-width="2.5" opacity=".6"/><line x1="55" y1="80" x2="145" y2="80" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="72" y1="50" x2="128" y2="50" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
-  cycle:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="65" r="45" fill="none" stroke="${c}" stroke-width="2.5" opacity=".5"/><polygon points="140,40 148,52 132,50" fill="${c}" opacity=".6"/><polygon points="60,90 52,78 68,80" fill="${c}" opacity=".6"/><circle cx="100" cy="20" r="4" fill="${c}" opacity=".5"/><circle cx="145" cy="65" r="4" fill="${c}" opacity=".5"/><circle cx="100" cy="110" r="4" fill="${c}" opacity=".5"/><circle cx="55" cy="65" r="4" fill="${c}" opacity=".5"/></svg>`,
-  scurve:c=>`<svg viewBox="0 0 200 130"><path d="M20,110 C50,108 70,100 90,70 S140,15 180,12" fill="none" stroke="${c}" stroke-width="2.5" opacity=".6"/><line x1="20" y1="120" x2="185" y2="120" stroke="${c}" stroke-width="1" opacity=".2"/><line x1="18" y1="10" x2="18" y2="120" stroke="${c}" stroke-width="1" opacity=".2"/></svg>`,
-  matrix:c=>`<svg viewBox="0 0 200 130"><rect x="25" y="15" width="70" height="45" rx="4" fill="${c}" opacity=".12" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="105" y="15" width="70" height="45" rx="4" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="25" y="70" width="70" height="45" rx="4" fill="${c}" opacity=".08" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="105" y="70" width="70" height="45" rx="4" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
-  funnel:c=>`<svg viewBox="0 0 200 130"><path d="M30,15 L170,15 L135,120 L65,120 Z" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".5"/><line x1="50" y1="50" x2="150" y2="50" stroke="${c}" stroke-width="1" opacity=".3" stroke-dasharray="4"/><line x1="58" y1="80" x2="142" y2="80" stroke="${c}" stroke-width="1" opacity=".3" stroke-dasharray="4"/></svg>`,
-  bars:c=>`<svg viewBox="0 0 200 130"><rect x="25" y="70" width="30" height="50" rx="3" fill="${c}" opacity=".25"/><rect x="65" y="40" width="30" height="80" rx="3" fill="${c}" opacity=".4"/><rect x="105" y="55" width="30" height="65" rx="3" fill="${c}" opacity=".3"/><rect x="145" y="25" width="30" height="95" rx="3" fill="${c}" opacity=".5"/><line x1="20" y1="120" x2="180" y2="120" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
-  arrow:c=>`<svg viewBox="0 0 200 130"><path d="M15,40 L140,40 L140,20 L185,65 L140,110 L140,90 L15,90 Z" fill="${c}" opacity=".12" stroke="${c}" stroke-width="2" opacity=".4"/></svg>`,
-  diamond:c=>`<svg viewBox="0 0 200 130"><polygon points="100,10 180,65 100,120 20,65" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".5"/><circle cx="100" cy="65" r="15" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".4"/></svg>`,
-  circle:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="65" r="50" fill="${c}" opacity=".08" stroke="${c}" stroke-width="2" opacity=".4"/><circle cx="100" cy="65" r="30" fill="${c}" opacity=".12" stroke="${c}" stroke-width="1.5" opacity=".3"/><circle cx="100" cy="65" r="12" fill="${c}" opacity=".2"/></svg>`,
-  stairs:c=>`<svg viewBox="0 0 200 130"><path d="M20,110 L20,85 L65,85 L65,60 L110,60 L110,35 L155,35 L155,15 L180,15" fill="none" stroke="${c}" stroke-width="2.5" opacity=".5"/><rect x="20" y="85" width="45" height="25" fill="${c}" opacity=".08"/><rect x="65" y="60" width="45" height="50" fill="${c}" opacity=".1"/><rect x="110" y="35" width="45" height="75" fill="${c}" opacity=".13"/><rect x="155" y="15" width="25" height="95" fill="${c}" opacity=".16"/></svg>`,
-  pipeline:c=>`<svg viewBox="0 0 200 130"><rect x="10" y="45" width="35" height="40" rx="6" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="48" y1="65" x2="60" y2="65" stroke="${c}" stroke-width="2" opacity=".4"/><rect x="63" y="45" width="35" height="40" rx="6" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="101" y1="65" x2="113" y2="65" stroke="${c}" stroke-width="2" opacity=".4"/><rect x="116" y="45" width="35" height="40" rx="6" fill="${c}" opacity=".25" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="154" y1="65" x2="166" y2="65" stroke="${c}" stroke-width="2" opacity=".4"/><rect x="169" y="45" width="22" height="40" rx="6" fill="${c}" opacity=".3" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
-  split:c=>`<svg viewBox="0 0 200 130"><rect x="15" y="25" width="75" height="80" rx="8" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".3"/><rect x="110" y="25" width="75" height="80" rx="8" fill="${c}" opacity=".18" stroke="${c}" stroke-width="2" opacity=".3"/><line x1="100" y1="30" x2="100" y2="100" stroke="${c}" stroke-width="2" opacity=".3" stroke-dasharray="5"/></svg>`,
-  venn:c=>`<svg viewBox="0 0 200 130"><circle cx="78" cy="65" r="42" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".35"/><circle cx="122" cy="65" r="42" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".35"/></svg>`,
-  layers:c=>`<svg viewBox="0 0 200 130"><rect x="30" y="85" width="140" height="28" rx="5" fill="${c}" opacity=".1" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="30" y="50" width="140" height="28" rx="5" fill="${c}" opacity=".17" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="30" y="15" width="140" height="28" rx="5" fill="${c}" opacity=".25" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
-  tree:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="22" r="12" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".4"/><line x1="100" y1="34" x2="60" y2="65" stroke="${c}" stroke-width="1.5" opacity=".35"/><line x1="100" y1="34" x2="140" y2="65" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="60" cy="70" r="10" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><circle cx="140" cy="70" r="10" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="60" y1="80" x2="40" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="60" y1="80" x2="80" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="140" y1="80" x2="120" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="140" y1="80" x2="160" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><circle cx="40" cy="110" r="7" fill="${c}" opacity=".1"/><circle cx="80" cy="110" r="7" fill="${c}" opacity=".1"/><circle cx="120" cy="110" r="7" fill="${c}" opacity=".1"/><circle cx="160" cy="110" r="7" fill="${c}" opacity=".1"/></svg>`,
-  spectrum:c=>`<svg viewBox="0 0 200 130"><rect x="15" y="50" width="170" height="30" rx="15" fill="${c}" opacity=".1" stroke="${c}" stroke-width="1.5" opacity=".3"/><circle cx="45" cy="65" r="10" fill="${c}" opacity=".15"/><circle cx="100" cy="65" r="10" fill="${c}" opacity=".25"/><circle cx="155" cy="65" r="10" fill="${c}" opacity=".4"/></svg>`,
-  network:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="65" r="14" fill="${c}" opacity=".25" stroke="${c}" stroke-width="1.5" opacity=".4"/><circle cx="45" cy="30" r="9" fill="${c}" opacity=".15"/><circle cx="155" cy="30" r="9" fill="${c}" opacity=".15"/><circle cx="45" cy="100" r="9" fill="${c}" opacity=".15"/><circle cx="155" cy="100" r="9" fill="${c}" opacity=".15"/><line x1="90" y1="55" x2="52" y2="35" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="110" y1="55" x2="148" y2="35" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="90" y1="75" x2="52" y2="95" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="110" y1="75" x2="148" y2="95" stroke="${c}" stroke-width="1.5" opacity=".25"/></svg>`,
-  hexagon:c=>`<svg viewBox="0 0 200 130"><polygon points="100,10 160,37 160,93 100,120 40,93 40,37" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".4"/><polygon points="100,35 135,50 135,80 100,95 65,80 65,50" fill="${c}" opacity=".08" stroke="${c}" stroke-width="1" opacity=".2"/></svg>`,
-  triangle:c=>`<svg viewBox="0 0 200 130"><polygon points="100,15 170,115 30,115" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".4"/><circle cx="100" cy="40" r="5" fill="${c}" opacity=".3"/><circle cx="55" cy="100" r="5" fill="${c}" opacity=".3"/><circle cx="145" cy="100" r="5" fill="${c}" opacity=".3"/></svg>`,
-  timeline:c=>`<svg viewBox="0 0 200 130"><line x1="20" y1="65" x2="180" y2="65" stroke="${c}" stroke-width="2" opacity=".3"/><circle cx="40" cy="65" r="6" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="80" cy="65" r="6" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="120" cy="65" r="6" fill="${c}" opacity=".3" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="160" cy="65" r="6" fill="${c}" opacity=".4" stroke="${c}" stroke-width="1.5" opacity=".35"/><polygon points="178,60 185,65 178,70" fill="${c}" opacity=".4"/></svg>`,
-  iceberg:c=>`<svg viewBox="0 0 200 130"><line x1="15" y1="55" x2="185" y2="55" stroke="${c}" stroke-width="1" opacity=".2" stroke-dasharray="4"/><polygon points="75,55 125,55 100,20" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><polygon points="55,55 145,55 155,120 45,120" fill="${c}" opacity=".08" stroke="${c}" stroke-width="1.5" opacity=".25"/></svg>`
-};
-function getSVG(shape,color){return(SVG[shape]||SVG.matrix)(color)}
-document.getElementById('thumb-5-0').innerHTML=getSVG('tree','#D4872C');
-document.getElementById('thumb-5-1').innerHTML=getSVG('scurve','#D4872C');
-document.getElementById('thumb-5-2').innerHTML=getSVG('matrix','#D4872C');
-document.getElementById('thumb-5-3').innerHTML=getSVG('bars','#D4872C');
-document.getElementById('thumb-5-4').innerHTML=getSVG('tree','#D4872C');
-document.getElementById('thumb-6-0').innerHTML=getSVG('cycle','#7C3AED');
-document.getElementById('thumb-6-1').innerHTML=getSVG('matrix','#7C3AED');
-document.getElementById('thumb-6-2').innerHTML=getSVG('matrix','#7C3AED');
-document.getElementById('thumb-6-3').innerHTML=getSVG('layers','#7C3AED');
-document.getElementById('thumb-6-4').innerHTML=getSVG('split','#7C3AED');
-document.getElementById('thumb-7-0').innerHTML=getSVG('pipeline','#2563EB');
-document.getElementById('thumb-7-1').innerHTML=getSVG('pyramid','#2563EB');
-document.getElementById('thumb-7-2').innerHTML=getSVG('cycle','#2563EB');
-document.getElementById('thumb-7-3').innerHTML=getSVG('hexagon','#2563EB');
-document.getElementById('thumb-7-4').innerHTML=getSVG('pipeline','#2563EB');
-document.getElementById('thumb-8-0').innerHTML=getSVG('funnel','#DC2626');
-document.getElementById('thumb-8-1').innerHTML=getSVG('matrix','#DC2626');
-document.getElementById('thumb-8-2').innerHTML=getSVG('split','#DC2626');
-document.getElementById('thumb-8-3').innerHTML=getSVG('network','#DC2626');
-document.getElementById('thumb-8-4').innerHTML=getSVG('scurve','#DC2626');
-
-
-const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
-document.querySelectorAll('[data-anim]').forEach(el=>obs.observe(el));
-function openModal(fw){
-  const m=document.getElementById('modal');
-  m.innerHTML=`<div class="modal-accent" style="background:${fw.color}"></div><div class="modal-inner" style="position:relative">
-    <button class="modal-close" onclick="closeModal()">\u00d7</button>
-    <div class="modal-slib">Slibrary ${fw.slibNum} \u2014 ${fw.slibTitle}</div>
-    <div class="modal-title">${fw.name}</div>
-    <div class="modal-def">${fw.def}</div>
-    <div class="modal-desc">${fw.desc}</div>
-    <div class="modal-thumb">${getSVG(fw.shape,fw.color)}</div>
-    <ul class="modal-details">${fw.details.map(d=>`<li>${d}</li>`).join('')}</ul>
-    <div class="modal-ref"><div class="modal-ref-label">Reference</div>${fw.ref}</div>
-  </div>`;
-  document.getElementById('modalOverlay').classList.add('open');
-  document.body.style.overflow='hidden';
-}
-function closeModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow=''}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+(function(){
+  var ov=document.getElementById('modal-overlay');
+  var bx=document.getElementById('modal-box');
+  function open(card){
+    var c=card.dataset.color, rgb=card.dataset.rgb;
+    document.getElementById('modal-color-bar').style.background=c;
+    var lead=document.getElementById('modal-lead');
+    lead.style.borderLeftColor=c;
+    lead.style.background='rgba('+rgb+',0.05)';
+    document.getElementById('m-lead-text').style.color=c;
+    document.querySelectorAll('.m-dot').forEach(function(d){d.style.background=c;});
+    var ref=document.getElementById('modal-reference');
+    ref.style.borderLeftColor=c;
+    ref.style.background='rgba('+rgb+',0.07)';
+    document.getElementById('modal-ref-label').style.color=c;
+    document.getElementById('m-slibrary-header').textContent='SLIBRARY '+card.dataset.sl+' — '+card.dataset.setname;
+    document.getElementById('m-unit-badge').textContent=card.dataset.unit;
+    document.getElementById('m-title').textContent=card.dataset.name;
+    document.getElementById('m-itten-line').textContent=card.dataset.itten;
+    document.getElementById('m-lead-text').textContent=card.dataset.lead;
+    document.getElementById('m-sub-text').textContent=card.dataset.sub;
+    document.getElementById('m-b1').textContent=card.dataset.b1;
+    document.getElementById('m-b2').textContent=card.dataset.b2;
+    document.getElementById('m-b3').textContent=card.dataset.b3;
+    document.getElementById('m-b4').textContent=card.dataset.b4;
+    document.getElementById('m-ref-text').innerHTML=card.dataset.ref;
+    ov.classList.add('active');
+    document.body.style.overflow='hidden';
+    bx.scrollTop=0;
+  }
+  function close(){ov.classList.remove('active');document.body.style.overflow='';}
+  document.querySelectorAll('.fw-card').forEach(function(c){c.addEventListener('click',function(){open(c);});});
+  document.getElementById('modal-close').addEventListener('click',close);
+  ov.addEventListener('click',function(e){if(e.target===ov)close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+})();
+</script>
+<script>
+document.querySelectorAll('.acc-hdr').forEach(function(h){
+  h.addEventListener('click',function(){
+    h.classList.toggle('open');
+    h.nextElementSibling.classList.toggle('open');
+  });
+});
 </script>
 </body>
 </html>
