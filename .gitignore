@@ -1,0 +1,82 @@
+# ═══════════════════════════════════════════════════════════
+# MARTI301 — .gitignore
+# Course: AI in Investment & Competitiveness
+# © 2026 Dr. Hildegard Haas
+# ═══════════════════════════════════════════════════════════
+
+# ─── Claude Code (AI assistant working files) ──────────────
+.claude/
+.claude/worktrees/
+.claude/local/
+*.claude-session
+CLAUDE.md.local
+
+# ─── macOS system files ────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.AppleDouble
+.LSOverride
+Icon?
+
+# ─── Windows system files ──────────────────────────────────
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# ─── Editor / IDE files ────────────────────────────────────
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+.project
+.settings/
+
+# ─── Temporary / backup files ──────────────────────────────
+*.bak
+*.backup
+*.tmp
+*.temp
+*.log
+*.orig
+
+# ─── Node.js (falls je Build-Tools dazukommen) ─────────────
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json.bak
+
+# ─── Python (falls je Hilfsskripte dazukommen) ─────────────
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+.pytest_cache/
+
+# ─── Lokale Konfiguration & Secrets ────────────────────────
+.env
+.env.local
+*.key
+*.pem
+secrets.json
+config.local.json
+
+# ─── Office-Tempfiles (Word/PowerPoint Lock-Dateien) ───────
+~$*.docx
+~$*.pptx
+~$*.xlsx
+.~lock.*#
+
+# ─── Lokale Arbeitskopien & Entwürfe ───────────────────────
+_drafts/
+_scratch/
+TODO.local.md
+NOTES.local.md
