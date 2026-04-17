@@ -1,366 +1,361 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>MLUXR302 Unit 4 — Sustainability Performance of Leading Fashion & Luxury Brands</title>
-<style>
-:root{--teal:#00B894;--teal-d:#00695C;--bg:#f7f8fa;--text:#0f172a;--muted:#64748b;--white:#ffffff;--radius:12px;--shadow:0 1px 6px rgba(0,0,0,0.07);--shadow-lg:0 8px 28px rgba(0,0,0,0.13);}
-*{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
-a{color:inherit;text-decoration:none;}
-.container{max-width:1120px;margin:0 auto;padding:0 24px;}
-.topbar{background:#0f172a;color:rgba(255,255,255,0.5);font-size:11px;letter-spacing:.1em;text-align:center;padding:7px 0;}
-.topbar strong{color:var(--teal);}
-.site-header{background:var(--white);border-bottom:3px solid var(--teal);padding:16px 0;position:sticky;top:0;z-index:500;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
-.hdr-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
-.hdr-brand .code{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--teal);font-weight:700;}
-.hdr-brand .name{font-size:16px;font-weight:700;}
-.hdr-meta{font-size:12px;color:var(--muted);text-align:right;line-height:1.5;}
-.back-link{display:inline-flex;align-items:center;gap:6px;color:var(--teal-d);font-size:13px;font-weight:600;padding:10px 0;transition:gap .2s;}
-.back-link:hover{gap:10px;}
-.hero{padding:48px 0 36px;text-align:center;}
-.unit-pill{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:16px;}
-.hero h1{font-size:clamp(20px,4vw,36px);font-weight:800;margin-bottom:8px;line-height:1.2;}
-.hero .sub{font-size:15px;color:var(--muted);margin-bottom:6px;}
-.hero-hint{font-size:12px;color:var(--muted);margin-bottom:28px;font-style:italic;}
-.hero-stats{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;}
-.hero-stat .num{font-size:38px;font-weight:800;line-height:1;}
-.hero-stat .lbl{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:2px;}
-.itten-tag{display:inline-flex;align-items:center;gap:7px;font-size:12px;background:var(--white);padding:6px 14px;border-radius:20px;box-shadow:var(--shadow);margin-bottom:32px;}
-.itten-dot{width:10px;height:10px;border-radius:50%;}
-.set-section{margin-bottom:52px;}
-.set-hdr{display:flex;align-items:center;gap:12px;margin-bottom:18px;padding-bottom:10px;border-bottom:2px solid #e2e8f0;}
-.set-hdr h2{font-size:14px;font-weight:700;display:flex;align-items:center;gap:10px;}
-.set-num{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0;}
-.set-tag{font-size:11px;color:var(--muted);background:#f1f5f9;padding:2px 10px;border-radius:10px;margin-left:auto;}
-.fw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:14px;}
-.fw-card{background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);cursor:pointer;transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column;border-top:4px solid transparent;}
-.fw-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);}
-.fw-card-icon{padding:14px 16px 6px;line-height:1;}
-.fw-card-icon svg{display:block;width:56px;height:40px;}
-.fw-card-body{padding:0 16px 12px;flex:1;display:flex;flex-direction:column;}
-.fw-card-name{font-size:13px;font-weight:700;margin-bottom:5px;color:var(--text);line-height:1.3;}
-.fw-card-desc{font-size:11.5px;color:var(--muted);line-height:1.55;flex:1;}
-.fw-card-foot{display:flex;align-items:center;justify-content:space-between;padding:8px 16px 10px;border-top:1px solid #f0f0f0;margin-top:auto;}
-.fw-sl-badge{font-size:10px;font-weight:700;letter-spacing:.06em;padding:2px 8px;border-radius:8px;}
-.fw-arrow{font-size:13px;color:var(--muted);}
-.idx-hero{padding:60px 0 48px;text-align:center;}
-.idx-hero .school{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:10px;}
-.idx-hero h1{font-size:clamp(26px,5vw,50px);font-weight:800;line-height:1.15;margin-bottom:12px;}
-.idx-hero .tag{font-size:16px;color:var(--muted);margin-bottom:10px;}
-.idx-hero .itten-credit{font-size:12px;color:var(--muted);margin-bottom:30px;font-style:italic;}
-.idx-stats{display:flex;justify-content:center;gap:48px;flex-wrap:wrap;}
-.idx-stat .num{font-size:48px;font-weight:800;color:var(--teal);line-height:1;}
-.idx-stat .lbl{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:4px;}
-.itten-legend{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:24px 0 32px;}
-.itten-chip{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;padding:5px 12px;border-radius:20px;background:var(--white);box-shadow:var(--shadow);}
-.itten-chip-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
-.accordion{margin-bottom:10px;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);}
-.acc-hdr{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;cursor:pointer;transition:opacity .18s;}
-.acc-hdr:hover{opacity:.93;}
-.acc-meta{display:flex;flex-direction:column;gap:2px;}
-.acc-unit-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:rgba(255,255,255,.75);}
-.acc-itten{font-size:10px;color:rgba(255,255,255,.55);font-style:italic;}
-.acc-title{font-size:15px;font-weight:700;color:#fff;line-height:1.3;}
-.acc-chevron{font-size:17px;color:rgba(255,255,255,.65);transition:transform .28s;}
-.acc-hdr.open .acc-chevron{transform:rotate(180deg);}
-.acc-body{display:none;background:var(--white);}
-.acc-body.open{display:block;}
-.res-link{display:flex;align-items:center;gap:12px;padding:13px 22px;border-bottom:1px solid #f1f5f9;transition:background .13s;}
-.res-link:last-child{border-bottom:none;}
-.res-link:hover{background:#f8fafc;}
-.res-badge{font-size:10px;font-weight:700;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;}
-.res-title{font-size:14px;font-weight:700;margin-bottom:1px;}
-.res-meta{font-size:11px;color:var(--muted);}
-.res-tag{font-size:10px;color:var(--muted);background:#f1f5f9;padding:2px 8px;border-radius:6px;white-space:nowrap;}
-.phase-list{list-style:none;}
-.phase-item{display:flex;gap:14px;padding:18px 0;border-bottom:1px solid #f0f0f0;}
-.phase-item:last-child{border-bottom:none;}
-.phase-badge{font-size:10px;font-weight:700;letter-spacing:.07em;padding:4px 10px;border-radius:8px;height:fit-content;white-space:nowrap;}
-.phase-h{font-size:14px;font-weight:700;margin-bottom:4px;}
-.phase-p{font-size:13px;color:var(--muted);}
-.case-brand-hdr{padding:48px 0 28px;text-align:center;}
-.brand-name{font-size:48px;font-weight:900;letter-spacing:-2px;margin-bottom:8px;line-height:1;}
-.case-card{background:var(--white);border-radius:var(--radius);padding:32px;box-shadow:var(--shadow);margin-bottom:18px;}
-.case-card h2{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #f1f5f9;}
-.case-card p{font-size:14.5px;line-height:1.8;margin-bottom:10px;}
-.case-card ol{padding-left:18px;}
-.case-card li{font-size:14.5px;line-height:1.7;margin-bottom:8px;}
-.pr-card{background:var(--white);border-radius:var(--radius);padding:32px;box-shadow:var(--shadow);margin-bottom:18px;}
-.pr-card h2{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:12px;}
-.pr-card p{font-size:14.5px;line-height:1.8;margin-bottom:10px;}
-.kp-item{display:flex;gap:10px;margin-bottom:10px;align-items:flex-start;}
-.kp-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:7px;}
-.kp-text{font-size:14px;line-height:1.6;}
-.pr-prepare{border-radius:0 var(--radius) var(--radius) 0;padding:20px 24px;border-left:4px solid;margin-bottom:48px;}
-.pr-prepare-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;}
-.ref-cards{display:grid;gap:18px;}
-.ref-card{background:var(--white);border-radius:var(--radius);padding:26px 28px;box-shadow:var(--shadow);display:flex;gap:18px;align-items:flex-start;}
-.ref-num{font-size:32px;font-weight:900;line-height:1;opacity:.15;flex-shrink:0;width:40px;}
-.ref-card p{font-size:15px;line-height:1.75;}
-.ref-guide{border-radius:var(--radius);padding:20px 24px;margin-top:24px;margin-bottom:48px;}
-.ref-guide-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;}
-.ref-guide p{font-size:13.5px;line-height:1.7;}
-.cg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:9px;}
-.cg-card{background:var(--white);border-radius:8px;padding:12px 14px;box-shadow:0 1px 3px rgba(0,0,0,0.05);border-left:4px solid transparent;}
-.cg-name{font-size:12px;font-weight:700;margin-bottom:2px;}
-.cg-unit{font-size:10px;color:var(--muted);}
-.site-footer{margin-top:72px;border-top:3px solid var(--teal);padding:22px 0;text-align:center;font-size:12px;color:var(--muted);}
-.site-footer strong{color:var(--text);}
-@media(max-width:640px){.fw-grid{grid-template-columns:1fr 1fr;}.cg-grid{grid-template-columns:1fr 1fr;}}
-</style>
-
-<style>
-#modal-overlay{position:fixed;inset:0;background:rgba(8,8,20,0.78);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);z-index:9000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity 0.22s;}
-#modal-overlay.active{opacity:1;pointer-events:all;}
-#modal-box{background:#ffffff;border-radius:16px;width:100%;max-width:660px;max-height:90vh;overflow-y:auto;box-shadow:0 28px 90px rgba(0,0,0,0.38);transform:translateY(20px) scale(0.97);transition:transform 0.22s;position:relative;}
-#modal-overlay.active #modal-box{transform:translateY(0) scale(1);}
-#modal-color-bar{height:5px;border-radius:16px 16px 0 0;}
-#modal-inner{padding:28px 32px 28px;}
-#modal-header{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:20px;}
-#modal-header-left{flex:1;}
-#modal-label-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap;}
-#m-slibrary-header{font-size:10px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:#888;}
-#m-unit-badge{font-size:10px;font-weight:700;letter-spacing:0.08em;padding:2px 9px;border-radius:8px;background:#f0f0f0;color:#666;}
-#m-title{font-size:24px;font-weight:800;color:#1a1a2e;line-height:1.2;margin-bottom:5px;font-family:Arial,Helvetica,sans-serif;}
-#m-itten-line{font-size:11px;color:#aaa;font-style:italic;}
-#modal-close{background:#f0f0f2;border:none;width:34px;height:34px;border-radius:50%;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#666;transition:background .15s,color .15s;}
-#modal-close:hover{background:#dde0e4;color:#333;}
-#modal-lead{border-left:4px solid #ccc;margin:0 0 14px;padding:12px 18px;border-radius:0 6px 6px 0;}
-#modal-lead p{font-size:15px;font-weight:700;font-style:italic;line-height:1.65;margin:0;font-family:Arial,Helvetica,sans-serif;}
-#m-sub-text{font-size:13px;color:#888;font-style:italic;margin-bottom:22px;line-height:1.5;}
-#modal-bullets{margin-bottom:24px;}
-.m-bullet-item{display:flex;align-items:baseline;gap:12px;padding:11px 0;}
-.m-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-top:2px;display:inline-block;background:#ccc;}
-.m-bullet-text{font-size:14px;line-height:1.65;color:#333;}
-.m-divider{border:none;border-top:1px solid #e8eaed;margin:0;}
-#modal-reference{border-radius:0 8px 8px 0;border-left:4px solid #ccc;padding:16px 20px;margin-top:4px;}
-#modal-ref-label{font-size:10px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:#888;margin-bottom:8px;}
-#m-ref-text{font-size:13px;line-height:1.75;color:#444;margin:0;}
-@media(max-width:580px){#modal-inner{padding:20px 18px 20px;}#m-title{font-size:19px;}}
-</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MARTI301 Unit 4 — The Financial Side of AI</title>
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#1B2A4A;--teal:#00B388;--amber:#D4872C;--bg:#FAFBFC;--card:#FFF;--text:#1B2A4A;--muted:#6B7280;--border:#E5E7EB;--def-red:#C0392B}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;overflow-x:hidden}
+.hero{background:var(--navy);padding:2.5rem 2rem 2rem;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:var(--teal)}
+.hero-tag{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);font-weight:700;margin-bottom:.5rem}
+.hero h1{font-size:2.2rem;color:#fff;font-weight:700;line-height:1.2;margin-bottom:.4rem}
+.hero p{color:#94A3B8;font-size:.95rem;margin-bottom:.8rem}
+.hero .copy{color:#64748B;font-size:.8rem;font-style:italic}
+.hero-stats{display:flex;gap:2rem;margin-top:1rem}
+.hero-stat{text-align:center}
+.hero-stat .num{font-size:1.8rem;color:var(--teal);font-weight:700}
+.hero-stat .label{font-size:.7rem;color:#94A3B8;text-transform:uppercase;letter-spacing:.1em}
+.slib-set{margin-bottom:2.5rem}
+.slib-set-header{display:flex;align-items:center;gap:.6rem;margin-bottom:1rem;padding-left:.2rem;opacity:0;transform:translateX(-15px);transition:all .5s cubic-bezier(.16,1,.3,1)}
+.slib-set-header.visible{opacity:1;transform:translateX(0)}
+.slib-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.slib-set-title{font-size:1rem;font-weight:700}
+.slib-set-num{font-size:.7rem;color:var(--muted);background:#F1F5F9;padding:.15rem .5rem;border-radius:1rem;font-weight:600}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;opacity:0;transform:translateY(25px) scale(.97);transition:all .5s cubic-bezier(.16,1,.3,1);position:relative;display:flex;flex-direction:column}
+.card.visible{opacity:1;transform:translateY(0) scale(1)}
+.card:hover{transform:translateY(-4px) scale(1.01);box-shadow:0 12px 32px rgba(27,42,74,.1);border-color:transparent}
+.card-accent{height:3px;width:100%}
+.card-thumb{height:120px;background:#F8FAFC;display:flex;align-items:center;justify-content:center;padding:.8rem;overflow:hidden}
+.card-thumb svg{width:100%;height:100%;opacity:.7;transition:opacity .3s}
+.card:hover .card-thumb svg{opacity:1}
+.card-body{padding:.8rem .9rem .9rem;flex:1;display:flex;flex-direction:column}
+.card-title{font-size:.82rem;font-weight:700;line-height:1.3;margin-bottom:.25rem}
+.card-desc{font-size:.7rem;color:var(--muted);line-height:1.4;margin-bottom:.5rem;flex:1}
+.card-tag{display:inline-block;font-size:.6rem;font-weight:700;padding:.15rem .45rem;border-radius:4px;color:#fff;align-self:flex-start}
+.modal-overlay{position:fixed;inset:0;background:rgba(27,42,74,.5);z-index:200;opacity:0;pointer-events:none;transition:opacity .3s;display:flex;align-items:center;justify-content:center;padding:1rem}
+.modal-overlay.open{opacity:1;pointer-events:auto}
+.modal{background:#fff;border-radius:16px;max-width:560px;width:100%;max-height:85vh;overflow-y:auto;transform:translateY(20px) scale(.95);transition:transform .35s cubic-bezier(.16,1,.3,1);padding:0}
+.modal-overlay.open .modal{transform:translateY(0) scale(1)}
+.modal-accent{height:4px;border-radius:16px 16px 0 0}
+.modal-inner{padding:1.8rem 1.6rem}
+.modal-close{position:absolute;top:1rem;right:1rem;width:32px;height:32px;border-radius:50%;border:none;background:#F1F5F9;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;color:var(--muted);transition:background .2s}
+.modal-close:hover{background:#E2E8F0}
+.modal-slib{font-size:.7rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.3rem}
+.modal-title{font-size:1.4rem;font-weight:700;margin-bottom:.4rem}
+.modal-def{font-size:.9rem;color:var(--def-red);font-weight:600;line-height:1.5;margin-bottom:.7rem;border-left:3px solid var(--def-red);padding-left:.6rem}
+.modal-desc{font-size:.88rem;color:var(--muted);line-height:1.6;margin-bottom:.8rem}
+.modal-thumb{background:#F8FAFC;border-radius:10px;padding:1.5rem;margin-bottom:1.2rem;display:flex;align-items:center;justify-content:center}
+.modal-thumb svg{width:220px;height:140px}
+.modal-details{list-style:none;padding:0;margin-bottom:1rem}
+.modal-details li{font-size:.82rem;color:var(--text);padding:.4rem 0;border-bottom:1px solid #F1F5F9;display:flex;align-items:flex-start;gap:.5rem}
+.modal-details li::before{content:'\2022';color:var(--teal);font-weight:bold;flex-shrink:0;margin-top:1px}
+.modal-ref{background:#F8FAFC;border-radius:8px;padding:.7rem .9rem;font-size:.75rem;color:#475569;line-height:1.5;border-left:3px solid var(--teal)}
+.modal-ref-label{font-weight:700;font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:var(--teal);margin-bottom:.2rem}
+.footer{background:var(--navy);padding:2rem;text-align:center;color:#64748B;font-size:.75rem;margin-top:2rem}
+.footer strong{color:var(--teal)}
+@media(max-width:640px){.hero h1{font-size:1.5rem}.hero-stats{gap:1rem}.cards-grid{grid-template-columns:repeat(auto-fill,minmax(165px,1fr))}.card-thumb{height:90px}}</style>
 </head>
 <body>
-<script>
-(function(){
-  document.addEventListener('contextmenu',e=>e.preventDefault());
-  ['copy','cut','paste'].forEach(ev=>document.addEventListener(ev,e=>e.preventDefault()));
-  document.addEventListener('keydown',e=>{
-    const k=e.key.toLowerCase(),c=e.ctrlKey||e.metaKey;
-    if(c&&(k==='c'||k==='x'||k==='v'||k==='s'||k==='u'||k==='a'||k==='p')){e.preventDefault();return false;}
-    if(e.key==='F12'||(c&&e.shiftKey&&(k==='i'||k==='j'||k==='c'))){e.preventDefault();return false;}
-  });
-  document.addEventListener('dragstart',e=>e.preventDefault());
-})();
-</script>
-<style>
-@media print{body *{visibility:hidden!important;}body::after{visibility:visible!important;content:'© Dr. Hildegard Haas | MLUXR302 | EU Business School — Printing not permitted.';display:block;font-size:18px;text-align:center;padding:80px 40px;font-family:Arial,sans-serif;}}
-body,*{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
-</style>
-<div class="topbar">
-  <strong>MLUXR302</strong> &nbsp;&middot;&nbsp; Sustainable Value Creation in Fashion &amp; Luxury
-  &nbsp;&middot;&nbsp;
-  &copy; 2026 Dr. Hildegard Haas &nbsp;&middot;&nbsp; EU Business School
-</div>
-<header class="site-header">
-  <div class="container hdr-inner">
-    <div class="hdr-brand">
-      <div class="code">MLUXR302 &middot; Masters Level 7 &middot; EU Business School</div>
-      <div class="name">Sustainable Value Creation in Fashion &amp; Luxury</div>
-    </div>
-    <div class="hdr-meta">Dr. Hildegard Haas<br/>hildegard.haas@euruni.edu &middot; www.euruni.edu</div>
+
+<a href="./" style="display:block;background:#E6F7F3;padding:.65rem 1.5rem;text-decoration:none;font-size:.82rem;font-weight:700;color:#059669;border-bottom:2px solid #00B388">&#8592; Back to Course Overview</a>
+<header class="hero">
+  <div class="hero-tag">MARTI301 &middot; Unit 4</div>
+  <h1>The Financial Side of AI</h1>
+  <p>Select any framework to explore it in detail</p>
+  <div class="copy">&copy; 2026 Dr. Hildegard Haas</div>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num">4</div><div class="label">Slibraries</div></div>
+    <div class="hero-stat"><div class="num">20</div><div class="label">Frameworks</div></div>
+    <div class="hero-stat"><div class="num">13&ndash;16</div><div class="label">Set Range</div></div>
   </div>
 </header>
-<main><div class="container">
-<a class="back-link" href="index.html">&#8592; Course Overview</a>
-<div class="hero"><div class="unit-pill" style="background:rgba(5,150,105,0.1);color:#059669;">MLUXR302 &middot; Unit 4</div><h1>Sustainability Performance of Leading Fashion & Luxury Brands</h1><p class="sub">Measuring, Benchmarking and Evaluating Brand Sustainability</p><p class="hero-hint">Click any framework card to open it in detail</p><div class="hero-stats"><div class="hero-stat"><div class="num" style="color:#059669">3</div><div class="lbl">Slibraries</div></div><div class="hero-stat"><div class="num" style="color:#059669">15</div><div class="lbl">Frameworks</div></div><div class="hero-stat"><div class="num" style="color:#059669">10–12</div><div class="lbl">Sets</div></div></div></div><div class="set-section"><div class="set-hdr"><h2><div class="set-num" style="background:#059669">10</div>Set 10 — Performance Measurement</h2><span class="set-tag">5 frameworks &middot; click any card to explore</span></div><div class="fw-grid"><div class="fw-card" style="border-top-color:#059669;" data-color="#059669" data-rgb="5,150,105" data-sl="10" data-unit="MLUXR302 · Unit 4" data-setname="Performance Measurement" data-name="Fashion Transparency Index Methodology" data-itten="Itten: Emerald Green — Balance, financial discipline" data-lead="A rigorous, replicable scoring methodology that transforms qualitative disclosure assessment into comparable, public performance data across 250 of the world&#39;s largest fashion brands." data-sub="Five pillars · equal weighting · non-response scored as zero: the architecture of public accountability" data-b1="Policy and Commitments (20%) → does the brand publish policies on environmental and social issues? Are they publicly available, specific and time-bound?" data-b2="Governance (20%) → does the brand disclose who is responsible for sustainability? Are there board-level oversight mechanisms and published KPIs for executive accountability?" data-b3="Traceability (20%) → does the brand publish its supplier list? Does traceability extend beyond Tier 1 to fabric mills, yarn spinners and raw material processors?" data-b4="Know/Show/Fix — Spotlight Issues (40%) → covers six critical topics: purchasing practices, living wages, supplier support during COVID-19, forced labour, supplier gender equity, and biodiversity" data-ref="Fashion Revolution (2024) <em>Fashion Transparency Index 2024: Methodology</em>. London: Fashion Revolution."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="28" cy="20" r="16" fill="rgba(5,150,105,0.1)" stroke="#059669" stroke-width="1.5"/>
-  <line x1="28" y1="20" x2="28" y2="6" stroke="#059669" stroke-width="1.5" opacity="0.4"/><line x1="28" y1="20" x2="41.31479122813215" y2="15.673762078750737" stroke="#059669" stroke-width="1.5" opacity="0.52"/><line x1="28" y1="20" x2="36.22899353209462" y2="31.326237921249266" stroke="#059669" stroke-width="1.5" opacity="0.64"/><line x1="28" y1="20" x2="19.77100646790538" y2="31.326237921249266" stroke="#059669" stroke-width="1.5" opacity="0.76"/><line x1="28" y1="20" x2="14.68520877186785" y2="15.673762078750732" stroke="#059669" stroke-width="1.5" opacity="0.88"/>
-  <circle cx="28" cy="20" r="4" fill="#059669" opacity="0.8"/>
-  <text x="28" y="42" text-anchor="middle" font-size="4.5" fill="#059669" font-weight="700">5 PILLARS</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">Fashion Transparency Index Methodology</div><div class="fw-card-desc">Five pillars: Policy, Governance, Supply Chain, Supplier Disclosure, Spotlight — 258 brand scores</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(5,150,105,0.12);color:#059669;">Slibrary 10</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#059669;" data-color="#059669" data-rgb="5,150,105" data-sl="10" data-unit="MLUXR302 · Unit 4" data-setname="Performance Measurement" data-name="B Corp Assessment" data-itten="Itten: Emerald Green — Balance, financial discipline" data-lead="A rigorous, third-party verified assessment of a company&#39;s overall social and environmental performance — the gold standard for demonstrating that business can be a force for good." data-sub="200-point assessment across five impact areas: Governance, Workers, Community, Environment, Customers" data-b1="Governance (10%) → mission lock: is social/environmental mission legally protected? Board accountability, transparency and stakeholder consideration in decision-making" data-b2="Workers (25%) → financial security, health and wellness, career development, engagement and ownership opportunities for all full-time employees in the organisation" data-b3="Community (25%) → job creation, diversity and inclusion, civic engagement, charitable giving, and local supply chain development in the communities where the business operates" data-b4="Environment (25%) → environmental management, air and climate, water, land and life, resource and energy use across facilities, operations and supply chain" data-ref="B Lab (2023) <em>B Impact Assessment: Standards and Scoring Guidelines</em>. Wayne, PA: B Lab."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <path d="M28,4 L34,14 L46,16 L37,26 L39,38 L28,33 L17,38 L19,26 L10,16 L22,14 Z" fill="rgba(5,150,105,0.2)" stroke="#059669" stroke-width="1.5"/>
-  <text x="28" y="24" text-anchor="middle" font-size="12" fill="#059669" font-weight="900">B</text>
-  <text x="28" y="44" text-anchor="middle" font-size="4.5" fill="#059669" font-weight="700">B CORP · 200 PTS</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">B Corp Assessment</div><div class="fw-card-desc">200-point evaluation across Governance, Workers, Community, Environment and Customers</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(5,150,105,0.12);color:#059669;">Slibrary 10</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#059669;" data-color="#059669" data-rgb="5,150,105" data-sl="10" data-unit="MLUXR302 · Unit 4" data-setname="Performance Measurement" data-name="GRI Standards Reporting" data-itten="Itten: Emerald Green — Balance, financial discipline" data-lead="The world&#39;s most widely used sustainability reporting framework — providing a common language for organisations to communicate their impacts on the economy, environment and people." data-sub="Universal Standards → Sector Standards → Topic Standards: a three-tier architecture for comprehensive disclosure" data-b1="Universal Standards → GRI 1 (Foundation), GRI 2 (General Disclosures), GRI 3 (Material Topics): apply to all organisations regardless of sector or size" data-b2="Sector Standards → apparel and footwear sector supplement prescribes the material topics that are most significant for fashion companies: labour practices, materials, water, emissions" data-b3="Topic Standards → 34 topic-specific standards covering economic performance, emissions, water, biodiversity, employment, labour relations, health and safety, child labour, forced labour" data-b4="Adoption rate → GRI is used by 73% of the world&#39;s 250 largest companies; the EU&#39;s CSRD directive explicitly requires GRI-aligned disclosures from 2024–2026" data-ref="Global Reporting Initiative (2021) <em>GRI Standards</em>. Amsterdam: Global Reporting Initiative."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <rect x="4" y="4" width="48" height="32" rx="4" fill="rgba(5,150,105,0.1)" stroke="#059669" stroke-width="1.5"/>
-  <rect x="8" y="8" width="44" height="6" rx="2" fill="#059669"/>
-  <rect x="8" y="17" width="30" height="4" rx="2" fill="rgba(5,150,105,0.5)"/>
-  <rect x="8" y="24" width="20" height="4" rx="2" fill="rgba(5,150,105,0.35)"/>
-  <text x="28" y="44" text-anchor="middle" font-size="4.5" fill="#059669" font-weight="700">GRI STANDARDS</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">GRI Standards Reporting</div><div class="fw-card-desc">Global Reporting Initiative: universal, sector and topic standards for material ESG disclosure</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(5,150,105,0.12);color:#059669;">Slibrary 10</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#059669;" data-color="#059669" data-rgb="5,150,105" data-sl="10" data-unit="MLUXR302 · Unit 4" data-setname="Performance Measurement" data-name="CDP Climate Scoring" data-itten="Itten: Emerald Green — Balance, financial discipline" data-lead="A science-based scoring system that rates companies&#39; climate action from A (leadership) to F (failure) — the most influential climate disclosure mechanism in global capital markets." data-sub="A = Leadership · B–C = Management/Awareness · D = Disclosure · F = Non-response" data-b1="A List → comprehensive climate disclosure; ambitious emissions reduction targets aligned to science; best practice implementation; leading industry peers; 1 in 5 scored companies achieves A" data-b2="B and C scores → management and awareness levels; targets set, data disclosed, some action demonstrated but not yet best practice or leadership position in sector" data-b3="D score → disclosure only; data submitted but insufficient action demonstrated against emissions reduction, supplier engagement or climate risk assessment" data-b4="Capital markets impact → CDP A-list companies access cheaper financing; major institutional investors (BlackRock, Vanguard) increasingly use CDP scores in investment and engagement decisions" data-ref="CDP (2023) <em>CDP Technical Note: Scoring Methodology for the 2023 CDP Climate Change Questionnaire</em>. London: CDP Worldwide."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="28" cy="18" r="14" fill="rgba(5,150,105,0.1)" stroke="#059669" stroke-width="1.5"/>
-  <text x="28" y="24" text-anchor="middle" font-size="16" fill="#059669" font-weight="900">A</text>
-  <path d="M14,18 A14,14 0 0,1 42,18" fill="none" stroke="#059669" stroke-width="3" stroke-linecap="round"/>
-  <text x="10" y="26" font-size="5" fill="rgba(5,150,105,0.5)">F</text>
-  <text x="41" y="26" font-size="5" fill="#059669" font-weight="700">A</text>
-  <text x="28" y="40" text-anchor="middle" font-size="4.5" fill="#059669" font-weight="700">CDP A-LIST</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">CDP Climate Scoring</div><div class="fw-card-desc">A–F rating system: 1 in 5 companies assessed achieves A-list climate leadership status</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(5,150,105,0.12);color:#059669;">Slibrary 10</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#059669;" data-color="#059669" data-rgb="5,150,105" data-sl="10" data-unit="MLUXR302 · Unit 4" data-setname="Performance Measurement" data-name="Sustainability-Linked Bonds" data-itten="Itten: Emerald Green — Balance, financial discipline" data-lead="A financial innovation that ties the cost of capital directly to sustainability performance — if targets are missed, the interest rate rises, making greenwashing financially costly for the first time." data-sub="KPI selection → SPT targets → annual verification → coupon adjustment: sustainability built into financing" data-b1="KPI and SPT → brands select sustainability key performance indicators (KPIs) and set ambitious sustainability performance targets (SPTs) — e.g., reduce Scope 3 emissions 30% by 2030" data-b2="Coupon step-up → if the brand fails to achieve its SPTs, the bond&#39;s interest rate increases by a pre-agreed step-up, typically 25–50 basis points — a direct financial cost of non-performance" data-b3="Annual verification → an independent external verifier confirms each year whether SPTs have been achieved; the verification report is published to capital markets" data-b4="Fashion issuers → H&M Group, Chanel and Burberry have issued sustainability-linked bonds; Prada was the first luxury brand, linking its 2019 bond to use of Re-Nylon recycled nylon" data-ref="International Capital Market Association (2020) <em>Sustainability-Linked Bond Principles</em>. Paris: ICMA."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <rect x="4" y="8" width="48" height="22" rx="4" fill="rgba(5,150,105,0.1)" stroke="#059669" stroke-width="1.5"/>
-  <text x="28" y="23" text-anchor="middle" font-size="10" fill="#059669" font-weight="900">SLB</text>
-  <line x1="8" y1="32" x2="48" y2="32" stroke="rgba(5,150,105,0.3)" stroke-width="1" stroke-dasharray="3,2"/>
-  <polyline points="8,38 18,35 28,36 38,34 48,32" fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round"/>
-  <text x="28" y="44" text-anchor="middle" font-size="4" fill="#059669">KPI → rate adjustment</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">Sustainability-Linked Bonds</div><div class="fw-card-desc">KPI-tied financing: interest rate adjusts if sustainability targets are — or are not — met</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(5,150,105,0.12);color:#059669;">Slibrary 10</span><span class="fw-arrow">&#8594;</span></div></div></div></div><div class="set-section"><div class="set-hdr"><h2><div class="set-num" style="background:#059669">11</div>Set 11 — Brand Case Analysis</h2><span class="set-tag">5 frameworks &middot; click any card to explore</span></div><div class="fw-grid"><div class="fw-card" style="border-top-color:#059669;" data-color="#059669" data-rgb="5,150,105" data-sl="11" data-unit="MLUXR302 · Unit 4" data-setname="Brand Case Analysis" data-name="Kering EP&L Methodology" data-itten="Itten: Emerald Green — Balance, financial discipline" data-lead="The most rigorous attempt in fashion to give environmental destruction a price tag — translating the invisible costs of pollution, land degradation and carbon emissions into the language of business: euros." data-sub="Six impact categories monetised: €2.3 billion EP&L in 2022 — &#39;the cost no one is paying&#39;" data-b1="Six impact categories → greenhouse gas emissions, land use change, water consumption, water pollution, air pollution and waste production: each monetised using environmental damage cost estimates" data-b2="Supply chain scope → 90% of Kering&#39;s EP&L is generated in Tier 3 and 4 — raw material production and processing — the least visible and least controlled part of the supply chain" data-b3="Decision-making tool → Kering uses EP&L data to direct sustainability investment: analysis showed Tier 4 interventions (regenerative agriculture) are 100× more cost-effective than Tier 1 (factory energy efficiency)" data-b4="Industry leadership → EP&L underpins Kering&#39;s strategy to make natural capital accounting mandatory for all fashion brands; TNFD (Taskforce on Nature-related Financial Disclosures) is building on Kering&#39;s methodology" data-ref="Kering (2020) <em>Environmental Profit and Loss: Methodology and 2019 Group Results</em>. Paris: Kering SA."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <text x="28" y="18" text-anchor="middle" font-size="8" fill="#059669" font-weight="900">€2.3B</text>
-  <text x="28" y="26" text-anchor="middle" font-size="4.5" fill="#059669">Environmental</text>
-  <text x="28" y="32" text-anchor="middle" font-size="4.5" fill="#059669">Profit &amp; Loss</text>
-  <rect x="4" y="36" width="48" height="6" rx="2" fill="#059669" opacity="0.8"/>
-  <text x="28" y="41" text-anchor="middle" font-size="4" fill="white" font-weight="700">KERING 2022</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">Kering EP&L Methodology</div><div class="fw-card-desc">Environmental Profit & Loss monetises ecosystem impacts — €2.3B group EP&L in 2022</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(5,150,105,0.12);color:#059669;">Slibrary 11</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#059669;" data-color="#059669" data-rgb="5,150,105" data-sl="11" data-unit="MLUXR302 · Unit 4" data-setname="Brand Case Analysis" data-name="LVMH Life 360 Strategy" data-itten="Itten: Emerald Green — Balance, financial discipline" data-lead="A group-wide sustainability framework integrating circular economy, biodiversity, climate and people goals across 75 Maisons — the most ambitious sustainability strategy from the world&#39;s largest luxury group." data-sub="Creative Circularity · Biodiversity · Climate · People: four pillars to 2030" data-b1="Creative Circularity → design for repairability, reuse and second life; eliminate single-use packaging; increase use of recycled and bio-sourced materials across product lines by 2030" data-b2="Biodiversity → protect and regenerate 5 million hectares of forest, farmland and ocean; embed biodiversity assessment in all sourcing decisions; support regenerative raw material supply chains" data-b3="Climate → achieve net zero CO₂ emissions across entire value chain by 2050; reduce Scope 3 emissions 55% by 2030; 100% renewable electricity across all Maisons by 2026" data-b4="People → 70% of suppliers trained on responsible practices; achieve gender equity at all management levels; publish living wage roadmap for strategic supplier factories by 2025" data-ref="LVMH (2021) <em>LVMH Life 360: Our Road Map for an Exceptional Future</em>. Paris: LVMH Moët Hennessy Louis Vuitton SE."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="28" cy="22" r="17" fill="rgba(5,150,105,0.1)" stroke="#059669" stroke-width="1.5"/>
-  <circle cx="36.48528137423857" cy="13.51471862576143" r="5" fill="#059669" stroke="#059669" stroke-width="1"/><circle cx="36.48528137423857" cy="30.485281374238568" r="5" fill="rgba(5,150,105,0.5)" stroke="#059669" stroke-width="1"/><circle cx="19.514718625761432" cy="30.48528137423857" r="5" fill="rgba(5,150,105,0.6000000000000001)" stroke="#059669" stroke-width="1"/><circle cx="19.51471862576143" cy="13.51471862576143" r="5" fill="rgba(5,150,105,0.7000000000000001)" stroke="#059669" stroke-width="1"/>
-  <circle cx="28" cy="22" r="4" fill="#059669" opacity="0.9"/>
-  <text x="28" y="44" text-anchor="middle" font-size="4.5" fill="#059669" font-weight="700">LIFE 360 · 4 PILLARS</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">LVMH Life 360 Strategy</div><div class="fw-card-desc">Four pillars: Creative Circularity, Biodiversity, Climate and People — 2030 group targets</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(5,150,105,0.12);color:#059669;">Slibrary 11</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#059669;" data-color="#059669" data-rgb="5,150,105" data-sl="11" data-unit="MLUXR302 · Unit 4" data-setname="Brand Case Analysis" data-name="Inditex Join Life Framework" data-itten="Itten: Emerald Green — Balance, financial discipline" data-lead="Inditex&#39;s product-level eco-label that signals the minimum threshold of more sustainable materials and water-efficient production — applied to 50% of garments sold across Zara and other brands." data-sub="≥50% more sustainable materials + water-conscious manufacturing = Join Life label" data-b1="Material threshold → a minimum of 50% more sustainable input materials required: organic cotton, recycled polyester (BCI cotton, Tencel/lyocell, or GOTS-certified fibres qualify)" data-b2="Process threshold → garments must be produced using wet processing techniques that meet Inditex&#39;s Green to Wear standard, reducing water consumption and chemical use" data-b3="Scale → Join Life labelling applied to over 50% of all Inditex product volume (2023 target achieved); represents the largest eco-label programme in fast fashion by volume" data-b4="Criticism → the threshold of 50% more sustainable materials means that 50% of each garment can still use conventional virgin synthetics; the bar has been criticised as too low for the &#39;sustainable&#39; label" data-ref="Inditex (2023) <em>Annual Report 2022: Sustainability and Our People</em>. Arteixo: Industria de Diseño Textil, S.A."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <rect x="4" y="6" width="48" height="28" rx="4" fill="rgba(5,150,105,0.1)" stroke="#059669" stroke-width="1.5"/>
-  <rect x="4" y="6" width="24" height="28" rx="4" fill="#059669" opacity="0.8"/>
-  <text x="16" y="24" text-anchor="middle" font-size="5" fill="white" font-weight="900">50%</text>
-  <text x="40" y="22" text-anchor="middle" font-size="4" fill="#059669">eco-mat</text>
-  <text x="40" y="28" text-anchor="middle" font-size="3.5" fill="#059669">+ water↓</text>
-  <text x="28" y="42" text-anchor="middle" font-size="4.5" fill="#059669" font-weight="700">JOIN LIFE</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">Inditex Join Life Framework</div><div class="fw-card-desc">Product-level eco-label: at least 50% more sustainable materials + water-efficient processing</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(5,150,105,0.12);color:#059669;">Slibrary 11</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#059669;" data-color="#059669" data-rgb="5,150,105" data-sl="11" data-unit="MLUXR302 · Unit 4" data-setname="Brand Case Analysis" data-name="Luxury Longevity Paradox" data-itten="Itten: Emerald Green — Balance, financial discipline" data-lead="The fundamental ambiguity of luxury&#39;s sustainability claim — that the very qualities defining luxury (durability, craftsmanship, scarcity) may make it structurally more sustainable than certified eco-brands, despite minimal transparency." data-sub="Durability + scarcity + resale value vs. opacity + exclusion + high material intensity" data-b1="The case for luxury as sustainable → a Hermès Birkin has a useful life of 30+ years and a resale market commanding 120%+ of retail; per-year-of-use carbon impact may be lower than a recycled fibre fast fashion product" data-b2="The case against → luxury brands score lowest on transparency indices; supply chains for exotic leathers, furs and precious metals carry severe ethical and environmental risks often undisclosed" data-b3="The scarcity argument → low volume production inherently limits absolute environmental footprint; but luxury growth strategies increasingly involve volume expansion (accessible luxury, brand extensions)" data-b4="Resolution → the paradox is unresolved; luxury&#39;s sustainability claim requires investment in both supply chain transparency AND design for longevity — neither alone is sufficient" data-ref="Thomas, D. (2019) <em>Fashionopolis: The Price of Fast Fashion and the Future of Clothes</em>. New York: Penguin Press."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <path d="M28,4 L52,40 L4,40 Z" fill="rgba(5,150,105,0.1)" stroke="#059669" stroke-width="1.5"/>
-  <text x="28" y="26" text-anchor="middle" font-size="20" fill="#059669" font-weight="900">?</text>
-  <text x="6" y="44" font-size="4" fill="#059669">LUXURY</text>
-  <text x="36" y="44" font-size="4" fill="#059669">SUSTAINABLE?</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">Luxury Longevity Paradox</div><div class="fw-card-desc">Craftsmanship + scarcity + durability vs. high price, exclusion and production opacity</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(5,150,105,0.12);color:#059669;">Slibrary 11</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#059669;" data-color="#059669" data-rgb="5,150,105" data-sl="11" data-unit="MLUXR302 · Unit 4" data-setname="Brand Case Analysis" data-name="Fast Fashion Externality Model" data-itten="Itten: Emerald Green — Balance, financial discipline" data-lead="A full cost accounting exercise that reveals what a fast fashion garment would cost if the environmental and social harms it generates were priced into its retail price — and why they are not." data-sub="$500B of annual externalities: the &#39;true price&#39; of fashion that consumers never see" data-b1="Environmental externalities → CO₂ emissions, water pollution, microplastic contamination, land degradation and waste disposal costs estimated at $185B annually — unpriced to the industry" data-b2="Social externalities → wage suppression below living wage, occupational health costs, migrant worker abuse and community infrastructure costs estimated at $316B annually — borne by workers and governments" data-b3="True price calculation → a €10 fast fashion T-shirt would cost approximately €73 if all externalities were internalised through supply chain prices — 7× the retail price" data-b4="Policy response → carbon border adjustments, mandatory due diligence and EPR (Extended Producer Responsibility) schemes for textiles are regulatory mechanisms designed to internalise some of these costs" data-ref="True Price (2016) <em>The True Price of a Dress: How the Retail Price Compares to the Social and Environmental Costs</em>. Amsterdam: True Price."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <rect x="4" y="12" width="24" height="24" rx="2" fill="rgba(5,150,105,0.3)" stroke="#059669" stroke-width="1.5"/>
-  <rect x="28" y="6" width="24" height="30" rx="2" fill="#059669" opacity="0.7"/>
-  <text x="16" y="24" text-anchor="middle" font-size="5" fill="#059669" font-weight="700">€10</text>
-  <text x="16" y="30" text-anchor="middle" font-size="3.5" fill="#059669">retail</text>
-  <text x="40" y="20" text-anchor="middle" font-size="5" fill="white" font-weight="700">€73</text>
-  <text x="40" y="26" text-anchor="middle" font-size="3.5" fill="white">true</text>
-  <text x="40" y="31" text-anchor="middle" font-size="3.5" fill="white">price</text>
-  <text x="28" y="44" text-anchor="middle" font-size="4" fill="#059669">True Price 2016</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">Fast Fashion Externality Model</div><div class="fw-card-desc">Full cost accounting: €500B in annual environmental and social externalities unpriced</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(5,150,105,0.12);color:#059669;">Slibrary 11</span><span class="fw-arrow">&#8594;</span></div></div></div></div><div class="set-section"><div class="set-hdr"><h2><div class="set-num" style="background:#059669">12</div>Set 12 — Comparative Benchmarking</h2><span class="set-tag">5 frameworks &middot; click any card to explore</span></div><div class="fw-grid"><div class="fw-card" style="border-top-color:#059669;" data-color="#059669" data-rgb="5,150,105" data-sl="12" data-unit="MLUXR302 · Unit 4" data-setname="Comparative Benchmarking" data-name="Sustainalytics ESG Risk Ratings" data-itten="Itten: Emerald Green — Balance, financial discipline" data-lead="A risk-based ESG rating system that quantifies unmanaged sustainability risk — the residual risk after accounting for how well a company manages its material ESG exposures." data-sub="Exposure − Management = Unmanaged Risk: lower score = better risk management = more investable" data-b1="Exposure assessment → determine the degree to which a company is exposed to material ESG risks given its industry, business model, geography and product portfolio" data-b2="Management assessment → evaluate how effectively the company manages its ESG exposure through policies, programmes, third-party certifications and management quality" data-b3="Unmanaged risk score → net risk after management is subtracted from exposure; scored 0–100: <10 = negligible; 10–20 = low; 20–30 = medium; 30–40 = high; >40 = severe" data-b4="Fashion sector benchmarking → luxury brands typically have medium exposure (0–25% unmanaged) due to premium pricing; mass market fashion has high exposure (25–40%) due to volume and supply chain complexity" data-ref="Sustainalytics (2022) <em>ESG Risk Ratings Methodology Abstract</em>. Amsterdam: Sustainalytics, a Morningstar Company."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <rect x="4" y="8" width="48" height="24" rx="4" fill="rgba(5,150,105,0.1)" stroke="#059669" stroke-width="1.5"/>
-  <rect x="8" y="12" width="10" height="16" rx="2" fill="#059669"/>
-  <rect x="22" y="16" width="10" height="12" rx="2" fill="rgba(5,150,105,0.65)"/>
-  <rect x="36" y="20" width="10" height="8" rx="2" fill="rgba(5,150,105,0.35)" stroke="#059669" stroke-width="1"/>
-  <text x="13" y="28" text-anchor="middle" font-size="4" fill="white">NEG</text>
-  <text x="27" y="28" text-anchor="middle" font-size="4" fill="white">MED</text>
-  <text x="41" y="28" text-anchor="middle" font-size="4" fill="#059669">LOW</text>
-  <text x="28" y="44" text-anchor="middle" font-size="4.5" fill="#059669" font-weight="700">ESG RISK SCORE</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">Sustainalytics ESG Risk Ratings</div><div class="fw-card-desc">Unmanaged risk scoring — lower is better — across material ESG issues per sub-industry</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(5,150,105,0.12);color:#059669;">Slibrary 12</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#059669;" data-color="#059669" data-rgb="5,150,105" data-sl="12" data-unit="MLUXR302 · Unit 4" data-setname="Comparative Benchmarking" data-name="Brand Purpose Authenticity Matrix" data-itten="Itten: Emerald Green — Balance, financial discipline" data-lead="A two-axis diagnostic tool revealing whether a brand&#39;s sustainability purpose is genuinely embedded in strategy and operations — or is an aspiration disconnected from commercial reality." data-sub="Aspiration (stated ambition) × Action (verifiable behaviour): four distinct authenticity positions" data-b1="Authentic (high aspiration, high action) → purpose is embedded in business model, governance and operations; claims are verified; performance is measurable and disclosed — Patagonia, Freitag, Eileen Fisher" data-b2="Aspirational (high aspiration, low action) → bold public commitments without underlying operational change; claims outrun delivery; risk of regulatory and reputational greenwashing exposure" data-b3="Operative (low aspiration, high action) → genuine but uncommunicated sustainability practices; quiet leaders who under-claim; risk of being dismissed by observers despite strong performance" data-b4="Hollow (low aspiration, low action) → compliance-driven minimum; sustainability as a peripheral activity; highest exposure to regulatory, NGO and consumer pressure as mandatory standards rise" data-ref="Holt, D.B. (2004) <em>How Brands Become Icons: The Principles of Cultural Branding</em>. Boston: Harvard Business School Press."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <rect x="4" y="4" width="24" height="18" rx="2" fill="rgba(5,150,105,0.2)" stroke="#059669" stroke-width="1"/>
-  <rect x="28" y="4" width="24" height="18" rx="2" fill="#059669" opacity="0.7"/>
-  <rect x="4" y="24" width="24" height="16" rx="2" fill="rgba(5,150,105,0.08)" stroke="#059669" stroke-width="1"/>
-  <rect x="28" y="24" width="24" height="16" rx="2" fill="rgba(5,150,105,0.4)" stroke="#059669" stroke-width="1"/>
-  <text x="16" y="15" text-anchor="middle" font-size="3.5" fill="#059669">Aspirational</text>
-  <text x="40" y="15" text-anchor="middle" font-size="4" fill="white" font-weight="700">AUTHENTIC</text>
-  <text x="16" y="33" text-anchor="middle" font-size="3.5" fill="rgba(5,150,105,0.5)">Hollow</text>
-  <text x="40" y="33" text-anchor="middle" font-size="3.5" fill="#059669">Operative</text>
-  <text x="28" y="44" text-anchor="middle" font-size="4" fill="#059669">Purpose × Action</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">Brand Purpose Authenticity Matrix</div><div class="fw-card-desc">Aspiration vs. action gap: mapping stated purpose against measurable outcomes</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(5,150,105,0.12);color:#059669;">Slibrary 12</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#059669;" data-color="#059669" data-rgb="5,150,105" data-sl="12" data-unit="MLUXR302 · Unit 4" data-setname="Comparative Benchmarking" data-name="Consumer Perception Gap" data-itten="Itten: Emerald Green — Balance, financial discipline" data-lead="The stubborn persistence of a 40-point gap between consumer sustainability intent and actual purchasing behaviour — the most studied paradox in sustainable marketing." data-sub="77% say sustainability matters in purchase decisions · 33% act on it: the intention–action gap" data-b1="Scale of the gap → Nielsen (2023): 77% of global consumers say it is &#39;extremely or very important&#39; that companies implement programmes to improve the environment; purchasing data shows 33% act on this" data-b2="Gap drivers → price premium (sustainable products command 10–30% premium), availability (limited distribution), information complexity (confusing labels), habit (established brand loyalty) and social norms" data-b3="Demographic variation → Gen Z and Millennials show smaller gaps than older cohorts; income modifies intent-to-action conversion; sustainable behaviour is correlated with perceived self-efficacy" data-b4="Brand strategy → closing the gap requires: (1) reducing price differential; (2) default sustainable option (nudge architecture); (3) simplified, credible sustainability communication at point of sale" data-ref="Nielsen (2023) <em>The Sustainability Imperative: New Insights on Consumer Expectations</em>. New York: Nielsen IQ."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <rect x="4" y="8" width="48" height="10" rx="3" fill="#059669" opacity="0.7"/>
-  <rect x="4" y="26" width="22" height="10" rx="3" fill="rgba(5,150,105,0.4)" stroke="#059669" stroke-width="1.5"/>
-  <path d="M30,26 Q34,22 38,26" fill="none" stroke="#059669" stroke-width="1.5" stroke-dasharray="2,1"/>
-  <text x="28" y="16" text-anchor="middle" font-size="4.5" fill="white" font-weight="700">77% INTENT</text>
-  <text x="15" y="33" text-anchor="middle" font-size="4" fill="#059669" font-weight="700">33% ACT</text>
-  <text x="28" y="44" text-anchor="middle" font-size="4.5" fill="#059669" font-weight="700">THE GAP</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">Consumer Perception Gap</div><div class="fw-card-desc">77% say sustainability matters in purchase decisions; only 33% act on it — attitude–behaviour gap</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(5,150,105,0.12);color:#059669;">Slibrary 12</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#059669;" data-color="#059669" data-rgb="5,150,105" data-sl="12" data-unit="MLUXR302 · Unit 4" data-setname="Comparative Benchmarking" data-name="Scope 1–2–3 Emission Accounting" data-itten="Itten: Emerald Green — Balance, financial discipline" data-lead="The definitive framework for corporate carbon accounting — distinguishing direct emissions from energy-related emissions and the vast supply chain emissions that represent 90% of fashion&#39;s climate impact." data-sub="Scope 1: owned sources · Scope 2: purchased energy · Scope 3: value chain — where 90%+ of fashion&#39;s footprint hides" data-b1="Scope 1 → direct GHG emissions from sources owned or controlled by the company: factory boilers, owned vehicle fleets, on-site energy generation, fugitive emissions from refrigerants" data-b2="Scope 2 → indirect emissions from purchased electricity, heat, steam and cooling: typically 5–10% of fashion&#39;s footprint; reducible through renewable energy procurement" data-b3="Scope 3, upstream → raw material production (fibres, dyes, chemicals), manufacturing of purchased goods, business travel and supplier transportation: typically 70–80% of fashion&#39;s total footprint" data-b4="Scope 3, downstream → consumer use phase (washing, drying: 39% of garment lifecycle), end-of-life disposal, retailer operations: typically 15–20% of fashion&#39;s total footprint" data-ref="Greenhouse Gas Protocol (2011) <em>Corporate Value Chain (Scope 3) Accounting and Reporting Standard</em>. Washington, D.C.: World Resources Institute and World Business Council for Sustainable Development."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="28" cy="20" r="16" fill="rgba(5,150,105,0.1)" stroke="#059669" stroke-width="1"/>
-  <circle cx="28" cy="20" r="10" fill="rgba(5,150,105,0.2)" stroke="#059669" stroke-width="1"/>
-  <circle cx="28" cy="20" r="5" fill="#059669" opacity="0.8"/>
-  <text x="28" y="22" text-anchor="middle" font-size="4" fill="white" font-weight="700">1</text>
-  <text x="22" y="15" text-anchor="middle" font-size="4" fill="#059669" font-weight="700">2</text>
-  <text x="14" y="12" text-anchor="middle" font-size="4.5" fill="#059669" font-weight="700">3</text>
-  <text x="28" y="44" text-anchor="middle" font-size="4.5" fill="#059669" font-weight="700">90% IS SCOPE 3</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">Scope 1–2–3 Emission Accounting</div><div class="fw-card-desc">Direct emissions → energy-indirect → value chain indirect — Scope 3 is 90%+ of fashion footprint</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(5,150,105,0.12);color:#059669;">Slibrary 12</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#059669;" data-color="#059669" data-rgb="5,150,105" data-sl="12" data-unit="MLUXR302 · Unit 4" data-setname="Comparative Benchmarking" data-name="Green Claims EU Regulation 2024" data-itten="Itten: Emerald Green — Balance, financial discipline" data-lead="A landmark regulatory intervention making it illegal across the EU to use vague, unsubstantiated or misleading sustainability claims in consumer communications — ending the era of costless greenwashing." data-sub="Substantiate → Verify → Specify: three obligations that will transform how brands communicate sustainability" data-b1="Substantiation → all explicit environmental claims must be based on recognised scientific methods and proven to be significant in the product&#39;s overall lifecycle; cherry-picked single-attribute claims prohibited" data-b2="Independent verification → claims must be independently verified by an accredited body before being made; &#39;carbon neutral&#39; and similar claims require third-party LCA-based evidence" data-b3="Precision requirement → vague terms — &#39;sustainable&#39;, &#39;eco-friendly&#39;, &#39;green&#39;, &#39;natural&#39; — are prohibited without specific, precise substantiation; generic environmental imagery (green leaves) without claims is permitted" data-b4="Enforcement → penalties of at least 4% of annual global turnover; temporary exclusion from public procurement; confiscation of revenues from the non-compliant product" data-ref="European Parliament and Council of the European Union (2024) <em>Directive on Substantiation and Communication of Explicit Environmental Claims (Green Claims Directive)</em>. Brussels: European Parliament."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <polygon points="28,3 52,40 4,40" fill="rgba(5,150,105,0.1)" stroke="#059669" stroke-width="1.5"/>
-  <circle cx="28" cy="28" r="5" fill="#059669" opacity="0.8"/>
-  <line x1="28" y1="14" x2="28" y2="22" stroke="#059669" stroke-width="2.5" stroke-linecap="round"/>
-  <text x="28" y="44" text-anchor="middle" font-size="4.5" fill="#059669" font-weight="700">4% TURNOVER FINE</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">Green Claims EU Regulation 2024</div><div class="fw-card-desc">Substantiation requirements: explicit, precise and third-party verified environmental claims only</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(5,150,105,0.12);color:#059669;">Slibrary 12</span><span class="fw-arrow">&#8594;</span></div></div></div></div><p style="text-align:center;font-size:11px;color:var(--muted);margin-bottom:48px;"><strong>MLUXR302</strong> &middot; &copy; 2026 Dr. Hildegard Haas &middot; EU Business School</p>
-</div></main>
-<footer class="site-footer">
-  <div class="container">
-    <strong>&copy; Dr. Hildegard Haas</strong> &middot; MLUXR302 Sustainable Value Creation in Fashion &amp; Luxury &middot; EU Business School<br/>
-    All rights reserved
-  </div>
-</footer>
-
-<div id="modal-overlay">
-  <div id="modal-box">
-    <div id="modal-color-bar"></div>
-    <div id="modal-inner">
-      <div id="modal-header">
-        <div id="modal-header-left">
-          <div id="modal-label-row">
-            <span id="m-slibrary-header"></span>
-            <span id="m-unit-badge"></span>
+<main style="padding:2rem 1.5rem 1rem">
+<div class="slib-set">
+      <div class="slib-set-header" data-anim>
+        <span class="slib-dot" style="background:#059669"></span>
+        <span class="slib-set-title">Set 13 &mdash; AI in Financial Markets</span>
+        <span class="slib-set-num">5 frameworks</span>
+      </div>
+      <div class="cards-grid"><div class="card" data-anim style="transition-delay:0ms" onclick="openModal(FW[0])">
+          <div class="card-accent" style="background:#059669"></div>
+          <div class="card-thumb" id="thumb-13-0"></div>
+          <div class="card-body">
+            <div class="card-title">FinTech Ecosystem Map</div>
+            <div class="card-desc">Concentric circles: banks → fintechs → big tech with AI core</div>
+            <span class="card-tag" style="background:#059669">Slibrary 13</span>
           </div>
-          <h2 id="m-title"></h2>
-          <div id="m-itten-line"></div>
-        </div>
-        <button id="modal-close" aria-label="Close">&#x2715;</button>
+        </div><div class="card" data-anim style="transition-delay:80ms" onclick="openModal(FW[1])">
+          <div class="card-accent" style="background:#059669"></div>
+          <div class="card-thumb" id="thumb-13-1"></div>
+          <div class="card-body">
+            <div class="card-title">AI Trading Architecture</div>
+            <div class="card-desc">Data feeds → signal generation → execution with risk controls</div>
+            <span class="card-tag" style="background:#059669">Slibrary 13</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:160ms" onclick="openModal(FW[2])">
+          <div class="card-accent" style="background:#059669"></div>
+          <div class="card-thumb" id="thumb-13-2"></div>
+          <div class="card-body">
+            <div class="card-title">Democratisation Ladder</div>
+            <div class="card-desc">Institutional-only → retail access → open-source AI for all</div>
+            <span class="card-tag" style="background:#059669">Slibrary 13</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:240ms" onclick="openModal(FW[3])">
+          <div class="card-accent" style="background:#059669"></div>
+          <div class="card-thumb" id="thumb-13-3"></div>
+          <div class="card-body">
+            <div class="card-title">Startup Funding Funnel</div>
+            <div class="card-desc">Pre-seed → Seed → Series A/B → IPO with survival rates</div>
+            <span class="card-tag" style="background:#059669">Slibrary 13</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:320ms" onclick="openModal(FW[4])">
+          <div class="card-accent" style="background:#059669"></div>
+          <div class="card-thumb" id="thumb-13-4"></div>
+          <div class="card-body">
+            <div class="card-title">RegTech Compliance Loop</div>
+            <div class="card-desc">Monitor → detect → report → adapt cycle automated by AI</div>
+            <span class="card-tag" style="background:#059669">Slibrary 13</span>
+          </div>
+        </div></div></div><div class="slib-set">
+      <div class="slib-set-header" data-anim>
+        <span class="slib-dot" style="background:#DC2626"></span>
+        <span class="slib-set-title">Set 14 &mdash; AI Risk Management</span>
+        <span class="slib-set-num">5 frameworks</span>
       </div>
-      <blockquote id="modal-lead"><p id="m-lead-text"></p></blockquote>
-      <p id="m-sub-text"></p>
-      <div id="modal-bullets">
-        <div class="m-bullet-item"><span class="m-dot"></span><span class="m-bullet-text" id="m-b1"></span></div>
-        <hr class="m-divider"/>
-        <div class="m-bullet-item"><span class="m-dot"></span><span class="m-bullet-text" id="m-b2"></span></div>
-        <hr class="m-divider"/>
-        <div class="m-bullet-item"><span class="m-dot"></span><span class="m-bullet-text" id="m-b3"></span></div>
-        <hr class="m-divider"/>
-        <div class="m-bullet-item"><span class="m-dot"></span><span class="m-bullet-text" id="m-b4"></span></div>
+      <div class="cards-grid"><div class="card" data-anim style="transition-delay:0ms" onclick="openModal(FW[5])">
+          <div class="card-accent" style="background:#DC2626"></div>
+          <div class="card-thumb" id="thumb-14-0"></div>
+          <div class="card-body">
+            <div class="card-title">Three Lines of Defence</div>
+            <div class="card-desc">Business units → risk/compliance → internal audit</div>
+            <span class="card-tag" style="background:#DC2626">Slibrary 14</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:80ms" onclick="openModal(FW[6])">
+          <div class="card-accent" style="background:#DC2626"></div>
+          <div class="card-thumb" id="thumb-14-1"></div>
+          <div class="card-body">
+            <div class="card-title">Model Risk Taxonomy</div>
+            <div class="card-desc">Data risk, design risk, implementation risk with sub-categories</div>
+            <span class="card-tag" style="background:#DC2626">Slibrary 14</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:160ms" onclick="openModal(FW[7])">
+          <div class="card-accent" style="background:#DC2626"></div>
+          <div class="card-thumb" id="thumb-14-2"></div>
+          <div class="card-body">
+            <div class="card-title">Stress Testing Framework</div>
+            <div class="card-desc">Scenario → Model → Impact → Capital buffer pipeline</div>
+            <span class="card-tag" style="background:#DC2626">Slibrary 14</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:240ms" onclick="openModal(FW[8])">
+          <div class="card-accent" style="background:#DC2626"></div>
+          <div class="card-thumb" id="thumb-14-3"></div>
+          <div class="card-body">
+            <div class="card-title">Algorithmic Bias Audit</div>
+            <div class="card-desc">Define → Measure → Mitigate → Monitor continuous cycle</div>
+            <span class="card-tag" style="background:#DC2626">Slibrary 14</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:320ms" onclick="openModal(FW[9])">
+          <div class="card-accent" style="background:#DC2626"></div>
+          <div class="card-thumb" id="thumb-14-4"></div>
+          <div class="card-body">
+            <div class="card-title">Black Swan Radar</div>
+            <div class="card-desc">Concentric risk rings from known-knowns to unknown-unknowns</div>
+            <span class="card-tag" style="background:#DC2626">Slibrary 14</span>
+          </div>
+        </div></div></div><div class="slib-set">
+      <div class="slib-set-header" data-anim>
+        <span class="slib-dot" style="background:#D97706"></span>
+        <span class="slib-set-title">Set 15 &mdash; Talent & Resources</span>
+        <span class="slib-set-num">5 frameworks</span>
       </div>
-      <div id="modal-reference">
-        <div id="modal-ref-label">REFERENCE</div>
-        <p id="m-ref-text"></p>
+      <div class="cards-grid"><div class="card" data-anim style="transition-delay:0ms" onclick="openModal(FW[10])">
+          <div class="card-accent" style="background:#D97706"></div>
+          <div class="card-thumb" id="thumb-15-0"></div>
+          <div class="card-body">
+            <div class="card-title">AI Talent Gap Heatmap</div>
+            <div class="card-desc">Roles × regions colour-coded by shortage severity</div>
+            <span class="card-tag" style="background:#D97706">Slibrary 15</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:80ms" onclick="openModal(FW[11])">
+          <div class="card-accent" style="background:#D97706"></div>
+          <div class="card-thumb" id="thumb-15-1"></div>
+          <div class="card-body">
+            <div class="card-title">Build-Buy-Borrow Matrix</div>
+            <div class="card-desc">Strategic vs. commodity skills × build/hire/contract options</div>
+            <span class="card-tag" style="background:#D97706">Slibrary 15</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:160ms" onclick="openModal(FW[12])">
+          <div class="card-accent" style="background:#D97706"></div>
+          <div class="card-thumb" id="thumb-15-2"></div>
+          <div class="card-body">
+            <div class="card-title">Skills Adjacency Map</div>
+            <div class="card-desc">Network graph of current → AI skills with reskilling paths</div>
+            <span class="card-tag" style="background:#D97706">Slibrary 15</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:240ms" onclick="openModal(FW[13])">
+          <div class="card-accent" style="background:#D97706"></div>
+          <div class="card-thumb" id="thumb-15-3"></div>
+          <div class="card-body">
+            <div class="card-title">Total Cost of AI Ownership</div>
+            <div class="card-desc">Iceberg: visible costs above, hidden costs 3–5× below waterline</div>
+            <span class="card-tag" style="background:#D97706">Slibrary 15</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:320ms" onclick="openModal(FW[14])">
+          <div class="card-accent" style="background:#D97706"></div>
+          <div class="card-thumb" id="thumb-15-4"></div>
+          <div class="card-body">
+            <div class="card-title">Org Design for AI Teams</div>
+            <div class="card-desc">Hub-and-spoke vs. embedded vs. CoE models</div>
+            <span class="card-tag" style="background:#D97706">Slibrary 15</span>
+          </div>
+        </div></div></div><div class="slib-set">
+      <div class="slib-set-header" data-anim>
+        <span class="slib-dot" style="background:#2563EB"></span>
+        <span class="slib-set-title">Set 16 &mdash; Sustainable & Green AI</span>
+        <span class="slib-set-num">5 frameworks</span>
       </div>
-    </div>
-  </div>
+      <div class="cards-grid"><div class="card" data-anim style="transition-delay:0ms" onclick="openModal(FW[15])">
+          <div class="card-accent" style="background:#2563EB"></div>
+          <div class="card-thumb" id="thumb-16-0"></div>
+          <div class="card-body">
+            <div class="card-title">AI Carbon Footprint Stack</div>
+            <div class="card-desc">Hardware → data centre → training → inference CO₂ layers</div>
+            <span class="card-tag" style="background:#2563EB">Slibrary 16</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:80ms" onclick="openModal(FW[16])">
+          <div class="card-accent" style="background:#2563EB"></div>
+          <div class="card-thumb" id="thumb-16-1"></div>
+          <div class="card-body">
+            <div class="card-title">Green AI vs. Red AI</div>
+            <div class="card-desc">Red AI (accuracy at any cost) ← → Green AI (efficiency-first)</div>
+            <span class="card-tag" style="background:#2563EB">Slibrary 16</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:160ms" onclick="openModal(FW[17])">
+          <div class="card-accent" style="background:#2563EB"></div>
+          <div class="card-thumb" id="thumb-16-2"></div>
+          <div class="card-body">
+            <div class="card-title">ESG-AI Integration Matrix</div>
+            <div class="card-desc">E, S, G rows × AI opportunity and risk columns</div>
+            <span class="card-tag" style="background:#2563EB">Slibrary 16</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:240ms" onclick="openModal(FW[18])">
+          <div class="card-accent" style="background:#2563EB"></div>
+          <div class="card-thumb" id="thumb-16-3"></div>
+          <div class="card-body">
+            <div class="card-title">Compute Efficiency Curve</div>
+            <div class="card-desc">Model size vs. diminishing performance gains</div>
+            <span class="card-tag" style="background:#2563EB">Slibrary 16</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:320ms" onclick="openModal(FW[19])">
+          <div class="card-accent" style="background:#2563EB"></div>
+          <div class="card-thumb" id="thumb-16-4"></div>
+          <div class="card-body">
+            <div class="card-title">Responsible AI Scorecard</div>
+            <div class="card-desc">Dashboard: fairness, transparency, privacy, safety traffic lights</div>
+            <span class="card-tag" style="background:#2563EB">Slibrary 16</span>
+          </div>
+        </div></div></div>
+</main>
+<footer class="footer">
+  <strong>MARTI301</strong> &middot; AI in Investment &amp; Competitiveness &middot; &copy; 2026 Dr. Hildegard Haas<br>
+  Applying JD Meier&rsquo;s <strong>Thumbnail Thinking</strong> (2025) &middot; Unit 4: The Financial Side of AI
+</footer>
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modal"></div>
 </div>
+<script>
+const FW = [
+{"name":"FinTech Ecosystem Map","def":"A concentric model of financial services participants with AI as the shared enabling core.","desc":"Concentric circles: banks → fintechs → big tech with AI core","shape":"circle","details":["Overlap zones = collaboration and competition","AI sits at the core enabling layer","Payments, lending, insurance, wealth mgmt","Dynamic boundaries shifting continuously"],"ref":"Philippon, T. (2019) 'On fintech and financial inclusion', BIS Working Papers, No. 841. Basel: BIS.","slibTitle":"AI in Financial Markets","slibNum":13,"color":"#059669"},
+{"name":"AI Trading Architecture","def":"A layered system design for algorithmic trading: data infrastructure, model layer, and strategy layer with risk controls.","desc":"Data feeds → signal generation → execution with risk controls","shape":"layers","details":["Horizontal layers: infra, models, strategy","Latency and risk controls at each layer","Low-latency vs. fundamental approaches","López de Prado (2018) framework"],"ref":"López de Prado, M. (2018) Advances in Financial Machine Learning. Hoboken: Wiley.","slibTitle":"AI in Financial Markets","slibNum":13,"color":"#059669"},
+{"name":"Democratisation Ladder","def":"A progression model showing how AI lowers barriers to financial market participation.","desc":"Institutional-only → retail access → open-source AI for all","shape":"stairs","details":["Each rung lowers barriers to entry","Robo-advisors enabled retail access","Open-source models empower all investors","Ongoing regulatory considerations"],"ref":"Vives, X. (2019) 'Digital disruption in banking', Annual Review of Financial Economics, 11, pp. 243–272.","slibTitle":"AI in Financial Markets","slibNum":13,"color":"#059669"},
+{"name":"Startup Funding Funnel","def":"A narrowing pipeline from pre-seed through IPO, showing declining survival rates at each stage.","desc":"Pre-seed → Seed → Series A/B → IPO with survival rates","shape":"funnel","details":["Narrowing funnel: survival rates drop","AI startup-specific failure points","OpenClaw case study application","Capital efficiency metrics at each stage"],"ref":"Gompers, P.A. et al. (2020) 'How do venture capitalists make decisions?', Journal of Financial Economics, 135(1), pp. 169–190.","slibTitle":"AI in Financial Markets","slibNum":13,"color":"#059669"},
+{"name":"RegTech Compliance Loop","def":"A continuous regulatory cycle—monitor, detect, report, adapt—where AI automates each node.","desc":"Monitor → detect → report → adapt cycle automated by AI","shape":"cycle","details":["Circular: continuous compliance","AI automates each node in the loop","Regulatory change triggers adaptation","Reduces compliance cost 30–50%"],"ref":"Arner, D.W., Barberis, J. and Buckley, R.P. (2017) 'FinTech, RegTech, and the reconceptualization of financial regulation', Northwestern Journal of International Law & Business, 37(3), pp. 371–413.","slibTitle":"AI in Financial Markets","slibNum":13,"color":"#059669"},
+{"name":"Three Lines of Defence","def":"A governance model where risk ownership sits with business units (1st), oversight with compliance (2nd), and assurance with audit (3rd).","desc":"Business units → risk/compliance → internal audit","shape":"layers","details":["1st line: business units own risk","2nd line: risk and compliance oversight","3rd line: internal audit assurance","AI model governance mapped to each"],"ref":"Institute of Internal Auditors (2020) The IIA's Three Lines Model. Lake Mary: IIA.","slibTitle":"AI Risk Management","slibNum":14,"color":"#DC2626"},
+{"name":"Model Risk Taxonomy","def":"A classification tree of AI model risks—data risk, design risk, and implementation risk—with sub-categories.","desc":"Data risk, design risk, implementation risk with sub-categories","shape":"tree","details":["Tree structure with three main branches","Each branch has sub-categories","Prioritises validation effort","SR 11-7 / Basel framework aligned"],"ref":"Board of Governors of the Federal Reserve System (2011) SR 11-7: Guidance on Model Risk Management. Washington, DC.","slibTitle":"AI Risk Management","slibNum":14,"color":"#DC2626"},
+{"name":"Stress Testing Framework","def":"A pipeline for resilience testing: define adverse scenarios, run models, assess impact, determine capital buffers.","desc":"Scenario → Model → Impact → Capital buffer pipeline","shape":"pipeline","details":["Linear pipeline with feedback loop","AI generates adverse scenarios faster","Links to capital adequacy requirements","Connects to NIST AI RMF (Slibrary 1)"],"ref":"Basel Committee on Banking Supervision (2018) Stress Testing Principles. Basel: BIS.","slibTitle":"AI Risk Management","slibNum":14,"color":"#DC2626"},
+{"name":"Algorithmic Bias Audit","def":"A continuous cycle—define, measure, mitigate, monitor—to ensure AI fairness.","desc":"Define → Measure → Mitigate → Monitor continuous cycle","shape":"cycle","details":["Circular continuous improvement","Protected attributes checklist","Fairness metrics: disparate impact ratio","Regulatory requirement in EU AI Act"],"ref":"Barocas, S., Hardt, M. and Narayanan, A. (2023) Fairness and Machine Learning. Cambridge: MIT Press.","slibTitle":"AI Risk Management","slibNum":14,"color":"#DC2626"},
+{"name":"Black Swan Radar","def":"A concentric risk visualisation mapping threats from known-knowns to unknown-unknowns.","desc":"Concentric risk rings from known-knowns to unknown-unknowns","shape":"circle","details":["Centre: known-knowns (managed)","Middle: known-unknowns (hedged)","Outer: unknown-unknowns (tail risk)","AI improves detection but can amplify"],"ref":"Taleb, N.N. (2007) The Black Swan: The Impact of the Highly Improbable. New York: Random House.","slibTitle":"AI Risk Management","slibNum":14,"color":"#DC2626"},
+{"name":"AI Talent Gap Heatmap","def":"A matrix mapping AI roles against regions, colour-coded by shortage severity.","desc":"Roles × regions colour-coded by shortage severity","shape":"matrix","details":["Data engineers, ML engineers most scarce","Finance sector competes with big tech","Informs hiring vs. upskilling decisions","Geographic arbitrage opportunities"],"ref":"World Economic Forum (2023) The Future of Jobs Report 2023. Geneva: WEF.","slibTitle":"Talent & Resources","slibNum":15,"color":"#D97706"},
+{"name":"Build-Buy-Borrow Matrix","def":"A workforce planning matrix crossing skill type with sourcing mode.","desc":"Strategic vs. commodity skills × build/hire/contract options","shape":"matrix","details":["Build (train), buy (hire), borrow (contract)","Links to AI project lifecycle (Slibrary 3)","Dynamic rebalancing as needs evolve","Practical workforce planning tool"],"ref":"Cappelli, P. (2008) Talent on Demand. Boston: Harvard Business Press.","slibTitle":"Talent & Resources","slibNum":15,"color":"#D97706"},
+{"name":"Skills Adjacency Map","def":"A network graph connecting existing competencies to target AI skills via shortest reskilling paths.","desc":"Network graph of current → AI skills with reskilling paths","shape":"network","details":["Short hops = easier reskilling paths","Identifies bridge roles","Reduces time-to-competency","Network graph visualisation"],"ref":"World Economic Forum (2023) The Future of Jobs Report 2023. Geneva: WEF.","slibTitle":"Talent & Resources","slibNum":15,"color":"#D97706"},
+{"name":"Total Cost of AI Ownership","def":"An iceberg model revealing that visible AI costs represent only a fraction of true cost, with hidden expenses 3–5× larger.","desc":"Iceberg: visible costs above, hidden costs 3–5× below waterline","shape":"iceberg","details":["Above waterline: compute, licences","Below: data cleaning, retraining, governance","True cost is 3–5× initial estimate","Critical for investment business cases"],"ref":"Iansiti, M. and Lakhani, K.R. (2020) Competing in the Age of AI. Boston: Harvard Business Review Press.","slibTitle":"Talent & Resources","slibNum":15,"color":"#D97706"},
+{"name":"Org Design for AI Teams","def":"Three organisational archetypes: hub-and-spoke, embedded, and Centre of Excellence.","desc":"Hub-and-spoke vs. embedded vs. CoE models","shape":"split","details":["Three organisational archetypes","Trade-offs: speed vs. consistency vs. scale","Match structure to AI maturity stage","No single best model for all firms"],"ref":"Fountaine, T., McCarthy, B. and Saleh, T. (2019) 'Building the AI-powered organization', Harvard Business Review, 97(4), pp. 62–73.","slibTitle":"Talent & Resources","slibNum":15,"color":"#D97706"},
+{"name":"AI Carbon Footprint Stack","def":"A layered model quantifying carbon emissions across hardware, data centre, training, and inference.","desc":"Hardware → data centre → training → inference CO₂ layers","shape":"layers","details":["Each layer's carbon contribution","Training GPT-scale ≈ transatlantic flights","Inference costs accumulate at scale","Strubell et al. (2019) research"],"ref":"Strubell, E., Ganesh, A. and McCallum, A. (2019) 'Energy and policy considerations for deep learning in NLP', Proceedings of the 57th Annual Meeting of the ACL, pp. 3645–3650.","slibTitle":"Sustainable & Green AI","slibNum":16,"color":"#2563EB"},
+{"name":"Green AI vs. Red AI","def":"A distinction between Red AI (maximising accuracy regardless of cost) and Green AI (prioritising efficiency).","desc":"Red AI (accuracy at any cost) ← → Green AI (efficiency-first)","shape":"spectrum","details":["Red AI maximises accuracy regardless","Green AI optimises for efficiency","Trade-off zone in the middle","Schwartz et al. (2020) distinction"],"ref":"Schwartz, R. et al. (2020) 'Green AI', Communications of the ACM, 63(12), pp. 54–63.","slibTitle":"Sustainable & Green AI","slibNum":16,"color":"#2563EB"},
+{"name":"ESG-AI Integration Matrix","def":"A grid mapping E, S, G dimensions against AI opportunity and risk columns.","desc":"E, S, G rows × AI opportunity and risk columns","shape":"matrix","details":["Where AI supports each ESG dimension","Where AI creates ESG risk","Guides responsible deployment","Connects sustainability to strategy"],"ref":"Vinuesa, R. et al. (2020) 'The role of artificial intelligence in achieving the SDGs', Nature Communications, 11(1), p. 233.","slibTitle":"Sustainable & Green AI","slibNum":16,"color":"#2563EB"},
+{"name":"Compute Efficiency Curve","def":"A diminishing returns curve showing performance gains flatten as computational cost increases.","desc":"Model size vs. diminishing performance gains","shape":"scurve","details":["X: model size / FLOPs","Y: performance (diminishing returns)","Optimal point before waste zone","Argues for right-sized models"],"ref":"Kaplan, J. et al. (2020) 'Scaling laws for neural language models', arXiv preprint arXiv:2001.08361.","slibTitle":"Sustainable & Green AI","slibNum":16,"color":"#2563EB"},
+{"name":"Responsible AI Scorecard","def":"A governance dashboard scoring AI systems across fairness, transparency, privacy, and safety using traffic-light indicators.","desc":"Dashboard: fairness, transparency, privacy, safety traffic lights","shape":"matrix","details":["Traffic-light scoring per dimension","Aggregated into org-level rating","Connects to NIST AI RMF (Slibrary 1)","Reporting tool for leadership"],"ref":"NIST (2023) AI Risk Management Framework (AI RMF 1.0). NIST AI 100-1.","slibTitle":"Sustainable & Green AI","slibNum":16,"color":"#2563EB"}
+];
 
-<script>
-(function(){
-  var ov=document.getElementById('modal-overlay');
-  var bx=document.getElementById('modal-box');
-  function open(card){
-    var c=card.dataset.color, rgb=card.dataset.rgb;
-    document.getElementById('modal-color-bar').style.background=c;
-    var lead=document.getElementById('modal-lead');
-    lead.style.borderLeftColor=c;
-    lead.style.background='rgba('+rgb+',0.05)';
-    document.getElementById('m-lead-text').style.color=c;
-    document.querySelectorAll('.m-dot').forEach(function(d){d.style.background=c;});
-    var ref=document.getElementById('modal-reference');
-    ref.style.borderLeftColor=c;
-    ref.style.background='rgba('+rgb+',0.07)';
-    document.getElementById('modal-ref-label').style.color=c;
-    document.getElementById('m-slibrary-header').textContent='SLIBRARY '+card.dataset.sl+' — '+card.dataset.setname;
-    document.getElementById('m-unit-badge').textContent=card.dataset.unit;
-    document.getElementById('m-title').textContent=card.dataset.name;
-    document.getElementById('m-itten-line').textContent=card.dataset.itten;
-    document.getElementById('m-lead-text').textContent=card.dataset.lead;
-    document.getElementById('m-sub-text').textContent=card.dataset.sub;
-    document.getElementById('m-b1').textContent=card.dataset.b1;
-    document.getElementById('m-b2').textContent=card.dataset.b2;
-    document.getElementById('m-b3').textContent=card.dataset.b3;
-    document.getElementById('m-b4').textContent=card.dataset.b4;
-    document.getElementById('m-ref-text').innerHTML=card.dataset.ref;
-    ov.classList.add('active');
-    document.body.style.overflow='hidden';
-    bx.scrollTop=0;
-  }
-  function close(){ov.classList.remove('active');document.body.style.overflow='';}
-  document.querySelectorAll('.fw-card').forEach(function(c){c.addEventListener('click',function(){open(c);});});
-  document.getElementById('modal-close').addEventListener('click',close);
-  ov.addEventListener('click',function(e){if(e.target===ov)close();});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
-})();
-</script>
-<script>
-document.querySelectorAll('.acc-hdr').forEach(function(h){
-  h.addEventListener('click',function(){
-    h.classList.toggle('open');
-    h.nextElementSibling.classList.toggle('open');
-  });
-});
+const SVG={
+  pyramid:c=>`<svg viewBox="0 0 200 130"><polygon points="100,10 30,120 170,120" fill="none" stroke="${c}" stroke-width="2.5" opacity=".6"/><line x1="55" y1="80" x2="145" y2="80" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="72" y1="50" x2="128" y2="50" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  cycle:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="65" r="45" fill="none" stroke="${c}" stroke-width="2.5" opacity=".5"/><polygon points="140,40 148,52 132,50" fill="${c}" opacity=".6"/><polygon points="60,90 52,78 68,80" fill="${c}" opacity=".6"/><circle cx="100" cy="20" r="4" fill="${c}" opacity=".5"/><circle cx="145" cy="65" r="4" fill="${c}" opacity=".5"/><circle cx="100" cy="110" r="4" fill="${c}" opacity=".5"/><circle cx="55" cy="65" r="4" fill="${c}" opacity=".5"/></svg>`,
+  scurve:c=>`<svg viewBox="0 0 200 130"><path d="M20,110 C50,108 70,100 90,70 S140,15 180,12" fill="none" stroke="${c}" stroke-width="2.5" opacity=".6"/><line x1="20" y1="120" x2="185" y2="120" stroke="${c}" stroke-width="1" opacity=".2"/><line x1="18" y1="10" x2="18" y2="120" stroke="${c}" stroke-width="1" opacity=".2"/></svg>`,
+  matrix:c=>`<svg viewBox="0 0 200 130"><rect x="25" y="15" width="70" height="45" rx="4" fill="${c}" opacity=".12" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="105" y="15" width="70" height="45" rx="4" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="25" y="70" width="70" height="45" rx="4" fill="${c}" opacity=".08" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="105" y="70" width="70" height="45" rx="4" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  funnel:c=>`<svg viewBox="0 0 200 130"><path d="M30,15 L170,15 L135,120 L65,120 Z" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".5"/><line x1="50" y1="50" x2="150" y2="50" stroke="${c}" stroke-width="1" opacity=".3" stroke-dasharray="4"/><line x1="58" y1="80" x2="142" y2="80" stroke="${c}" stroke-width="1" opacity=".3" stroke-dasharray="4"/></svg>`,
+  bars:c=>`<svg viewBox="0 0 200 130"><rect x="25" y="70" width="30" height="50" rx="3" fill="${c}" opacity=".25"/><rect x="65" y="40" width="30" height="80" rx="3" fill="${c}" opacity=".4"/><rect x="105" y="55" width="30" height="65" rx="3" fill="${c}" opacity=".3"/><rect x="145" y="25" width="30" height="95" rx="3" fill="${c}" opacity=".5"/><line x1="20" y1="120" x2="180" y2="120" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  arrow:c=>`<svg viewBox="0 0 200 130"><path d="M15,40 L140,40 L140,20 L185,65 L140,110 L140,90 L15,90 Z" fill="${c}" opacity=".12" stroke="${c}" stroke-width="2" opacity=".4"/></svg>`,
+  diamond:c=>`<svg viewBox="0 0 200 130"><polygon points="100,10 180,65 100,120 20,65" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".5"/><circle cx="100" cy="65" r="15" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".4"/></svg>`,
+  circle:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="65" r="50" fill="${c}" opacity=".08" stroke="${c}" stroke-width="2" opacity=".4"/><circle cx="100" cy="65" r="30" fill="${c}" opacity=".12" stroke="${c}" stroke-width="1.5" opacity=".3"/><circle cx="100" cy="65" r="12" fill="${c}" opacity=".2"/></svg>`,
+  stairs:c=>`<svg viewBox="0 0 200 130"><path d="M20,110 L20,85 L65,85 L65,60 L110,60 L110,35 L155,35 L155,15 L180,15" fill="none" stroke="${c}" stroke-width="2.5" opacity=".5"/><rect x="20" y="85" width="45" height="25" fill="${c}" opacity=".08"/><rect x="65" y="60" width="45" height="50" fill="${c}" opacity=".1"/><rect x="110" y="35" width="45" height="75" fill="${c}" opacity=".13"/><rect x="155" y="15" width="25" height="95" fill="${c}" opacity=".16"/></svg>`,
+  pipeline:c=>`<svg viewBox="0 0 200 130"><rect x="10" y="45" width="35" height="40" rx="6" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="48" y1="65" x2="60" y2="65" stroke="${c}" stroke-width="2" opacity=".4"/><rect x="63" y="45" width="35" height="40" rx="6" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="101" y1="65" x2="113" y2="65" stroke="${c}" stroke-width="2" opacity=".4"/><rect x="116" y="45" width="35" height="40" rx="6" fill="${c}" opacity=".25" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="154" y1="65" x2="166" y2="65" stroke="${c}" stroke-width="2" opacity=".4"/><rect x="169" y="45" width="22" height="40" rx="6" fill="${c}" opacity=".3" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  split:c=>`<svg viewBox="0 0 200 130"><rect x="15" y="25" width="75" height="80" rx="8" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".3"/><rect x="110" y="25" width="75" height="80" rx="8" fill="${c}" opacity=".18" stroke="${c}" stroke-width="2" opacity=".3"/><line x1="100" y1="30" x2="100" y2="100" stroke="${c}" stroke-width="2" opacity=".3" stroke-dasharray="5"/></svg>`,
+  venn:c=>`<svg viewBox="0 0 200 130"><circle cx="78" cy="65" r="42" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".35"/><circle cx="122" cy="65" r="42" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".35"/></svg>`,
+  layers:c=>`<svg viewBox="0 0 200 130"><rect x="30" y="85" width="140" height="28" rx="5" fill="${c}" opacity=".1" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="30" y="50" width="140" height="28" rx="5" fill="${c}" opacity=".17" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="30" y="15" width="140" height="28" rx="5" fill="${c}" opacity=".25" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  tree:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="22" r="12" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".4"/><line x1="100" y1="34" x2="60" y2="65" stroke="${c}" stroke-width="1.5" opacity=".35"/><line x1="100" y1="34" x2="140" y2="65" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="60" cy="70" r="10" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><circle cx="140" cy="70" r="10" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="60" y1="80" x2="40" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="60" y1="80" x2="80" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="140" y1="80" x2="120" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="140" y1="80" x2="160" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><circle cx="40" cy="110" r="7" fill="${c}" opacity=".1"/><circle cx="80" cy="110" r="7" fill="${c}" opacity=".1"/><circle cx="120" cy="110" r="7" fill="${c}" opacity=".1"/><circle cx="160" cy="110" r="7" fill="${c}" opacity=".1"/></svg>`,
+  spectrum:c=>`<svg viewBox="0 0 200 130"><rect x="15" y="50" width="170" height="30" rx="15" fill="${c}" opacity=".1" stroke="${c}" stroke-width="1.5" opacity=".3"/><circle cx="45" cy="65" r="10" fill="${c}" opacity=".15"/><circle cx="100" cy="65" r="10" fill="${c}" opacity=".25"/><circle cx="155" cy="65" r="10" fill="${c}" opacity=".4"/></svg>`,
+  network:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="65" r="14" fill="${c}" opacity=".25" stroke="${c}" stroke-width="1.5" opacity=".4"/><circle cx="45" cy="30" r="9" fill="${c}" opacity=".15"/><circle cx="155" cy="30" r="9" fill="${c}" opacity=".15"/><circle cx="45" cy="100" r="9" fill="${c}" opacity=".15"/><circle cx="155" cy="100" r="9" fill="${c}" opacity=".15"/><line x1="90" y1="55" x2="52" y2="35" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="110" y1="55" x2="148" y2="35" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="90" y1="75" x2="52" y2="95" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="110" y1="75" x2="148" y2="95" stroke="${c}" stroke-width="1.5" opacity=".25"/></svg>`,
+  hexagon:c=>`<svg viewBox="0 0 200 130"><polygon points="100,10 160,37 160,93 100,120 40,93 40,37" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".4"/><polygon points="100,35 135,50 135,80 100,95 65,80 65,50" fill="${c}" opacity=".08" stroke="${c}" stroke-width="1" opacity=".2"/></svg>`,
+  triangle:c=>`<svg viewBox="0 0 200 130"><polygon points="100,15 170,115 30,115" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".4"/><circle cx="100" cy="40" r="5" fill="${c}" opacity=".3"/><circle cx="55" cy="100" r="5" fill="${c}" opacity=".3"/><circle cx="145" cy="100" r="5" fill="${c}" opacity=".3"/></svg>`,
+  timeline:c=>`<svg viewBox="0 0 200 130"><line x1="20" y1="65" x2="180" y2="65" stroke="${c}" stroke-width="2" opacity=".3"/><circle cx="40" cy="65" r="6" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="80" cy="65" r="6" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="120" cy="65" r="6" fill="${c}" opacity=".3" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="160" cy="65" r="6" fill="${c}" opacity=".4" stroke="${c}" stroke-width="1.5" opacity=".35"/><polygon points="178,60 185,65 178,70" fill="${c}" opacity=".4"/></svg>`,
+  iceberg:c=>`<svg viewBox="0 0 200 130"><line x1="15" y1="55" x2="185" y2="55" stroke="${c}" stroke-width="1" opacity=".2" stroke-dasharray="4"/><polygon points="75,55 125,55 100,20" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><polygon points="55,55 145,55 155,120 45,120" fill="${c}" opacity=".08" stroke="${c}" stroke-width="1.5" opacity=".25"/></svg>`
+};
+function getSVG(shape,color){return(SVG[shape]||SVG.matrix)(color)}
+document.getElementById('thumb-13-0').innerHTML=getSVG('circle','#059669');
+document.getElementById('thumb-13-1').innerHTML=getSVG('layers','#059669');
+document.getElementById('thumb-13-2').innerHTML=getSVG('stairs','#059669');
+document.getElementById('thumb-13-3').innerHTML=getSVG('funnel','#059669');
+document.getElementById('thumb-13-4').innerHTML=getSVG('cycle','#059669');
+document.getElementById('thumb-14-0').innerHTML=getSVG('layers','#DC2626');
+document.getElementById('thumb-14-1').innerHTML=getSVG('tree','#DC2626');
+document.getElementById('thumb-14-2').innerHTML=getSVG('pipeline','#DC2626');
+document.getElementById('thumb-14-3').innerHTML=getSVG('cycle','#DC2626');
+document.getElementById('thumb-14-4').innerHTML=getSVG('circle','#DC2626');
+document.getElementById('thumb-15-0').innerHTML=getSVG('matrix','#D97706');
+document.getElementById('thumb-15-1').innerHTML=getSVG('matrix','#D97706');
+document.getElementById('thumb-15-2').innerHTML=getSVG('network','#D97706');
+document.getElementById('thumb-15-3').innerHTML=getSVG('iceberg','#D97706');
+document.getElementById('thumb-15-4').innerHTML=getSVG('split','#D97706');
+document.getElementById('thumb-16-0').innerHTML=getSVG('layers','#2563EB');
+document.getElementById('thumb-16-1').innerHTML=getSVG('spectrum','#2563EB');
+document.getElementById('thumb-16-2').innerHTML=getSVG('matrix','#2563EB');
+document.getElementById('thumb-16-3').innerHTML=getSVG('scurve','#2563EB');
+document.getElementById('thumb-16-4').innerHTML=getSVG('matrix','#2563EB');
+
+
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('[data-anim]').forEach(el=>obs.observe(el));
+function openModal(fw){
+  const m=document.getElementById('modal');
+  m.innerHTML=`<div class="modal-accent" style="background:${fw.color}"></div><div class="modal-inner" style="position:relative">
+    <button class="modal-close" onclick="closeModal()">\u00d7</button>
+    <div class="modal-slib">Slibrary ${fw.slibNum} \u2014 ${fw.slibTitle}</div>
+    <div class="modal-title">${fw.name}</div>
+    <div class="modal-def">${fw.def}</div>
+    <div class="modal-desc">${fw.desc}</div>
+    <div class="modal-thumb">${getSVG(fw.shape,fw.color)}</div>
+    <ul class="modal-details">${fw.details.map(d=>`<li>${d}</li>`).join('')}</ul>
+    <div class="modal-ref"><div class="modal-ref-label">Reference</div>${fw.ref}</div>
+  </div>`;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow=''}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 </script>
 </body>
 </html>

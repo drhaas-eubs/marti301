@@ -1,267 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>MLUXR302 Unit 5 — Session Activities</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MARTI301 Unit 5 — Session Activities</title>
 <style>
-:root{--teal:#00B894;--teal-d:#00695C;--bg:#f7f8fa;--text:#0f172a;--muted:#64748b;--white:#ffffff;--radius:12px;--shadow:0 1px 6px rgba(0,0,0,0.07);--shadow-lg:0 8px 28px rgba(0,0,0,0.13);}
-*{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
-a{color:inherit;text-decoration:none;}
-.container{max-width:1120px;margin:0 auto;padding:0 24px;}
-.topbar{background:#0f172a;color:rgba(255,255,255,0.5);font-size:11px;letter-spacing:.1em;text-align:center;padding:7px 0;}
-.topbar strong{color:var(--teal);}
-.site-header{background:var(--white);border-bottom:3px solid var(--teal);padding:16px 0;position:sticky;top:0;z-index:500;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
-.hdr-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
-.hdr-brand .code{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--teal);font-weight:700;}
-.hdr-brand .name{font-size:16px;font-weight:700;}
-.hdr-meta{font-size:12px;color:var(--muted);text-align:right;line-height:1.5;}
-.back-link{display:inline-flex;align-items:center;gap:6px;color:var(--teal-d);font-size:13px;font-weight:600;padding:10px 0;transition:gap .2s;}
-.back-link:hover{gap:10px;}
-.hero{padding:48px 0 36px;text-align:center;}
-.unit-pill{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:16px;}
-.hero h1{font-size:clamp(20px,4vw,36px);font-weight:800;margin-bottom:8px;line-height:1.2;}
-.hero .sub{font-size:15px;color:var(--muted);margin-bottom:6px;}
-.hero-hint{font-size:12px;color:var(--muted);margin-bottom:28px;font-style:italic;}
-.hero-stats{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;}
-.hero-stat .num{font-size:38px;font-weight:800;line-height:1;}
-.hero-stat .lbl{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:2px;}
-.itten-tag{display:inline-flex;align-items:center;gap:7px;font-size:12px;background:var(--white);padding:6px 14px;border-radius:20px;box-shadow:var(--shadow);margin-bottom:32px;}
-.itten-dot{width:10px;height:10px;border-radius:50%;}
-.set-section{margin-bottom:52px;}
-.set-hdr{display:flex;align-items:center;gap:12px;margin-bottom:18px;padding-bottom:10px;border-bottom:2px solid #e2e8f0;}
-.set-hdr h2{font-size:14px;font-weight:700;display:flex;align-items:center;gap:10px;}
-.set-num{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0;}
-.set-tag{font-size:11px;color:var(--muted);background:#f1f5f9;padding:2px 10px;border-radius:10px;margin-left:auto;}
-.fw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:14px;}
-.fw-card{background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);cursor:pointer;transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column;border-top:4px solid transparent;}
-.fw-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);}
-.fw-card-icon{padding:14px 16px 6px;line-height:1;}
-.fw-card-icon svg{display:block;width:56px;height:40px;}
-.fw-card-body{padding:0 16px 12px;flex:1;display:flex;flex-direction:column;}
-.fw-card-name{font-size:13px;font-weight:700;margin-bottom:5px;color:var(--text);line-height:1.3;}
-.fw-card-desc{font-size:11.5px;color:var(--muted);line-height:1.55;flex:1;}
-.fw-card-foot{display:flex;align-items:center;justify-content:space-between;padding:8px 16px 10px;border-top:1px solid #f0f0f0;margin-top:auto;}
-.fw-sl-badge{font-size:10px;font-weight:700;letter-spacing:.06em;padding:2px 8px;border-radius:8px;}
-.fw-arrow{font-size:13px;color:var(--muted);}
-.idx-hero{padding:60px 0 48px;text-align:center;}
-.idx-hero .school{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:10px;}
-.idx-hero h1{font-size:clamp(26px,5vw,50px);font-weight:800;line-height:1.15;margin-bottom:12px;}
-.idx-hero .tag{font-size:16px;color:var(--muted);margin-bottom:10px;}
-.idx-hero .itten-credit{font-size:12px;color:var(--muted);margin-bottom:30px;font-style:italic;}
-.idx-stats{display:flex;justify-content:center;gap:48px;flex-wrap:wrap;}
-.idx-stat .num{font-size:48px;font-weight:800;color:var(--teal);line-height:1;}
-.idx-stat .lbl{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:4px;}
-.itten-legend{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:24px 0 32px;}
-.itten-chip{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;padding:5px 12px;border-radius:20px;background:var(--white);box-shadow:var(--shadow);}
-.itten-chip-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
-.accordion{margin-bottom:10px;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);}
-.acc-hdr{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;cursor:pointer;transition:opacity .18s;}
-.acc-hdr:hover{opacity:.93;}
-.acc-meta{display:flex;flex-direction:column;gap:2px;}
-.acc-unit-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:rgba(255,255,255,.75);}
-.acc-itten{font-size:10px;color:rgba(255,255,255,.55);font-style:italic;}
-.acc-title{font-size:15px;font-weight:700;color:#fff;line-height:1.3;}
-.acc-chevron{font-size:17px;color:rgba(255,255,255,.65);transition:transform .28s;}
-.acc-hdr.open .acc-chevron{transform:rotate(180deg);}
-.acc-body{display:none;background:var(--white);}
-.acc-body.open{display:block;}
-.res-link{display:flex;align-items:center;gap:12px;padding:13px 22px;border-bottom:1px solid #f1f5f9;transition:background .13s;}
-.res-link:last-child{border-bottom:none;}
-.res-link:hover{background:#f8fafc;}
-.res-badge{font-size:10px;font-weight:700;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;}
-.res-title{font-size:14px;font-weight:700;margin-bottom:1px;}
-.res-meta{font-size:11px;color:var(--muted);}
-.res-tag{font-size:10px;color:var(--muted);background:#f1f5f9;padding:2px 8px;border-radius:6px;white-space:nowrap;}
-.phase-list{list-style:none;}
-.phase-item{display:flex;gap:14px;padding:18px 0;border-bottom:1px solid #f0f0f0;}
-.phase-item:last-child{border-bottom:none;}
-.phase-badge{font-size:10px;font-weight:700;letter-spacing:.07em;padding:4px 10px;border-radius:8px;height:fit-content;white-space:nowrap;}
-.phase-h{font-size:14px;font-weight:700;margin-bottom:4px;}
-.phase-p{font-size:13px;color:var(--muted);}
-.case-brand-hdr{padding:48px 0 28px;text-align:center;}
-.brand-name{font-size:48px;font-weight:900;letter-spacing:-2px;margin-bottom:8px;line-height:1;}
-.case-card{background:var(--white);border-radius:var(--radius);padding:32px;box-shadow:var(--shadow);margin-bottom:18px;}
-.case-card h2{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #f1f5f9;}
-.case-card p{font-size:14.5px;line-height:1.8;margin-bottom:10px;}
-.case-card ol{padding-left:18px;}
-.case-card li{font-size:14.5px;line-height:1.7;margin-bottom:8px;}
-.pr-card{background:var(--white);border-radius:var(--radius);padding:32px;box-shadow:var(--shadow);margin-bottom:18px;}
-.pr-card h2{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:12px;}
-.pr-card p{font-size:14.5px;line-height:1.8;margin-bottom:10px;}
-.kp-item{display:flex;gap:10px;margin-bottom:10px;align-items:flex-start;}
-.kp-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:7px;}
-.kp-text{font-size:14px;line-height:1.6;}
-.pr-prepare{border-radius:0 var(--radius) var(--radius) 0;padding:20px 24px;border-left:4px solid;margin-bottom:48px;}
-.pr-prepare-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;}
-.ref-cards{display:grid;gap:18px;}
-.ref-card{background:var(--white);border-radius:var(--radius);padding:26px 28px;box-shadow:var(--shadow);display:flex;gap:18px;align-items:flex-start;}
-.ref-num{font-size:32px;font-weight:900;line-height:1;opacity:.15;flex-shrink:0;width:40px;}
-.ref-card p{font-size:15px;line-height:1.75;}
-.ref-guide{border-radius:var(--radius);padding:20px 24px;margin-top:24px;margin-bottom:48px;}
-.ref-guide-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;}
-.ref-guide p{font-size:13.5px;line-height:1.7;}
-.cg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:9px;}
-.cg-card{background:var(--white);border-radius:8px;padding:12px 14px;box-shadow:0 1px 3px rgba(0,0,0,0.05);border-left:4px solid transparent;}
-.cg-name{font-size:12px;font-weight:700;margin-bottom:2px;}
-.cg-unit{font-size:10px;color:var(--muted);}
-.site-footer{margin-top:72px;border-top:3px solid var(--teal);padding:22px 0;text-align:center;font-size:12px;color:var(--muted);}
-.site-footer strong{color:var(--text);}
-@media(max-width:640px){.fw-grid{grid-template-columns:1fr 1fr;}.cg-grid{grid-template-columns:1fr 1fr;}}
-</style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,Helvetica,sans-serif;background:#FAFBFC;color:#1B2A4A;line-height:1.6;-webkit-user-select:none;-moz-user-select:none;user-select:none}
+.hero{background:#1B2A4A;padding:1.8rem 2rem 1.5rem;position:relative}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:#7C3AED}
+.hero-tag{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:#D4872C;font-weight:700;margin-bottom:.3rem}
+.hero h1{font-size:1.5rem;color:#fff;font-weight:700;line-height:1.3;margin-bottom:.3rem}
+.hero p{color:#94A3B8;font-size:.85rem}
+.hero .copy{color:#64748B;font-size:.7rem;font-style:italic;margin-top:.4rem}
+main{max-width:720px;margin:0 auto;padding:1.5rem 1.5rem 3rem}
 
-<style>
-#modal-overlay{position:fixed;inset:0;background:rgba(8,8,20,0.78);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);z-index:9000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity 0.22s;}
-#modal-overlay.active{opacity:1;pointer-events:all;}
-#modal-box{background:#ffffff;border-radius:16px;width:100%;max-width:660px;max-height:90vh;overflow-y:auto;box-shadow:0 28px 90px rgba(0,0,0,0.38);transform:translateY(20px) scale(0.97);transition:transform 0.22s;position:relative;}
-#modal-overlay.active #modal-box{transform:translateY(0) scale(1);}
-#modal-color-bar{height:5px;border-radius:16px 16px 0 0;}
-#modal-inner{padding:28px 32px 28px;}
-#modal-header{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:20px;}
-#modal-header-left{flex:1;}
-#modal-label-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap;}
-#m-slibrary-header{font-size:10px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:#888;}
-#m-unit-badge{font-size:10px;font-weight:700;letter-spacing:0.08em;padding:2px 9px;border-radius:8px;background:#f0f0f0;color:#666;}
-#m-title{font-size:24px;font-weight:800;color:#1a1a2e;line-height:1.2;margin-bottom:5px;font-family:Arial,Helvetica,sans-serif;}
-#m-itten-line{font-size:11px;color:#aaa;font-style:italic;}
-#modal-close{background:#f0f0f2;border:none;width:34px;height:34px;border-radius:50%;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#666;transition:background .15s,color .15s;}
-#modal-close:hover{background:#dde0e4;color:#333;}
-#modal-lead{border-left:4px solid #ccc;margin:0 0 14px;padding:12px 18px;border-radius:0 6px 6px 0;}
-#modal-lead p{font-size:15px;font-weight:700;font-style:italic;line-height:1.65;margin:0;font-family:Arial,Helvetica,sans-serif;}
-#m-sub-text{font-size:13px;color:#888;font-style:italic;margin-bottom:22px;line-height:1.5;}
-#modal-bullets{margin-bottom:24px;}
-.m-bullet-item{display:flex;align-items:baseline;gap:12px;padding:11px 0;}
-.m-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-top:2px;display:inline-block;background:#ccc;}
-.m-bullet-text{font-size:14px;line-height:1.65;color:#333;}
-.m-divider{border:none;border-top:1px solid #e8eaed;margin:0;}
-#modal-reference{border-radius:0 8px 8px 0;border-left:4px solid #ccc;padding:16px 20px;margin-top:4px;}
-#modal-ref-label{font-size:10px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:#888;margin-bottom:8px;}
-#m-ref-text{font-size:13px;line-height:1.75;color:#444;margin:0;}
-@media(max-width:580px){#modal-inner{padding:20px 18px 20px;}#m-title{font-size:19px;}}
+.overview{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:1.2rem 1.3rem;margin-bottom:1.5rem}
+.overview h2{font-size:1rem;font-weight:700;margin-bottom:.6rem;color:#7C3AED}
+.overview-grid{display:grid;grid-template-columns:auto 1fr auto;gap:.3rem .8rem;font-size:.8rem}
+.ov-phase{font-weight:700;color:#7C3AED}
+.ov-time{color:#94A3B8;text-align:right;font-size:.75rem}
+
+.phase{margin-bottom:1.5rem}
+.phase-header{display:flex;align-items:center;gap:.6rem;margin-bottom:.6rem}
+.phase-num{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:700;color:#fff;flex-shrink:0}
+.phase-title{font-size:1rem;font-weight:700}
+.phase-time{font-size:.7rem;color:#94A3B8;margin-left:auto}
+.phase-body{background:#fff;border:1px solid #E5E7EB;border-radius:10px;padding:1rem 1.2rem;margin-left:0}
+.phase-body p{font-size:.85rem;color:#374151;margin-bottom:.6rem}
+.phase-body p:last-child{margin-bottom:0}
+.task{background:#F0FDF4;border-left:3px solid #00B388;padding:.7rem .9rem;border-radius:0 8px 8px 0;margin:.6rem 0;font-size:.82rem}
+.task strong{color:#00B388}
+.materials{background:#F8FAFC;border-left:3px solid #7C3AED;padding:.6rem .9rem;border-radius:0 8px 8px 0;margin:.6rem 0;font-size:.8rem;color:#6B7280}
+.materials strong{color:#7C3AED}
+.break-bar{text-align:center;padding:.8rem;color:#94A3B8;font-size:.8rem;font-weight:600;border-top:1px dashed #E5E7EB;border-bottom:1px dashed #E5E7EB;margin:1rem 0}
+
+footer{background:#1B2A4A;padding:1.2rem;text-align:center;color:#64748B;font-size:.65rem}
+footer strong{color:#00B388}
+.watermark{position:fixed;bottom:8px;right:10px;font-size:.5rem;color:#D1D5DB;pointer-events:none}
+@media print{body{display:none}}
+@media(max-width:500px){.overview-grid{font-size:.72rem}.phase-body p{font-size:.8rem}}
 </style>
 </head>
-<body>
-<script>
-(function(){
-  document.addEventListener('contextmenu',e=>e.preventDefault());
-  ['copy','cut','paste'].forEach(ev=>document.addEventListener(ev,e=>e.preventDefault()));
-  document.addEventListener('keydown',e=>{
-    const k=e.key.toLowerCase(),c=e.ctrlKey||e.metaKey;
-    if(c&&(k==='c'||k==='x'||k==='v'||k==='s'||k==='u'||k==='a'||k==='p')){e.preventDefault();return false;}
-    if(e.key==='F12'||(c&&e.shiftKey&&(k==='i'||k==='j'||k==='c'))){e.preventDefault();return false;}
-  });
-  document.addEventListener('dragstart',e=>e.preventDefault());
-})();
-</script>
-<style>
-@media print{body *{visibility:hidden!important;}body::after{visibility:visible!important;content:'© Dr. Hildegard Haas | MLUXR302 | EU Business School — Printing not permitted.';display:block;font-size:18px;text-align:center;padding:80px 40px;font-family:Arial,sans-serif;}}
-body,*{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
-</style>
-<div class="topbar">
-  <strong>MLUXR302</strong> &nbsp;&middot;&nbsp; Sustainable Value Creation in Fashion &amp; Luxury
-  &nbsp;&middot;&nbsp;
-  &copy; 2026 Dr. Hildegard Haas &nbsp;&middot;&nbsp; EU Business School
-</div>
-<header class="site-header">
-  <div class="container hdr-inner">
-    <div class="hdr-brand">
-      <div class="code">MLUXR302 &middot; Masters Level 7 &middot; EU Business School</div>
-      <div class="name">Sustainable Value Creation in Fashion &amp; Luxury</div>
-    </div>
-    <div class="hdr-meta">Dr. Hildegard Haas<br/>hildegard.haas@euruni.edu &middot; www.euruni.edu</div>
-  </div>
+<body oncontextmenu="return false">
+
+
+<a href="../" style="display:block;background:#E6F7F3;padding:.65rem 1.5rem;text-decoration:none;font-size:.82rem;font-weight:700;color:#059669;border-bottom:2px solid #00B388">&#8592; Back to Course Overview</a>
+<header class="hero">
+  <div class="hero-tag">MARTI301 &middot; Unit 5 &middot; Session Activities</div>
+  <h1>IP & Value Creation through AI</h1>
+  <p>What we do today &mdash; 150 minutes, 7 phases, no slides</p>
+  <div class="copy">&copy; 2026 Dr. Hildegard Haas</div>
 </header>
-<main><div class="container">
-<a class="back-link" href="../index.html">&#8592; Course Overview</a>
-<div class="hero"><div class="unit-pill" style="background:rgba(231,76,60,0.1);color:#E74C3C">Unit 5 &middot; Session Activities</div><h1>Session Guide — Unit 5</h1><p class="sub">Sustainable Strategy Development for Fashion & Luxury Brands</p></div><div class="pr-card"><h2>7-Phase Session &middot; What to Do Today</h2><ul class="phase-list"><li class="phase-item"><div class="phase-badge" style="background:rgba(231,76,60,0.12);color:#E74C3C">Open</div><div><div class="phase-h">Strategy vs. Compliance Quiz</div><div class="phase-p">10 real brand sustainability actions. Students classify each: genuine strategy or regulatory compliance? Discuss the boundary.</div></div></li><li class="phase-item"><div class="phase-badge" style="background:rgba(231,76,60,0.12);color:#E74C3C">Frame</div><div><div class="phase-h">Shared Value Mapping</div><div class="phase-p">Groups use Porter & Kramer's Shared Value framework to identify three areas where a given brand could create simultaneous commercial and social value.</div></div></li><li class="phase-item"><div class="phase-badge" style="background:rgba(231,76,60,0.12);color:#E74C3C">Explore</div><div><div class="phase-h">Sustainable BMC Workshop</div><div class="phase-p">Groups complete a Sustainable Business Model Canvas for Marine Serre. Focus: how does upcycling change every block, including cost structure and partnerships?</div></div></li><li class="phase-item"><div class="phase-badge" style="background:rgba(231,76,60,0.12);color:#E74C3C">Apply</div><div><div class="phase-h">SWOT to Strategy Sprint</div><div class="phase-p">Given a sustainability SWOT for a fictional luxury brand, groups generate three strategic options and evaluate against the Ansoff matrix.</div></div></li><li class="phase-item"><div class="phase-badge" style="background:rgba(231,76,60,0.12);color:#E74C3C">Synthesise</div><div><div class="phase-h">Carbon Pathway Presentation</div><div class="phase-p">Each group presents a credible four-R carbon neutrality pathway for one assigned brand. Peer assessment using SBTi criteria.</div></div></li><li class="phase-item"><div class="phase-badge" style="background:rgba(231,76,60,0.12);color:#E74C3C">Reflect</div><div><div class="phase-h">The Strategy Paradox</div><div class="phase-p">Can a fashion brand be both maximally profitable and maximally sustainable? Individual position statement — one page, submitted.</div></div></li><li class="phase-item"><div class="phase-badge" style="background:rgba(231,76,60,0.12);color:#E74C3C">Close</div><div><div class="phase-h">Preview: Communicating the Strategy</div><div class="phase-p">Students draft three key messages for their Unit 6 sustainability communication exercise.</div></div></li></ul></div>
-</div></main>
-<footer class="site-footer">
-  <div class="container">
-    <strong>&copy; Dr. Hildegard Haas</strong> &middot; MLUXR302 Sustainable Value Creation in Fashion &amp; Luxury &middot; EU Business School<br/>
-    All rights reserved
-  </div>
-</footer>
 
-<div id="modal-overlay">
-  <div id="modal-box">
-    <div id="modal-color-bar"></div>
-    <div id="modal-inner">
-      <div id="modal-header">
-        <div id="modal-header-left">
-          <div id="modal-label-row">
-            <span id="m-slibrary-header"></span>
-            <span id="m-unit-badge"></span>
-          </div>
-          <h2 id="m-title"></h2>
-          <div id="m-itten-line"></div>
-        </div>
-        <button id="modal-close" aria-label="Close">&#x2715;</button>
-      </div>
-      <blockquote id="modal-lead"><p id="m-lead-text"></p></blockquote>
-      <p id="m-sub-text"></p>
-      <div id="modal-bullets">
-        <div class="m-bullet-item"><span class="m-dot"></span><span class="m-bullet-text" id="m-b1"></span></div>
-        <hr class="m-divider"/>
-        <div class="m-bullet-item"><span class="m-dot"></span><span class="m-bullet-text" id="m-b2"></span></div>
-        <hr class="m-divider"/>
-        <div class="m-bullet-item"><span class="m-dot"></span><span class="m-bullet-text" id="m-b3"></span></div>
-        <hr class="m-divider"/>
-        <div class="m-bullet-item"><span class="m-dot"></span><span class="m-bullet-text" id="m-b4"></span></div>
-      </div>
-      <div id="modal-reference">
-        <div id="modal-ref-label">REFERENCE</div>
-        <p id="m-ref-text"></p>
-      </div>
-    </div>
+<main>
+
+<div class="overview">
+  <h2>Session Overview</h2>
+  <div class="overview-grid">
+    <span class="ov-phase">Phase 1</span><span>The Challenge Drop</span><span class="ov-time">10 min</span>
+    <span class="ov-phase">Phase 2</span><span>Gallery Exploration</span><span class="ov-time">20 min</span>
+    <span class="ov-phase">Phase 3</span><span>Framework Pitch</span><span class="ov-time">15 min</span>
+    <span class="ov-phase">Phase 4</span><span>Case Deep Dive: SynthVision</span><span class="ov-time">40 min</span>
+    <span class="ov-phase">Phase 5</span><span>Board Presentations</span><span class="ov-time">20 min</span>
+    <span class="ov-phase" style="color:#94A3B8">&mdash;</span><span style="color:#94A3B8">Break</span><span class="ov-time">10 min</span>
+    <span class="ov-phase">Phase 6</span><span>Second Scenario</span><span class="ov-time">25 min</span>
+    <span class="ov-phase">Phase 7</span><span>Reflection &amp; Personal Slibrary</span><span class="ov-time">10 min</span>
   </div>
 </div>
 
+<div class="phase">
+  <div class="phase-header">
+    <div class="phase-num" style="background:#7C3AED">1</div>
+    <div class="phase-title">The Challenge Drop</div>
+    <div class="phase-time">10 min</div>
+  </div>
+  <div class="phase-body">
+    <p>Your facilitator will present a real-world AI scenario &mdash; a provocation, not a lecture.</p>
+    <div class="task"><strong>Your task:</strong> Listen. Then sit in silence for 2 minutes. Think about the problem. Do not write. Do not discuss. Just think.</div>
+    <p>After the silence, 2&ndash;3 of you will be asked: &ldquo;What came to mind?&rdquo; There is no right answer yet &mdash; the discomfort of not having a framework ready is the point.</p>
+  </div>
+</div>
+
+<div class="phase">
+  <div class="phase-header">
+    <div class="phase-num" style="background:#7C3AED">2</div>
+    <div class="phase-title">Gallery Exploration</div>
+    <div class="phase-time">20 min</div>
+  </div>
+  <div class="phase-body">
+    <div class="materials"><strong>Open:</strong> Unit 5 Framework Gallery on your device (laptop or phone)</div>
+    <p>The gallery contains 20 frameworks across 4 Slibraries (17–20). Work <strong>in pairs</strong>.</p>
+    <div class="task"><strong>Your task:</strong> Find the 3 frameworks that best help you respond to the challenge from Phase 1. Click into each one &mdash; read the definition and the source. Write down:<br>&bull; Framework name<br>&bull; Slibrary number<br>&bull; One sentence: why did you choose this one?</div>
+    <p>You have 15 minutes. Try to select frameworks from <strong>different Slibraries</strong> &mdash; combining lenses is more powerful than choosing three from the same set.</p>
+  </div>
+</div>
+
+<div class="phase">
+  <div class="phase-header">
+    <div class="phase-num" style="background:#7C3AED">3</div>
+    <div class="phase-title">Framework Pitch</div>
+    <div class="phase-time">15 min</div>
+  </div>
+  <div class="phase-body">
+    <p>3&ndash;4 pairs will present their selections to the group.</p>
+    <div class="task"><strong>Your task:</strong> Name your 3 frameworks, state which Slibrary each comes from, and explain in one sentence why you chose that combination. You have <strong>90 seconds</strong>.</div>
+    <p>The facilitator will challenge your choices &mdash; not to find fault, but to push your thinking. Expect questions like: &ldquo;You chose governance frameworks but no action framework &mdash; what happens next?&rdquo;</p>
+  </div>
+</div>
+
+<div class="phase">
+  <div class="phase-header">
+    <div class="phase-num" style="background:#7C3AED">4</div>
+    <div class="phase-title">Case Deep Dive: SynthVision</div>
+    <div class="phase-time">40 min</div>
+  </div>
+  <div class="phase-body">
+    <p><strong>SynthVision: Who Owns What AI Creates?</strong></p>
+    <p>You are SynthVision's external IP counsel. A generative AI architecture startup faces three simultaneous crises: a trade dress claim from a Danish firm, a Getty Images licensing dispute, and a client demanding clarity on output ownership.</p>
+    <div class="task"><strong>Your task:</strong> Form teams of 4. Using <strong>at least two frameworks</strong> from the gallery, produce a <strong>one-page visual argument</strong> &mdash; sketches, diagrams, and arrows, <em>not</em> paragraphs. You have 35 minutes (5 to read, 30 to build).</div>
+    <p>Your visual argument should contain: a diagnosis (what is the current state?), an analysis (why is this happening?), and a recommendation (what should be done?).</p>
+    <div class="materials"><strong>Tip:</strong> Annotate your framework sketches with specific data from the case. The best arguments connect frameworks to each other with arrows showing cause and effect.</div>
+  </div>
+</div>
+
+<div class="phase">
+  <div class="phase-header">
+    <div class="phase-num" style="background:#7C3AED">5</div>
+    <div class="phase-title">Board Presentations</div>
+    <div class="phase-time">20 min</div>
+  </div>
+  <div class="phase-body">
+    <div class="task"><strong>Your task:</strong> Present your visual argument at the whiteboard. You have <strong>90 seconds</strong>. Strict time limit. Sketch, point, explain &mdash; then stop.</div>
+    <p>You will be evaluated on: framework selection (did you use multiple Slibraries?), visual clarity (can we follow your logic?), case specificity (did you use data from the case?), and recommendation quality (is it clear and actionable?).</p>
+    <p>After all presentations, the facilitator will synthesise the common patterns and key differences across teams.</p>
+  </div>
+</div>
+
+<div class="break-bar">&#9749; Break &mdash; 10 minutes</div>
+
+<div class="phase">
+  <div class="phase-header">
+    <div class="phase-num" style="background:#7C3AED">6</div>
+    <div class="phase-title">Second Scenario</div>
+    <div class="phase-time">25 min</div>
+  </div>
+  <div class="phase-body">
+    <p>A contrasting scenario to test whether different problems pull different frameworks forward.</p>
+    <p><em>OpenForge is an open-source AI project trained on openly licensed data with 4,000 contributors. A commercial competitor accuses them of patent infringement. How does an open-source project defend itself?</em></p>
+    <div class="task"><strong>Your task:</strong> Return to the gallery. Focus on <strong>Slibraries 19 and 20 (IP Strategy, Liability & Protection)</strong>. In your pair, identify the 2&ndash;3 frameworks most relevant to this new scenario. Be ready to explain why different frameworks are needed here than in the main case.</div>
+    <p>The debrief will highlight how the same gallery serves completely different problems &mdash; the skill is matching the Slibrary to the bottleneck.</p>
+  </div>
+</div>
+
+<div class="phase">
+  <div class="phase-header">
+    <div class="phase-num" style="background:#7C3AED">7</div>
+    <div class="phase-title">Reflection &amp; Personal Slibrary</div>
+    <div class="phase-time">10 min</div>
+  </div>
+  <div class="phase-body">
+    <p><strong>Individually. No discussion.</strong> Answer three questions in writing:</p>
+    <div class="task">
+      <strong>Question 1:</strong> Which framework surprised you most today?<br><br>
+      <strong>Question 2:</strong> Which two frameworks would you reach for first in a real meeting?<br><br>
+      <strong>Question 3:</strong> Which framework do you not yet fully understand? (This becomes your independent study task &mdash; return to the gallery, read the source, and write a 200-word explanation for next session.)
+    </div>
+    <p>Complete the full reflection prompt (available on the course page) before the next session. Bring your written responses &mdash; they open our next discussion.</p>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  <strong>MARTI301</strong> &middot; AI in Investment &amp; Competitiveness &middot; &copy; 2026 Dr. Hildegard Haas
+</footer>
+<div class="watermark">&copy; Dr. Hildegard Haas 2026</div>
 <script>
-(function(){
-  var ov=document.getElementById('modal-overlay');
-  var bx=document.getElementById('modal-box');
-  function open(card){
-    var c=card.dataset.color, rgb=card.dataset.rgb;
-    document.getElementById('modal-color-bar').style.background=c;
-    var lead=document.getElementById('modal-lead');
-    lead.style.borderLeftColor=c;
-    lead.style.background='rgba('+rgb+',0.05)';
-    document.getElementById('m-lead-text').style.color=c;
-    document.querySelectorAll('.m-dot').forEach(function(d){d.style.background=c;});
-    var ref=document.getElementById('modal-reference');
-    ref.style.borderLeftColor=c;
-    ref.style.background='rgba('+rgb+',0.07)';
-    document.getElementById('modal-ref-label').style.color=c;
-    document.getElementById('m-slibrary-header').textContent='SLIBRARY '+card.dataset.sl+' — '+card.dataset.setname;
-    document.getElementById('m-unit-badge').textContent=card.dataset.unit;
-    document.getElementById('m-title').textContent=card.dataset.name;
-    document.getElementById('m-itten-line').textContent=card.dataset.itten;
-    document.getElementById('m-lead-text').textContent=card.dataset.lead;
-    document.getElementById('m-sub-text').textContent=card.dataset.sub;
-    document.getElementById('m-b1').textContent=card.dataset.b1;
-    document.getElementById('m-b2').textContent=card.dataset.b2;
-    document.getElementById('m-b3').textContent=card.dataset.b3;
-    document.getElementById('m-b4').textContent=card.dataset.b4;
-    document.getElementById('m-ref-text').innerHTML=card.dataset.ref;
-    ov.classList.add('active');
-    document.body.style.overflow='hidden';
-    bx.scrollTop=0;
-  }
-  function close(){ov.classList.remove('active');document.body.style.overflow='';}
-  document.querySelectorAll('.fw-card').forEach(function(c){c.addEventListener('click',function(){open(c);});});
-  document.getElementById('modal-close').addEventListener('click',close);
-  ov.addEventListener('click',function(e){if(e.target===ov)close();});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
-})();
-</script>
-<script>
-document.querySelectorAll('.acc-hdr').forEach(function(h){
-  h.addEventListener('click',function(){
-    h.classList.toggle('open');
-    h.nextElementSibling.classList.toggle('open');
-  });
-});
+document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&(e.key==='s'||e.key==='p'||e.key==='c'||e.key==='u')){e.preventDefault();return false}});
 </script>
 </body>
 </html>

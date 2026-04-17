@@ -1,387 +1,361 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>MLUXR302 Unit 6 — Communicating and Evaluating Sustainable Strategies & Future Trends</title>
-<style>
-:root{--teal:#00B894;--teal-d:#00695C;--bg:#f7f8fa;--text:#0f172a;--muted:#64748b;--white:#ffffff;--radius:12px;--shadow:0 1px 6px rgba(0,0,0,0.07);--shadow-lg:0 8px 28px rgba(0,0,0,0.13);}
-*{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
-a{color:inherit;text-decoration:none;}
-.container{max-width:1120px;margin:0 auto;padding:0 24px;}
-.topbar{background:#0f172a;color:rgba(255,255,255,0.5);font-size:11px;letter-spacing:.1em;text-align:center;padding:7px 0;}
-.topbar strong{color:var(--teal);}
-.site-header{background:var(--white);border-bottom:3px solid var(--teal);padding:16px 0;position:sticky;top:0;z-index:500;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
-.hdr-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
-.hdr-brand .code{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--teal);font-weight:700;}
-.hdr-brand .name{font-size:16px;font-weight:700;}
-.hdr-meta{font-size:12px;color:var(--muted);text-align:right;line-height:1.5;}
-.back-link{display:inline-flex;align-items:center;gap:6px;color:var(--teal-d);font-size:13px;font-weight:600;padding:10px 0;transition:gap .2s;}
-.back-link:hover{gap:10px;}
-.hero{padding:48px 0 36px;text-align:center;}
-.unit-pill{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:16px;}
-.hero h1{font-size:clamp(20px,4vw,36px);font-weight:800;margin-bottom:8px;line-height:1.2;}
-.hero .sub{font-size:15px;color:var(--muted);margin-bottom:6px;}
-.hero-hint{font-size:12px;color:var(--muted);margin-bottom:28px;font-style:italic;}
-.hero-stats{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;}
-.hero-stat .num{font-size:38px;font-weight:800;line-height:1;}
-.hero-stat .lbl{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:2px;}
-.itten-tag{display:inline-flex;align-items:center;gap:7px;font-size:12px;background:var(--white);padding:6px 14px;border-radius:20px;box-shadow:var(--shadow);margin-bottom:32px;}
-.itten-dot{width:10px;height:10px;border-radius:50%;}
-.set-section{margin-bottom:52px;}
-.set-hdr{display:flex;align-items:center;gap:12px;margin-bottom:18px;padding-bottom:10px;border-bottom:2px solid #e2e8f0;}
-.set-hdr h2{font-size:14px;font-weight:700;display:flex;align-items:center;gap:10px;}
-.set-num{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0;}
-.set-tag{font-size:11px;color:var(--muted);background:#f1f5f9;padding:2px 10px;border-radius:10px;margin-left:auto;}
-.fw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:14px;}
-.fw-card{background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);cursor:pointer;transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column;border-top:4px solid transparent;}
-.fw-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);}
-.fw-card-icon{padding:14px 16px 6px;line-height:1;}
-.fw-card-icon svg{display:block;width:56px;height:40px;}
-.fw-card-body{padding:0 16px 12px;flex:1;display:flex;flex-direction:column;}
-.fw-card-name{font-size:13px;font-weight:700;margin-bottom:5px;color:var(--text);line-height:1.3;}
-.fw-card-desc{font-size:11.5px;color:var(--muted);line-height:1.55;flex:1;}
-.fw-card-foot{display:flex;align-items:center;justify-content:space-between;padding:8px 16px 10px;border-top:1px solid #f0f0f0;margin-top:auto;}
-.fw-sl-badge{font-size:10px;font-weight:700;letter-spacing:.06em;padding:2px 8px;border-radius:8px;}
-.fw-arrow{font-size:13px;color:var(--muted);}
-.idx-hero{padding:60px 0 48px;text-align:center;}
-.idx-hero .school{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:10px;}
-.idx-hero h1{font-size:clamp(26px,5vw,50px);font-weight:800;line-height:1.15;margin-bottom:12px;}
-.idx-hero .tag{font-size:16px;color:var(--muted);margin-bottom:10px;}
-.idx-hero .itten-credit{font-size:12px;color:var(--muted);margin-bottom:30px;font-style:italic;}
-.idx-stats{display:flex;justify-content:center;gap:48px;flex-wrap:wrap;}
-.idx-stat .num{font-size:48px;font-weight:800;color:var(--teal);line-height:1;}
-.idx-stat .lbl{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:4px;}
-.itten-legend{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:24px 0 32px;}
-.itten-chip{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;padding:5px 12px;border-radius:20px;background:var(--white);box-shadow:var(--shadow);}
-.itten-chip-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
-.accordion{margin-bottom:10px;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);}
-.acc-hdr{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;cursor:pointer;transition:opacity .18s;}
-.acc-hdr:hover{opacity:.93;}
-.acc-meta{display:flex;flex-direction:column;gap:2px;}
-.acc-unit-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:rgba(255,255,255,.75);}
-.acc-itten{font-size:10px;color:rgba(255,255,255,.55);font-style:italic;}
-.acc-title{font-size:15px;font-weight:700;color:#fff;line-height:1.3;}
-.acc-chevron{font-size:17px;color:rgba(255,255,255,.65);transition:transform .28s;}
-.acc-hdr.open .acc-chevron{transform:rotate(180deg);}
-.acc-body{display:none;background:var(--white);}
-.acc-body.open{display:block;}
-.res-link{display:flex;align-items:center;gap:12px;padding:13px 22px;border-bottom:1px solid #f1f5f9;transition:background .13s;}
-.res-link:last-child{border-bottom:none;}
-.res-link:hover{background:#f8fafc;}
-.res-badge{font-size:10px;font-weight:700;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;}
-.res-title{font-size:14px;font-weight:700;margin-bottom:1px;}
-.res-meta{font-size:11px;color:var(--muted);}
-.res-tag{font-size:10px;color:var(--muted);background:#f1f5f9;padding:2px 8px;border-radius:6px;white-space:nowrap;}
-.phase-list{list-style:none;}
-.phase-item{display:flex;gap:14px;padding:18px 0;border-bottom:1px solid #f0f0f0;}
-.phase-item:last-child{border-bottom:none;}
-.phase-badge{font-size:10px;font-weight:700;letter-spacing:.07em;padding:4px 10px;border-radius:8px;height:fit-content;white-space:nowrap;}
-.phase-h{font-size:14px;font-weight:700;margin-bottom:4px;}
-.phase-p{font-size:13px;color:var(--muted);}
-.case-brand-hdr{padding:48px 0 28px;text-align:center;}
-.brand-name{font-size:48px;font-weight:900;letter-spacing:-2px;margin-bottom:8px;line-height:1;}
-.case-card{background:var(--white);border-radius:var(--radius);padding:32px;box-shadow:var(--shadow);margin-bottom:18px;}
-.case-card h2{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #f1f5f9;}
-.case-card p{font-size:14.5px;line-height:1.8;margin-bottom:10px;}
-.case-card ol{padding-left:18px;}
-.case-card li{font-size:14.5px;line-height:1.7;margin-bottom:8px;}
-.pr-card{background:var(--white);border-radius:var(--radius);padding:32px;box-shadow:var(--shadow);margin-bottom:18px;}
-.pr-card h2{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:12px;}
-.pr-card p{font-size:14.5px;line-height:1.8;margin-bottom:10px;}
-.kp-item{display:flex;gap:10px;margin-bottom:10px;align-items:flex-start;}
-.kp-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:7px;}
-.kp-text{font-size:14px;line-height:1.6;}
-.pr-prepare{border-radius:0 var(--radius) var(--radius) 0;padding:20px 24px;border-left:4px solid;margin-bottom:48px;}
-.pr-prepare-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;}
-.ref-cards{display:grid;gap:18px;}
-.ref-card{background:var(--white);border-radius:var(--radius);padding:26px 28px;box-shadow:var(--shadow);display:flex;gap:18px;align-items:flex-start;}
-.ref-num{font-size:32px;font-weight:900;line-height:1;opacity:.15;flex-shrink:0;width:40px;}
-.ref-card p{font-size:15px;line-height:1.75;}
-.ref-guide{border-radius:var(--radius);padding:20px 24px;margin-top:24px;margin-bottom:48px;}
-.ref-guide-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;}
-.ref-guide p{font-size:13.5px;line-height:1.7;}
-.cg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:9px;}
-.cg-card{background:var(--white);border-radius:8px;padding:12px 14px;box-shadow:0 1px 3px rgba(0,0,0,0.05);border-left:4px solid transparent;}
-.cg-name{font-size:12px;font-weight:700;margin-bottom:2px;}
-.cg-unit{font-size:10px;color:var(--muted);}
-.site-footer{margin-top:72px;border-top:3px solid var(--teal);padding:22px 0;text-align:center;font-size:12px;color:var(--muted);}
-.site-footer strong{color:var(--text);}
-@media(max-width:640px){.fw-grid{grid-template-columns:1fr 1fr;}.cg-grid{grid-template-columns:1fr 1fr;}}
-</style>
-
-<style>
-#modal-overlay{position:fixed;inset:0;background:rgba(8,8,20,0.78);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);z-index:9000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity 0.22s;}
-#modal-overlay.active{opacity:1;pointer-events:all;}
-#modal-box{background:#ffffff;border-radius:16px;width:100%;max-width:660px;max-height:90vh;overflow-y:auto;box-shadow:0 28px 90px rgba(0,0,0,0.38);transform:translateY(20px) scale(0.97);transition:transform 0.22s;position:relative;}
-#modal-overlay.active #modal-box{transform:translateY(0) scale(1);}
-#modal-color-bar{height:5px;border-radius:16px 16px 0 0;}
-#modal-inner{padding:28px 32px 28px;}
-#modal-header{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:20px;}
-#modal-header-left{flex:1;}
-#modal-label-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap;}
-#m-slibrary-header{font-size:10px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:#888;}
-#m-unit-badge{font-size:10px;font-weight:700;letter-spacing:0.08em;padding:2px 9px;border-radius:8px;background:#f0f0f0;color:#666;}
-#m-title{font-size:24px;font-weight:800;color:#1a1a2e;line-height:1.2;margin-bottom:5px;font-family:Arial,Helvetica,sans-serif;}
-#m-itten-line{font-size:11px;color:#aaa;font-style:italic;}
-#modal-close{background:#f0f0f2;border:none;width:34px;height:34px;border-radius:50%;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#666;transition:background .15s,color .15s;}
-#modal-close:hover{background:#dde0e4;color:#333;}
-#modal-lead{border-left:4px solid #ccc;margin:0 0 14px;padding:12px 18px;border-radius:0 6px 6px 0;}
-#modal-lead p{font-size:15px;font-weight:700;font-style:italic;line-height:1.65;margin:0;font-family:Arial,Helvetica,sans-serif;}
-#m-sub-text{font-size:13px;color:#888;font-style:italic;margin-bottom:22px;line-height:1.5;}
-#modal-bullets{margin-bottom:24px;}
-.m-bullet-item{display:flex;align-items:baseline;gap:12px;padding:11px 0;}
-.m-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-top:2px;display:inline-block;background:#ccc;}
-.m-bullet-text{font-size:14px;line-height:1.65;color:#333;}
-.m-divider{border:none;border-top:1px solid #e8eaed;margin:0;}
-#modal-reference{border-radius:0 8px 8px 0;border-left:4px solid #ccc;padding:16px 20px;margin-top:4px;}
-#modal-ref-label{font-size:10px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:#888;margin-bottom:8px;}
-#m-ref-text{font-size:13px;line-height:1.75;color:#444;margin:0;}
-@media(max-width:580px){#modal-inner{padding:20px 18px 20px;}#m-title{font-size:19px;}}
-</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MARTI301 Unit 6 — Finance & Investment Plans</title>
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#1B2A4A;--teal:#00B388;--amber:#D4872C;--bg:#FAFBFC;--card:#FFF;--text:#1B2A4A;--muted:#6B7280;--border:#E5E7EB;--def-red:#C0392B}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;overflow-x:hidden}
+.hero{background:var(--navy);padding:2.5rem 2rem 2rem;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:var(--teal)}
+.hero-tag{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);font-weight:700;margin-bottom:.5rem}
+.hero h1{font-size:2.2rem;color:#fff;font-weight:700;line-height:1.2;margin-bottom:.4rem}
+.hero p{color:#94A3B8;font-size:.95rem;margin-bottom:.8rem}
+.hero .copy{color:#64748B;font-size:.8rem;font-style:italic}
+.hero-stats{display:flex;gap:2rem;margin-top:1rem}
+.hero-stat{text-align:center}
+.hero-stat .num{font-size:1.8rem;color:var(--teal);font-weight:700}
+.hero-stat .label{font-size:.7rem;color:#94A3B8;text-transform:uppercase;letter-spacing:.1em}
+.slib-set{margin-bottom:2.5rem}
+.slib-set-header{display:flex;align-items:center;gap:.6rem;margin-bottom:1rem;padding-left:.2rem;opacity:0;transform:translateX(-15px);transition:all .5s cubic-bezier(.16,1,.3,1)}
+.slib-set-header.visible{opacity:1;transform:translateX(0)}
+.slib-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.slib-set-title{font-size:1rem;font-weight:700}
+.slib-set-num{font-size:.7rem;color:var(--muted);background:#F1F5F9;padding:.15rem .5rem;border-radius:1rem;font-weight:600}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;opacity:0;transform:translateY(25px) scale(.97);transition:all .5s cubic-bezier(.16,1,.3,1);position:relative;display:flex;flex-direction:column}
+.card.visible{opacity:1;transform:translateY(0) scale(1)}
+.card:hover{transform:translateY(-4px) scale(1.01);box-shadow:0 12px 32px rgba(27,42,74,.1);border-color:transparent}
+.card-accent{height:3px;width:100%}
+.card-thumb{height:120px;background:#F8FAFC;display:flex;align-items:center;justify-content:center;padding:.8rem;overflow:hidden}
+.card-thumb svg{width:100%;height:100%;opacity:.7;transition:opacity .3s}
+.card:hover .card-thumb svg{opacity:1}
+.card-body{padding:.8rem .9rem .9rem;flex:1;display:flex;flex-direction:column}
+.card-title{font-size:.82rem;font-weight:700;line-height:1.3;margin-bottom:.25rem}
+.card-desc{font-size:.7rem;color:var(--muted);line-height:1.4;margin-bottom:.5rem;flex:1}
+.card-tag{display:inline-block;font-size:.6rem;font-weight:700;padding:.15rem .45rem;border-radius:4px;color:#fff;align-self:flex-start}
+.modal-overlay{position:fixed;inset:0;background:rgba(27,42,74,.5);z-index:200;opacity:0;pointer-events:none;transition:opacity .3s;display:flex;align-items:center;justify-content:center;padding:1rem}
+.modal-overlay.open{opacity:1;pointer-events:auto}
+.modal{background:#fff;border-radius:16px;max-width:560px;width:100%;max-height:85vh;overflow-y:auto;transform:translateY(20px) scale(.95);transition:transform .35s cubic-bezier(.16,1,.3,1);padding:0}
+.modal-overlay.open .modal{transform:translateY(0) scale(1)}
+.modal-accent{height:4px;border-radius:16px 16px 0 0}
+.modal-inner{padding:1.8rem 1.6rem}
+.modal-close{position:absolute;top:1rem;right:1rem;width:32px;height:32px;border-radius:50%;border:none;background:#F1F5F9;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;color:var(--muted);transition:background .2s}
+.modal-close:hover{background:#E2E8F0}
+.modal-slib{font-size:.7rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.3rem}
+.modal-title{font-size:1.4rem;font-weight:700;margin-bottom:.4rem}
+.modal-def{font-size:.9rem;color:var(--def-red);font-weight:600;line-height:1.5;margin-bottom:.7rem;border-left:3px solid var(--def-red);padding-left:.6rem}
+.modal-desc{font-size:.88rem;color:var(--muted);line-height:1.6;margin-bottom:.8rem}
+.modal-thumb{background:#F8FAFC;border-radius:10px;padding:1.5rem;margin-bottom:1.2rem;display:flex;align-items:center;justify-content:center}
+.modal-thumb svg{width:220px;height:140px}
+.modal-details{list-style:none;padding:0;margin-bottom:1rem}
+.modal-details li{font-size:.82rem;color:var(--text);padding:.4rem 0;border-bottom:1px solid #F1F5F9;display:flex;align-items:flex-start;gap:.5rem}
+.modal-details li::before{content:'\2022';color:var(--teal);font-weight:bold;flex-shrink:0;margin-top:1px}
+.modal-ref{background:#F8FAFC;border-radius:8px;padding:.7rem .9rem;font-size:.75rem;color:#475569;line-height:1.5;border-left:3px solid var(--teal)}
+.modal-ref-label{font-weight:700;font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:var(--teal);margin-bottom:.2rem}
+.footer{background:var(--navy);padding:2rem;text-align:center;color:#64748B;font-size:.75rem;margin-top:2rem}
+.footer strong{color:var(--teal)}
+@media(max-width:640px){.hero h1{font-size:1.5rem}.hero-stats{gap:1rem}.cards-grid{grid-template-columns:repeat(auto-fill,minmax(165px,1fr))}.card-thumb{height:90px}}</style>
 </head>
 <body>
-<script>
-(function(){
-  document.addEventListener('contextmenu',e=>e.preventDefault());
-  ['copy','cut','paste'].forEach(ev=>document.addEventListener(ev,e=>e.preventDefault()));
-  document.addEventListener('keydown',e=>{
-    const k=e.key.toLowerCase(),c=e.ctrlKey||e.metaKey;
-    if(c&&(k==='c'||k==='x'||k==='v'||k==='s'||k==='u'||k==='a'||k==='p')){e.preventDefault();return false;}
-    if(e.key==='F12'||(c&&e.shiftKey&&(k==='i'||k==='j'||k==='c'))){e.preventDefault();return false;}
-  });
-  document.addEventListener('dragstart',e=>e.preventDefault());
-})();
-</script>
-<style>
-@media print{body *{visibility:hidden!important;}body::after{visibility:visible!important;content:'© Dr. Hildegard Haas | MLUXR302 | EU Business School — Printing not permitted.';display:block;font-size:18px;text-align:center;padding:80px 40px;font-family:Arial,sans-serif;}}
-body,*{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
-</style>
-<div class="topbar">
-  <strong>MLUXR302</strong> &nbsp;&middot;&nbsp; Sustainable Value Creation in Fashion &amp; Luxury
-  &nbsp;&middot;&nbsp;
-  &copy; 2026 Dr. Hildegard Haas &nbsp;&middot;&nbsp; EU Business School
-</div>
-<header class="site-header">
-  <div class="container hdr-inner">
-    <div class="hdr-brand">
-      <div class="code">MLUXR302 &middot; Masters Level 7 &middot; EU Business School</div>
-      <div class="name">Sustainable Value Creation in Fashion &amp; Luxury</div>
-    </div>
-    <div class="hdr-meta">Dr. Hildegard Haas<br/>hildegard.haas@euruni.edu &middot; www.euruni.edu</div>
+
+<a href="./" style="display:block;background:#E6F7F3;padding:.65rem 1.5rem;text-decoration:none;font-size:.82rem;font-weight:700;color:#059669;border-bottom:2px solid #00B388">&#8592; Back to Course Overview</a>
+<header class="hero">
+  <div class="hero-tag">MARTI301 &middot; Unit 6</div>
+  <h1>Finance & Investment Plans</h1>
+  <p>Select any framework to explore it in detail</p>
+  <div class="copy">&copy; 2026 Dr. Hildegard Haas</div>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num">4</div><div class="label">Slibraries</div></div>
+    <div class="hero-stat"><div class="num">20</div><div class="label">Frameworks</div></div>
+    <div class="hero-stat"><div class="num">21&ndash;24</div><div class="label">Set Range</div></div>
   </div>
 </header>
-<main><div class="container">
-<a class="back-link" href="index.html">&#8592; Course Overview</a>
-<div class="hero"><div class="unit-pill" style="background:rgba(217,119,6,0.1);color:#D97706;">MLUXR302 &middot; Unit 6</div><h1>Communicating and Evaluating Sustainable Strategies & Future Trends</h1><p class="sub">Transparency, Regulation and the Future of Sustainable Luxury</p><p class="hero-hint">Click any framework card to open it in detail</p><div class="hero-stats"><div class="hero-stat"><div class="num" style="color:#D97706">3</div><div class="lbl">Slibraries</div></div><div class="hero-stat"><div class="num" style="color:#D97706">15</div><div class="lbl">Frameworks</div></div><div class="hero-stat"><div class="num" style="color:#D97706">16–18</div><div class="lbl">Sets</div></div></div></div><div class="set-section"><div class="set-hdr"><h2><div class="set-num" style="background:#D97706">16</div>Set 16 — Communication Frameworks</h2><span class="set-tag">5 frameworks &middot; click any card to explore</span></div><div class="fw-grid"><div class="fw-card" style="border-top-color:#D97706;" data-color="#D97706" data-rgb="217,119,6" data-sl="16" data-unit="MLUXR302 · Unit 6" data-setname="Communication Frameworks" data-name="GRI vs. SASB vs. TCFD" data-itten="Itten: Warm Gold — Synthesis, illumination" data-lead="Three complementary but distinct reporting frameworks serving different audiences, different purposes and different aspects of sustainability — understanding when to use each is fundamental to strategic communication." data-sub="GRI (stakeholders) · SASB (investors) · TCFD (climate risk): different lenses, different disclosures" data-b1="GRI → stakeholder-focused, comprehensive disclosure of all material ESG impacts; used by 73% of FTSE 500; basis for CSRD-aligned reporting; covers economic, environmental and social performance" data-b2="SASB → investor-focused, sector-specific disclosure of financially material ESG metrics; 77 industry standards; enables peer comparison; increasingly required by institutional investors in proxy voting" data-b3="TCFD → climate-risk-focused, scenario-based disclosure of physical and transition climate risks to business; mandatory for UK-listed companies from 2022; basis for ISSB Climate Standard (IFRS S2)" data-b4="Convergence → ISSB Standards (IFRS S1 and S2, 2023) integrate TCFD and SASB into a unified investor-focused disclosure framework; CSRD integrates GRI into a stakeholder-focused framework" data-ref="International Sustainability Standards Board (2023) <em>IFRS S1 General Requirements for Disclosure of Sustainability-related Financial Information</em>. London: IFRS Foundation."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <rect x="4" y="6" width="14" height="28" rx="3" fill="#D97706" opacity="0.8"/>
-  <rect x="21" y="10" width="14" height="24" rx="3" fill="rgba(217,119,6,0.55)"/>
-  <rect x="38" y="14" width="14" height="20" rx="3" fill="rgba(217,119,6,0.35)" stroke="#D97706" stroke-width="1.5"/>
-  <text x="11" y="22" text-anchor="middle" font-size="5" fill="white" font-weight="900">GRI</text>
-  <text x="28" y="24" text-anchor="middle" font-size="4.5" fill="white" font-weight="700">SASB</text>
-  <text x="45" y="26" text-anchor="middle" font-size="4.5" fill="#D97706" font-weight="700">TCFD</text>
-  <text x="28" y="44" text-anchor="middle" font-size="4" fill="#D97706">3 Reporting Frameworks</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">GRI vs. SASB vs. TCFD</div><div class="fw-card-desc">Reporting standard landscape: GRI (stakeholders), SASB (investors), TCFD (climate risk) — when to use each</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(217,119,6,0.12);color:#D97706;">Slibrary 16</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#D97706;" data-color="#D97706" data-rgb="217,119,6" data-sl="16" data-unit="MLUXR302 · Unit 6" data-setname="Communication Frameworks" data-name="Greenwashing Venn Diagram" data-itten="Itten: Warm Gold — Synthesis, illumination" data-lead="A systematic taxonomy of the overlap between what brands say and what is true — exposing greenwashing not as a simple lie but as a sophisticated spectrum of misleading communication practices." data-sub="True but selective · False but specific · Misleading overall: three dimensions of green deception" data-b1="Misleading overall → accurate individual facts deployed to create a false impression of overall sustainability performance: one recycled product in a 10,000-SKU conventional range" data-b2="Selective disclosure → accurate facts that are unrepresentative of the company&#39;s overall impact: energy efficiency in headquarters while Scope 3 supply chain impact is never disclosed" data-b3="Hidden trade-offs → a genuine environmental benefit in one dimension (recycled fibre) used to obscure significant harm in another (toxic dyeing, underpaid workers, rapid disposal)" data-b4="EU enforcement → 14 types of greenwashing identified by the European Commission in its 2021 Market Survey; Green Claims Directive (2025) provides legal basis for enforcement of all categories" data-ref="European Commission (2021) <em>Behavioural Study on Consumers&#39; Engagement with Sustainable Consumption Information</em>. Brussels: European Commission, DG JUST."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="20" cy="18" r="12" fill="rgba(217,119,6,0.2)" stroke="#D97706" stroke-width="1.5"/>
-  <circle cx="36" cy="18" r="12" fill="rgba(217,119,6,0.2)" stroke="#D97706" stroke-width="1.5"/>
-  <circle cx="28" cy="30" r="12" fill="rgba(217,119,6,0.2)" stroke="#D97706" stroke-width="1.5"/>
-  <path d="M28,8 Q34,14 36,18 Q34,22 28,25 Q22,22 20,18 Q22,14 28,8Z" fill="#D97706" opacity="0.5"/>
-  <text x="28" y="20" text-anchor="middle" font-size="4" fill="white" font-weight="700">GREEN</text>
-  <text x="28" y="44" text-anchor="middle" font-size="4.5" fill="#D97706" font-weight="700">WASH</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">Greenwashing Venn Diagram</div><div class="fw-card-desc">Misleading: false, selective, vague or irrelevant claims — mapping the 14 types of green deception</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(217,119,6,0.12);color:#D97706;">Slibrary 16</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#D97706;" data-color="#D97706" data-rgb="217,119,6" data-sl="16" data-unit="MLUXR302 · Unit 6" data-setname="Communication Frameworks" data-name="Sustainability Storytelling Arc" data-itten="Itten: Warm Gold — Synthesis, illumination" data-lead="A narrative framework for communicating sustainability authentically — ensuring that brand communication moves from observed problem to credible action to verified impact, in a structure that builds trust rather than expectation." data-sub="Problem → Commitment → Action → Impact: the four-beat narrative structure" data-b1="Problem → establish the environmental or social challenge with credible, specific, externally sourced data; do not minimise or contextualise away from urgency; the problem is the &#39;why we act&#39;" data-b2="Commitment → describe what the brand has decided to do about it; commitments must be specific, time-bound, measurable and aligned to recognised standards (SBTi, Fashion Transparency Index)" data-b3="Action → describe concrete operational changes: supplier development, material substitution, certifications achieved, wage improvements, waste reduction programmes" data-b4="Impact → report verified, third-party audited outcomes: tonnes of CO₂ avoided, workers who received living wage, kilograms of waste diverted; distinguish outputs from outcomes" data-ref="Meadows, D.H. (2008) <em>Thinking in Systems: A Primer</em>. White River Junction, VT: Chelsea Green Publishing."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <rect x="4" y="16" width="11" height="8" rx="2" fill="rgba(217,119,6,0.25)"/>
-  <polygon points="9,16 15,16 12,12" fill="rgba(217,119,6,0.25)"/><rect x="17" y="16" width="11" height="13" rx="2" fill="rgba(217,119,6,0.45)"/>
-  <polygon points="22,16 28,16 25,12" fill="rgba(217,119,6,0.45)"/><rect x="30" y="16" width="11" height="18" rx="2" fill="rgba(217,119,6,0.65)"/>
-  <polygon points="35,16 41,16 38,12" fill="rgba(217,119,6,0.65)"/><rect x="43" y="16" width="11" height="23" rx="2" fill="rgba(217,119,6,0.8500000000000001)"/>
-  <polygon points="48,16 54,16 51,12" fill="rgba(217,119,6,0.8500000000000001)"/>
-  <text x="9" y="42" text-anchor="middle" font-size="4" fill="#D97706">PRB</text>
-  <text x="22" y="42" text-anchor="middle" font-size="4" fill="#D97706">CMT</text>
-  <text x="35" y="42" text-anchor="middle" font-size="4" fill="#D97706">ACT</text>
-  <text x="49" y="42" text-anchor="middle" font-size="4" fill="#D97706" font-weight="700">IMP</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">Sustainability Storytelling Arc</div><div class="fw-card-desc">Problem → Commitment → Action → Impact: the four-beat narrative structure for credible communication</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(217,119,6,0.12);color:#D97706;">Slibrary 16</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#D97706;" data-color="#D97706" data-rgb="217,119,6" data-sl="16" data-unit="MLUXR302 · Unit 6" data-setname="Communication Frameworks" data-name="CSRD Reporting Requirements" data-itten="Itten: Warm Gold — Synthesis, illumination" data-lead="The EU&#39;s Corporate Sustainability Reporting Directive — the most transformative shift in European corporate disclosure since financial reporting standardisation, affecting 50,000 companies from 2024." data-sub="50,000 EU companies · phased rollout 2024–2026 · double materiality · ESRS framework" data-b1="Scope and timeline → large listed companies (2024), large unlisted companies (2025), listed SMEs (2026); non-EU companies with significant EU revenue (€150M+) from 2028" data-b2="Double materiality → companies must assess and report both how they affect sustainability (impact materiality) and how sustainability affects them (financial materiality) — both perspectives required" data-b3="ESRS compliance → reporting structured against European Sustainability Reporting Standards covering: climate, pollution, water, biodiversity, resources, own workers, supply chain workers, communities" data-b4="Assurance requirement → limited third-party assurance required from 2024; reasonable assurance (equivalent to financial audit standard) required by 2028; significant increase in disclosure quality" data-ref="European Commission (2022) <em>Directive of the European Parliament and of the Council on Corporate Sustainability Reporting (CSRD)</em>. Brussels: Official Journal of the European Union, 2022/2464."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="28" cy="18" r="14" fill="rgba(217,119,6,0.1)" stroke="#D97706" stroke-width="2"/>
-  <text x="28" y="22" text-anchor="middle" font-size="7" fill="#D97706" font-weight="900">EU</text>
-  <text x="28" y="38" text-anchor="middle" font-size="4.5" fill="#D97706" font-weight="700">CSRD 50,000</text>
-  <text x="28" y="44" text-anchor="middle" font-size="4" fill="#D97706">companies 2024+</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">CSRD Reporting Requirements</div><div class="fw-card-desc">EU Corporate Sustainability Reporting Directive: mandatory for 50,000+ companies from 2024–2026 rollout</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(217,119,6,0.12);color:#D97706;">Slibrary 16</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#D97706;" data-color="#D97706" data-rgb="217,119,6" data-sl="16" data-unit="MLUXR302 · Unit 6" data-setname="Communication Frameworks" data-name="Audience × Message Matrix" data-itten="Itten: Warm Gold — Synthesis, illumination" data-lead="A strategic communication tool that prevents the fundamental error of sustainability messaging: using the same claim, language and evidence for audiences with fundamentally different informational needs and trust calibrations." data-sub="Investors · Consumers · Regulators · Employees: four audiences requiring four distinct communication strategies" data-b1="Investors → financial materiality, quantified risk and opportunity, governance quality, SBTi validation, TCFD scenario analysis, sustainability-linked financing terms, Scope 1–3 trajectory" data-b2="Consumers → product-level transparency, material story (human and environmental), care and end-of-life guidance, third-party certification at point of sale, emotional narrative rooted in evidence" data-b3="Regulators → CSRD-aligned annual reporting, ESRS-compliant double materiality assessment, supply chain due diligence documentation, Green Claims Directive-compliant consumer claims" data-b4="Employees → purpose alignment, internal sustainability targets and progress, personal carbon footprint tools, career development in sustainability roles, culture and values embodiment" data-ref="Kotler, P. and Keller, K.L. (2016) <em>Marketing Management</em>, 15th edn. Harlow: Pearson Education."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <rect x="4" y="4" width="48" height="32" rx="3" fill="rgba(217,119,6,0.1)" stroke="#D97706" stroke-width="1.5"/>
-  <rect x="4" y="8" width="10" height="10" rx="2" fill="rgba(217,119,6,0.25)" stroke="#D97706" stroke-width="1"/>
-  <rect x="4" y="22" width="10" height="10" rx="2" fill="rgba(217,119,6,0.15)" stroke="#D97706" stroke-width="1"/><rect x="16" y="8" width="10" height="10" rx="2" fill="rgba(217,119,6,0.4)" stroke="#D97706" stroke-width="1"/>
-  <rect x="16" y="22" width="10" height="10" rx="2" fill="rgba(217,119,6,0.27)" stroke="#D97706" stroke-width="1"/><rect x="28" y="8" width="10" height="10" rx="2" fill="rgba(217,119,6,0.55)" stroke="#D97706" stroke-width="1"/>
-  <rect x="28" y="22" width="10" height="10" rx="2" fill="rgba(217,119,6,0.39)" stroke="#D97706" stroke-width="1"/><rect x="40" y="8" width="10" height="10" rx="2" fill="rgba(217,119,6,0.7)" stroke="#D97706" stroke-width="1"/>
-  <rect x="40" y="22" width="10" height="10" rx="2" fill="rgba(217,119,6,0.51)" stroke="#D97706" stroke-width="1"/>
-  <text x="28" y="44" text-anchor="middle" font-size="4.5" fill="#D97706" font-weight="700">4 AUDIENCES</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">Audience × Message Matrix</div><div class="fw-card-desc">Tailoring sustainability communication: investors, consumers, regulators and employees need different signals</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(217,119,6,0.12);color:#D97706;">Slibrary 16</span><span class="fw-arrow">&#8594;</span></div></div></div></div><div class="set-section"><div class="set-hdr"><h2><div class="set-num" style="background:#D97706">17</div>Set 17 — Future Trends</h2><span class="set-tag">5 frameworks &middot; click any card to explore</span></div><div class="fw-grid"><div class="fw-card" style="border-top-color:#D97706;" data-color="#D97706" data-rgb="217,119,6" data-sl="17" data-unit="MLUXR302 · Unit 6" data-setname="Future Trends" data-name="Digital Product Passport (DPP)" data-itten="Itten: Warm Gold — Synthesis, illumination" data-lead="The most consequential product traceability requirement ever legislated — a machine-readable digital identity for every product carrying its full material, chemical and lifecycle story." data-sub="Material composition · origin · repairability · recycling route: QR-accessible from 2025" data-b1="Data requirements → material type and percentages, country of origin for each fibre, chemical inventory (MRSL-aligned), energy and water intensity, carbon footprint per unit, repairability score, end-of-life routing" data-b2="Access mechanism → QR code, NFC tag or RFID embedded in product; accessible to consumers, retailers, repair services, recyclers and regulators through a common EU digital infrastructure" data-b3="Timeline → EU Ecodesign Regulation for Sustainable Products (ESPR) mandates DPP for textiles from 2025; batteries (2027), electronics (2026), construction materials (2027) follow" data-b4="Brand implications → DPP makes supply chain opacity legally untenable; brands must map and verify supply chains to Tier 4 to populate the passport with accurate data; early implementers gain first-mover trust" data-ref="European Commission (2022) <em>Proposal for a Regulation of the European Parliament and of the Council Establishing a Framework for Setting Ecodesign Requirements for Sustainable Products (ESPR)</em>. Brussels: COM/2022/142."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <rect x="10" y="4" width="36" height="32" rx="4" fill="rgba(217,119,6,0.1)" stroke="#D97706" stroke-width="2"/>
-  <rect x="14" y="8" width="12" height="12" rx="2" fill="rgba(217,119,6,0.2)" stroke="#D97706" stroke-width="1.5"/>
-  <rect x="14" y="8" width="5" height="5" rx="1" fill="#D97706"/>
-  <rect x="21" y="8" width="5" height="5" rx="1" fill="#D97706"/>
-  <rect x="14" y="15" width="5" height="5" rx="1" fill="#D97706"/>
-  <rect x="21" y="15" width="5" height="5" rx="1" fill="none" stroke="#D97706" stroke-width="1"/>
-  <line x1="30" y1="10" x2="42" y2="10" stroke="#D97706" stroke-width="1.5"/>
-  <line x1="30" y1="14" x2="38" y2="14" stroke="rgba(217,119,6,0.5)" stroke-width="1"/>
-  <line x1="30" y1="20" x2="42" y2="20" stroke="rgba(217,119,6,0.5)" stroke-width="1"/>
-  <line x1="30" y1="24" x2="36" y2="24" stroke="rgba(217,119,6,0.35)" stroke-width="1"/>
-  <rect x="8" y="38" width="40" height="4" rx="2" fill="#D97706" opacity="0.8"/>
-  <text x="28" y="41" text-anchor="middle" font-size="4" fill="white" font-weight="700">EU DPP 2025</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">Digital Product Passport (DPP)</div><div class="fw-card-desc">EU 2025 mandate: QR-accessible product data on materials, origin, repairability and recycling routes</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(217,119,6,0.12);color:#D97706;">Slibrary 17</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#D97706;" data-color="#D97706" data-rgb="217,119,6" data-sl="17" data-unit="MLUXR302 · Unit 6" data-setname="Future Trends" data-name="Blockchain in Supply Chain" data-itten="Itten: Warm Gold — Synthesis, illumination" data-lead="A distributed ledger technology creating tamper-proof, transparent records of supply chain transactions — enabling provenance verification that was previously impossible at garment level." data-sub="Immutability · transparency · decentralisation: three properties that make blockchain a supply chain trust architecture" data-b1="Immutability → once recorded, supply chain events (material origin, factory certification, shipping) cannot be altered; provides tamper-proof provenance that self-declaration systems cannot match" data-b2="Transparency → all authorised participants in the supply chain see the same data simultaneously, eliminating information asymmetry between brands, suppliers, auditors and consumers" data-b3="Decentralisation → no single party controls the ledger; data is distributed across all participants, reducing the risk that a single actor can manipulate records or create a single point of failure" data-b4="Fashion pilots → LVMH&#39;s Aura Blockchain Consortium (luxury product authenticity), Martine Jarlgaard (wool provenance tracing), Burberry (product authentication), Everledger (gemstone origin)" data-ref="Tapscott, D. and Tapscott, A. (2016) <em>Blockchain Revolution: How the Technology Behind Bitcoin and Other Cryptocurrencies Is Changing the World</em>. New York: Portfolio/Penguin."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <rect x="4" y="14" width="10" height="16" rx="3" fill="rgba(217,119,6,0.25)" stroke="#D97706" stroke-width="1.5"/>
-  <line x1="14" y1="22" x2="17" y2="22" stroke="#D97706" stroke-width="2"/><rect x="17" y="14" width="10" height="16" rx="3" fill="rgba(217,119,6,0.4)" stroke="#D97706" stroke-width="1.5"/>
-  <line x1="27" y1="22" x2="30" y2="22" stroke="#D97706" stroke-width="2"/><rect x="30" y="14" width="10" height="16" rx="3" fill="rgba(217,119,6,0.55)" stroke="#D97706" stroke-width="1.5"/>
-  <line x1="40" y1="22" x2="43" y2="22" stroke="#D97706" stroke-width="2"/><rect x="43" y="14" width="10" height="16" rx="3" fill="rgba(217,119,6,0.7)" stroke="#D97706" stroke-width="1.5"/>
-  
-  <text x="28" y="10" text-anchor="middle" font-size="4.5" fill="#D97706" font-weight="700">IMMUTABLE LEDGER</text>
-  <text x="28" y="44" text-anchor="middle" font-size="4.5" fill="#D97706" font-weight="700">BLOCKCHAIN</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">Blockchain in Supply Chain</div><div class="fw-card-desc">Immutable ledger for provenance verification — pilots at LVMH (Aura), Martine Jarlgaard, Burberry</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(217,119,6,0.12);color:#D97706;">Slibrary 17</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#D97706;" data-color="#D97706" data-rgb="217,119,6" data-sl="17" data-unit="MLUXR302 · Unit 6" data-setname="Future Trends" data-name="Resale Market Growth Curve" data-itten="Itten: Warm Gold — Synthesis, illumination" data-lead="The most significant structural shift in fashion retail in a decade — the secondhand apparel market growing 11× faster than primary fashion, driven by Gen Z values, digital platforms and sustainability positioning." data-sub="$350B by 2027 · growing 11× faster than primary retail · sustainability + value convergence" data-b1="Scale → global secondhand apparel market valued at $177B in 2022, projected to reach $350B by 2027; crossing the $250B fast fashion market size within this period (ThredUp, 2023)" data-b2="Platform economy → digital resale platforms (Vestiaire Collective, Depop, Vinted, The RealReal) have lowered transaction costs and expanded access from niche consignment to mass market" data-b3="Brand response → luxury brands launching owned resale (Hermès Victoria, Gucci Vault, Rolex Certified Pre-Owned); mass brands partnering with resale platforms (H&M × Sellpy, Zara Pre-Owned)" data-b4="Investment implications → brands that design for resale value (quality construction, timeless aesthetic, repairability) benefit from the resale premium as a brand equity indicator and marketing tool" data-ref="ThredUp (2023) <em>2023 Resale Report</em>. Oakland, CA: ThredUp Inc."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <polyline points="4,38 14,36 24,32 34,24 44,14 52,8" fill="none" stroke="#D97706" stroke-width="2.5" stroke-linecap="round"/>
-  <polyline points="4,38 14,37 24,36 34,35 44,34 52,33" fill="none" stroke="rgba(217,119,6,0.3)" stroke-width="1.5" stroke-dasharray="3,2"/>
-  <text x="40" y="12" font-size="4.5" fill="#D97706" font-weight="700">$350B</text>
-  <text x="28" y="44" text-anchor="middle" font-size="4.5" fill="#D97706" font-weight="700">RESALE 11× GROWTH</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">Resale Market Growth Curve</div><div class="fw-card-desc">Projected to reach $350B by 2027 — secondhand on track to exceed fast fashion within a decade</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(217,119,6,0.12);color:#D97706;">Slibrary 17</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#D97706;" data-color="#D97706" data-rgb="217,119,6" data-sl="17" data-unit="MLUXR302 · Unit 6" data-setname="Future Trends" data-name="Fashion-as-a-Service (FaaS)" data-itten="Itten: Warm Gold — Synthesis, illumination" data-lead="A circular business model innovation that separates the value of fashion from the ownership of garments — enabling consumers to access clothing as a service rather than purchasing it as a product." data-sub="Rental · subscription · peer-to-peer: three models delivering fashion without ownership" data-b1="Per-occasion rental → designer and occasion wear available for daily hire; brands: Rent the Runway (US), Rotaro (UK), My Wardrobe HQ (UK); reduces total wardrobe volume and enables access to quality" data-b2="Subscription curated wardrobe → monthly curated package of garments, returned and replaced each period; Nuuly (US), Le Tote (US); brand retains ownership and designs for durability" data-b3="Peer-to-peer rental → individual owners list garments for daily hire; By Rotation (UK) enables individual rental with brand royalty mechanism; decentralised, no brand inventory required" data-b4="Business model sustainability → FaaS requires design for durability (high-quality construction, easy repair), circular logistics infrastructure and pricing that captures utilisation value rather than one-time sale" data-ref="Accenture (2019) <em>Fashion as a Service: Making the Business Case for Sustainability in the Fashion Industry</em>. New York: Accenture Strategy."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <path d="M10,22 A18,18 0 1,1 46,22" fill="none" stroke="#D97706" stroke-width="3" stroke-linecap="round"/>
-  <polygon points="10,28 4,20 16,18" fill="#D97706"/>
-  <text x="28" y="22" text-anchor="middle" font-size="5" fill="#D97706" font-weight="900">FaaS</text>
-  <text x="28" y="30" text-anchor="middle" font-size="4" fill="rgba(217,119,6,0.7)">rent·sub·share</text>
-  <text x="28" y="44" text-anchor="middle" font-size="4.5" fill="#D97706" font-weight="700">ACCESS NOT OWNERSHIP</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">Fashion-as-a-Service (FaaS)</div><div class="fw-card-desc">Rental, subscription and circular ownership models — Rent the Runway, By Rotation and designer hire</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(217,119,6,0.12);color:#D97706;">Slibrary 17</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#D97706;" data-color="#D97706" data-rgb="217,119,6" data-sl="17" data-unit="MLUXR302 · Unit 6" data-setname="Future Trends" data-name="AI + Sustainability Intelligence" data-itten="Itten: Warm Gold — Synthesis, illumination" data-lead="The convergence of artificial intelligence with sustainability strategy — enabling fashion brands to predict, measure and reduce environmental and social impacts at a scale and precision previously impossible." data-sub="Demand prediction · zero-waste design · supply chain auditing: three AI-powered sustainability applications" data-b1="Demand prediction → machine learning models reduce overproduction by 30–40% through season-level demand forecasting; overproduction accounts for 30% of all garments produced; AI reduction is the largest available intervention" data-b2="Zero-waste design → generative AI creates optimised pattern layouts achieving near-zero cutting waste; AI-powered 3D sampling eliminates physical sample production, reducing pre-production waste by 80%" data-b3="Supply chain audit intelligence → AI flags anomalous patterns in factory data (sudden efficiency spikes, workforce composition changes) suggesting forced overtime, underage workers or subcontracting" data-b4="Material innovation → AI accelerates identification of sustainable material formulations by screening millions of molecular combinations; reduces the 6-year development cycle for new sustainable fibres" data-ref="McKinsey and Company (2023) <em>Generative AI: Unlocking the Future of Fashion</em>. New York: McKinsey and Company."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <rect x="10" y="6" width="36" height="24" rx="4" fill="rgba(217,119,6,0.15)" stroke="#D97706" stroke-width="1.5"/>
-  <line x1="18" y1="10" x2="18" y2="26" stroke="rgba(217,119,6,0.3)" stroke-width="1"/>
-  <line x1="14" y1="14" x2="42" y2="14" stroke="rgba(217,119,6,0.3)" stroke-width="1"/><line x1="28" y1="10" x2="28" y2="26" stroke="rgba(217,119,6,0.3)" stroke-width="1"/>
-  <line x1="14" y1="20" x2="42" y2="20" stroke="rgba(217,119,6,0.3)" stroke-width="1"/><line x1="38" y1="10" x2="38" y2="26" stroke="rgba(217,119,6,0.3)" stroke-width="1"/>
-  <line x1="14" y1="26" x2="42" y2="26" stroke="rgba(217,119,6,0.3)" stroke-width="1"/>
-  <circle cx="28" cy="18" r="5" fill="#D97706" opacity="0.8"/>
-  <text x="28" y="20" text-anchor="middle" font-size="4" fill="white" font-weight="700">AI</text>
-  <text x="28" y="40" text-anchor="middle" font-size="4.5" fill="#D97706" font-weight="700">−40% OVERPRODUCTION</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">AI + Sustainability Intelligence</div><div class="fw-card-desc">Predictive demand → zero overproduction; generative design → zero-waste patterns; AI auditing</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(217,119,6,0.12);color:#D97706;">Slibrary 17</span><span class="fw-arrow">&#8594;</span></div></div></div></div><div class="set-section"><div class="set-hdr"><h2><div class="set-num" style="background:#D97706">18</div>Set 18 — Innovation & Impact Evaluation</h2><span class="set-tag">5 frameworks &middot; click any card to explore</span></div><div class="fw-grid"><div class="fw-card" style="border-top-color:#D97706;" data-color="#D97706" data-rgb="217,119,6" data-sl="18" data-unit="MLUXR302 · Unit 6" data-setname="Innovation & Impact Evaluation" data-name="Innovation Diffusion Curve" data-itten="Itten: Warm Gold — Synthesis, illumination" data-lead="Rogers&#39; five-segment adoption model applied to sustainable fashion — revealing where different brands sit on the journey from pioneering innovation to mainstream compliance to laggard resistance." data-sub="Innovators (2.5%) → Early Adopters (13.5%) → Early Majority (34%) → Late Majority (34%) → Laggards (16%)" data-b1="Innovators (2.5%) → Patagonia, Eileen Fisher, Freitag, Marine Serre: pioneering circular models before commercial proof; accepting of failure; driven by conviction not business case" data-b2="Early Adopters (13.5%) → Stella McCartney, Veja, Nudie Jeans: adopting sustainability as strategic differentiator; opinion leaders whose credibility de-risks adoption for the majority" data-b3="Early and Late Majority (68%) → H&M, Zara, M&S: adopting once business case is established; driven by competitive pressure and regulatory requirement rather than conviction" data-b4="Laggards (16%) → brands still resisting the circular and sustainable transition; highest exposure to CSRD, Green Claims Directive and Supply Chain Due Diligence enforcement" data-ref="Rogers, E.M. (1962) <em>Diffusion of Innovations</em>. New York: Free Press."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <path d="M4,38 Q10,38 14,30 Q20,10 28,10 Q36,10 42,30 Q46,38 52,38" fill="rgba(217,119,6,0.2)" stroke="#D97706" stroke-width="2"/>
-  <line x1="16" y1="6" x2="16" y2="40" stroke="#D97706" stroke-width="1" stroke-dasharray="2,2"/>
-  <line x1="40" y1="6" x2="40" y2="40" stroke="#D97706" stroke-width="1" stroke-dasharray="2,2"/>
-  <text x="10" y="8" text-anchor="middle" font-size="4" fill="#D97706" font-weight="700">IN</text>
-  <text x="28" y="8" text-anchor="middle" font-size="4" fill="#D97706">MAJORITY</text>
-  <text x="48" y="8" text-anchor="middle" font-size="4" fill="#D97706">LAG</text>
-  <text x="28" y="44" text-anchor="middle" font-size="4" fill="#D97706">Rogers 1962</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">Innovation Diffusion Curve</div><div class="fw-card-desc">Innovators (2.5%) → Early Adopters → Early Majority → Late Majority → Laggards — where is fashion sustainability?</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(217,119,6,0.12);color:#D97706;">Slibrary 18</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#D97706;" data-color="#D97706" data-rgb="217,119,6" data-sl="18" data-unit="MLUXR302 · Unit 6" data-setname="Innovation & Impact Evaluation" data-name="Impact Measurement Hierarchy" data-itten="Itten: Warm Gold — Synthesis, illumination" data-lead="A logic model framework that distinguishes between what a programme produces and what it genuinely achieves — preventing the confusion of activity with impact that characterises much sustainability reporting." data-sub="Input → Activity → Output → Outcome → Impact: the logic chain from resource to system change" data-b1="Input → resources invested: money, time, materials, expertise deployed in the sustainability programme or intervention" data-b2="Output → what the programme produced: number of workers trained, kilograms of waste collected, tonnes of CO₂ offset, metres of sustainable fabric sourced" data-b3="Outcome → what changed as a direct result: percentage wage increase achieved, reduction in factory energy intensity, proportion of workers with improved safety awareness" data-b4="Impact → long-term system change: industry norm shifts, ecosystem restoration, poverty reduction, policy change — attribution is difficult but this is the level at which sustainability matters" data-ref="Global Impact Investing Network (2014) <em>IRIS Catalogue of Metrics Version 4.0</em>. New York: GIIN."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <rect x="14" y="6" width="28" height="5" rx="2" fill="rgba(217,119,6,0.15)"/>
-  <text x="28" y="10" text-anchor="middle" font-size="3.5" fill="#D97706">INPUT</text><rect x="12" y="13" width="32" height="5" rx="2" fill="rgba(217,119,6,0.32999999999999996)"/>
-  <text x="28" y="17" text-anchor="middle" font-size="3.5" fill="#D97706">OUTPUT</text><rect x="10" y="20" width="36" height="5" rx="2" fill="rgba(217,119,6,0.51)"/>
-  <text x="28" y="24" text-anchor="middle" font-size="3.5" fill="white">OUTCOME</text><rect x="8" y="27" width="40" height="5" rx="2" fill="rgba(217,119,6,0.6900000000000001)"/>
-  <text x="28" y="31" text-anchor="middle" font-size="3.5" fill="white">IMPACT</text><rect x="6" y="34" width="44" height="5" rx="2" fill="rgba(217,119,6,0.87)"/>
-  <text x="28" y="38" text-anchor="middle" font-size="3.5" fill="white">SYSTEM</text>
-  <text x="28" y="44" text-anchor="middle" font-size="4" fill="#D97706">GIIN 2014</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">Impact Measurement Hierarchy</div><div class="fw-card-desc">Input → Activity → Output → Outcome → Impact: distinguishing action from genuine system change</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(217,119,6,0.12);color:#D97706;">Slibrary 18</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#D97706;" data-color="#D97706" data-rgb="217,119,6" data-sl="18" data-unit="MLUXR302 · Unit 6" data-setname="Innovation & Impact Evaluation" data-name="Net Positive Ambition Framework" data-itten="Itten: Warm Gold — Synthesis, illumination" data-lead="A paradigm shift from &#39;do less harm&#39; to &#39;give more than you take&#39; — a business strategy that commits to leaving ecosystems, communities and people better off than they were before the company&#39;s operations." data-sub="Beyond net zero: restore more than you extract · employ more than you displace · regenerate more than you consume" data-b1="Net positive principle → for every unit of environmental or social value consumed, the company commits to restoring or creating more than one unit — a net gain, not neutrality" data-b2="Scope of commitment → extends beyond carbon to include water (net positive water), biodiversity (net positive nature), social value (net positive livelihoods) and community (net positive community)" data-b3="Leading examples → Interface (Carpet) committed to being climate positive by 2040; Patagonia&#39;s 2022 ownership transfer to climate trust is a governance expression of net positive commitment" data-b4="Measurement challenge → net positive claims require robust baselines, verified measurement and clear attribution; currently no single universally accepted standard exists for net positive claims" data-ref="Polman, P. and Winston, A. (2021) <em>Net Positive: How Courageous Companies Thrive by Giving More than They Take</em>. Boston: Harvard Business Review Press."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <line x1="4" y1="28" x2="52" y2="28" stroke="rgba(217,119,6,0.3)" stroke-width="1.5" stroke-dasharray="3,2"/>
-  <text x="4" y="26" font-size="5" fill="rgba(217,119,6,0.4)">NET ZERO</text>
-  <rect x="20" y="8" width="16" height="18" rx="3" fill="#D97706" opacity="0.8"/>
-  <text x="28" y="19" text-anchor="middle" font-size="5" fill="white" font-weight="900">+</text>
-  <text x="28" y="42" text-anchor="middle" font-size="4.5" fill="#D97706" font-weight="700">GIVE MORE THAN TAKE</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">Net Positive Ambition Framework</div><div class="fw-card-desc">Beyond net zero: regenerating ecosystems, restoring communities — Hawken's 'Drawdown' applied to fashion</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(217,119,6,0.12);color:#D97706;">Slibrary 18</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#D97706;" data-color="#D97706" data-rgb="217,119,6" data-sl="18" data-unit="MLUXR302 · Unit 6" data-setname="Innovation & Impact Evaluation" data-name="Freitag Circularity Model" data-itten="Itten: Warm Gold — Synthesis, illumination" data-lead="A proof of concept that radical material circularity and premium brand positioning are not merely compatible — that constraint, fully embraced, becomes the most powerful brand story." data-sub="Truck tarp → bag → swap platform → F-ABRIC: 30 years of 100% circular brand building" data-b1="Source → used truck tarpaulins collected from European hauliers (average age 5+ years), discarded bicycle inner tubes and car seatbelts; 100% pre-consumer or post-consumer waste from the start" data-b2="Make → cleaned, cut and hand-sewn in Zurich and on-site in Rüti; no dyeing, no coating, no new colour — the tarp arrives with its colour and design; each bag is unique by definition" data-b3="Return → SWAP store concept (2019) enables peer-to-peer bag exchange with store credit; F-ABRIC line (bast-fibre garments) designed for composting at end-of-life; zero waste to landfill target" data-b4="Brand lesson → Freitag&#39;s material transparency (each bag&#39;s origin tarp is photographed and documented) pre-empts greenwashing because the product is the communication — no claims, only evidence" data-ref="Freitag (2023) <em>FREITAG: Annual Sustainability Report 2023</em>. Zurich: Freitag Lab AG."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <rect x="4" y="8" width="16" height="10" rx="2" fill="rgba(217,119,6,0.3)" stroke="#D97706" stroke-width="1.5"/>
-  <polygon points="20,13 28,10 28,16" fill="#D97706" opacity="0.7"/>
-  <rect x="28" y="8" width="12" height="10" rx="2" fill="rgba(217,119,6,0.5)" stroke="#D97706" stroke-width="1.5"/>
-  <polygon points="40,13 48,10 48,16" fill="#D97706" opacity="0.7"/>
-  <circle cx="48" cy="13" r="5" fill="#D97706" opacity="0.8"/>
-  <path d="M48,18 Q48,30 28,30 Q8,30 8,18" fill="none" stroke="#D97706" stroke-width="2" stroke-dasharray="3,2"/>
-  <polygon points="6,17 10,23 14,17" fill="#D97706" opacity="0.6"/>
-  <text x="28" y="44" text-anchor="middle" font-size="4.5" fill="#D97706" font-weight="700">FREITAG 100% CIRC.</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">Freitag Circularity Model</div><div class="fw-card-desc">Truck tarp sourcing → zero dye → F-ABRIC fibre system → swap platform — 100% circular brand blueprint</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(217,119,6,0.12);color:#D97706;">Slibrary 18</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#D97706;" data-color="#D97706" data-rgb="217,119,6" data-sl="18" data-unit="MLUXR302 · Unit 6" data-setname="Innovation & Impact Evaluation" data-name="Sustainable Luxury Future Scenarios" data-itten="Itten: Warm Gold — Synthesis, illumination" data-lead="Four plausible worlds for sustainable luxury in 2040 — developed through scenario planning methodology — providing strategic frameworks for resilient decision-making under uncertainty." data-sub="Green Elite · Mass Circular · Regulated Minimum · Collapse: four 2040 worlds for luxury strategy" data-b1="Green Elite (2040) → sustainability becomes the new exclusivity signal; luxury fully circular; consumers pay significant premiums for verified regenerative provenance; Hermès and Stella McCartney models scale" data-b2="Mass Circular (2040) → regulation forces circular transition across all price segments; DPP, EPR schemes and Green Claims enforcement level the playing field; circular infrastructure is normalised" data-b3="Regulated Minimum (2040) → brands do exactly what the law requires and no more; compliance-driven transformation; CSRD and Supply Chain Directive create floor but not ceiling of performance" data-b4="Collapse (2040) → accelerating climate change disrupts raw material supply chains; physical risk (drought, flood, extreme heat) in key sourcing regions forces crisis-driven supply chain redesign" data-ref="Schwartz, P. (1996) <em>The Art of the Long View: Planning for the Future in an Uncertain World</em>. New York: Doubleday Currency."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <rect x="4" y="4" width="23" height="17" rx="2" fill="#D97706" opacity="0.7"/>
-  <rect x="29" y="4" width="23" height="17" rx="2" fill="rgba(217,119,6,0.5)"/>
-  <rect x="4" y="23" width="23" height="17" rx="2" fill="rgba(217,119,6,0.35)" stroke="#D97706" stroke-width="1"/>
-  <rect x="29" y="23" width="23" height="17" rx="2" fill="rgba(217,119,6,0.2)" stroke="#D97706" stroke-width="1"/>
-  <text x="15" y="14" text-anchor="middle" font-size="3.5" fill="white" font-weight="700">GREEN ELITE</text>
-  <text x="40" y="14" text-anchor="middle" font-size="3.5" fill="white">MASS CIRC.</text>
-  <text x="15" y="33" text-anchor="middle" font-size="3.5" fill="#D97706">REG. MIN.</text>
-  <text x="40" y="33" text-anchor="middle" font-size="3.5" fill="#D97706">COLLAPSE</text>
-  <text x="28" y="44" text-anchor="middle" font-size="4" fill="#D97706">2040 SCENARIOS</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">Sustainable Luxury Future Scenarios</div><div class="fw-card-desc">Four 2040 worlds: Green Elite, Mass Circular, Regulated Minimum, Collapse — scenario planning for strategy</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(217,119,6,0.12);color:#D97706;">Slibrary 18</span><span class="fw-arrow">&#8594;</span></div></div></div></div><p style="text-align:center;font-size:11px;color:var(--muted);margin-bottom:48px;"><strong>MLUXR302</strong> &middot; &copy; 2026 Dr. Hildegard Haas &middot; EU Business School</p>
-</div></main>
-<footer class="site-footer">
-  <div class="container">
-    <strong>&copy; Dr. Hildegard Haas</strong> &middot; MLUXR302 Sustainable Value Creation in Fashion &amp; Luxury &middot; EU Business School<br/>
-    All rights reserved
-  </div>
-</footer>
-
-<div id="modal-overlay">
-  <div id="modal-box">
-    <div id="modal-color-bar"></div>
-    <div id="modal-inner">
-      <div id="modal-header">
-        <div id="modal-header-left">
-          <div id="modal-label-row">
-            <span id="m-slibrary-header"></span>
-            <span id="m-unit-badge"></span>
+<main style="padding:2rem 1.5rem 1rem">
+<div class="slib-set">
+      <div class="slib-set-header" data-anim>
+        <span class="slib-dot" style="background:#D97706"></span>
+        <span class="slib-set-title">Set 21 &mdash; AI in Investment Management</span>
+        <span class="slib-set-num">5 frameworks</span>
+      </div>
+      <div class="cards-grid"><div class="card" data-anim style="transition-delay:0ms" onclick="openModal(FW[0])">
+          <div class="card-accent" style="background:#D97706"></div>
+          <div class="card-thumb" id="thumb-21-0"></div>
+          <div class="card-body">
+            <div class="card-title">Investment Mgmt Value Chain</div>
+            <div class="card-desc">Research → Construction → Execution → Risk → Reporting</div>
+            <span class="card-tag" style="background:#D97706">Slibrary 21</span>
           </div>
-          <h2 id="m-title"></h2>
-          <div id="m-itten-line"></div>
-        </div>
-        <button id="modal-close" aria-label="Close">&#x2715;</button>
+        </div><div class="card" data-anim style="transition-delay:80ms" onclick="openModal(FW[1])">
+          <div class="card-accent" style="background:#D97706"></div>
+          <div class="card-thumb" id="thumb-21-1"></div>
+          <div class="card-body">
+            <div class="card-title">AI Use Case Taxonomy (Finance)</div>
+            <div class="card-desc">Front / middle / back office tree with specific applications</div>
+            <span class="card-tag" style="background:#D97706">Slibrary 21</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:160ms" onclick="openModal(FW[2])">
+          <div class="card-accent" style="background:#D97706"></div>
+          <div class="card-thumb" id="thumb-21-2"></div>
+          <div class="card-body">
+            <div class="card-title">Robo-Advisory Architecture</div>
+            <div class="card-desc">Client profiling → asset allocation → rebalancing loop</div>
+            <span class="card-tag" style="background:#D97706">Slibrary 21</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:240ms" onclick="openModal(FW[3])">
+          <div class="card-accent" style="background:#D97706"></div>
+          <div class="card-thumb" id="thumb-21-3"></div>
+          <div class="card-body">
+            <div class="card-title">Alpha Generation Pipeline</div>
+            <div class="card-desc">Data → signal extraction → portfolio with ML at signal stage</div>
+            <span class="card-tag" style="background:#D97706">Slibrary 21</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:320ms" onclick="openModal(FW[4])">
+          <div class="card-accent" style="background:#D97706"></div>
+          <div class="card-thumb" id="thumb-21-4"></div>
+          <div class="card-body">
+            <div class="card-title">Muldowney ML Adoption Model</div>
+            <div class="card-desc">Data cleaning → pattern capture → NLP themes</div>
+            <span class="card-tag" style="background:#D97706">Slibrary 21</span>
+          </div>
+        </div></div></div><div class="slib-set">
+      <div class="slib-set-header" data-anim>
+        <span class="slib-dot" style="background:#DC2626"></span>
+        <span class="slib-set-title">Set 22 &mdash; Portfolio Optimisation & ML</span>
+        <span class="slib-set-num">5 frameworks</span>
       </div>
-      <blockquote id="modal-lead"><p id="m-lead-text"></p></blockquote>
-      <p id="m-sub-text"></p>
-      <div id="modal-bullets">
-        <div class="m-bullet-item"><span class="m-dot"></span><span class="m-bullet-text" id="m-b1"></span></div>
-        <hr class="m-divider"/>
-        <div class="m-bullet-item"><span class="m-dot"></span><span class="m-bullet-text" id="m-b2"></span></div>
-        <hr class="m-divider"/>
-        <div class="m-bullet-item"><span class="m-dot"></span><span class="m-bullet-text" id="m-b3"></span></div>
-        <hr class="m-divider"/>
-        <div class="m-bullet-item"><span class="m-dot"></span><span class="m-bullet-text" id="m-b4"></span></div>
+      <div class="cards-grid"><div class="card" data-anim style="transition-delay:0ms" onclick="openModal(FW[5])">
+          <div class="card-accent" style="background:#DC2626"></div>
+          <div class="card-thumb" id="thumb-22-0"></div>
+          <div class="card-body">
+            <div class="card-title">MPT Efficient Frontier</div>
+            <div class="card-desc">Risk × return curve with capital market line</div>
+            <span class="card-tag" style="background:#DC2626">Slibrary 22</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:80ms" onclick="openModal(FW[6])">
+          <div class="card-accent" style="background:#DC2626"></div>
+          <div class="card-thumb" id="thumb-22-1"></div>
+          <div class="card-body">
+            <div class="card-title">Black-Litterman Model</div>
+            <div class="card-desc">Market equilibrium + investor views blended into allocation</div>
+            <span class="card-tag" style="background:#DC2626">Slibrary 22</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:160ms" onclick="openModal(FW[7])">
+          <div class="card-accent" style="background:#DC2626"></div>
+          <div class="card-thumb" id="thumb-22-2"></div>
+          <div class="card-body">
+            <div class="card-title">ML-Enhanced Risk-Return 2×2</div>
+            <div class="card-desc">Traditional vs. ML-enhanced across four domains</div>
+            <span class="card-tag" style="background:#DC2626">Slibrary 22</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:240ms" onclick="openModal(FW[8])">
+          <div class="card-accent" style="background:#DC2626"></div>
+          <div class="card-thumb" id="thumb-22-3"></div>
+          <div class="card-body">
+            <div class="card-title">Factor Investing Architecture</div>
+            <div class="card-desc">Value, momentum, quality, size, volatility factor bars</div>
+            <span class="card-tag" style="background:#DC2626">Slibrary 22</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:320ms" onclick="openModal(FW[9])">
+          <div class="card-accent" style="background:#DC2626"></div>
+          <div class="card-thumb" id="thumb-22-4"></div>
+          <div class="card-body">
+            <div class="card-title">Backtesting Validation Loop</div>
+            <div class="card-desc">Train → validate → test → deploy → monitor</div>
+            <span class="card-tag" style="background:#DC2626">Slibrary 22</span>
+          </div>
+        </div></div></div><div class="slib-set">
+      <div class="slib-set-header" data-anim>
+        <span class="slib-dot" style="background:#059669"></span>
+        <span class="slib-set-title">Set 23 &mdash; Financial Analysis & Modelling</span>
+        <span class="slib-set-num">5 frameworks</span>
       </div>
-      <div id="modal-reference">
-        <div id="modal-ref-label">REFERENCE</div>
-        <p id="m-ref-text"></p>
+      <div class="cards-grid"><div class="card" data-anim style="transition-delay:0ms" onclick="openModal(FW[10])">
+          <div class="card-accent" style="background:#059669"></div>
+          <div class="card-thumb" id="thumb-23-0"></div>
+          <div class="card-body">
+            <div class="card-title">AI Financial Analysis Stack</div>
+            <div class="card-desc">Data → features → models → predictions → decisions → execution</div>
+            <span class="card-tag" style="background:#059669">Slibrary 23</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:80ms" onclick="openModal(FW[11])">
+          <div class="card-accent" style="background:#059669"></div>
+          <div class="card-thumb" id="thumb-23-1"></div>
+          <div class="card-body">
+            <div class="card-title">Sentiment-Driven Alpha</div>
+            <div class="card-desc">News/social → NLP → sentiment score → trading signal</div>
+            <span class="card-tag" style="background:#059669">Slibrary 23</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:160ms" onclick="openModal(FW[12])">
+          <div class="card-accent" style="background:#059669"></div>
+          <div class="card-thumb" id="thumb-23-2"></div>
+          <div class="card-body">
+            <div class="card-title">Alternative Data Integration</div>
+            <div class="card-desc">Satellite, social, web, IoT, credit card sources → central model</div>
+            <span class="card-tag" style="background:#059669">Slibrary 23</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:240ms" onclick="openModal(FW[13])">
+          <div class="card-accent" style="background:#059669"></div>
+          <div class="card-thumb" id="thumb-23-3"></div>
+          <div class="card-body">
+            <div class="card-title">NLP for Earnings Calls</div>
+            <div class="card-desc">Audio → transcript → entities → sentiment → signal</div>
+            <span class="card-tag" style="background:#059669">Slibrary 23</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:320ms" onclick="openModal(FW[14])">
+          <div class="card-accent" style="background:#059669"></div>
+          <div class="card-thumb" id="thumb-23-4"></div>
+          <div class="card-body">
+            <div class="card-title">AI-Driven Risk Model Layers</div>
+            <div class="card-desc">Market → credit → operational risk with AI at each level</div>
+            <span class="card-tag" style="background:#059669">Slibrary 23</span>
+          </div>
+        </div></div></div><div class="slib-set">
+      <div class="slib-set-header" data-anim>
+        <span class="slib-dot" style="background:#7C3AED"></span>
+        <span class="slib-set-title">Set 24 &mdash; Plan-to-Implementation</span>
+        <span class="slib-set-num">5 frameworks</span>
       </div>
-    </div>
-  </div>
+      <div class="cards-grid"><div class="card" data-anim style="transition-delay:0ms" onclick="openModal(FW[15])">
+          <div class="card-accent" style="background:#7C3AED"></div>
+          <div class="card-thumb" id="thumb-24-0"></div>
+          <div class="card-body">
+            <div class="card-title">Planning vs. Implementation Gap</div>
+            <div class="card-desc">Ambition bar vs. delivery bar with barrier zone</div>
+            <span class="card-tag" style="background:#7C3AED">Slibrary 24</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:80ms" onclick="openModal(FW[16])">
+          <div class="card-accent" style="background:#7C3AED"></div>
+          <div class="card-thumb" id="thumb-24-1"></div>
+          <div class="card-body">
+            <div class="card-title">AI Readiness Assessment Radar</div>
+            <div class="card-desc">Spider chart: data, talent, tech, governance, culture axes</div>
+            <span class="card-tag" style="background:#7C3AED">Slibrary 24</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:160ms" onclick="openModal(FW[17])">
+          <div class="card-accent" style="background:#7C3AED"></div>
+          <div class="card-thumb" id="thumb-24-2"></div>
+          <div class="card-body">
+            <div class="card-title">Change Management Flywheel</div>
+            <div class="card-desc">Vision → quick wins → momentum → embedding cycle</div>
+            <span class="card-tag" style="background:#7C3AED">Slibrary 24</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:240ms" onclick="openModal(FW[18])">
+          <div class="card-accent" style="background:#7C3AED"></div>
+          <div class="card-thumb" id="thumb-24-3"></div>
+          <div class="card-body">
+            <div class="card-title">Pilot-to-Scale Staircase</div>
+            <div class="card-desc">POC → pilot → production → enterprise with gates</div>
+            <span class="card-tag" style="background:#7C3AED">Slibrary 24</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:320ms" onclick="openModal(FW[19])">
+          <div class="card-accent" style="background:#7C3AED"></div>
+          <div class="card-thumb" id="thumb-24-4"></div>
+          <div class="card-body">
+            <div class="card-title">Investment AI Maturity Model</div>
+            <div class="card-desc">Manual → assisted → augmented → autonomous</div>
+            <span class="card-tag" style="background:#7C3AED">Slibrary 24</span>
+          </div>
+        </div></div></div>
+</main>
+<footer class="footer">
+  <strong>MARTI301</strong> &middot; AI in Investment &amp; Competitiveness &middot; &copy; 2026 Dr. Hildegard Haas<br>
+  Applying JD Meier&rsquo;s <strong>Thumbnail Thinking</strong> (2025) &middot; Unit 6: Finance & Investment Plans
+</footer>
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modal"></div>
 </div>
+<script>
+const FW = [
+{"name":"Investment Mgmt Value Chain","def":"An end-to-end process model for investment management with AI at each node.","desc":"Research → Construction → Execution → Risk → Reporting","shape":"pipeline","details":["End-to-end investment process","AI touchpoints at each stage","Automation potential assessment","Where human judgment stays essential"],"ref":"Muldowney, P. (2023) 'The impact of technology and AI on investment management', Plans & Trusts, 41(6), pp. 8–13.","slibTitle":"AI in Investment Management","slibNum":21,"color":"#D97706"},
+{"name":"AI Use Case Taxonomy (Finance)","def":"A hierarchical classification of AI applications in finance by office function.","desc":"Front / middle / back office tree with specific applications","shape":"tree","details":["Tree: office function → use cases","Leaf nodes: specific AI applications","Prioritisation heatmap overlay","Comprehensive scope mapping"],"ref":"Cao, L.J. (2022) 'AI in Finance', ACM Computing Surveys, 55(3), pp. 1–38.","slibTitle":"AI in Investment Management","slibNum":21,"color":"#D97706"},
+{"name":"Robo-Advisory Architecture","def":"An automated wealth management system: client profiling, asset allocation, periodic rebalancing.","desc":"Client profiling → asset allocation → rebalancing loop","shape":"cycle","details":["Automated feedback loop","Human override layer on top","Democratises wealth management","Regulatory requirements layer"],"ref":"D'Acunto, F. and Rossi, A.G. (2021) 'New frontiers of robo-advising', Handbook of Financial Technology.","slibTitle":"AI in Investment Management","slibNum":21,"color":"#D97706"},
+{"name":"Alpha Generation Pipeline","def":"A systematic investment pipeline where alternative data feeds differentiate returns via ML signal extraction.","desc":"Data → signal extraction → portfolio with ML at signal stage","shape":"pipeline","details":["Alternative data feeds as differentiator","ML at signal extraction stage","López de Prado (2018) framework","Systematic vs. discretionary blend"],"ref":"López de Prado, M. (2018) Advances in Financial Machine Learning. Hoboken: Wiley.","slibTitle":"AI in Investment Management","slibNum":21,"color":"#D97706"},
+{"name":"Muldowney ML Adoption Model","def":"A three-stage model of ML adoption in investment: data cleaning, pattern capture, NLP themes—human judgment essential.","desc":"Data cleaning → pattern capture → NLP themes","shape":"stairs","details":["Early: data cleaning and narrowing","Middle: ML non-linear pattern capture","Advanced: NLP for emerging themes","Human judgment remains essential"],"ref":"Muldowney, P. (2023) 'The impact of technology and AI on investment management', Plans & Trusts, 41(6), pp. 8–13.","slibTitle":"AI in Investment Management","slibNum":21,"color":"#D97706"},
+{"name":"MPT Efficient Frontier","def":"A curve representing the set of optimal portfolios offering highest expected return for each risk level.","desc":"Risk × return curve with capital market line","shape":"scurve","details":["X: risk (std dev), Y: expected return","Curved frontier of optimal portfolios","Capital Market Line from risk-free rate","Markowitz (1952); foundation thumbnail"],"ref":"Markowitz, H.M. (1952) 'Portfolio selection', The Journal of Finance, 7(1), pp. 77–91.","slibTitle":"Portfolio Optimisation & ML","slibNum":22,"color":"#DC2626"},
+{"name":"Black-Litterman Model","def":"A portfolio allocation model blending market equilibrium returns with investor-specific views.","desc":"Market equilibrium + investor views blended into allocation","shape":"venn","details":["Two inputs merge into output allocation","Solves MVO concentration problem","AI can generate the 'views' input","Practical portfolio construction tool"],"ref":"Black, F. and Litterman, R. (1992) 'Global portfolio optimization', Financial Analysts Journal, 48(5), pp. 28–43.","slibTitle":"Portfolio Optimisation & ML","slibNum":22,"color":"#DC2626"},
+{"name":"ML-Enhanced Risk-Return 2×2","def":"A matrix comparing traditional and ML-enhanced approaches across return/risk estimation and construction/rebalancing.","desc":"Traditional vs. ML-enhanced across four domains","shape":"matrix","details":["Four quadrants of ML enhancement","Return estimation, risk estimation","Portfolio construction, rebalancing","Shows where ML improves each area"],"ref":"Gu, S., Kelly, B. and Xiu, D. (2020) 'Empirical asset pricing via machine learning', The Review of Financial Studies, 33(5), pp. 2223–2273.","slibTitle":"Portfolio Optimisation & ML","slibNum":22,"color":"#DC2626"},
+{"name":"Factor Investing Architecture","def":"A framework targeting persistent risk premia with ML enabling dynamic factor timing.","desc":"Value, momentum, quality, size, volatility factor bars","shape":"bars","details":["ML identifies dynamic factor timing","Smart beta to pure alpha spectrum","Factor rotation strategies","Integration with traditional approaches"],"ref":"Ang, A. (2014) Asset Management: A Systematic Approach to Factor Investing. New York: OUP.","slibTitle":"Portfolio Optimisation & ML","slibNum":22,"color":"#DC2626"},
+{"name":"Backtesting Validation Loop","def":"A circular validation process with overfitting detection and walk-forward methodology.","desc":"Train → validate → test → deploy → monitor","shape":"cycle","details":["Circular with feedback to retrain","Overfitting detection at validation","Walk-forward vs. static split","Essential for model credibility"],"ref":"López de Prado, M. (2018) Advances in Financial Machine Learning. Hoboken: Wiley.","slibTitle":"Portfolio Optimisation & ML","slibNum":22,"color":"#DC2626"},
+{"name":"AI Financial Analysis Stack","def":"A vertical architecture: data, feature engineering, models, predictions, decisions, execution.","desc":"Data → features → models → predictions → decisions → execution","shape":"layers","details":["Vertical stack with human checkpoints","Each layer builds on the one below","Feature engineering is the art","Execution layer closes the loop"],"ref":"Dixon, M.F., Halperin, I. and Bilokon, P. (2020) Machine Learning in Finance. Cham: Springer.","slibTitle":"Financial Analysis & Modelling","slibNum":23,"color":"#059669"},
+{"name":"Sentiment-Driven Alpha","def":"A signal pipeline: news/social → NLP → sentiment scores → trading signals.","desc":"News/social → NLP → sentiment score → trading signal","shape":"pipeline","details":["Contrarian vs. momentum strategies","Real-time vs. batch processing trade-off","Measurable alpha contribution","Growing practitioner adoption"],"ref":"Loughran, T. and McDonald, B. (2016) 'Textual analysis in accounting and finance', Journal of Accounting Research, 54(4), pp. 1187–1230.","slibTitle":"Financial Analysis & Modelling","slibNum":23,"color":"#059669"},
+{"name":"Alternative Data Integration","def":"A hub-and-spoke architecture where diverse non-traditional data sources feed a central model.","desc":"Satellite, social, web, IoT, credit card sources → central model","shape":"network","details":["Each spoke: cost, latency, legal status","Competitive edge from unique combinations","Growing data vendor ecosystem","Due diligence on each source essential"],"ref":"Kolanovic, M. and Krishnamachari, R.T. (2017) Big Data and AI Strategies. J.P. Morgan.","slibTitle":"Financial Analysis & Modelling","slibNum":23,"color":"#059669"},
+{"name":"NLP for Earnings Calls","def":"An automated pipeline: audio → transcript → entities → sentiment → predictive signal.","desc":"Audio → transcript → entities → sentiment → signal","shape":"pipeline","details":["Management tone vs. analyst tone","Hedging language signals caution","Automated across thousands of calls","Increasingly standard practice"],"ref":"Loughran, T. and McDonald, B. (2016) 'Textual analysis in accounting and finance', Journal of Accounting Research, 54(4), pp. 1187–1230.","slibTitle":"Financial Analysis & Modelling","slibNum":23,"color":"#059669"},
+{"name":"AI-Driven Risk Model Layers","def":"Stacked AI application to market risk, credit risk, and operational risk for integrated view.","desc":"Market → credit → operational risk with AI at each level","shape":"layers","details":["Three stacked risk domains","AI stress scenarios generated by ML","Links to Slibrary 14 risk management","Integrated risk view for leadership"],"ref":"Hull, J.C. (2018) Risk Management and Financial Institutions. 5th edn. Hoboken: Wiley.","slibTitle":"Financial Analysis & Modelling","slibNum":23,"color":"#059669"},
+{"name":"Planning vs. Implementation Gap","def":"A diagnostic showing the disparity between AI ambition and actual delivery, with barriers labelled.","desc":"Ambition bar vs. delivery bar with barrier zone","shape":"bars","details":["Two bars: ambition (tall) vs. delivery (short)","Gap labelled with common barriers","Data, talent, governance, culture","Core Unit 6 diagnostic thumbnail"],"ref":"Ransbotham, S. et al. (2019) 'Winning with AI', MIT Sloan Management Review and BCG.","slibTitle":"Plan-to-Implementation","slibNum":24,"color":"#7C3AED"},
+{"name":"AI Readiness Assessment Radar","def":"A spider chart evaluating preparedness across data, talent, technology, governance, and culture.","desc":"Spider chart: data, talent, tech, governance, culture axes","shape":"hexagon","details":["Current state vs. target overlay","Identifies weakest spoke","Actionable gap analysis at a glance","Customisable to any organisation"],"ref":"Fountaine, T., McCarthy, B. and Saleh, T. (2019) 'Building the AI-powered organization', Harvard Business Review, 97(4), pp. 62–73.","slibTitle":"Plan-to-Implementation","slibNum":24,"color":"#7C3AED"},
+{"name":"Change Management Flywheel","def":"A circular momentum model: vision → quick wins → momentum → embedding, each cycle reinforcing the next.","desc":"Vision → quick wins → momentum → embedding cycle","shape":"cycle","details":["Each success feeds the next","Demo value early to build trust","Kotter-inspired, adapted for AI","Continuous, not one-off transformation"],"ref":"Kotter, J.P. (2012) Leading Change. 2nd edn. Boston: Harvard Business Review Press. Adapted for AI.","slibTitle":"Plan-to-Implementation","slibNum":24,"color":"#7C3AED"},
+{"name":"Pilot-to-Scale Staircase","def":"A four-step progression—POC, pilot, production, enterprise—with governance gates between each.","desc":"POC → pilot → production → enterprise with gates","shape":"stairs","details":["Most AI projects stall at pilot","Governance gates between steps","Investment and risk increase per step","Clear criteria for progression"],"ref":"VentureBeat (2019) 'Why do 87% of data science projects never make it into production?', VentureBeat, 19 July.","slibTitle":"Plan-to-Implementation","slibNum":24,"color":"#7C3AED"},
+{"name":"Investment AI Maturity Model","def":"A four-level capability ladder: manual, assisted, augmented, autonomous.","desc":"Manual → assisted → augmented → autonomous","shape":"stairs","details":["Four capability levels","Maps to org readiness radar","Links to Slibrary 1 AI Maturity","End-state vision for leadership"],"ref":"Muldowney, P. (2023) 'The impact of technology and AI on investment management', Plans & Trusts, 41(6), pp. 8–13.","slibTitle":"Plan-to-Implementation","slibNum":24,"color":"#7C3AED"}
+];
 
-<script>
-(function(){
-  var ov=document.getElementById('modal-overlay');
-  var bx=document.getElementById('modal-box');
-  function open(card){
-    var c=card.dataset.color, rgb=card.dataset.rgb;
-    document.getElementById('modal-color-bar').style.background=c;
-    var lead=document.getElementById('modal-lead');
-    lead.style.borderLeftColor=c;
-    lead.style.background='rgba('+rgb+',0.05)';
-    document.getElementById('m-lead-text').style.color=c;
-    document.querySelectorAll('.m-dot').forEach(function(d){d.style.background=c;});
-    var ref=document.getElementById('modal-reference');
-    ref.style.borderLeftColor=c;
-    ref.style.background='rgba('+rgb+',0.07)';
-    document.getElementById('modal-ref-label').style.color=c;
-    document.getElementById('m-slibrary-header').textContent='SLIBRARY '+card.dataset.sl+' — '+card.dataset.setname;
-    document.getElementById('m-unit-badge').textContent=card.dataset.unit;
-    document.getElementById('m-title').textContent=card.dataset.name;
-    document.getElementById('m-itten-line').textContent=card.dataset.itten;
-    document.getElementById('m-lead-text').textContent=card.dataset.lead;
-    document.getElementById('m-sub-text').textContent=card.dataset.sub;
-    document.getElementById('m-b1').textContent=card.dataset.b1;
-    document.getElementById('m-b2').textContent=card.dataset.b2;
-    document.getElementById('m-b3').textContent=card.dataset.b3;
-    document.getElementById('m-b4').textContent=card.dataset.b4;
-    document.getElementById('m-ref-text').innerHTML=card.dataset.ref;
-    ov.classList.add('active');
-    document.body.style.overflow='hidden';
-    bx.scrollTop=0;
-  }
-  function close(){ov.classList.remove('active');document.body.style.overflow='';}
-  document.querySelectorAll('.fw-card').forEach(function(c){c.addEventListener('click',function(){open(c);});});
-  document.getElementById('modal-close').addEventListener('click',close);
-  ov.addEventListener('click',function(e){if(e.target===ov)close();});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
-})();
-</script>
-<script>
-document.querySelectorAll('.acc-hdr').forEach(function(h){
-  h.addEventListener('click',function(){
-    h.classList.toggle('open');
-    h.nextElementSibling.classList.toggle('open');
-  });
-});
+const SVG={
+  pyramid:c=>`<svg viewBox="0 0 200 130"><polygon points="100,10 30,120 170,120" fill="none" stroke="${c}" stroke-width="2.5" opacity=".6"/><line x1="55" y1="80" x2="145" y2="80" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="72" y1="50" x2="128" y2="50" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  cycle:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="65" r="45" fill="none" stroke="${c}" stroke-width="2.5" opacity=".5"/><polygon points="140,40 148,52 132,50" fill="${c}" opacity=".6"/><polygon points="60,90 52,78 68,80" fill="${c}" opacity=".6"/><circle cx="100" cy="20" r="4" fill="${c}" opacity=".5"/><circle cx="145" cy="65" r="4" fill="${c}" opacity=".5"/><circle cx="100" cy="110" r="4" fill="${c}" opacity=".5"/><circle cx="55" cy="65" r="4" fill="${c}" opacity=".5"/></svg>`,
+  scurve:c=>`<svg viewBox="0 0 200 130"><path d="M20,110 C50,108 70,100 90,70 S140,15 180,12" fill="none" stroke="${c}" stroke-width="2.5" opacity=".6"/><line x1="20" y1="120" x2="185" y2="120" stroke="${c}" stroke-width="1" opacity=".2"/><line x1="18" y1="10" x2="18" y2="120" stroke="${c}" stroke-width="1" opacity=".2"/></svg>`,
+  matrix:c=>`<svg viewBox="0 0 200 130"><rect x="25" y="15" width="70" height="45" rx="4" fill="${c}" opacity=".12" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="105" y="15" width="70" height="45" rx="4" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="25" y="70" width="70" height="45" rx="4" fill="${c}" opacity=".08" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="105" y="70" width="70" height="45" rx="4" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  funnel:c=>`<svg viewBox="0 0 200 130"><path d="M30,15 L170,15 L135,120 L65,120 Z" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".5"/><line x1="50" y1="50" x2="150" y2="50" stroke="${c}" stroke-width="1" opacity=".3" stroke-dasharray="4"/><line x1="58" y1="80" x2="142" y2="80" stroke="${c}" stroke-width="1" opacity=".3" stroke-dasharray="4"/></svg>`,
+  bars:c=>`<svg viewBox="0 0 200 130"><rect x="25" y="70" width="30" height="50" rx="3" fill="${c}" opacity=".25"/><rect x="65" y="40" width="30" height="80" rx="3" fill="${c}" opacity=".4"/><rect x="105" y="55" width="30" height="65" rx="3" fill="${c}" opacity=".3"/><rect x="145" y="25" width="30" height="95" rx="3" fill="${c}" opacity=".5"/><line x1="20" y1="120" x2="180" y2="120" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  arrow:c=>`<svg viewBox="0 0 200 130"><path d="M15,40 L140,40 L140,20 L185,65 L140,110 L140,90 L15,90 Z" fill="${c}" opacity=".12" stroke="${c}" stroke-width="2" opacity=".4"/></svg>`,
+  diamond:c=>`<svg viewBox="0 0 200 130"><polygon points="100,10 180,65 100,120 20,65" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".5"/><circle cx="100" cy="65" r="15" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".4"/></svg>`,
+  circle:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="65" r="50" fill="${c}" opacity=".08" stroke="${c}" stroke-width="2" opacity=".4"/><circle cx="100" cy="65" r="30" fill="${c}" opacity=".12" stroke="${c}" stroke-width="1.5" opacity=".3"/><circle cx="100" cy="65" r="12" fill="${c}" opacity=".2"/></svg>`,
+  stairs:c=>`<svg viewBox="0 0 200 130"><path d="M20,110 L20,85 L65,85 L65,60 L110,60 L110,35 L155,35 L155,15 L180,15" fill="none" stroke="${c}" stroke-width="2.5" opacity=".5"/><rect x="20" y="85" width="45" height="25" fill="${c}" opacity=".08"/><rect x="65" y="60" width="45" height="50" fill="${c}" opacity=".1"/><rect x="110" y="35" width="45" height="75" fill="${c}" opacity=".13"/><rect x="155" y="15" width="25" height="95" fill="${c}" opacity=".16"/></svg>`,
+  pipeline:c=>`<svg viewBox="0 0 200 130"><rect x="10" y="45" width="35" height="40" rx="6" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="48" y1="65" x2="60" y2="65" stroke="${c}" stroke-width="2" opacity=".4"/><rect x="63" y="45" width="35" height="40" rx="6" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="101" y1="65" x2="113" y2="65" stroke="${c}" stroke-width="2" opacity=".4"/><rect x="116" y="45" width="35" height="40" rx="6" fill="${c}" opacity=".25" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="154" y1="65" x2="166" y2="65" stroke="${c}" stroke-width="2" opacity=".4"/><rect x="169" y="45" width="22" height="40" rx="6" fill="${c}" opacity=".3" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  split:c=>`<svg viewBox="0 0 200 130"><rect x="15" y="25" width="75" height="80" rx="8" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".3"/><rect x="110" y="25" width="75" height="80" rx="8" fill="${c}" opacity=".18" stroke="${c}" stroke-width="2" opacity=".3"/><line x1="100" y1="30" x2="100" y2="100" stroke="${c}" stroke-width="2" opacity=".3" stroke-dasharray="5"/></svg>`,
+  venn:c=>`<svg viewBox="0 0 200 130"><circle cx="78" cy="65" r="42" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".35"/><circle cx="122" cy="65" r="42" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".35"/></svg>`,
+  layers:c=>`<svg viewBox="0 0 200 130"><rect x="30" y="85" width="140" height="28" rx="5" fill="${c}" opacity=".1" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="30" y="50" width="140" height="28" rx="5" fill="${c}" opacity=".17" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="30" y="15" width="140" height="28" rx="5" fill="${c}" opacity=".25" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  tree:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="22" r="12" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".4"/><line x1="100" y1="34" x2="60" y2="65" stroke="${c}" stroke-width="1.5" opacity=".35"/><line x1="100" y1="34" x2="140" y2="65" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="60" cy="70" r="10" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><circle cx="140" cy="70" r="10" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="60" y1="80" x2="40" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="60" y1="80" x2="80" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="140" y1="80" x2="120" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="140" y1="80" x2="160" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><circle cx="40" cy="110" r="7" fill="${c}" opacity=".1"/><circle cx="80" cy="110" r="7" fill="${c}" opacity=".1"/><circle cx="120" cy="110" r="7" fill="${c}" opacity=".1"/><circle cx="160" cy="110" r="7" fill="${c}" opacity=".1"/></svg>`,
+  spectrum:c=>`<svg viewBox="0 0 200 130"><rect x="15" y="50" width="170" height="30" rx="15" fill="${c}" opacity=".1" stroke="${c}" stroke-width="1.5" opacity=".3"/><circle cx="45" cy="65" r="10" fill="${c}" opacity=".15"/><circle cx="100" cy="65" r="10" fill="${c}" opacity=".25"/><circle cx="155" cy="65" r="10" fill="${c}" opacity=".4"/></svg>`,
+  network:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="65" r="14" fill="${c}" opacity=".25" stroke="${c}" stroke-width="1.5" opacity=".4"/><circle cx="45" cy="30" r="9" fill="${c}" opacity=".15"/><circle cx="155" cy="30" r="9" fill="${c}" opacity=".15"/><circle cx="45" cy="100" r="9" fill="${c}" opacity=".15"/><circle cx="155" cy="100" r="9" fill="${c}" opacity=".15"/><line x1="90" y1="55" x2="52" y2="35" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="110" y1="55" x2="148" y2="35" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="90" y1="75" x2="52" y2="95" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="110" y1="75" x2="148" y2="95" stroke="${c}" stroke-width="1.5" opacity=".25"/></svg>`,
+  hexagon:c=>`<svg viewBox="0 0 200 130"><polygon points="100,10 160,37 160,93 100,120 40,93 40,37" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".4"/><polygon points="100,35 135,50 135,80 100,95 65,80 65,50" fill="${c}" opacity=".08" stroke="${c}" stroke-width="1" opacity=".2"/></svg>`,
+  triangle:c=>`<svg viewBox="0 0 200 130"><polygon points="100,15 170,115 30,115" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".4"/><circle cx="100" cy="40" r="5" fill="${c}" opacity=".3"/><circle cx="55" cy="100" r="5" fill="${c}" opacity=".3"/><circle cx="145" cy="100" r="5" fill="${c}" opacity=".3"/></svg>`,
+  timeline:c=>`<svg viewBox="0 0 200 130"><line x1="20" y1="65" x2="180" y2="65" stroke="${c}" stroke-width="2" opacity=".3"/><circle cx="40" cy="65" r="6" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="80" cy="65" r="6" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="120" cy="65" r="6" fill="${c}" opacity=".3" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="160" cy="65" r="6" fill="${c}" opacity=".4" stroke="${c}" stroke-width="1.5" opacity=".35"/><polygon points="178,60 185,65 178,70" fill="${c}" opacity=".4"/></svg>`,
+  iceberg:c=>`<svg viewBox="0 0 200 130"><line x1="15" y1="55" x2="185" y2="55" stroke="${c}" stroke-width="1" opacity=".2" stroke-dasharray="4"/><polygon points="75,55 125,55 100,20" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><polygon points="55,55 145,55 155,120 45,120" fill="${c}" opacity=".08" stroke="${c}" stroke-width="1.5" opacity=".25"/></svg>`
+};
+function getSVG(shape,color){return(SVG[shape]||SVG.matrix)(color)}
+document.getElementById('thumb-21-0').innerHTML=getSVG('pipeline','#D97706');
+document.getElementById('thumb-21-1').innerHTML=getSVG('tree','#D97706');
+document.getElementById('thumb-21-2').innerHTML=getSVG('cycle','#D97706');
+document.getElementById('thumb-21-3').innerHTML=getSVG('pipeline','#D97706');
+document.getElementById('thumb-21-4').innerHTML=getSVG('stairs','#D97706');
+document.getElementById('thumb-22-0').innerHTML=getSVG('scurve','#DC2626');
+document.getElementById('thumb-22-1').innerHTML=getSVG('venn','#DC2626');
+document.getElementById('thumb-22-2').innerHTML=getSVG('matrix','#DC2626');
+document.getElementById('thumb-22-3').innerHTML=getSVG('bars','#DC2626');
+document.getElementById('thumb-22-4').innerHTML=getSVG('cycle','#DC2626');
+document.getElementById('thumb-23-0').innerHTML=getSVG('layers','#059669');
+document.getElementById('thumb-23-1').innerHTML=getSVG('pipeline','#059669');
+document.getElementById('thumb-23-2').innerHTML=getSVG('network','#059669');
+document.getElementById('thumb-23-3').innerHTML=getSVG('pipeline','#059669');
+document.getElementById('thumb-23-4').innerHTML=getSVG('layers','#059669');
+document.getElementById('thumb-24-0').innerHTML=getSVG('bars','#7C3AED');
+document.getElementById('thumb-24-1').innerHTML=getSVG('hexagon','#7C3AED');
+document.getElementById('thumb-24-2').innerHTML=getSVG('cycle','#7C3AED');
+document.getElementById('thumb-24-3').innerHTML=getSVG('stairs','#7C3AED');
+document.getElementById('thumb-24-4').innerHTML=getSVG('stairs','#7C3AED');
+
+
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('[data-anim]').forEach(el=>obs.observe(el));
+function openModal(fw){
+  const m=document.getElementById('modal');
+  m.innerHTML=`<div class="modal-accent" style="background:${fw.color}"></div><div class="modal-inner" style="position:relative">
+    <button class="modal-close" onclick="closeModal()">\u00d7</button>
+    <div class="modal-slib">Slibrary ${fw.slibNum} \u2014 ${fw.slibTitle}</div>
+    <div class="modal-title">${fw.name}</div>
+    <div class="modal-def">${fw.def}</div>
+    <div class="modal-desc">${fw.desc}</div>
+    <div class="modal-thumb">${getSVG(fw.shape,fw.color)}</div>
+    <ul class="modal-details">${fw.details.map(d=>`<li>${d}</li>`).join('')}</ul>
+    <div class="modal-ref"><div class="modal-ref-label">Reference</div>${fw.ref}</div>
+  </div>`;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow=''}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 </script>
 </body>
 </html>

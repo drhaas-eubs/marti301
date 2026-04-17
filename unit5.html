@@ -1,403 +1,361 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>MLUXR302 Unit 5 — Sustainable Strategy Development for Fashion & Luxury Brands</title>
-<style>
-:root{--teal:#00B894;--teal-d:#00695C;--bg:#f7f8fa;--text:#0f172a;--muted:#64748b;--white:#ffffff;--radius:12px;--shadow:0 1px 6px rgba(0,0,0,0.07);--shadow-lg:0 8px 28px rgba(0,0,0,0.13);}
-*{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
-a{color:inherit;text-decoration:none;}
-.container{max-width:1120px;margin:0 auto;padding:0 24px;}
-.topbar{background:#0f172a;color:rgba(255,255,255,0.5);font-size:11px;letter-spacing:.1em;text-align:center;padding:7px 0;}
-.topbar strong{color:var(--teal);}
-.site-header{background:var(--white);border-bottom:3px solid var(--teal);padding:16px 0;position:sticky;top:0;z-index:500;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
-.hdr-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
-.hdr-brand .code{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--teal);font-weight:700;}
-.hdr-brand .name{font-size:16px;font-weight:700;}
-.hdr-meta{font-size:12px;color:var(--muted);text-align:right;line-height:1.5;}
-.back-link{display:inline-flex;align-items:center;gap:6px;color:var(--teal-d);font-size:13px;font-weight:600;padding:10px 0;transition:gap .2s;}
-.back-link:hover{gap:10px;}
-.hero{padding:48px 0 36px;text-align:center;}
-.unit-pill{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:16px;}
-.hero h1{font-size:clamp(20px,4vw,36px);font-weight:800;margin-bottom:8px;line-height:1.2;}
-.hero .sub{font-size:15px;color:var(--muted);margin-bottom:6px;}
-.hero-hint{font-size:12px;color:var(--muted);margin-bottom:28px;font-style:italic;}
-.hero-stats{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;}
-.hero-stat .num{font-size:38px;font-weight:800;line-height:1;}
-.hero-stat .lbl{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:2px;}
-.itten-tag{display:inline-flex;align-items:center;gap:7px;font-size:12px;background:var(--white);padding:6px 14px;border-radius:20px;box-shadow:var(--shadow);margin-bottom:32px;}
-.itten-dot{width:10px;height:10px;border-radius:50%;}
-.set-section{margin-bottom:52px;}
-.set-hdr{display:flex;align-items:center;gap:12px;margin-bottom:18px;padding-bottom:10px;border-bottom:2px solid #e2e8f0;}
-.set-hdr h2{font-size:14px;font-weight:700;display:flex;align-items:center;gap:10px;}
-.set-num{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0;}
-.set-tag{font-size:11px;color:var(--muted);background:#f1f5f9;padding:2px 10px;border-radius:10px;margin-left:auto;}
-.fw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:14px;}
-.fw-card{background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);cursor:pointer;transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column;border-top:4px solid transparent;}
-.fw-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);}
-.fw-card-icon{padding:14px 16px 6px;line-height:1;}
-.fw-card-icon svg{display:block;width:56px;height:40px;}
-.fw-card-body{padding:0 16px 12px;flex:1;display:flex;flex-direction:column;}
-.fw-card-name{font-size:13px;font-weight:700;margin-bottom:5px;color:var(--text);line-height:1.3;}
-.fw-card-desc{font-size:11.5px;color:var(--muted);line-height:1.55;flex:1;}
-.fw-card-foot{display:flex;align-items:center;justify-content:space-between;padding:8px 16px 10px;border-top:1px solid #f0f0f0;margin-top:auto;}
-.fw-sl-badge{font-size:10px;font-weight:700;letter-spacing:.06em;padding:2px 8px;border-radius:8px;}
-.fw-arrow{font-size:13px;color:var(--muted);}
-.idx-hero{padding:60px 0 48px;text-align:center;}
-.idx-hero .school{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:10px;}
-.idx-hero h1{font-size:clamp(26px,5vw,50px);font-weight:800;line-height:1.15;margin-bottom:12px;}
-.idx-hero .tag{font-size:16px;color:var(--muted);margin-bottom:10px;}
-.idx-hero .itten-credit{font-size:12px;color:var(--muted);margin-bottom:30px;font-style:italic;}
-.idx-stats{display:flex;justify-content:center;gap:48px;flex-wrap:wrap;}
-.idx-stat .num{font-size:48px;font-weight:800;color:var(--teal);line-height:1;}
-.idx-stat .lbl{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:4px;}
-.itten-legend{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:24px 0 32px;}
-.itten-chip{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;padding:5px 12px;border-radius:20px;background:var(--white);box-shadow:var(--shadow);}
-.itten-chip-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
-.accordion{margin-bottom:10px;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);}
-.acc-hdr{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;cursor:pointer;transition:opacity .18s;}
-.acc-hdr:hover{opacity:.93;}
-.acc-meta{display:flex;flex-direction:column;gap:2px;}
-.acc-unit-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:rgba(255,255,255,.75);}
-.acc-itten{font-size:10px;color:rgba(255,255,255,.55);font-style:italic;}
-.acc-title{font-size:15px;font-weight:700;color:#fff;line-height:1.3;}
-.acc-chevron{font-size:17px;color:rgba(255,255,255,.65);transition:transform .28s;}
-.acc-hdr.open .acc-chevron{transform:rotate(180deg);}
-.acc-body{display:none;background:var(--white);}
-.acc-body.open{display:block;}
-.res-link{display:flex;align-items:center;gap:12px;padding:13px 22px;border-bottom:1px solid #f1f5f9;transition:background .13s;}
-.res-link:last-child{border-bottom:none;}
-.res-link:hover{background:#f8fafc;}
-.res-badge{font-size:10px;font-weight:700;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;}
-.res-title{font-size:14px;font-weight:700;margin-bottom:1px;}
-.res-meta{font-size:11px;color:var(--muted);}
-.res-tag{font-size:10px;color:var(--muted);background:#f1f5f9;padding:2px 8px;border-radius:6px;white-space:nowrap;}
-.phase-list{list-style:none;}
-.phase-item{display:flex;gap:14px;padding:18px 0;border-bottom:1px solid #f0f0f0;}
-.phase-item:last-child{border-bottom:none;}
-.phase-badge{font-size:10px;font-weight:700;letter-spacing:.07em;padding:4px 10px;border-radius:8px;height:fit-content;white-space:nowrap;}
-.phase-h{font-size:14px;font-weight:700;margin-bottom:4px;}
-.phase-p{font-size:13px;color:var(--muted);}
-.case-brand-hdr{padding:48px 0 28px;text-align:center;}
-.brand-name{font-size:48px;font-weight:900;letter-spacing:-2px;margin-bottom:8px;line-height:1;}
-.case-card{background:var(--white);border-radius:var(--radius);padding:32px;box-shadow:var(--shadow);margin-bottom:18px;}
-.case-card h2{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #f1f5f9;}
-.case-card p{font-size:14.5px;line-height:1.8;margin-bottom:10px;}
-.case-card ol{padding-left:18px;}
-.case-card li{font-size:14.5px;line-height:1.7;margin-bottom:8px;}
-.pr-card{background:var(--white);border-radius:var(--radius);padding:32px;box-shadow:var(--shadow);margin-bottom:18px;}
-.pr-card h2{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:12px;}
-.pr-card p{font-size:14.5px;line-height:1.8;margin-bottom:10px;}
-.kp-item{display:flex;gap:10px;margin-bottom:10px;align-items:flex-start;}
-.kp-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:7px;}
-.kp-text{font-size:14px;line-height:1.6;}
-.pr-prepare{border-radius:0 var(--radius) var(--radius) 0;padding:20px 24px;border-left:4px solid;margin-bottom:48px;}
-.pr-prepare-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;}
-.ref-cards{display:grid;gap:18px;}
-.ref-card{background:var(--white);border-radius:var(--radius);padding:26px 28px;box-shadow:var(--shadow);display:flex;gap:18px;align-items:flex-start;}
-.ref-num{font-size:32px;font-weight:900;line-height:1;opacity:.15;flex-shrink:0;width:40px;}
-.ref-card p{font-size:15px;line-height:1.75;}
-.ref-guide{border-radius:var(--radius);padding:20px 24px;margin-top:24px;margin-bottom:48px;}
-.ref-guide-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;}
-.ref-guide p{font-size:13.5px;line-height:1.7;}
-.cg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:9px;}
-.cg-card{background:var(--white);border-radius:8px;padding:12px 14px;box-shadow:0 1px 3px rgba(0,0,0,0.05);border-left:4px solid transparent;}
-.cg-name{font-size:12px;font-weight:700;margin-bottom:2px;}
-.cg-unit{font-size:10px;color:var(--muted);}
-.site-footer{margin-top:72px;border-top:3px solid var(--teal);padding:22px 0;text-align:center;font-size:12px;color:var(--muted);}
-.site-footer strong{color:var(--text);}
-@media(max-width:640px){.fw-grid{grid-template-columns:1fr 1fr;}.cg-grid{grid-template-columns:1fr 1fr;}}
-</style>
-
-<style>
-#modal-overlay{position:fixed;inset:0;background:rgba(8,8,20,0.78);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);z-index:9000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity 0.22s;}
-#modal-overlay.active{opacity:1;pointer-events:all;}
-#modal-box{background:#ffffff;border-radius:16px;width:100%;max-width:660px;max-height:90vh;overflow-y:auto;box-shadow:0 28px 90px rgba(0,0,0,0.38);transform:translateY(20px) scale(0.97);transition:transform 0.22s;position:relative;}
-#modal-overlay.active #modal-box{transform:translateY(0) scale(1);}
-#modal-color-bar{height:5px;border-radius:16px 16px 0 0;}
-#modal-inner{padding:28px 32px 28px;}
-#modal-header{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:20px;}
-#modal-header-left{flex:1;}
-#modal-label-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap;}
-#m-slibrary-header{font-size:10px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:#888;}
-#m-unit-badge{font-size:10px;font-weight:700;letter-spacing:0.08em;padding:2px 9px;border-radius:8px;background:#f0f0f0;color:#666;}
-#m-title{font-size:24px;font-weight:800;color:#1a1a2e;line-height:1.2;margin-bottom:5px;font-family:Arial,Helvetica,sans-serif;}
-#m-itten-line{font-size:11px;color:#aaa;font-style:italic;}
-#modal-close{background:#f0f0f2;border:none;width:34px;height:34px;border-radius:50%;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#666;transition:background .15s,color .15s;}
-#modal-close:hover{background:#dde0e4;color:#333;}
-#modal-lead{border-left:4px solid #ccc;margin:0 0 14px;padding:12px 18px;border-radius:0 6px 6px 0;}
-#modal-lead p{font-size:15px;font-weight:700;font-style:italic;line-height:1.65;margin:0;font-family:Arial,Helvetica,sans-serif;}
-#m-sub-text{font-size:13px;color:#888;font-style:italic;margin-bottom:22px;line-height:1.5;}
-#modal-bullets{margin-bottom:24px;}
-.m-bullet-item{display:flex;align-items:baseline;gap:12px;padding:11px 0;}
-.m-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-top:2px;display:inline-block;background:#ccc;}
-.m-bullet-text{font-size:14px;line-height:1.65;color:#333;}
-.m-divider{border:none;border-top:1px solid #e8eaed;margin:0;}
-#modal-reference{border-radius:0 8px 8px 0;border-left:4px solid #ccc;padding:16px 20px;margin-top:4px;}
-#modal-ref-label{font-size:10px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:#888;margin-bottom:8px;}
-#m-ref-text{font-size:13px;line-height:1.75;color:#444;margin:0;}
-@media(max-width:580px){#modal-inner{padding:20px 18px 20px;}#m-title{font-size:19px;}}
-</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MARTI301 Unit 5 — IP & Value Creation through AI</title>
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#1B2A4A;--teal:#00B388;--amber:#D4872C;--bg:#FAFBFC;--card:#FFF;--text:#1B2A4A;--muted:#6B7280;--border:#E5E7EB;--def-red:#C0392B}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;overflow-x:hidden}
+.hero{background:var(--navy);padding:2.5rem 2rem 2rem;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:var(--teal)}
+.hero-tag{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);font-weight:700;margin-bottom:.5rem}
+.hero h1{font-size:2.2rem;color:#fff;font-weight:700;line-height:1.2;margin-bottom:.4rem}
+.hero p{color:#94A3B8;font-size:.95rem;margin-bottom:.8rem}
+.hero .copy{color:#64748B;font-size:.8rem;font-style:italic}
+.hero-stats{display:flex;gap:2rem;margin-top:1rem}
+.hero-stat{text-align:center}
+.hero-stat .num{font-size:1.8rem;color:var(--teal);font-weight:700}
+.hero-stat .label{font-size:.7rem;color:#94A3B8;text-transform:uppercase;letter-spacing:.1em}
+.slib-set{margin-bottom:2.5rem}
+.slib-set-header{display:flex;align-items:center;gap:.6rem;margin-bottom:1rem;padding-left:.2rem;opacity:0;transform:translateX(-15px);transition:all .5s cubic-bezier(.16,1,.3,1)}
+.slib-set-header.visible{opacity:1;transform:translateX(0)}
+.slib-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.slib-set-title{font-size:1rem;font-weight:700}
+.slib-set-num{font-size:.7rem;color:var(--muted);background:#F1F5F9;padding:.15rem .5rem;border-radius:1rem;font-weight:600}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;opacity:0;transform:translateY(25px) scale(.97);transition:all .5s cubic-bezier(.16,1,.3,1);position:relative;display:flex;flex-direction:column}
+.card.visible{opacity:1;transform:translateY(0) scale(1)}
+.card:hover{transform:translateY(-4px) scale(1.01);box-shadow:0 12px 32px rgba(27,42,74,.1);border-color:transparent}
+.card-accent{height:3px;width:100%}
+.card-thumb{height:120px;background:#F8FAFC;display:flex;align-items:center;justify-content:center;padding:.8rem;overflow:hidden}
+.card-thumb svg{width:100%;height:100%;opacity:.7;transition:opacity .3s}
+.card:hover .card-thumb svg{opacity:1}
+.card-body{padding:.8rem .9rem .9rem;flex:1;display:flex;flex-direction:column}
+.card-title{font-size:.82rem;font-weight:700;line-height:1.3;margin-bottom:.25rem}
+.card-desc{font-size:.7rem;color:var(--muted);line-height:1.4;margin-bottom:.5rem;flex:1}
+.card-tag{display:inline-block;font-size:.6rem;font-weight:700;padding:.15rem .45rem;border-radius:4px;color:#fff;align-self:flex-start}
+.modal-overlay{position:fixed;inset:0;background:rgba(27,42,74,.5);z-index:200;opacity:0;pointer-events:none;transition:opacity .3s;display:flex;align-items:center;justify-content:center;padding:1rem}
+.modal-overlay.open{opacity:1;pointer-events:auto}
+.modal{background:#fff;border-radius:16px;max-width:560px;width:100%;max-height:85vh;overflow-y:auto;transform:translateY(20px) scale(.95);transition:transform .35s cubic-bezier(.16,1,.3,1);padding:0}
+.modal-overlay.open .modal{transform:translateY(0) scale(1)}
+.modal-accent{height:4px;border-radius:16px 16px 0 0}
+.modal-inner{padding:1.8rem 1.6rem}
+.modal-close{position:absolute;top:1rem;right:1rem;width:32px;height:32px;border-radius:50%;border:none;background:#F1F5F9;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;color:var(--muted);transition:background .2s}
+.modal-close:hover{background:#E2E8F0}
+.modal-slib{font-size:.7rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.3rem}
+.modal-title{font-size:1.4rem;font-weight:700;margin-bottom:.4rem}
+.modal-def{font-size:.9rem;color:var(--def-red);font-weight:600;line-height:1.5;margin-bottom:.7rem;border-left:3px solid var(--def-red);padding-left:.6rem}
+.modal-desc{font-size:.88rem;color:var(--muted);line-height:1.6;margin-bottom:.8rem}
+.modal-thumb{background:#F8FAFC;border-radius:10px;padding:1.5rem;margin-bottom:1.2rem;display:flex;align-items:center;justify-content:center}
+.modal-thumb svg{width:220px;height:140px}
+.modal-details{list-style:none;padding:0;margin-bottom:1rem}
+.modal-details li{font-size:.82rem;color:var(--text);padding:.4rem 0;border-bottom:1px solid #F1F5F9;display:flex;align-items:flex-start;gap:.5rem}
+.modal-details li::before{content:'\2022';color:var(--teal);font-weight:bold;flex-shrink:0;margin-top:1px}
+.modal-ref{background:#F8FAFC;border-radius:8px;padding:.7rem .9rem;font-size:.75rem;color:#7C3AED;line-height:1.5;border-left:3px solid var(--teal)}
+.modal-ref-label{font-weight:700;font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:var(--teal);margin-bottom:.2rem}
+.footer{background:var(--navy);padding:2rem;text-align:center;color:#64748B;font-size:.75rem;margin-top:2rem}
+.footer strong{color:var(--teal)}
+@media(max-width:640px){.hero h1{font-size:1.5rem}.hero-stats{gap:1rem}.cards-grid{grid-template-columns:repeat(auto-fill,minmax(165px,1fr))}.card-thumb{height:90px}}</style>
 </head>
 <body>
-<script>
-(function(){
-  document.addEventListener('contextmenu',e=>e.preventDefault());
-  ['copy','cut','paste'].forEach(ev=>document.addEventListener(ev,e=>e.preventDefault()));
-  document.addEventListener('keydown',e=>{
-    const k=e.key.toLowerCase(),c=e.ctrlKey||e.metaKey;
-    if(c&&(k==='c'||k==='x'||k==='v'||k==='s'||k==='u'||k==='a'||k==='p')){e.preventDefault();return false;}
-    if(e.key==='F12'||(c&&e.shiftKey&&(k==='i'||k==='j'||k==='c'))){e.preventDefault();return false;}
-  });
-  document.addEventListener('dragstart',e=>e.preventDefault());
-})();
-</script>
-<style>
-@media print{body *{visibility:hidden!important;}body::after{visibility:visible!important;content:'© Dr. Hildegard Haas | MLUXR302 | EU Business School — Printing not permitted.';display:block;font-size:18px;text-align:center;padding:80px 40px;font-family:Arial,sans-serif;}}
-body,*{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
-</style>
-<div class="topbar">
-  <strong>MLUXR302</strong> &nbsp;&middot;&nbsp; Sustainable Value Creation in Fashion &amp; Luxury
-  &nbsp;&middot;&nbsp;
-  &copy; 2026 Dr. Hildegard Haas &nbsp;&middot;&nbsp; EU Business School
-</div>
-<header class="site-header">
-  <div class="container hdr-inner">
-    <div class="hdr-brand">
-      <div class="code">MLUXR302 &middot; Masters Level 7 &middot; EU Business School</div>
-      <div class="name">Sustainable Value Creation in Fashion &amp; Luxury</div>
-    </div>
-    <div class="hdr-meta">Dr. Hildegard Haas<br/>hildegard.haas@euruni.edu &middot; www.euruni.edu</div>
+
+<a href="./" style="display:block;background:#E6F7F3;padding:.65rem 1.5rem;text-decoration:none;font-size:.82rem;font-weight:700;color:#059669;border-bottom:2px solid #00B388">&#8592; Back to Course Overview</a>
+<header class="hero">
+  <div class="hero-tag">MARTI301 &middot; Unit 5</div>
+  <h1>IP & Value Creation through AI</h1>
+  <p>Select any framework to explore it in detail</p>
+  <div class="copy">&copy; 2026 Dr. Hildegard Haas</div>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num">4</div><div class="label">Slibraries</div></div>
+    <div class="hero-stat"><div class="num">20</div><div class="label">Frameworks</div></div>
+    <div class="hero-stat"><div class="num">17&ndash;20</div><div class="label">Set Range</div></div>
   </div>
 </header>
-<main><div class="container">
-<a class="back-link" href="index.html">&#8592; Course Overview</a>
-<div class="hero"><div class="unit-pill" style="background:rgba(124,58,237,0.1);color:#7C3AED;">MLUXR302 &middot; Unit 5</div><h1>Sustainable Strategy Development for Fashion & Luxury Brands</h1><p class="sub">From Insight to Action — Building a Viable Sustainable Business Model</p><p class="hero-hint">Click any framework card to open it in detail</p><div class="hero-stats"><div class="hero-stat"><div class="num" style="color:#7C3AED">3</div><div class="lbl">Slibraries</div></div><div class="hero-stat"><div class="num" style="color:#7C3AED">15</div><div class="lbl">Frameworks</div></div><div class="hero-stat"><div class="num" style="color:#7C3AED">13–15</div><div class="lbl">Sets</div></div></div></div><div class="set-section"><div class="set-hdr"><h2><div class="set-num" style="background:#7C3AED">13</div>Set 13 — Strategic Frameworks</h2><span class="set-tag">5 frameworks &middot; click any card to explore</span></div><div class="fw-grid"><div class="fw-card" style="border-top-color:#7C3AED;" data-color="#7C3AED" data-rgb="124,58,237" data-sl="13" data-unit="MLUXR302 · Unit 5" data-setname="Strategic Frameworks" data-name="Porter&#39;s Five Forces (Sustainability Lens)" data-itten="Itten: Deep Violet — Complexity, legal depth" data-lead="The classic competitive analysis framework reinterpreted through a sustainability lens — revealing how regulation, NGO pressure, eco-material supply constraints and consumer advocacy are reshaping industry attractiveness." data-sub="Regulatory threat · eco-supplier power · green consumer pressure · substitute business models · ESG rivalry" data-b1="Regulatory threat (new entrants) → EU sustainability legislation (CSRD, Supply Chain Directive, DPP) raises compliance costs and creates barriers that disadvantage non-compliant new entrants and incumbents equally" data-b2="Supplier power → sustainable raw material suppliers (organic cotton farmers, mycelium manufacturers, recycled fibre producers) have higher bargaining power than conventional equivalents due to limited supply" data-b3="Buyer power → NGO campaigns, social media activism and Fashion Transparency Index pressure create effective buyer power even where individual consumers lack it — amplifying sustainability expectations" data-b4="Substitute threat → circular business models (rental, resale, repair) represent substitute business models that reduce primary product sales while meeting the same underlying consumer need" data-ref="Porter, M.E. (1979) &#39;How competitive forces shape strategy&#39;, <em>Harvard Business Review</em>, 57(2), pp. 137–145."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="28" cy="22" r="7" fill="#7C3AED" opacity="0.8"/>
-  <rect x="23" y="4" width="10" height="8" rx="2" fill="rgba(124,58,237,0.3)" stroke="#7C3AED" stroke-width="1"/>
-    <line x1="28" y1="22" x2="28" y2="8" stroke="rgba(124,58,237,0.4)" stroke-width="1.5"/><rect x="36.31479122813215" y="13.673762078750737" width="10" height="8" rx="2" fill="rgba(124,58,237,0.3)" stroke="#7C3AED" stroke-width="1"/>
-    <line x1="28" y1="22" x2="41.31479122813215" y2="17.673762078750737" stroke="rgba(124,58,237,0.4)" stroke-width="1.5"/><rect x="31.22899353209462" y="29.326237921249266" width="10" height="8" rx="2" fill="rgba(124,58,237,0.3)" stroke="#7C3AED" stroke-width="1"/>
-    <line x1="28" y1="22" x2="36.22899353209462" y2="33.326237921249266" stroke="rgba(124,58,237,0.4)" stroke-width="1.5"/><rect x="14.77100646790538" y="29.326237921249266" width="10" height="8" rx="2" fill="rgba(124,58,237,0.3)" stroke="#7C3AED" stroke-width="1"/>
-    <line x1="28" y1="22" x2="19.77100646790538" y2="33.326237921249266" stroke="rgba(124,58,237,0.4)" stroke-width="1.5"/><rect x="9.68520877186785" y="13.673762078750734" width="10" height="8" rx="2" fill="rgba(124,58,237,0.3)" stroke="#7C3AED" stroke-width="1"/>
-    <line x1="28" y1="22" x2="14.68520877186785" y2="17.673762078750734" stroke="rgba(124,58,237,0.4)" stroke-width="1.5"/>
-  <text x="28" y="24" text-anchor="middle" font-size="3.5" fill="white" font-weight="700">RIVAL</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">Porter's Five Forces (Sustainability Lens)</div><div class="fw-card-desc">Regulatory threat, eco-material suppliers, green consumer power and NGO substitution pressure</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(124,58,237,0.12);color:#7C3AED;">Slibrary 13</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#7C3AED;" data-color="#7C3AED" data-rgb="124,58,237" data-sl="13" data-unit="MLUXR302 · Unit 5" data-setname="Strategic Frameworks" data-name="SWOT Sustainability Matrix" data-itten="Itten: Deep Violet — Complexity, legal depth" data-lead="A structured internal and external assessment applied specifically to sustainability strategy — mapping eco-capabilities and legacy liabilities against regulatory pressures and market opportunities." data-sub="Strengths · Weaknesses · Opportunities · Threats: sustainability-specific application of the classic framework" data-b1="Strengths → existing sustainability assets: certifications, eco-design capabilities, transparent supply chain, established supplier partnerships, reputation for ethical practices" data-b2="Weaknesses → legacy sustainability liabilities: Scope 3 opacity, synthetic material dependence, high-volume production model, limited circular infrastructure, greenwashing history" data-b3="Opportunities → market and regulatory conditions creating value: sustainability-linked financing, premium pricing for certified products, DPP early-mover advantage, resale market growth" data-b4="Threats → external sustainability pressures: CSRD and Green Claims enforcement, NGO investigation and publication, physical climate risk in sourcing regions, competitor transparency progress" data-ref="Andrews, K.R. (1971) <em>The Concept of Corporate Strategy</em>. Homewood, IL: Dow Jones-Irwin."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <rect x="4" y="4" width="23" height="17" rx="2" fill="#7C3AED" opacity="0.7"/>
-  <rect x="29" y="4" width="23" height="17" rx="2" fill="rgba(124,58,237,0.35)" stroke="#7C3AED" stroke-width="1"/>
-  <rect x="4" y="23" width="23" height="17" rx="2" fill="rgba(124,58,237,0.5)" stroke="#7C3AED" stroke-width="1"/>
-  <rect x="29" y="23" width="23" height="17" rx="2" fill="rgba(124,58,237,0.25)" stroke="#7C3AED" stroke-width="1"/>
-  <text x="15" y="15" text-anchor="middle" font-size="6" fill="white" font-weight="900">S</text>
-  <text x="40" y="15" text-anchor="middle" font-size="6" fill="#7C3AED" font-weight="900">W</text>
-  <text x="15" y="34" text-anchor="middle" font-size="6" fill="#7C3AED" font-weight="900">O</text>
-  <text x="40" y="34" text-anchor="middle" font-size="6" fill="#7C3AED" font-weight="900">T</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">SWOT Sustainability Matrix</div><div class="fw-card-desc">Internal: eco-capabilities and legacy liabilities | External: regulatory pressure and market opportunity</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(124,58,237,0.12);color:#7C3AED;">Slibrary 13</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#7C3AED;" data-color="#7C3AED" data-rgb="124,58,237" data-sl="13" data-unit="MLUXR302 · Unit 5" data-setname="Strategic Frameworks" data-name="Ansoff Matrix for Sustainable Growth" data-itten="Itten: Deep Violet — Complexity, legal depth" data-lead="A strategic growth framework applied to sustainability transformation — mapping how fashion brands can grow by deepening sustainability within existing markets or entering new markets with new sustainable products." data-sub="Market penetration → product development → market development → diversification: the four sustainable growth paths" data-b1="Market penetration → deepen sustainability credentials with existing customers in current markets: increase certified product proportion, improve transparency score, expand eco-product range" data-b2="Product development → innovate sustainable materials and circular business models for existing customer base: introduce repair services, take-back programmes, bio-based material collections" data-b3="Market development → enter adjacent markets enabled by sustainability positioning: sustainable luxury (new segment), international markets with stronger green consumer culture, B2B sustainable procurement" data-b4="Diversification → enter new markets with new sustainability-led products: Fashion-as-a-Service, resale platform, circular design consultancy, textile recycling service — highest risk, highest reward" data-ref="Ansoff, H.I. (1957) &#39;Strategies for diversification&#39;, <em>Harvard Business Review</em>, 35(5), pp. 113–124."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <rect x="4" y="4" width="23" height="17" rx="2" fill="#7C3AED" opacity="0.7"/>
-  <rect x="29" y="4" width="23" height="17" rx="2" fill="rgba(124,58,237,0.5)"/>
-  <rect x="4" y="23" width="23" height="17" rx="2" fill="rgba(124,58,237,0.35)" stroke="#7C3AED" stroke-width="1"/>
-  <rect x="29" y="23" width="23" height="17" rx="2" fill="rgba(124,58,237,0.2)" stroke="#7C3AED" stroke-width="1"/>
-  <text x="15" y="15" text-anchor="middle" font-size="3.5" fill="white" font-weight="700">PENETRATE</text>
-  <text x="40" y="15" text-anchor="middle" font-size="3.5" fill="white" font-weight="700">DEVELOP</text>
-  <text x="15" y="33" text-anchor="middle" font-size="3.5" fill="#7C3AED">EXPAND</text>
-  <text x="40" y="33" text-anchor="middle" font-size="3.5" fill="#7C3AED">DIVERSIFY</text>
-  <text x="28" y="44" text-anchor="middle" font-size="4" fill="#7C3AED">Ansoff 1957</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">Ansoff Matrix for Sustainable Growth</div><div class="fw-card-desc">Market penetration → Product development → Market development → Diversification with sustainability axis</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(124,58,237,0.12);color:#7C3AED;">Slibrary 13</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#7C3AED;" data-color="#7C3AED" data-rgb="124,58,237" data-sl="13" data-unit="MLUXR302 · Unit 5" data-setname="Strategic Frameworks" data-name="Shared Value Framework" data-itten="Itten: Deep Violet — Complexity, legal depth" data-lead="A strategic reorientation of the relationship between business and society — not philanthropy, not compliance, but creating economic value in a way that simultaneously creates societal and environmental value." data-sub="Three routes to Shared Value: reconceive products · redefine productivity · enable local clusters" data-b1="Route 1 — reconceive products and markets → meet social and environmental needs profitably: organic food, sustainable fashion, healthcare for underserved populations are markets, not charity" data-b2="Route 2 — redefine value chain productivity → address environmental and social constraints that raise operational costs: energy use, water, worker health, supplier relationships" data-b3="Route 3 — enable local cluster development → build supplier and community ecosystems that increase brand productivity: Kering&#39;s investment in regenerative wool supply chains" data-b4="Distinction from CSR → CSR redistributes value already created; Shared Value expands the total pool of economic and social value simultaneously — it is a strategy, not a donation" data-ref="Porter, M.E. and Kramer, M.R. (2011) &#39;Creating shared value&#39;, <em>Harvard Business Review</em>, 89(1/2), pp. 62–77."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="20" cy="20" r="14" fill="rgba(124,58,237,0.25)" stroke="#7C3AED" stroke-width="1.5"/>
-  <circle cx="36" cy="20" r="14" fill="rgba(124,58,237,0.25)" stroke="#7C3AED" stroke-width="1.5"/>
-  <path d="M28,8 Q36,14 36,20 Q36,26 28,32 Q20,26 20,20 Q20,14 28,8Z" fill="#7C3AED" opacity="0.5"/>
-  <text x="11" y="22" text-anchor="middle" font-size="4" fill="#7C3AED" font-weight="700">BIZ</text>
-  <text x="45" y="22" text-anchor="middle" font-size="4" fill="#7C3AED" font-weight="700">SOC</text>
-  <text x="28" y="22" text-anchor="middle" font-size="3.5" fill="white" font-weight="700">SHARED</text>
-  <text x="28" y="42" text-anchor="middle" font-size="4" fill="#7C3AED">Porter & Kramer 2011</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">Shared Value Framework</div><div class="fw-card-desc">Porter & Kramer: creating economic value in a way that also creates value for society and environment</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(124,58,237,0.12);color:#7C3AED;">Slibrary 13</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#7C3AED;" data-color="#7C3AED" data-rgb="124,58,237" data-sl="13" data-unit="MLUXR302 · Unit 5" data-setname="Strategic Frameworks" data-name="Carroll&#39;s CSR Pyramid" data-itten="Itten: Deep Violet — Complexity, legal depth" data-lead="A four-layer hierarchy that defines the total scope of corporate social responsibility — establishing that profitability is not an alternative to ethical behaviour, but its precondition." data-sub="Economic → Legal → Ethical → Philanthropic: four nested layers of corporate obligation" data-b1="Economic responsibility (foundation) → be profitable: generate returns for shareholders, provide employment, supply goods and services — the fundamental obligation without which the pyramid collapses" data-b2="Legal responsibility (second layer) → obey the law: society&#39;s codified minimum expectations; compliance with labour, environmental, consumer protection and competition law" data-b3="Ethical responsibility (third layer) → be ethical: do what is right, just and fair even when the law does not require it; avoid harm; uphold norms expected by stakeholders beyond legal compliance" data-b4="Philanthropic responsibility (apex) → be a good corporate citizen: discretionary contributions to community, education, arts, environment; desirable but not obligatory" data-ref="Carroll, A.B. (1991) &#39;The pyramid of corporate social responsibility: toward the moral management of organizational stakeholders&#39;, <em>Business Horizons</em>, 34(4), pp. 39–48. doi: 10.1016/0007-6813(91)90005-G."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <polygon points="28,3 52,40 4,40" fill="rgba(124,58,237,0.08)" stroke="#7C3AED" stroke-width="1.5"/>
-  <line x1="16" y1="28" x2="40" y2="28" stroke="#7C3AED" stroke-width="1"/>
-  <line x1="22" y1="17" x2="34" y2="17" stroke="#7C3AED" stroke-width="1"/>
-  <text x="28" y="8" text-anchor="middle" font-size="4" fill="#7C3AED">PHIL</text>
-  <text x="28" y="22" text-anchor="middle" font-size="4.5" fill="#7C3AED">ETHICAL</text>
-  <text x="28" y="33" text-anchor="middle" font-size="4.5" fill="#7C3AED">LEGAL</text>
-  <text x="28" y="39" text-anchor="middle" font-size="5" fill="#7C3AED" font-weight="700">ECONOMIC</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">Carroll's CSR Pyramid</div><div class="fw-card-desc">Economic → Legal → Ethical → Philanthropic — four-layer responsibility hierarchy for brands</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(124,58,237,0.12);color:#7C3AED;">Slibrary 13</span><span class="fw-arrow">&#8594;</span></div></div></div></div><div class="set-section"><div class="set-hdr"><h2><div class="set-num" style="background:#7C3AED">14</div>Set 14 — Strategy Design</h2><span class="set-tag">5 frameworks &middot; click any card to explore</span></div><div class="fw-grid"><div class="fw-card" style="border-top-color:#7C3AED;" data-color="#7C3AED" data-rgb="124,58,237" data-sl="14" data-unit="MLUXR302 · Unit 5" data-setname="Strategy Design" data-name="Sustainable Business Model Canvas" data-itten="Itten: Deep Violet — Complexity, legal depth" data-lead="The Business Model Canvas reengineered for the circular and social economy — each of the nine blocks rethought to capture how sustainability creates and captures value across the full stakeholder system." data-sub="Value proposition · Key partners · Revenue streams · Cost structure: nine blocks redesigned for impact" data-b1="Value proposition → eco-design, durability, material transparency, take-back scheme, end-of-life guidance; value created for planet and community as well as customer" data-b2="Key partners → sustainability-focused material suppliers, recycling partners, repair services, certification bodies, NGO collaborators — partnerships that make the circular model function" data-b3="Revenue streams → product sales plus service fees (repair, alteration), resale royalties, rental income, deposit returns, data revenue from Material Passports" data-b4="Cost structure → circular procurement (reverse logistics), repair and refurbishment infrastructure, impact measurement and verification, supplier development and capacity building" data-ref="Osterwalder, A. and Pigneur, Y. (2010) <em>Business Model Generation</em>. Hoboken, NJ: John Wiley and Sons."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <rect x="4" y="4" width="48" height="32" rx="3" fill="rgba(124,58,237,0.1)" stroke="#7C3AED" stroke-width="1.5"/>
-  <line x1="28" y1="4" x2="28" y2="36" stroke="#7C3AED" stroke-width="1"/>
-  <line x1="4" y1="18" x2="28" y2="18" stroke="#7C3AED" stroke-width="1"/>
-  <line x1="28" y1="22" x2="52" y2="22" stroke="#7C3AED" stroke-width="1"/>
-  <rect x="16" y="10" width="12" height="18" rx="2" fill="#7C3AED" opacity="0.6"/>
-  <text x="22" y="21" text-anchor="middle" font-size="4" fill="white" font-weight="700">VP</text>
-  <text x="28" y="44" text-anchor="middle" font-size="4" fill="#7C3AED">BMC · Osterwalder</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">Sustainable Business Model Canvas</div><div class="fw-card-desc">9-block BMC adapted: add key partners for circularity, eco-value proposition and social impact segments</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(124,58,237,0.12);color:#7C3AED;">Slibrary 14</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#7C3AED;" data-color="#7C3AED" data-rgb="124,58,237" data-sl="14" data-unit="MLUXR302 · Unit 5" data-setname="Strategy Design" data-name="Circular Business Model Types" data-itten="Itten: Deep Violet — Complexity, legal depth" data-lead="A taxonomy of the four distinct ways businesses can generate revenue from circular economy principles — from service models that retain product ownership to platforms that enable sharing." data-sub="Product-as-a-service · Life extension · Resource recovery · Sharing platform" data-b1="Product-as-a-service (PaaS) → brand retains ownership; customer pays for access, performance or use-per-occasion; brand has financial incentive to design for durability and repairability" data-b2="Product life extension → remanufacture, repair, upgrade and resell at highest value possible; Patagonia Worn Wear, Hermès Victoria, Nudie Jeans repair shops" data-b3="Resource recovery → collect used products at end-of-life and extract material value for next production cycle; Adidas × Parley, H&M Garment Collecting, Renewlondon" data-b4="Sharing platforms → enable peer-to-peer sharing or renting of products, reducing total production volume required; By Rotation, Fat Llama, Rent the Runway" data-ref="Ellen MacArthur Foundation (2015) <em>Delivering the Circular Economy: A Toolkit for Policymakers</em>. Isle of Wight: Ellen MacArthur Foundation."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <rect x="4" y="4" width="23" height="17" rx="3" fill="#7C3AED" opacity="0.7"/>
-  <rect x="29" y="4" width="23" height="17" rx="3" fill="rgba(124,58,237,0.5)"/>
-  <rect x="4" y="23" width="23" height="17" rx="3" fill="rgba(124,58,237,0.35)" stroke="#7C3AED" stroke-width="1"/>
-  <rect x="29" y="23" width="23" height="17" rx="3" fill="rgba(124,58,237,0.2)" stroke="#7C3AED" stroke-width="1"/>
-  <text x="15" y="14" text-anchor="middle" font-size="3.5" fill="white" font-weight="700">PaaS</text>
-  <text x="40" y="14" text-anchor="middle" font-size="3.5" fill="white">Life Ext.</text>
-  <text x="15" y="33" text-anchor="middle" font-size="3.5" fill="#7C3AED">Resource</text>
-  <text x="40" y="33" text-anchor="middle" font-size="3.5" fill="#7C3AED">Sharing</text>
-  <text x="28" y="44" text-anchor="middle" font-size="4" fill="#7C3AED">EMF 2015</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">Circular Business Model Types</div><div class="fw-card-desc">Product-as-a-service, product life extension, resource recovery and sharing platforms — four archetypes</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(124,58,237,0.12);color:#7C3AED;">Slibrary 14</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#7C3AED;" data-color="#7C3AED" data-rgb="124,58,237" data-sl="14" data-unit="MLUXR302 · Unit 5" data-setname="Strategy Design" data-name="Carbon Neutrality Pathway" data-itten="Itten: Deep Violet — Complexity, legal depth" data-lead="A four-stage decarbonisation methodology that sequences emission reduction actions in order of credibility — establishing that offsets alone cannot constitute carbon neutrality." data-sub="Reduce → Replace → Remove → Report: the four-R sequence for credible decarbonisation" data-b1="Reduce (first priority) → eliminate unnecessary emissions through efficiency: energy, water, waste, logistics; the most credible action and the largest opportunity in operations and upstream supply chain" data-b2="Replace (second priority) → switch remaining energy and material needs to low-carbon alternatives: renewable electricity, low-impact fibres, bio-based inputs, electric logistics" data-b3="Remove (third priority) → offset only genuinely unavoidable residual emissions using carbon removal (direct air capture, biochar, soil carbon) rather than avoidance credits" data-b4="Report → full and transparent disclosure of methodology, scope, baseline, annual progress and offset quality; without reporting, all prior steps lack accountability" data-ref="Science Based Targets initiative (2021) <em>Corporate Net-Zero Standard Version 1.0</em>. San Francisco: SBTi."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <rect x="4" y="8" width="12" height="28" rx="2" fill="#7C3AED"/>
-  <text x="10" y="12" text-anchor="middle" font-size="4.5" fill="white" font-weight="700">R</text><rect x="17" y="14" width="12" height="22" rx="2" fill="rgba(124,58,237,0.5499999999999999)"/>
-  <text x="23" y="18" text-anchor="middle" font-size="4.5" fill="white" font-weight="700">R</text><rect x="30" y="20" width="12" height="16" rx="2" fill="rgba(124,58,237,0.39999999999999997)"/>
-  <text x="36" y="24" text-anchor="middle" font-size="4.5" fill="white" font-weight="700">R</text><rect x="43" y="26" width="12" height="10" rx="2" fill="rgba(124,58,237,0.25)"/>
-  <text x="49" y="30" text-anchor="middle" font-size="4.5" fill="white" font-weight="700">R</text>
-  <text x="10" y="42" text-anchor="middle" font-size="4" fill="#7C3AED">RED</text>
-  <text x="23" y="42" text-anchor="middle" font-size="4" fill="#7C3AED">REP</text>
-  <text x="36" y="42" text-anchor="middle" font-size="4" fill="#7C3AED">REM</text>
-  <text x="49" y="42" text-anchor="middle" font-size="4" fill="#7C3AED">REP</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">Carbon Neutrality Pathway</div><div class="fw-card-desc">Reduce → Replace → Remove → Report: the four-R sequence for credible decarbonisation</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(124,58,237,0.12);color:#7C3AED;">Slibrary 14</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#7C3AED;" data-color="#7C3AED" data-rgb="124,58,237" data-sl="14" data-unit="MLUXR302 · Unit 5" data-setname="Strategy Design" data-name="ESRS Double Materiality" data-itten="Itten: Deep Violet — Complexity, legal depth" data-lead="The EU&#39;s foundational concept for CSRD reporting — establishing that companies must assess sustainability from two directions: their impact on the world, and the world&#39;s impact on them." data-sub="Impact materiality (inside-out) + Financial materiality (outside-in) = Double materiality" data-b1="Impact materiality → inside-out perspective: how does the company&#39;s business model and value chain affect people and the environment? Actual and potential impacts, positive and negative" data-b2="Financial materiality → outside-in perspective: how do sustainability trends, risks and opportunities affect the company&#39;s financial performance, cash flows, access to capital?" data-b3="Double material issue → an issue is material for CSRD disclosure if it is significant in either direction; not all issues are material in both directions — the assessment must be conducted separately" data-b4="Process requirement → double materiality assessment must involve engagement with relevant stakeholders; documented methodology; results must determine which ESRS Topic Standards are reported" data-ref="European Financial Reporting Advisory Group (2023) <em>European Sustainability Reporting Standards (ESRS): ESRS 1 General Requirements</em>. Brussels: EFRAG."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <path d="M28,4 L52,22 L28,40 L4,22 Z" fill="rgba(124,58,237,0.1)" stroke="#7C3AED" stroke-width="1.5"/>
-  <path d="M28,12 L44,22 L28,32 L12,22 Z" fill="rgba(124,58,237,0.3)" stroke="#7C3AED" stroke-width="1"/>
-  <circle cx="28" cy="22" r="5" fill="#7C3AED" opacity="0.8"/>
-  <text x="28" y="8" text-anchor="middle" font-size="4" fill="#7C3AED">IMPACT</text>
-  <text x="28" y="38" text-anchor="middle" font-size="4" fill="#7C3AED">FINANCIAL</text>
-  <text x="6" y="23" font-size="4" fill="#7C3AED">←</text>
-  <text x="46" y="23" font-size="4" fill="#7C3AED">→</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">ESRS Double Materiality</div><div class="fw-card-desc">Inside-out (impact on world) + outside-in (impact on company) — EU taxonomy for material issues</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(124,58,237,0.12);color:#7C3AED;">Slibrary 14</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#7C3AED;" data-color="#7C3AED" data-rgb="124,58,237" data-sl="14" data-unit="MLUXR302 · Unit 5" data-setname="Strategy Design" data-name="Integrated Value Chain Analysis" data-itten="Itten: Deep Violet — Complexity, legal depth" data-lead="A sustainability-adapted value chain analysis that maps where sustainability investments simultaneously generate environmental and social impact and commercial value — identifying the highest-leverage intervention points." data-sub="Design → sourcing → manufacturing → retail → post-sale: where sustainability creates or destroys value" data-b1="Design and sourcing → highest leverage: design decisions lock in 80% of a product&#39;s lifetime environmental impact; sustainable sourcing builds supply chain resilience and enables premium positioning" data-b2="Manufacturing and logistics → operational efficiency simultaneously reduces costs and emissions; waterless dyeing, energy efficiency and zero-waste manufacturing create joint cost-sustainability returns" data-b3="Retail and brand → sustainability communication at point of sale converts intent to purchase; transparent product information builds trust and reduces greenwashing risk" data-b4="Post-sale services → take-back programmes, repair services and resale create new revenue streams, extend brand relationship lifetime and close the circular loop" data-ref="Porter, M.E. (1985) <em>Competitive Advantage: Creating and Sustaining Superior Performance</em>. New York: Free Press."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <rect x="4" y="14" width="8" height="16" rx="2" fill="rgba(124,58,237,0.2)" stroke="#7C3AED" stroke-width="1"/>
-  <polygon points="12,21 14,18 14,24" fill="#7C3AED"/><rect x="14" y="14" width="8" height="16" rx="2" fill="rgba(124,58,237,0.35)" stroke="#7C3AED" stroke-width="1"/>
-  <polygon points="22,21 24,18 24,24" fill="#7C3AED"/><rect x="24" y="14" width="8" height="16" rx="2" fill="rgba(124,58,237,0.5)" stroke="#7C3AED" stroke-width="1"/>
-  <polygon points="32,21 34,18 34,24" fill="#7C3AED"/><rect x="34" y="14" width="8" height="16" rx="2" fill="rgba(124,58,237,0.6499999999999999)" stroke="#7C3AED" stroke-width="1"/>
-  <polygon points="42,21 44,18 44,24" fill="#7C3AED"/><rect x="44" y="14" width="8" height="16" rx="2" fill="#7C3AED" stroke="#7C3AED" stroke-width="1"/>
-  
-  <text x="28" y="38" text-anchor="middle" font-size="4" fill="#7C3AED">SUSTAINABILITY VALUE</text>
-  <polyline points="4,12 56,12" fill="none" stroke="rgba(124,58,237,0.3)" stroke-width="1" stroke-dasharray="3,2"/>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">Integrated Value Chain Analysis</div><div class="fw-card-desc">Where sustainable operations create commercial margin: sourcing, design, retail, post-sale services</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(124,58,237,0.12);color:#7C3AED;">Slibrary 14</span><span class="fw-arrow">&#8594;</span></div></div></div></div><div class="set-section"><div class="set-hdr"><h2><div class="set-num" style="background:#7C3AED">15</div>Set 15 — Implementation</h2><span class="set-tag">5 frameworks &middot; click any card to explore</span></div><div class="fw-grid"><div class="fw-card" style="border-top-color:#7C3AED;" data-color="#7C3AED" data-rgb="124,58,237" data-sl="15" data-unit="MLUXR302 · Unit 5" data-setname="Implementation" data-name="Kotter 8-Step Change Model" data-itten="Itten: Deep Violet — Complexity, legal depth" data-lead="The most widely applied change management model — eight sequential steps for transforming an organisation, applied here to the challenge of embedding sustainability into fashion brand culture and operations." data-sub="Urgency → Coalition → Vision → Communicate → Empower → Wins → Build → Institutionalise" data-b1="Steps 1–2 (Foundation) → create urgency (burning sustainability platform + strategic opportunity); build a guiding coalition of senior leaders, sustainability champions and external partners" data-b2="Steps 3–4 (Direction) → develop a clear sustainability vision and strategy; communicate it through every channel, at every level, removing inconsistencies in organisational messaging" data-b3="Steps 5–6 (Momentum) → empower employees to act and remove structural barriers; generate short-term wins — measurable sustainability improvements that build credibility" data-b4="Steps 7–8 (Anchoring) → consolidate gains and build on them; anchor sustainability in culture by embedding it in hiring criteria, performance management and leadership development" data-ref="Kotter, J.P. (1996) <em>Leading Change</em>. Boston: Harvard Business School Press."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <rect x="4" y="4" width="11" height="14" rx="2" fill="rgba(124,58,237,0.2)" stroke="#7C3AED" stroke-width="1"/>
-    <text x="9.5" y="13" text-anchor="middle" font-size="6" fill="#7C3AED" font-weight="900">1</text><rect x="17" y="4" width="11" height="14" rx="2" fill="rgba(124,58,237,0.28)" stroke="#7C3AED" stroke-width="1"/>
-    <text x="22.5" y="13" text-anchor="middle" font-size="6" fill="#7C3AED" font-weight="900">2</text><rect x="30" y="4" width="11" height="14" rx="2" fill="rgba(124,58,237,0.36)" stroke="#7C3AED" stroke-width="1"/>
-    <text x="35.5" y="13" text-anchor="middle" font-size="6" fill="#7C3AED" font-weight="900">3</text><rect x="43" y="4" width="11" height="14" rx="2" fill="rgba(124,58,237,0.44)" stroke="#7C3AED" stroke-width="1"/>
-    <text x="48.5" y="13" text-anchor="middle" font-size="6" fill="#7C3AED" font-weight="900">4</text><rect x="4" y="24" width="11" height="14" rx="2" fill="rgba(124,58,237,0.52)" stroke="#7C3AED" stroke-width="1"/>
-    <text x="9.5" y="33" text-anchor="middle" font-size="6" fill="#7C3AED" font-weight="900">5</text><rect x="17" y="24" width="11" height="14" rx="2" fill="rgba(124,58,237,0.6000000000000001)" stroke="#7C3AED" stroke-width="1"/>
-    <text x="22.5" y="33" text-anchor="middle" font-size="6" fill="white" font-weight="900">6</text><rect x="30" y="24" width="11" height="14" rx="2" fill="rgba(124,58,237,0.6799999999999999)" stroke="#7C3AED" stroke-width="1"/>
-    <text x="35.5" y="33" text-anchor="middle" font-size="6" fill="white" font-weight="900">7</text><rect x="43" y="24" width="11" height="14" rx="2" fill="rgba(124,58,237,0.76)" stroke="#7C3AED" stroke-width="1"/>
-    <text x="48.5" y="33" text-anchor="middle" font-size="6" fill="white" font-weight="900">8</text>
-  <text x="28" y="44" text-anchor="middle" font-size="4" fill="#7C3AED">Kotter 1996</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">Kotter 8-Step Change Model</div><div class="fw-card-desc">Urgency → Coalition → Vision → Communicate → Empower → Wins → Build → Institutionalise</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(124,58,237,0.12);color:#7C3AED;">Slibrary 15</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#7C3AED;" data-color="#7C3AED" data-rgb="124,58,237" data-sl="15" data-unit="MLUXR302 · Unit 5" data-setname="Implementation" data-name="Balanced Scorecard for ESG" data-itten="Itten: Deep Violet — Complexity, legal depth" data-lead="A strategic management tool that integrates financial and sustainability performance measurement into a single framework, ensuring that ESG ambitions are translated into operational targets and accountability." data-sub="Financial · Customer · Internal Process · Learning: four quadrants aligned to ESG KPIs" data-b1="Financial perspective → revenue growth from sustainable products, cost savings from efficiency initiatives, avoided costs from regulatory compliance, access to sustainability-linked financing" data-b2="Customer perspective → brand trust and Net Promoter Score among sustainability-motivated consumers, share of wallet from values-aligned segments, sustainable product satisfaction scores" data-b3="Internal process perspective → circularity rate (% circular materials), supply chain audit scores, water and energy intensity, waste-to-landfill rate, packaging recyclability" data-b4="Learning and growth perspective → employee sustainability literacy, supplier sustainability capacity, innovation pipeline for circular materials, culture and capability for transformation" data-ref="Kaplan, R.S. and Norton, D.P. (1992) &#39;The balanced scorecard: measures that drive performance&#39;, <em>Harvard Business Review</em>, 70(1), pp. 71–79."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <rect x="4" y="4" width="23" height="17" rx="2" fill="#7C3AED" opacity="0.7"/>
-  <rect x="29" y="4" width="23" height="17" rx="2" fill="rgba(124,58,237,0.5)"/>
-  <rect x="4" y="23" width="23" height="17" rx="2" fill="rgba(124,58,237,0.35)" stroke="#7C3AED" stroke-width="1"/>
-  <rect x="29" y="23" width="23" height="17" rx="2" fill="rgba(124,58,237,0.2)" stroke="#7C3AED" stroke-width="1"/>
-  <text x="15" y="14" text-anchor="middle" font-size="3.5" fill="white" font-weight="700">FINANCIAL</text>
-  <text x="40" y="14" text-anchor="middle" font-size="3.5" fill="white">CUSTOMER</text>
-  <text x="15" y="33" text-anchor="middle" font-size="3.5" fill="#7C3AED">PROCESS</text>
-  <text x="40" y="33" text-anchor="middle" font-size="3.5" fill="#7C3AED">LEARNING</text>
-  <text x="28" y="44" text-anchor="middle" font-size="4" fill="#7C3AED">Kaplan & Norton 1992</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">Balanced Scorecard for ESG</div><div class="fw-card-desc">Financial + Customer + Process + Learning aligned with sustainability KPIs and targets</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(124,58,237,0.12);color:#7C3AED;">Slibrary 15</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#7C3AED;" data-color="#7C3AED" data-rgb="124,58,237" data-sl="15" data-unit="MLUXR302 · Unit 5" data-setname="Implementation" data-name="Sustainability Marketing Mix" data-itten="Itten: Deep Violet — Complexity, legal depth" data-lead="A redesign of the classic 4Ps framework for sustainable products — adjusting price communication, product positioning, place (channel) selection and promotion to reflect true value, not greenwashing." data-sub="Product (eco-design) · Price (total cost of ownership) · Place (conscious retail) · Promotion (evidence-based)" data-b1="Product → eco-design principles: material transparency, repairability, durability, minimal packaging, take-back scheme, circular end-of-life; sustainability embedded in product, not added as label" data-b2="Price → communicate total cost of ownership rather than price point: durability amortises premium over product lifetime; resale value reduces net acquisition cost; sustainability attributes justify premium" data-b3="Place → select channels aligned with sustainability positioning: independent retailers, certified sustainable stores, transparent online platforms; avoid value-destroying discounting" data-b4="Promotion → evidence-based communication: specific, substantiated claims verified by third parties; storytelling backed by supply chain data; testimonials from workers and communities" data-ref="Peattie, K. and Crane, A. (2005) &#39;Green marketing: legend, myth, farce or prophesy?&#39;, <em>Qualitative Market Research</em>, 8(4), pp. 357–370. doi: 10.1108/13522750510619733."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="28" cy="22" r="18" fill="rgba(124,58,237,0.1)" stroke="#7C3AED" stroke-width="1.5"/>
-  <line x1="28" y1="4" x2="28" y2="40" stroke="#7C3AED" stroke-width="1"/>
-  <line x1="10" y1="22" x2="46" y2="22" stroke="#7C3AED" stroke-width="1"/>
-  <text x="19" y="16" text-anchor="middle" font-size="5" fill="#7C3AED" font-weight="700">P</text>
-  <text x="37" y="16" text-anchor="middle" font-size="5" fill="#7C3AED" font-weight="700">P</text>
-  <text x="19" y="32" text-anchor="middle" font-size="5" fill="#7C3AED" font-weight="700">P</text>
-  <text x="37" y="32" text-anchor="middle" font-size="5" fill="#7C3AED" font-weight="700">P</text>
-  <text x="28" y="44" text-anchor="middle" font-size="4.5" fill="#7C3AED" font-weight="700">4Ps SUSTAINABLE</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">Sustainability Marketing Mix</div><div class="fw-card-desc">Product (eco-design), Price (true cost), Place (green retail), Promotion (authentic narrative)</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(124,58,237,0.12);color:#7C3AED;">Slibrary 15</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#7C3AED;" data-color="#7C3AED" data-rgb="124,58,237" data-sl="15" data-unit="MLUXR302 · Unit 5" data-setname="Implementation" data-name="Stakeholder Engagement Matrix" data-itten="Itten: Deep Violet — Complexity, legal depth" data-lead="A strategic prioritisation tool that maps all stakeholders on two dimensions — power and interest in sustainability — determining the engagement intensity, frequency and channel appropriate for each group." data-sub="Power × Interest → four quadrants: Manage Closely, Keep Satisfied, Keep Informed, Monitor" data-b1="Manage Closely (high power, high interest) → key institutional investors, major NGO campaigners (Fashion Revolution, Clean Clothes Campaign), regulatory bodies, strategic supplier partners" data-b2="Keep Satisfied (high power, low interest) → governments, financial institutions, major shareholders; engage proactively with sustainability data; maintain relationship to prevent adversarial shift" data-b3="Keep Informed (low power, high interest) → engaged consumers, academic researchers, worker organisations, local communities; publish data, host open forums, respond transparently" data-b4="Monitor (low power, low interest) → general public, media, industry associations; track sentiment; respond to significant developments; avoid over-investing in engagement" data-ref="Mendelow, A.L. (1991) &#39;Stakeholder mapping&#39;, in <em>Proceedings of the 2nd International Conference on Information Systems</em>. Cambridge, MA: MIT Sloan School of Management."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <rect x="4" y="4" width="23" height="17" rx="2" fill="rgba(124,58,237,0.2)" stroke="#7C3AED" stroke-width="1"/>
-  <rect x="29" y="4" width="23" height="17" rx="2" fill="#7C3AED" opacity="0.7"/>
-  <rect x="4" y="23" width="23" height="17" rx="2" fill="rgba(124,58,237,0.08)" stroke="#7C3AED" stroke-width="1"/>
-  <rect x="29" y="23" width="23" height="17" rx="2" fill="rgba(124,58,237,0.35)" stroke="#7C3AED" stroke-width="1"/>
-  <text x="15" y="14" text-anchor="middle" font-size="3.5" fill="#7C3AED">SATISFY</text>
-  <text x="40" y="14" text-anchor="middle" font-size="3.5" fill="white" font-weight="700">MANAGE</text>
-  <text x="15" y="33" text-anchor="middle" font-size="3.5" fill="rgba(124,58,237,0.5)">MONITOR</text>
-  <text x="40" y="33" text-anchor="middle" font-size="3.5" fill="#7C3AED">INFORM</text>
-  <text x="28" y="44" text-anchor="middle" font-size="4" fill="#7C3AED">Mendelow 1991</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">Stakeholder Engagement Matrix</div><div class="fw-card-desc">Power × interest grid: identify manage-closely, keep-informed, keep-satisfied and monitor quadrants</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(124,58,237,0.12);color:#7C3AED;">Slibrary 15</span><span class="fw-arrow">&#8594;</span></div></div><div class="fw-card" style="border-top-color:#7C3AED;" data-color="#7C3AED" data-rgb="124,58,237" data-sl="15" data-unit="MLUXR302 · Unit 5" data-setname="Implementation" data-name="Science-Based Targets (SBTi)" data-itten="Itten: Deep Violet — Complexity, legal depth" data-lead="The definitive framework for aligning corporate climate targets to the 1.5°C pathway — validated by an independent scientific body, the gold standard for credible corporate climate commitments." data-sub="Commit → Develop → Submit → Achieve: four steps from pledge to science-validated action" data-b1="Commitment → sign the SBTi commitment letter; publicly announce intent to set science-based targets; formally communicate to investors and stakeholders within 24 months" data-b2="Target development → calculate Scope 1, 2 and 3 baseline emissions; select approved pathway (Absolute Contraction Approach, Sectoral Decarbonisation Approach, or Market-Based); set specific annual reduction targets" data-b3="Validation → submit targets to SBTi for independent technical review; targets must meet sector-specific criteria; approval typically takes 6–12 months; published on SBTi company dashboard" data-b4="Achieve and report → report annual Scope 1, 2 and 3 emissions publicly; disclose progress against targets in annual sustainability report; recalibrate if significant business model changes occur" data-ref="Science Based Targets initiative (2022) <em>SBTi Corporate Net-Zero Standard: Criteria, Recommendations and Guidance Version 1.1</em>. San Francisco: SBTi."><div class="fw-card-icon"><svg viewBox="0 0 56 44" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="28" cy="18" r="14" fill="none" stroke="rgba(124,58,237,0.2)" stroke-width="2"/>
-  <circle cx="28" cy="18" r="9" fill="none" stroke="rgba(124,58,237,0.45)" stroke-width="2"/>
-  <circle cx="28" cy="18" r="4.5" fill="#7C3AED" opacity="0.85"/>
-  <line x1="28" y1="4" x2="28" y2="8" stroke="#7C3AED" stroke-width="3" stroke-linecap="round"/>
-  <text x="28" y="20" text-anchor="middle" font-size="3.5" fill="white" font-weight="700">SBTi</text>
-  <text x="28" y="40" text-anchor="middle" font-size="4.5" fill="#7C3AED" font-weight="700">1.5°C VALIDATED</text>
-</svg></div><div class="fw-card-body"><div class="fw-card-name">Science-Based Targets (SBTi)</div><div class="fw-card-desc">Setting 1.5°C-aligned Scope 1, 2 and 3 reduction targets with third-party validation</div></div><div class="fw-card-foot"><span class="fw-sl-badge" style="background:rgba(124,58,237,0.12);color:#7C3AED;">Slibrary 15</span><span class="fw-arrow">&#8594;</span></div></div></div></div><p style="text-align:center;font-size:11px;color:var(--muted);margin-bottom:48px;"><strong>MLUXR302</strong> &middot; &copy; 2026 Dr. Hildegard Haas &middot; EU Business School</p>
-</div></main>
-<footer class="site-footer">
-  <div class="container">
-    <strong>&copy; Dr. Hildegard Haas</strong> &middot; MLUXR302 Sustainable Value Creation in Fashion &amp; Luxury &middot; EU Business School<br/>
-    All rights reserved
-  </div>
-</footer>
-
-<div id="modal-overlay">
-  <div id="modal-box">
-    <div id="modal-color-bar"></div>
-    <div id="modal-inner">
-      <div id="modal-header">
-        <div id="modal-header-left">
-          <div id="modal-label-row">
-            <span id="m-slibrary-header"></span>
-            <span id="m-unit-badge"></span>
+<main style="padding:2rem 1.5rem 1rem">
+<div class="slib-set">
+      <div class="slib-set-header" data-anim>
+        <span class="slib-dot" style="background:#7C3AED"></span>
+        <span class="slib-set-title">Set 17 &mdash; AI & Copyright</span>
+        <span class="slib-set-num">5 frameworks</span>
+      </div>
+      <div class="cards-grid"><div class="card" data-anim style="transition-delay:0ms" onclick="openModal(FW[0])">
+          <div class="card-accent" style="background:#7C3AED"></div>
+          <div class="card-thumb" id="thumb-17-0"></div>
+          <div class="card-body">
+            <div class="card-title">Authorship Decision Tree</div>
+            <div class="card-desc">Is there a human author? Sufficient creative control?</div>
+            <span class="card-tag" style="background:#7C3AED">Slibrary 17</span>
           </div>
-          <h2 id="m-title"></h2>
-          <div id="m-itten-line"></div>
-        </div>
-        <button id="modal-close" aria-label="Close">&#x2715;</button>
+        </div><div class="card" data-anim style="transition-delay:80ms" onclick="openModal(FW[1])">
+          <div class="card-accent" style="background:#7C3AED"></div>
+          <div class="card-thumb" id="thumb-17-1"></div>
+          <div class="card-body">
+            <div class="card-title">AI-Generated Works Spectrum</div>
+            <div class="card-desc">Human-created → AI-assisted → AI-directed → autonomous</div>
+            <span class="card-tag" style="background:#7C3AED">Slibrary 17</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:160ms" onclick="openModal(FW[2])">
+          <div class="card-accent" style="background:#7C3AED"></div>
+          <div class="card-thumb" id="thumb-17-2"></div>
+          <div class="card-body">
+            <div class="card-title">TDM Exception Flowchart</div>
+            <div class="card-desc">EU Digital Single Market Art.3–4 decision logic</div>
+            <span class="card-tag" style="background:#7C3AED">Slibrary 17</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:240ms" onclick="openModal(FW[3])">
+          <div class="card-accent" style="background:#7C3AED"></div>
+          <div class="card-thumb" id="thumb-17-3"></div>
+          <div class="card-body">
+            <div class="card-title">Fair Use Four-Factor Test</div>
+            <div class="card-desc">Purpose, nature, amount, and market effect analysis</div>
+            <span class="card-tag" style="background:#7C3AED">Slibrary 17</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:320ms" onclick="openModal(FW[4])">
+          <div class="card-accent" style="background:#7C3AED"></div>
+          <div class="card-thumb" id="thumb-17-4"></div>
+          <div class="card-body">
+            <div class="card-title">Global Copyright Comparison</div>
+            <div class="card-desc">US × EU × UK × China × Japan jurisdiction matrix</div>
+            <span class="card-tag" style="background:#7C3AED">Slibrary 17</span>
+          </div>
+        </div></div></div><div class="slib-set">
+      <div class="slib-set-header" data-anim>
+        <span class="slib-dot" style="background:#DC2626"></span>
+        <span class="slib-set-title">Set 18 &mdash; Data as IP</span>
+        <span class="slib-set-num">5 frameworks</span>
       </div>
-      <blockquote id="modal-lead"><p id="m-lead-text"></p></blockquote>
-      <p id="m-sub-text"></p>
-      <div id="modal-bullets">
-        <div class="m-bullet-item"><span class="m-dot"></span><span class="m-bullet-text" id="m-b1"></span></div>
-        <hr class="m-divider"/>
-        <div class="m-bullet-item"><span class="m-dot"></span><span class="m-bullet-text" id="m-b2"></span></div>
-        <hr class="m-divider"/>
-        <div class="m-bullet-item"><span class="m-dot"></span><span class="m-bullet-text" id="m-b3"></span></div>
-        <hr class="m-divider"/>
-        <div class="m-bullet-item"><span class="m-dot"></span><span class="m-bullet-text" id="m-b4"></span></div>
+      <div class="cards-grid"><div class="card" data-anim style="transition-delay:0ms" onclick="openModal(FW[5])">
+          <div class="card-accent" style="background:#DC2626"></div>
+          <div class="card-thumb" id="thumb-18-0"></div>
+          <div class="card-body">
+            <div class="card-title">Data IP Protection Layers</div>
+            <div class="card-desc">Concentric rings: copyright → database rights → trade secrets → contract</div>
+            <span class="card-tag" style="background:#DC2626">Slibrary 18</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:80ms" onclick="openModal(FW[6])">
+          <div class="card-accent" style="background:#DC2626"></div>
+          <div class="card-thumb" id="thumb-18-1"></div>
+          <div class="card-body">
+            <div class="card-title">Sui Generis Database Rights</div>
+            <div class="card-desc">EU substantial investment test with 15-year renewable protection</div>
+            <span class="card-tag" style="background:#DC2626">Slibrary 18</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:160ms" onclick="openModal(FW[7])">
+          <div class="card-accent" style="background:#DC2626"></div>
+          <div class="card-thumb" id="thumb-18-2"></div>
+          <div class="card-body">
+            <div class="card-title">Trade Secret vs. Patent 2×2</div>
+            <div class="card-desc">Disclosure willingness × duration need decision matrix</div>
+            <span class="card-tag" style="background:#DC2626">Slibrary 18</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:240ms" onclick="openModal(FW[8])">
+          <div class="card-accent" style="background:#DC2626"></div>
+          <div class="card-thumb" id="thumb-18-3"></div>
+          <div class="card-body">
+            <div class="card-title">Data Licensing Model Map</div>
+            <div class="card-desc">Open → CC BY → CC BY-SA → proprietary spectrum</div>
+            <span class="card-tag" style="background:#DC2626">Slibrary 18</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:320ms" onclick="openModal(FW[9])">
+          <div class="card-accent" style="background:#DC2626"></div>
+          <div class="card-thumb" id="thumb-18-4"></div>
+          <div class="card-body">
+            <div class="card-title">Open vs. Proprietary Spectrum</div>
+            <div class="card-desc">Public domain → freemium → API-gated → exclusive</div>
+            <span class="card-tag" style="background:#DC2626">Slibrary 18</span>
+          </div>
+        </div></div></div><div class="slib-set">
+      <div class="slib-set-header" data-anim>
+        <span class="slib-dot" style="background:#059669"></span>
+        <span class="slib-set-title">Set 19 &mdash; IP Strategy & Competition</span>
+        <span class="slib-set-num">5 frameworks</span>
       </div>
-      <div id="modal-reference">
-        <div id="modal-ref-label">REFERENCE</div>
-        <p id="m-ref-text"></p>
+      <div class="cards-grid"><div class="card" data-anim style="transition-delay:0ms" onclick="openModal(FW[10])">
+          <div class="card-accent" style="background:#059669"></div>
+          <div class="card-thumb" id="thumb-19-0"></div>
+          <div class="card-body">
+            <div class="card-title">Freedom-to-Operate Analysis</div>
+            <div class="card-desc">All patents → relevant → blocking → risk assessment funnel</div>
+            <span class="card-tag" style="background:#059669">Slibrary 19</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:80ms" onclick="openModal(FW[11])">
+          <div class="card-accent" style="background:#059669"></div>
+          <div class="card-thumb" id="thumb-19-1"></div>
+          <div class="card-body">
+            <div class="card-title">Patent Landscape Map</div>
+            <div class="card-desc">Bubble chart: assignees × tech domains with white spaces</div>
+            <span class="card-tag" style="background:#059669">Slibrary 19</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:160ms" onclick="openModal(FW[12])">
+          <div class="card-accent" style="background:#059669"></div>
+          <div class="card-thumb" id="thumb-19-2"></div>
+          <div class="card-body">
+            <div class="card-title">IP Portfolio Valuation</div>
+            <div class="card-desc">Cost → market → income approach comparison</div>
+            <span class="card-tag" style="background:#059669">Slibrary 19</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:240ms" onclick="openModal(FW[13])">
+          <div class="card-accent" style="background:#059669"></div>
+          <div class="card-thumb" id="thumb-19-3"></div>
+          <div class="card-body">
+            <div class="card-title">Competition-IP Tension Model</div>
+            <div class="card-desc">IP monopoly ← → free competition pulling apart</div>
+            <span class="card-tag" style="background:#059669">Slibrary 19</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:320ms" onclick="openModal(FW[14])">
+          <div class="card-accent" style="background:#059669"></div>
+          <div class="card-thumb" id="thumb-19-4"></div>
+          <div class="card-body">
+            <div class="card-title">FRAND Licensing Diagram</div>
+            <div class="card-desc">Fair, Reasonable, Non-Discriminatory for standard-essential patents</div>
+            <span class="card-tag" style="background:#059669">Slibrary 19</span>
+          </div>
+        </div></div></div><div class="slib-set">
+      <div class="slib-set-header" data-anim>
+        <span class="slib-dot" style="background:#D97706"></span>
+        <span class="slib-set-title">Set 20 &mdash; Liability & Protection</span>
+        <span class="slib-set-num">5 frameworks</span>
       </div>
-    </div>
-  </div>
+      <div class="cards-grid"><div class="card" data-anim style="transition-delay:0ms" onclick="openModal(FW[15])">
+          <div class="card-accent" style="background:#D97706"></div>
+          <div class="card-thumb" id="thumb-20-0"></div>
+          <div class="card-body">
+            <div class="card-title">AI Liability Chain</div>
+            <div class="card-desc">Developer → deployer → user → affected party with liability at each</div>
+            <span class="card-tag" style="background:#D97706">Slibrary 20</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:80ms" onclick="openModal(FW[16])">
+          <div class="card-accent" style="background:#D97706"></div>
+          <div class="card-thumb" id="thumb-20-1"></div>
+          <div class="card-body">
+            <div class="card-title">Product vs. IP Liability 2×2</div>
+            <div class="card-desc">Tangible × intangible harm—AI can trigger both</div>
+            <span class="card-tag" style="background:#D97706">Slibrary 20</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:160ms" onclick="openModal(FW[17])">
+          <div class="card-accent" style="background:#D97706"></div>
+          <div class="card-thumb" id="thumb-20-2"></div>
+          <div class="card-body">
+            <div class="card-title">Insurance & Indemnity Framework</div>
+            <div class="card-desc">Self-insure → contractual indemnity → insurance waterfall</div>
+            <span class="card-tag" style="background:#D97706">Slibrary 20</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:240ms" onclick="openModal(FW[18])">
+          <div class="card-accent" style="background:#D97706"></div>
+          <div class="card-thumb" id="thumb-20-3"></div>
+          <div class="card-body">
+            <div class="card-title">Contractual IP Allocation</div>
+            <div class="card-desc">Parties × IP types (foreground, background, sideground)</div>
+            <span class="card-tag" style="background:#D97706">Slibrary 20</span>
+          </div>
+        </div><div class="card" data-anim style="transition-delay:320ms" onclick="openModal(FW[19])">
+          <div class="card-accent" style="background:#D97706"></div>
+          <div class="card-thumb" id="thumb-20-4"></div>
+          <div class="card-body">
+            <div class="card-title">Enforcement Decision Flowchart</div>
+            <div class="card-desc">Detect → assess strength → cease & desist / negotiate / litigate</div>
+            <span class="card-tag" style="background:#D97706">Slibrary 20</span>
+          </div>
+        </div></div></div>
+</main>
+<footer class="footer">
+  <strong>MARTI301</strong> &middot; AI in Investment &amp; Competitiveness &middot; &copy; 2026 Dr. Hildegard Haas<br>
+  Applying JD Meier&rsquo;s <strong>Thumbnail Thinking</strong> (2025) &middot; Unit 5: IP & Value Creation through AI
+</footer>
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modal"></div>
 </div>
+<script>
+const FW = [
+{"name":"Authorship Decision Tree","def":"A branching logic for determining copyrightability of AI-involved works.","desc":"Is there a human author? Sufficient creative control?","shape":"tree","details":["Branching logic for copyrightability","AI as tool vs. autonomous creator","US Copyright Office approach","EU emerging framework"],"ref":"US Copyright Office (2023) Copyright Registration Guidance: Works Containing Material Generated by AI. 88 Fed. Reg. 16190.","slibTitle":"AI & Copyright","slibNum":17,"color":"#7C3AED"},
+{"name":"AI-Generated Works Spectrum","def":"A continuum of human involvement in AI-assisted creation, from fully human-created to fully autonomous.","desc":"Human-created → AI-assisted → AI-directed → autonomous","shape":"spectrum","details":["Protection decreases left to right","Key boundary: sufficient human control","Different jurisdictions, different lines","Rapidly evolving legal landscape"],"ref":"Lee, J.A. et al. (2021) Artificial Intelligence and Intellectual Property. Oxford: OUP.","slibTitle":"AI & Copyright","slibNum":17,"color":"#7C3AED"},
+{"name":"TDM Exception Flowchart","def":"A decision flowchart for EU text and data mining exceptions under Articles 3 and 4 DSM Directive.","desc":"EU Digital Single Market Art.3–4 decision logic","shape":"tree","details":["Art.3: research exception (broad)","Art.4: commercial use + opt-out check","Key for AI training data legality","Rightsholder opt-out mechanisms"],"ref":"European Parliament (2019) Directive (EU) 2019/790 on copyright in the Digital Single Market.","slibTitle":"AI & Copyright","slibNum":17,"color":"#7C3AED"},
+{"name":"Fair Use Four-Factor Test","def":"The US copyright defence weighing purpose, nature, amount, and market effect.","desc":"Purpose, nature, amount, and market effect analysis","shape":"matrix","details":["US copyright defence framework","Each factor weighed independently","No single factor is dispositive","AI training cases actively litigated"],"ref":"17 U.S.C. § 107. See also: Authors Guild v. Google, Inc., 804 F.3d 202 (2d Cir. 2015).","slibTitle":"AI & Copyright","slibNum":17,"color":"#7C3AED"},
+{"name":"Global Copyright Comparison","def":"A jurisdiction matrix mapping how major countries treat AI authorship, training data, and output.","desc":"US × EU × UK × China × Japan jurisdiction matrix","shape":"matrix","details":["Rows: authorship, training, output rights","Traffic-light status per jurisdiction","Snapshot in time — rapidly evolving","Essential for multinational AI strategy"],"ref":"WIPO (2020) Revised Issues Paper on IP Policy and AI. Geneva: WIPO.","slibTitle":"AI & Copyright","slibNum":17,"color":"#7C3AED"},
+{"name":"Data IP Protection Layers","def":"A concentric model showing how multiple IP regimes can stack to protect the same dataset.","desc":"Concentric rings: copyright → database rights → trade secrets → contract","shape":"circle","details":["Multiple protection layers can stack","No single regime covers all data","Technical protection as outer layer","Layered strategy for maximum coverage"],"ref":"Drexl, J. et al. (2017) 'Data ownership and access to data', Max Planck Institute Research Paper No. 16-10.","slibTitle":"Data as IP","slibNum":18,"color":"#DC2626"},
+{"name":"Sui Generis Database Rights","def":"An EU-specific IP right protecting databases where there has been substantial investment.","desc":"EU substantial investment test with 15-year renewable protection","shape":"layers","details":["Extraction vs. re-utilisation rights","Substantial investment threshold","15-year renewable protection","EU-specific — no US equivalent"],"ref":"European Parliament (1996) Directive 96/9/EC on the legal protection of databases.","slibTitle":"Data as IP","slibNum":18,"color":"#DC2626"},
+{"name":"Trade Secret vs. Patent 2×2","def":"A decision matrix comparing two IP protection strategies along disclosure and duration axes.","desc":"Disclosure willingness × duration need decision matrix","shape":"matrix","details":["Trade secret: no disclosure, indefinite","Patent: full disclosure, 20 years","AI models often better as trade secrets","Strategic choice for each asset"],"ref":"Lee, J.A. et al. (2021) Artificial Intelligence and Intellectual Property. Oxford: OUP.","slibTitle":"Data as IP","slibNum":18,"color":"#DC2626"},
+{"name":"Data Licensing Model Map","def":"A spectrum of data licensing models from fully open through Creative Commons to fully proprietary.","desc":"Open → CC BY → CC BY-SA → proprietary spectrum","shape":"spectrum","details":["Restrictions increase left to right","Commercial use flags at each level","Critical for AI training data sourcing","License compliance automation"],"ref":"Creative Commons (2023) About CC Licenses. Available at: https://creativecommons.org/licenses/.","slibTitle":"Data as IP","slibNum":18,"color":"#DC2626"},
+{"name":"Open vs. Proprietary Spectrum","def":"A positioning model showing how data sources range from public domain to fully exclusive.","desc":"Public domain → freemium → API-gated → exclusive","shape":"spectrum","details":["Competitive advantage increases rightward","Open data enables but doesn't differentiate","Proprietary data as modern moat","Pricing and access models at each level"],"ref":"Zuboff, S. (2019) The Age of Surveillance Capitalism. London: Profile Books.","slibTitle":"Data as IP","slibNum":18,"color":"#DC2626"},
+{"name":"Freedom-to-Operate Analysis","def":"A filtering process narrowing the patent universe to blocking patents, yielding a risk-rated FTO opinion.","desc":"All patents → relevant → blocking → risk assessment funnel","shape":"funnel","details":["Narrowing funnel at each filter stage","Output: FTO opinion (green/amber/red)","Essential before AI product launch","AI can automate patent search step"],"ref":"WIPO (2019) Technology Trends 2019: Artificial Intelligence. Geneva: WIPO.","slibTitle":"IP Strategy & Competition","slibNum":19,"color":"#059669"},
+{"name":"Patent Landscape Map","def":"A bubble chart plotting patent assignees against technology domains, revealing competitive white spaces.","desc":"Bubble chart: assignees × tech domains with white spaces","shape":"network","details":["Bubble size = patent portfolio size","White spaces = opportunity zones","AI automates landscape generation","Strategic planning visualisation"],"ref":"WIPO (2019) Technology Trends 2019: Artificial Intelligence. Geneva: WIPO.","slibTitle":"IP Strategy & Competition","slibNum":19,"color":"#059669"},
+{"name":"IP Portfolio Valuation","def":"Three approaches to valuing IP: cost, market, and income.","desc":"Cost → market → income approach comparison","shape":"bars","details":["Three valuation methodologies","AI patents: short lifecycle challenge","Income approach most common for tech","Links to Unit 6 investment valuation"],"ref":"Smith, G.V. and Parr, R.L. (2005) Intellectual Property: Valuation, Exploitation, and Infringement Damages. 4th edn. Hoboken: Wiley.","slibTitle":"IP Strategy & Competition","slibNum":19,"color":"#059669"},
+{"name":"Competition-IP Tension Model","def":"A model showing the inherent tension between IP monopoly rights and competition policy.","desc":"IP monopoly ← → free competition pulling apart","shape":"split","details":["Two opposing forces in tension","Balance shifts with regulation","EU AI Act adds new constraints","GPAI obligations layer"],"ref":"Shapiro, C. (2001) 'Navigating the patent thicket', in Innovation Policy and the Economy. Cambridge: MIT Press.","slibTitle":"IP Strategy & Competition","slibNum":19,"color":"#059669"},
+{"name":"FRAND Licensing Diagram","def":"A negotiation framework for licensing standard-essential patents on Fair, Reasonable, and Non-Discriminatory terms.","desc":"Fair, Reasonable, Non-Discriminatory for standard-essential patents","shape":"cycle","details":["Licensor ↔ licensee negotiation flow","Standard-essential patent context","Relevant for AI interoperability","Potential AI standard patents emerging"],"ref":"Lemley, M.A. (2002) 'Intellectual property rights and standard-setting organizations', California Law Review, 90(6), pp. 1889–1980.","slibTitle":"IP Strategy & Competition","slibNum":19,"color":"#059669"},
+{"name":"AI Liability Chain","def":"A horizontal chain mapping liability from developer through deployer to user and affected party.","desc":"Developer → deployer → user → affected party with liability at each","shape":"pipeline","details":["EU AI Liability Directive allocation","Burden of proof shifts at high-risk tier","Each node bears specific obligations","Horizontal chain diagram"],"ref":"European Commission (2022) Proposal for AI Liability Directive. COM(2022) 496.","slibTitle":"Liability & Protection","slibNum":20,"color":"#D97706"},
+{"name":"Product vs. IP Liability 2×2","def":"A matrix distinguishing tangible harm (product liability) from intangible harm (IP liability).","desc":"Tangible × intangible harm—AI can trigger both","shape":"matrix","details":["Product liability: physical damage","IP liability: infringement, misappropriation","AI outputs can trigger both simultaneously","Dual exposure risk for deployers"],"ref":"Buiten, M.C. (2019) 'Towards intelligent regulation of AI', European Journal of Risk Regulation, 10(1), pp. 41–59.","slibTitle":"Liability & Protection","slibNum":20,"color":"#D97706"},
+{"name":"Insurance & Indemnity Framework","def":"A risk transfer waterfall from self-insurance through contractual indemnification to third-party insurance.","desc":"Self-insure → contractual indemnity → insurance waterfall","shape":"layers","details":["Risk transfer waterfall diagram","AI-specific policies emerging","Underwriting challenges for novel risks","Contractual allocation essential"],"ref":"OECD (2021) Recommendation of the Council on Artificial Intelligence. Paris: OECD.","slibTitle":"Liability & Protection","slibNum":20,"color":"#D97706"},
+{"name":"Contractual IP Allocation","def":"A matrix defining ownership of foreground, background, and sideground IP in AI collaborations.","desc":"Parties × IP types (foreground, background, sideground)","shape":"matrix","details":["Who owns what in AI collaborations?","Joint development vs. work-for-hire","Template for partnership agreements","Critical for AI joint ventures"],"ref":"Lee, J.A. et al. (2021) Artificial Intelligence and Intellectual Property. Oxford: OUP.","slibTitle":"Liability & Protection","slibNum":20,"color":"#D97706"},
+{"name":"Enforcement Decision Flowchart","def":"A decision tree: detect infringement, assess strength, then choose enforcement strategy.","desc":"Detect → assess strength → cease & desist / negotiate / litigate","shape":"tree","details":["Cost-benefit at each decision node","AI tools accelerate detection","Strategic choice: enforce vs. license","Portfolio-level enforcement strategy"],"ref":"Lee, J.A. et al. (2021) Artificial Intelligence and Intellectual Property. Oxford: OUP.","slibTitle":"Liability & Protection","slibNum":20,"color":"#D97706"}
+];
 
-<script>
-(function(){
-  var ov=document.getElementById('modal-overlay');
-  var bx=document.getElementById('modal-box');
-  function open(card){
-    var c=card.dataset.color, rgb=card.dataset.rgb;
-    document.getElementById('modal-color-bar').style.background=c;
-    var lead=document.getElementById('modal-lead');
-    lead.style.borderLeftColor=c;
-    lead.style.background='rgba('+rgb+',0.05)';
-    document.getElementById('m-lead-text').style.color=c;
-    document.querySelectorAll('.m-dot').forEach(function(d){d.style.background=c;});
-    var ref=document.getElementById('modal-reference');
-    ref.style.borderLeftColor=c;
-    ref.style.background='rgba('+rgb+',0.07)';
-    document.getElementById('modal-ref-label').style.color=c;
-    document.getElementById('m-slibrary-header').textContent='SLIBRARY '+card.dataset.sl+' — '+card.dataset.setname;
-    document.getElementById('m-unit-badge').textContent=card.dataset.unit;
-    document.getElementById('m-title').textContent=card.dataset.name;
-    document.getElementById('m-itten-line').textContent=card.dataset.itten;
-    document.getElementById('m-lead-text').textContent=card.dataset.lead;
-    document.getElementById('m-sub-text').textContent=card.dataset.sub;
-    document.getElementById('m-b1').textContent=card.dataset.b1;
-    document.getElementById('m-b2').textContent=card.dataset.b2;
-    document.getElementById('m-b3').textContent=card.dataset.b3;
-    document.getElementById('m-b4').textContent=card.dataset.b4;
-    document.getElementById('m-ref-text').innerHTML=card.dataset.ref;
-    ov.classList.add('active');
-    document.body.style.overflow='hidden';
-    bx.scrollTop=0;
-  }
-  function close(){ov.classList.remove('active');document.body.style.overflow='';}
-  document.querySelectorAll('.fw-card').forEach(function(c){c.addEventListener('click',function(){open(c);});});
-  document.getElementById('modal-close').addEventListener('click',close);
-  ov.addEventListener('click',function(e){if(e.target===ov)close();});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
-})();
-</script>
-<script>
-document.querySelectorAll('.acc-hdr').forEach(function(h){
-  h.addEventListener('click',function(){
-    h.classList.toggle('open');
-    h.nextElementSibling.classList.toggle('open');
-  });
-});
+const SVG={
+  pyramid:c=>`<svg viewBox="0 0 200 130"><polygon points="100,10 30,120 170,120" fill="none" stroke="${c}" stroke-width="2.5" opacity=".6"/><line x1="55" y1="80" x2="145" y2="80" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="72" y1="50" x2="128" y2="50" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  cycle:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="65" r="45" fill="none" stroke="${c}" stroke-width="2.5" opacity=".5"/><polygon points="140,40 148,52 132,50" fill="${c}" opacity=".6"/><polygon points="60,90 52,78 68,80" fill="${c}" opacity=".6"/><circle cx="100" cy="20" r="4" fill="${c}" opacity=".5"/><circle cx="145" cy="65" r="4" fill="${c}" opacity=".5"/><circle cx="100" cy="110" r="4" fill="${c}" opacity=".5"/><circle cx="55" cy="65" r="4" fill="${c}" opacity=".5"/></svg>`,
+  scurve:c=>`<svg viewBox="0 0 200 130"><path d="M20,110 C50,108 70,100 90,70 S140,15 180,12" fill="none" stroke="${c}" stroke-width="2.5" opacity=".6"/><line x1="20" y1="120" x2="185" y2="120" stroke="${c}" stroke-width="1" opacity=".2"/><line x1="18" y1="10" x2="18" y2="120" stroke="${c}" stroke-width="1" opacity=".2"/></svg>`,
+  matrix:c=>`<svg viewBox="0 0 200 130"><rect x="25" y="15" width="70" height="45" rx="4" fill="${c}" opacity=".12" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="105" y="15" width="70" height="45" rx="4" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="25" y="70" width="70" height="45" rx="4" fill="${c}" opacity=".08" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="105" y="70" width="70" height="45" rx="4" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  funnel:c=>`<svg viewBox="0 0 200 130"><path d="M30,15 L170,15 L135,120 L65,120 Z" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".5"/><line x1="50" y1="50" x2="150" y2="50" stroke="${c}" stroke-width="1" opacity=".3" stroke-dasharray="4"/><line x1="58" y1="80" x2="142" y2="80" stroke="${c}" stroke-width="1" opacity=".3" stroke-dasharray="4"/></svg>`,
+  bars:c=>`<svg viewBox="0 0 200 130"><rect x="25" y="70" width="30" height="50" rx="3" fill="${c}" opacity=".25"/><rect x="65" y="40" width="30" height="80" rx="3" fill="${c}" opacity=".4"/><rect x="105" y="55" width="30" height="65" rx="3" fill="${c}" opacity=".3"/><rect x="145" y="25" width="30" height="95" rx="3" fill="${c}" opacity=".5"/><line x1="20" y1="120" x2="180" y2="120" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  arrow:c=>`<svg viewBox="0 0 200 130"><path d="M15,40 L140,40 L140,20 L185,65 L140,110 L140,90 L15,90 Z" fill="${c}" opacity=".12" stroke="${c}" stroke-width="2" opacity=".4"/></svg>`,
+  diamond:c=>`<svg viewBox="0 0 200 130"><polygon points="100,10 180,65 100,120 20,65" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".5"/><circle cx="100" cy="65" r="15" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".4"/></svg>`,
+  circle:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="65" r="50" fill="${c}" opacity=".08" stroke="${c}" stroke-width="2" opacity=".4"/><circle cx="100" cy="65" r="30" fill="${c}" opacity=".12" stroke="${c}" stroke-width="1.5" opacity=".3"/><circle cx="100" cy="65" r="12" fill="${c}" opacity=".2"/></svg>`,
+  stairs:c=>`<svg viewBox="0 0 200 130"><path d="M20,110 L20,85 L65,85 L65,60 L110,60 L110,35 L155,35 L155,15 L180,15" fill="none" stroke="${c}" stroke-width="2.5" opacity=".5"/><rect x="20" y="85" width="45" height="25" fill="${c}" opacity=".08"/><rect x="65" y="60" width="45" height="50" fill="${c}" opacity=".1"/><rect x="110" y="35" width="45" height="75" fill="${c}" opacity=".13"/><rect x="155" y="15" width="25" height="95" fill="${c}" opacity=".16"/></svg>`,
+  pipeline:c=>`<svg viewBox="0 0 200 130"><rect x="10" y="45" width="35" height="40" rx="6" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="48" y1="65" x2="60" y2="65" stroke="${c}" stroke-width="2" opacity=".4"/><rect x="63" y="45" width="35" height="40" rx="6" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="101" y1="65" x2="113" y2="65" stroke="${c}" stroke-width="2" opacity=".4"/><rect x="116" y="45" width="35" height="40" rx="6" fill="${c}" opacity=".25" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="154" y1="65" x2="166" y2="65" stroke="${c}" stroke-width="2" opacity=".4"/><rect x="169" y="45" width="22" height="40" rx="6" fill="${c}" opacity=".3" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  split:c=>`<svg viewBox="0 0 200 130"><rect x="15" y="25" width="75" height="80" rx="8" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".3"/><rect x="110" y="25" width="75" height="80" rx="8" fill="${c}" opacity=".18" stroke="${c}" stroke-width="2" opacity=".3"/><line x1="100" y1="30" x2="100" y2="100" stroke="${c}" stroke-width="2" opacity=".3" stroke-dasharray="5"/></svg>`,
+  venn:c=>`<svg viewBox="0 0 200 130"><circle cx="78" cy="65" r="42" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".35"/><circle cx="122" cy="65" r="42" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".35"/></svg>`,
+  layers:c=>`<svg viewBox="0 0 200 130"><rect x="30" y="85" width="140" height="28" rx="5" fill="${c}" opacity=".1" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="30" y="50" width="140" height="28" rx="5" fill="${c}" opacity=".17" stroke="${c}" stroke-width="1.5" opacity=".3"/><rect x="30" y="15" width="140" height="28" rx="5" fill="${c}" opacity=".25" stroke="${c}" stroke-width="1.5" opacity=".3"/></svg>`,
+  tree:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="22" r="12" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".4"/><line x1="100" y1="34" x2="60" y2="65" stroke="${c}" stroke-width="1.5" opacity=".35"/><line x1="100" y1="34" x2="140" y2="65" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="60" cy="70" r="10" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><circle cx="140" cy="70" r="10" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><line x1="60" y1="80" x2="40" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="60" y1="80" x2="80" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="140" y1="80" x2="120" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="140" y1="80" x2="160" y2="105" stroke="${c}" stroke-width="1.5" opacity=".25"/><circle cx="40" cy="110" r="7" fill="${c}" opacity=".1"/><circle cx="80" cy="110" r="7" fill="${c}" opacity=".1"/><circle cx="120" cy="110" r="7" fill="${c}" opacity=".1"/><circle cx="160" cy="110" r="7" fill="${c}" opacity=".1"/></svg>`,
+  spectrum:c=>`<svg viewBox="0 0 200 130"><rect x="15" y="50" width="170" height="30" rx="15" fill="${c}" opacity=".1" stroke="${c}" stroke-width="1.5" opacity=".3"/><circle cx="45" cy="65" r="10" fill="${c}" opacity=".15"/><circle cx="100" cy="65" r="10" fill="${c}" opacity=".25"/><circle cx="155" cy="65" r="10" fill="${c}" opacity=".4"/></svg>`,
+  network:c=>`<svg viewBox="0 0 200 130"><circle cx="100" cy="65" r="14" fill="${c}" opacity=".25" stroke="${c}" stroke-width="1.5" opacity=".4"/><circle cx="45" cy="30" r="9" fill="${c}" opacity=".15"/><circle cx="155" cy="30" r="9" fill="${c}" opacity=".15"/><circle cx="45" cy="100" r="9" fill="${c}" opacity=".15"/><circle cx="155" cy="100" r="9" fill="${c}" opacity=".15"/><line x1="90" y1="55" x2="52" y2="35" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="110" y1="55" x2="148" y2="35" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="90" y1="75" x2="52" y2="95" stroke="${c}" stroke-width="1.5" opacity=".25"/><line x1="110" y1="75" x2="148" y2="95" stroke="${c}" stroke-width="1.5" opacity=".25"/></svg>`,
+  hexagon:c=>`<svg viewBox="0 0 200 130"><polygon points="100,10 160,37 160,93 100,120 40,93 40,37" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".4"/><polygon points="100,35 135,50 135,80 100,95 65,80 65,50" fill="${c}" opacity=".08" stroke="${c}" stroke-width="1" opacity=".2"/></svg>`,
+  triangle:c=>`<svg viewBox="0 0 200 130"><polygon points="100,15 170,115 30,115" fill="${c}" opacity=".1" stroke="${c}" stroke-width="2" opacity=".4"/><circle cx="100" cy="40" r="5" fill="${c}" opacity=".3"/><circle cx="55" cy="100" r="5" fill="${c}" opacity=".3"/><circle cx="145" cy="100" r="5" fill="${c}" opacity=".3"/></svg>`,
+  timeline:c=>`<svg viewBox="0 0 200 130"><line x1="20" y1="65" x2="180" y2="65" stroke="${c}" stroke-width="2" opacity=".3"/><circle cx="40" cy="65" r="6" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="80" cy="65" r="6" fill="${c}" opacity=".2" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="120" cy="65" r="6" fill="${c}" opacity=".3" stroke="${c}" stroke-width="1.5" opacity=".35"/><circle cx="160" cy="65" r="6" fill="${c}" opacity=".4" stroke="${c}" stroke-width="1.5" opacity=".35"/><polygon points="178,60 185,65 178,70" fill="${c}" opacity=".4"/></svg>`,
+  iceberg:c=>`<svg viewBox="0 0 200 130"><line x1="15" y1="55" x2="185" y2="55" stroke="${c}" stroke-width="1" opacity=".2" stroke-dasharray="4"/><polygon points="75,55 125,55 100,20" fill="${c}" opacity=".15" stroke="${c}" stroke-width="1.5" opacity=".3"/><polygon points="55,55 145,55 155,120 45,120" fill="${c}" opacity=".08" stroke="${c}" stroke-width="1.5" opacity=".25"/></svg>`
+};
+function getSVG(shape,color){return(SVG[shape]||SVG.matrix)(color)}
+document.getElementById('thumb-17-0').innerHTML=getSVG('tree','#7C3AED');
+document.getElementById('thumb-17-1').innerHTML=getSVG('spectrum','#7C3AED');
+document.getElementById('thumb-17-2').innerHTML=getSVG('tree','#7C3AED');
+document.getElementById('thumb-17-3').innerHTML=getSVG('matrix','#7C3AED');
+document.getElementById('thumb-17-4').innerHTML=getSVG('matrix','#7C3AED');
+document.getElementById('thumb-18-0').innerHTML=getSVG('circle','#DC2626');
+document.getElementById('thumb-18-1').innerHTML=getSVG('layers','#DC2626');
+document.getElementById('thumb-18-2').innerHTML=getSVG('matrix','#DC2626');
+document.getElementById('thumb-18-3').innerHTML=getSVG('spectrum','#DC2626');
+document.getElementById('thumb-18-4').innerHTML=getSVG('spectrum','#DC2626');
+document.getElementById('thumb-19-0').innerHTML=getSVG('funnel','#059669');
+document.getElementById('thumb-19-1').innerHTML=getSVG('network','#059669');
+document.getElementById('thumb-19-2').innerHTML=getSVG('bars','#059669');
+document.getElementById('thumb-19-3').innerHTML=getSVG('split','#059669');
+document.getElementById('thumb-19-4').innerHTML=getSVG('cycle','#059669');
+document.getElementById('thumb-20-0').innerHTML=getSVG('pipeline','#D97706');
+document.getElementById('thumb-20-1').innerHTML=getSVG('matrix','#D97706');
+document.getElementById('thumb-20-2').innerHTML=getSVG('layers','#D97706');
+document.getElementById('thumb-20-3').innerHTML=getSVG('matrix','#D97706');
+document.getElementById('thumb-20-4').innerHTML=getSVG('tree','#D97706');
+
+
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('[data-anim]').forEach(el=>obs.observe(el));
+function openModal(fw){
+  const m=document.getElementById('modal');
+  m.innerHTML=`<div class="modal-accent" style="background:${fw.color}"></div><div class="modal-inner" style="position:relative">
+    <button class="modal-close" onclick="closeModal()">\u00d7</button>
+    <div class="modal-slib">Slibrary ${fw.slibNum} \u2014 ${fw.slibTitle}</div>
+    <div class="modal-title">${fw.name}</div>
+    <div class="modal-def">${fw.def}</div>
+    <div class="modal-desc">${fw.desc}</div>
+    <div class="modal-thumb">${getSVG(fw.shape,fw.color)}</div>
+    <ul class="modal-details">${fw.details.map(d=>`<li>${d}</li>`).join('')}</ul>
+    <div class="modal-ref"><div class="modal-ref-label">Reference</div>${fw.ref}</div>
+  </div>`;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow=''}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 </script>
 </body>
 </html>
