@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1240" width="800" height="1240" font-family="Arial, Helvetica, sans-serif">
+  <!-- EUBS · MARTI301 · Slibrary · Long-Desc Modal · Henry Chesbrough -->
+  <rect width="800" height="1240" fill="#FFFFFF"/>
+
+  <!-- Title -->
+  <text x="400" y="62" text-anchor="middle" font-size="42" font-weight="bold" fill="#1D2660">Henry Chesbrough</text>
+  <text x="400" y="98" text-anchor="middle" font-size="20" font-weight="bold" fill="#1D2660">Open Innovation — Why Firms Must Look Beyond Their Walls</text>
+  <text x="400" y="124" text-anchor="middle" font-size="13" font-style="italic" fill="#555">b. 1956 · Faculty Director · Garwood Center · UC Berkeley Haas</text>
+  <line x1="60" y1="148" x2="740" y2="148" stroke="#00B388" stroke-width="2"/>
+
+  <!-- LEFT COLUMN -->
+  <!-- Section 1: WHY -->
+  <rect x="40" y="170" width="360" height="32" fill="#1D2660"/>
+  <text x="52" y="191" font-size="13" font-weight="bold" fill="#FFFFFF">1. THE “WHY” — WHY CHESBROUGH, WHY NOW?</text>
+  <rect x="40" y="202" width="360" height="138" fill="#F4F5F8"/>
+    <text x="52" y="222" font-size="11.5" fill="#222">Why is the AI value chain so collaborative —</text>
+    <text x="52" y="240" font-size="11.5" fill="#222">open-source models, plug-in ecosystems,</text>
+    <text x="52" y="258" font-size="11.5" fill="#222">shared datasets? Chesbrough named the</text>
+    <text x="52" y="276" font-size="11.5" fill="#222">phenomenon in 2003: Open Innovation. His</text>
+    <text x="52" y="294" font-size="11.5" fill="#222">framework explains how value is created,</text>
+    <text x="52" y="312" font-size="11.5" fill="#222">captured, and protected in AI ecosystems.</text>
+
+  <!-- Section 2: FOUNDATION -->
+  <rect x="40" y="358" width="360" height="32" fill="#1D2660"/>
+  <text x="52" y="379" font-size="13" font-weight="bold" fill="#FFFFFF">2. INTELLECTUAL FOUNDATION</text>
+  <rect x="40" y="390" width="360" height="148" fill="#F4F5F8"/>
+    <text x="52" y="410" font-size="11.5" fill="#222">PhD Berkeley Haas (1997). Earlier engineer</text>
+    <text x="52" y="428" font-size="11.5" fill="#222">and product manager at Quantum / Bain &amp;</text>
+    <text x="52" y="446" font-size="11.5" fill="#222">Co. Faculty Director of the Garwood Center</text>
+    <text x="52" y="464" font-size="11.5" fill="#222">for Corporate Innovation at UC Berkeley</text>
+    <text x="52" y="482" font-size="11.5" fill="#222">Haas. Founded the World Open Innovation</text>
+    <text x="52" y="500" font-size="11.5" fill="#222">Conference. Influenced by Schumpeter,</text>
+    <text x="52" y="518" font-size="11.5" fill="#222">Teece, Rosenberg on technology economics.</text>
+
+  <!-- Section 3: FRAMEWORKS (yellow highlight) -->
+  <rect x="40" y="556" width="360" height="32" fill="#1D2660"/>
+  <text x="52" y="577" font-size="13" font-weight="bold" fill="#FFFFFF">3. THE FRAMEWORKS · TOOLS · MODELS</text>
+  <rect x="40" y="588" width="360" height="178" fill="#FFD23F"/>
+    <text x="52" y="610" font-size="11.5" font-weight="bold" fill="#1D2660">1. Open Innovation (2003)</text>
+<text x="220" y="610" font-size="10" fill="#222">Inbound + outbound knowledge</text>
+<text x="220" y="626" font-size="10" fill="#222">flows across firm boundaries</text>
+<text x="52" y="646" font-size="11.5" font-weight="bold" fill="#1D2660">2. Inside-Out / Outside-In</text>
+<text x="220" y="646" font-size="10" fill="#222">Two directions of knowledge</text>
+<text x="220" y="662" font-size="10" fill="#222">flow firms must orchestrate</text>
+<text x="52" y="682" font-size="11.5" font-weight="bold" fill="#1D2660">3. Coupled Innovation</text>
+<text x="220" y="682" font-size="10" fill="#222">Joint create + capture across</text>
+<text x="220" y="698" font-size="10" fill="#222">firms (alliance / JV / consortia)</text>
+<text x="52" y="718" font-size="11.5" font-weight="bold" fill="#1D2660">4. Open Business Model</text>
+<text x="220" y="718" font-size="10" fill="#222">Profit logic that depends on</text>
+<text x="220" y="734" font-size="10" fill="#222">external partners' success</text>
+<text x="52" y="754" font-size="11.5" font-weight="bold" fill="#1D2660">5. Generosity Economics</text>
+<text x="220" y="754" font-size="10" fill="#222">Sharing IP to expand the pie</text>
+<text x="220" y="770" font-size="10" fill="#222">instead of guarding the slice</text>
+
+  <!-- Section 4: OPERATIONALIZATION -->
+  <rect x="40" y="784" width="360" height="32" fill="#1D2660"/>
+  <text x="52" y="805" font-size="13" font-weight="bold" fill="#FFFFFF">4. OPERATIONALIZATION — HOW TO USE IT</text>
+  <rect x="40" y="816" width="360" height="138" fill="#F4F5F8"/>
+    <text x="52" y="836" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">1.</tspan> Audit your innovation funnel — what gets shelved?</text>
+    <text x="52" y="856" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">2.</tspan> Identify outside-in: what should you license-in?</text>
+    <text x="52" y="876" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">3.</tspan> Identify inside-out: what could partners exploit?</text>
+    <text x="52" y="896" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">4.</tspan> Redesign business model around couples + alliances</text>
+    <text x="52" y="916" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">5.</tspan> Set IP strategy: when to protect, when to share</text>
+    <text x="52" y="936" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">6.</tspan> Apply explicitly to AI: data, models, APIs, plug-ins</text>
+
+  <!-- RIGHT COLUMN -->
+  
+  <g id="portrait-placeholder">
+    <rect x="430" y="170" width="320" height="240" fill="#FAFAFA" stroke="#1D2660" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <g opacity="0.40">
+      <path d="M 455 402 C 455 328, 530 313, 590 313 C 650 313, 725 328, 725 402 Z" fill="#1D2660"/>
+      <circle cx="590" cy="278" r="48" fill="#1D2660"/>
+    </g>
+    <rect x="500" y="388" width="180" height="14" fill="#FFFFFF" opacity="0.85"/>
+    <text x="590" y="398" text-anchor="middle" font-size="10" font-style="italic" fill="#1D2660">[ Insert portrait sketch ]</text>
+  </g>
+
+  <!-- Quote 1 -->
+  <text x="590" y="438" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">&#8220;Not all the smart people work</text>
+  <text x="590" y="456" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">for you.&#8221;</text>
+  <text x="590" y="475" text-anchor="middle" font-size="11" fill="#555">— Henry Chesbrough</text>
+
+  <!-- Quote 2 -->
+  <text x="590" y="510" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">&#8220;Useful knowledge is widely</text>
+  <text x="590" y="528" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">distributed.&#8221;</text>
+  <text x="590" y="547" text-anchor="middle" font-size="11" fill="#555">— Henry Chesbrough</text>
+
+  <!-- Section 5: LIMITATIONS -->
+  <rect x="430" y="568" width="320" height="32" fill="#1D2660"/>
+  <text x="442" y="589" font-size="13" font-weight="bold" fill="#FFFFFF">5. LIMITATIONS — THE CRITICAL VIEW</text>
+  <rect x="430" y="600" width="320" height="158" fill="#F4F5F8"/>
+    <text x="442" y="620" font-size="10.5" fill="#222">• “Open” became overused as</text>
+    <text x="455" y="636" font-size="10.5" fill="#222">a buzzword post-2010</text>
+    <text x="442" y="652" font-size="10.5" fill="#222">• Hard to operationalise IP-</text>
+    <text x="455" y="668" font-size="10.5" fill="#222">sharing in regulated sectors</text>
+    <text x="442" y="684" font-size="10.5" fill="#222">• Less guidance on platform-</text>
+    <text x="455" y="700" font-size="10.5" fill="#222">vs-product distinction</text>
+    <text x="442" y="716" font-size="10.5" fill="#222">• Most cases are tech / pharma —</text>
+    <text x="455" y="732" font-size="10.5" fill="#222">thin in services</text>
+    <text x="442" y="748" font-size="10.5" fill="#222">• Critics: OI re-labels</text>
+    <text x="455" y="764" font-size="10.5" fill="#222">practices firms already used</text>
+
+  <!-- Section 6: ENDURING IMPACT -->
+  <rect x="430" y="776" width="320" height="32" fill="#1D2660"/>
+  <text x="442" y="797" font-size="13" font-weight="bold" fill="#FFFFFF">6. ENDURING IMPACT</text>
+  <rect x="430" y="808" width="320" height="160" fill="#F4F5F8"/>
+    <text x="442" y="828" font-size="10.5" fill="#222">• “Open Innovation” entered</text>
+    <text x="455" y="844" font-size="10.5" fill="#222">the corporate vocabulary</text>
+    <text x="442" y="860" font-size="10.5" fill="#222">• &gt; 100,000 citations across</text>
+    <text x="455" y="876" font-size="10.5" fill="#222">his work (Google Scholar)</text>
+    <text x="442" y="892" font-size="10.5" fill="#222">• Garwood Center hub for</text>
+    <text x="455" y="908" font-size="10.5" fill="#222">global OI research</text>
+    <text x="442" y="924" font-size="10.5" fill="#222">• Foundation for ecosystem,</text>
+    <text x="455" y="940" font-size="10.5" fill="#222">platform, GenAI plug-in eras</text>
+    <text x="442" y="956" font-size="10.5" fill="#222">• Direct ancestor of today's</text>
+    <text x="455" y="972" font-size="10.5" fill="#222">open-source-AI movements</text>
+
+  <!-- Books -->
+  <text x="60" y="990" font-size="13" font-weight="bold" fill="#1D2660">SELECTED WORKS</text>
+  <line x1="60" y1="998" x2="740" y2="998" stroke="#00B388" stroke-width="1"/>
+  
+  <g>
+    <rect x="80" y="1015" width="120" height="170" fill="#1D2660"/>
+    <rect x="84" y="1019" width="112" height="162" fill="none" stroke="#FFD23F" stroke-width="1"/>
+    <text x="140" y="1055" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">OPEN</text>
+    <text x="140" y="1069" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">INNOVATION</text>
+    <line x1="100" y1="1088" x2="180" y2="1088" stroke="#FFD23F" stroke-width="1"/>
+    <text x="140" y="1128" text-anchor="middle" font-size="9" fill="#FFD23F">The New</text>
+    <text x="140" y="1141" text-anchor="middle" font-size="9" fill="#FFD23F">Imperative for</text>
+    <text x="140" y="1154" text-anchor="middle" font-size="9" fill="#FFD23F">Profiting from Tech</text>
+    <text x="140" y="1175" text-anchor="middle" font-size="9" font-weight="bold" fill="#FFFFFF">CHESBROUGH · 2003</text>
+  </g>
+
+  <g>
+    <rect x="240" y="1015" width="120" height="170" fill="#7A1F2B"/>
+    <rect x="244" y="1019" width="112" height="162" fill="none" stroke="#FFFFFF" stroke-width="1"/>
+    <text x="300" y="1050" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">OPEN</text>
+    <text x="300" y="1064" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">BUSINESS</text>
+    <text x="300" y="1078" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">MODELS</text>
+    <line x1="260" y1="1097" x2="340" y2="1097" stroke="#FFFFFF" stroke-width="1"/>
+    <text x="300" y="1128" text-anchor="middle" font-size="9" fill="#FFFFFF">How to Thrive</text>
+    <text x="300" y="1141" text-anchor="middle" font-size="9" fill="#FFFFFF">in the New</text>
+    <text x="300" y="1154" text-anchor="middle" font-size="9" fill="#FFFFFF">Innovation Landscape</text>
+    <text x="300" y="1175" text-anchor="middle" font-size="9" font-weight="bold" fill="#FFFFFF">CHESBROUGH · 2006</text>
+  </g>
+
+  <g>
+    <rect x="400" y="1015" width="120" height="170" fill="#264653"/>
+    <rect x="404" y="1019" width="112" height="162" fill="none" stroke="#F4A261" stroke-width="1"/>
+    <text x="460" y="1050" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">OPEN</text>
+    <text x="460" y="1064" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">SERVICES</text>
+    <text x="460" y="1078" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">INNOVATION</text>
+    <line x1="420" y1="1097" x2="500" y2="1097" stroke="#F4A261" stroke-width="1"/>
+    <text x="460" y="1128" text-anchor="middle" font-size="9" fill="#F4A261">Rethinking Your</text>
+    <text x="460" y="1141" text-anchor="middle" font-size="9" fill="#F4A261">Business to Grow</text>
+    <text x="460" y="1154" text-anchor="middle" font-size="9" fill="#F4A261">&amp; Compete</text>
+    <text x="460" y="1175" text-anchor="middle" font-size="9" font-weight="bold" fill="#FFFFFF">CHESBROUGH · 2011</text>
+  </g>
+
+  <g>
+    <rect x="560" y="1015" width="120" height="170" fill="#0F4C3A"/>
+    <rect x="564" y="1019" width="112" height="162" fill="none" stroke="#FFFFFF" stroke-width="1"/>
+    <text x="620" y="1050" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">OPEN</text>
+    <text x="620" y="1064" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">INNOVATION</text>
+    <text x="620" y="1078" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">RESULTS</text>
+    <line x1="580" y1="1097" x2="660" y2="1097" stroke="#FFFFFF" stroke-width="1"/>
+    <text x="620" y="1128" text-anchor="middle" font-size="9" fill="#FFFFFF">Going Beyond</text>
+    <text x="620" y="1141" text-anchor="middle" font-size="9" fill="#FFFFFF">the Hype &amp; Getting</text>
+    <text x="620" y="1154" text-anchor="middle" font-size="9" fill="#FFFFFF">Down to Business</text>
+    <text x="620" y="1175" text-anchor="middle" font-size="9" font-weight="bold" fill="#FFFFFF">CHESBROUGH · 2020</text>
+  </g>
+
+  <!-- Footer -->
+  <line x1="60" y1="1210" x2="740" y2="1210" stroke="#00B388" stroke-width="1.5"/>
+  <text x="60" y="1228" font-size="10" fill="#1D2660">MARTI301 · Unit 5 — IP &amp; Value Creation through AI · Slibrary</text>
+  <text x="740" y="1228" text-anchor="end" font-size="10" fill="#1D2660">©️ Dr. Hildegard Haas · EUBS</text>
+</svg>

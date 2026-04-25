@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 560" width="480" height="560" font-family="Arial, Helvetica, sans-serif">
+  <!-- EUBS · MARTI301 · Slibrary · Thumbnail -->
+  <rect width="480" height="560" fill="#FFFFFF"/>
+  <rect x="0.5" y="0.5" width="479" height="559" fill="none" stroke="#E5E5E5" stroke-width="1"/>
+
+  
+  <g id="portrait-placeholder">
+    <rect x="120" y="30" width="240" height="240" fill="#FAFAFA" stroke="#1D2660" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <g opacity="0.40">
+      <path d="M 145 262 C 145 188, 195 173, 240 173 C 285 173, 335 188, 335 262 Z" fill="#1D2660"/>
+      <circle cx="240" cy="138" r="48" fill="#1D2660"/>
+    </g>
+    <rect x="150" y="248" width="180" height="14" fill="#FFFFFF" opacity="0.85"/>
+    <text x="240" y="258" text-anchor="middle" font-size="10" font-style="italic" fill="#1D2660">[ Insert portrait sketch ]</text>
+  </g>
+
+  <text x="240" y="335" text-anchor="middle" font-size="22" font-weight="bold" fill="#1D2660">Nassim Nicholas Taleb</text>
+  <text x="240" y="354" text-anchor="middle" font-size="12" font-style="italic" fill="#555">b. 1960</text>
+  <line x1="180" y1="364" x2="300" y2="364" stroke="#00B388" stroke-width="2"/>
+
+  
+  <text x="240" y="386" text-anchor="middle" font-size="14" font-weight="bold" fill="#222">&#8220;Show me your portfolio,</text>
+  <text x="240" y="404" text-anchor="middle" font-size="14" font-weight="bold" fill="#222">not your opinions.&#8221;</text>
+  <text x="240" y="424" text-anchor="middle" font-size="11" fill="#555">— Nassim Nicholas Taleb</text>
+  
+  <text x="240" y="466" text-anchor="middle" font-size="14" font-weight="bold" fill="#222">&#8220;Antifragility is beyond</text>
+  <text x="240" y="484" text-anchor="middle" font-size="14" font-weight="bold" fill="#222">resilience or robustness.&#8221;</text>
+  <text x="240" y="504" text-anchor="middle" font-size="11" fill="#555">— Nassim Nicholas Taleb</text>
+
+  <line x1="40" y1="525" x2="440" y2="525" stroke="#00B388" stroke-width="1.5"/>
+  <text x="40" y="545" font-size="9" fill="#1D2660">MARTI301 · Unit 4 · Slibrary</text>
+  <text x="440" y="545" text-anchor="end" font-size="9" fill="#1D2660">©️ Dr. Hildegard Haas · EUBS</text>
+</svg>

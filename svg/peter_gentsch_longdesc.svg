@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1240" width="800" height="1240" font-family="Arial, Helvetica, sans-serif">
+  <!-- EUBS · MARTI301 · Slibrary · Long-Desc Modal · Peter Gentsch -->
+  <rect width="800" height="1240" fill="#FFFFFF"/>
+
+  <!-- Title -->
+  <text x="400" y="62" text-anchor="middle" font-size="42" font-weight="bold" fill="#1D2660">Peter Gentsch</text>
+  <text x="400" y="98" text-anchor="middle" font-size="20" font-weight="bold" fill="#1D2660">AI in Marketing, Sales and Service — From Personalisation to Conversational Business</text>
+  <text x="400" y="124" text-anchor="middle" font-size="13" font-style="italic" fill="#555">b. 1968 · Founder · Insaas.AI · Conversational Business</text>
+  <line x1="60" y1="148" x2="740" y2="148" stroke="#00B388" stroke-width="2"/>
+
+  <!-- LEFT COLUMN -->
+  <!-- Section 1: WHY -->
+  <rect x="40" y="170" width="360" height="32" fill="#1D2660"/>
+  <text x="52" y="191" font-size="13" font-weight="bold" fill="#FFFFFF">1. THE “WHY” — WHY GENTSCH, WHY NOW?</text>
+  <rect x="40" y="202" width="360" height="138" fill="#F4F5F8"/>
+    <text x="52" y="222" font-size="11.5" fill="#222">How does AI actually transform marketing,</text>
+    <text x="52" y="240" font-size="11.5" fill="#222">sales and service operations? Gentsch's book</text>
+    <text x="52" y="258" font-size="11.5" fill="#222">is the recommended reading anchor for Unit 3:</text>
+    <text x="52" y="276" font-size="11.5" fill="#222">concrete use cases, vendor landscape, and a</text>
+    <text x="52" y="294" font-size="11.5" fill="#222">structured roadmap for AI-driven CX. The</text>
+    <text x="52" y="312" font-size="11.5" fill="#222">European voice in MARTI301's Marketing AI lens.</text>
+
+  <!-- Section 2: FOUNDATION -->
+  <rect x="40" y="358" width="360" height="32" fill="#1D2660"/>
+  <text x="52" y="379" font-size="13" font-weight="bold" fill="#FFFFFF">2. INTELLECTUAL FOUNDATION</text>
+  <rect x="40" y="390" width="360" height="148" fill="#F4F5F8"/>
+    <text x="52" y="410" font-size="11.5" fill="#222">PhD Information Science, German computer</text>
+    <text x="52" y="428" font-size="11.5" fill="#222">scientist and entrepreneur. Founder &amp; CEO of</text>
+    <text x="52" y="446" font-size="11.5" fill="#222">B2.Bot and Insaas.AI. Honorary Professor for</text>
+    <text x="52" y="464" font-size="11.5" fill="#222">Big Data, AI and Conversational Commerce at</text>
+    <text x="52" y="482" font-size="11.5" fill="#222">FH der Wirtschaft (BiTS) and Aalen University.</text>
+    <text x="52" y="500" font-size="11.5" fill="#222">Influential speaker in DACH-region marketing</text>
+    <text x="52" y="518" font-size="11.5" fill="#222">circles. Long-time advocate of “Algorithmic Business”.</text>
+
+  <!-- Section 3: FRAMEWORKS (yellow highlight) -->
+  <rect x="40" y="556" width="360" height="32" fill="#1D2660"/>
+  <text x="52" y="577" font-size="13" font-weight="bold" fill="#FFFFFF">3. THE FRAMEWORKS · TOOLS · MODELS</text>
+  <rect x="40" y="588" width="360" height="178" fill="#FFD23F"/>
+    <text x="52" y="610" font-size="11.5" font-weight="bold" fill="#1D2660">1. AI Marketing Maturity</text>
+<text x="220" y="610" font-size="10" fill="#222">5 stages from rule-based to</text>
+<text x="220" y="626" font-size="10" fill="#222">fully autonomous campaigns</text>
+<text x="52" y="646" font-size="11.5" font-weight="bold" fill="#1D2660">2. Conversational Business</text>
+<text x="220" y="646" font-size="10" fill="#222">Bots + voice + AI agents</text>
+<text x="220" y="662" font-size="10" fill="#222">as new commercial interface</text>
+<text x="52" y="682" font-size="11.5" font-weight="bold" fill="#1D2660">3. Algorithmic Business</text>
+<text x="220" y="682" font-size="10" fill="#222">Algorithms as the operating</text>
+<text x="220" y="698" font-size="10" fill="#222">core of marketing &amp; sales</text>
+<text x="52" y="718" font-size="11.5" font-weight="bold" fill="#1D2660">4. AI Use-Case Map (5 areas)</text>
+<text x="220" y="718" font-size="10" fill="#222">Customer · Content · Conversion</text>
+<text x="220" y="734" font-size="10" fill="#222">· Channel · Cost</text>
+<text x="52" y="754" font-size="11.5" font-weight="bold" fill="#1D2660">5. Hybrid Customer Journey</text>
+<text x="220" y="754" font-size="10" fill="#222">Human + AI orchestration</text>
+<text x="220" y="770" font-size="10" fill="#222">across touchpoints</text>
+
+  <!-- Section 4: OPERATIONALIZATION -->
+  <rect x="40" y="784" width="360" height="32" fill="#1D2660"/>
+  <text x="52" y="805" font-size="13" font-weight="bold" fill="#FFFFFF">4. OPERATIONALIZATION — HOW TO USE IT</text>
+  <rect x="40" y="816" width="360" height="138" fill="#F4F5F8"/>
+    <text x="52" y="836" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">1.</tspan> Score current AI maturity (1–5) per function</text>
+    <text x="52" y="856" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">2.</tspan> Map use cases to the 5 areas (4 Cs + Cost)</text>
+    <text x="52" y="876" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">3.</tspan> Pilot conversational AI on one journey</text>
+    <text x="52" y="896" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">4.</tspan> Choose vendor vs build per use case</text>
+    <text x="52" y="916" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">5.</tspan> Set hybrid governance (human in the loop)</text>
+    <text x="52" y="936" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">6.</tspan> Scale via reusable AI marketing services</text>
+
+  <!-- RIGHT COLUMN -->
+  
+  <g id="portrait-placeholder">
+    <rect x="430" y="170" width="320" height="240" fill="#FAFAFA" stroke="#1D2660" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <g opacity="0.40">
+      <path d="M 455 402 C 455 328, 530 313, 590 313 C 650 313, 725 328, 725 402 Z" fill="#1D2660"/>
+      <circle cx="590" cy="278" r="48" fill="#1D2660"/>
+    </g>
+    <rect x="500" y="388" width="180" height="14" fill="#FFFFFF" opacity="0.85"/>
+    <text x="590" y="398" text-anchor="middle" font-size="10" font-style="italic" fill="#1D2660">[ Insert portrait sketch ]</text>
+  </g>
+
+  <!-- Quote 1 -->
+  <text x="590" y="438" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">&#8220;AI is not about replacing</text>
+  <text x="590" y="456" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">marketers — it's about scaling them.&#8221;</text>
+  <text x="590" y="475" text-anchor="middle" font-size="11" fill="#555">— Peter Gentsch</text>
+
+  <!-- Quote 2 -->
+  <text x="590" y="510" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">&#8220;Conversational business is</text>
+  <text x="590" y="528" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">the next interface.&#8221;</text>
+  <text x="590" y="547" text-anchor="middle" font-size="11" fill="#555">— Peter Gentsch</text>
+
+  <!-- Section 5: LIMITATIONS -->
+  <rect x="430" y="568" width="320" height="32" fill="#1D2660"/>
+  <text x="442" y="589" font-size="13" font-weight="bold" fill="#FFFFFF">5. LIMITATIONS — THE CRITICAL VIEW</text>
+  <rect x="430" y="600" width="320" height="158" fill="#F4F5F8"/>
+    <text x="442" y="620" font-size="10.5" fill="#222">• Vendor landscape ages quickly</text>
+    <text x="455" y="636" font-size="10.5" fill="#222">(book updated 2019)</text>
+    <text x="442" y="652" font-size="10.5" fill="#222">• Pre-LLM framing — current</text>
+    <text x="455" y="668" font-size="10.5" fill="#222">GenAI shifts some assumptions</text>
+    <text x="442" y="684" font-size="10.5" fill="#222">• Limited US / Asian case</text>
+    <text x="455" y="700" font-size="10.5" fill="#222">coverage compared to DACH</text>
+    <text x="442" y="716" font-size="10.5" fill="#222">• “Algorithmic business” term</text>
+    <text x="455" y="732" font-size="10.5" fill="#222">contested by some marketers</text>
+    <text x="442" y="748" font-size="10.5" fill="#222">• Less ethics / privacy depth</text>
+
+  <!-- Section 6: ENDURING IMPACT -->
+  <rect x="430" y="776" width="320" height="32" fill="#1D2660"/>
+  <text x="442" y="797" font-size="13" font-weight="bold" fill="#FFFFFF">6. ENDURING IMPACT</text>
+  <rect x="430" y="808" width="320" height="160" fill="#F4F5F8"/>
+    <text x="442" y="828" font-size="10.5" fill="#222">• Standard German-language</text>
+    <text x="455" y="844" font-size="10.5" fill="#222">reference on AI in marketing</text>
+    <text x="442" y="860" font-size="10.5" fill="#222">• Recommended reading in</text>
+    <text x="455" y="876" font-size="10.5" fill="#222">MARTI301 Unit 3</text>
+    <text x="442" y="892" font-size="10.5" fill="#222">• Influenced DACH-region</text>
+    <text x="455" y="908" font-size="10.5" fill="#222">marketing AI consultancies</text>
+    <text x="442" y="924" font-size="10.5" fill="#222">• Honorary professorships at</text>
+    <text x="455" y="940" font-size="10.5" fill="#222">Aalen, BiTS, others</text>
+    <text x="442" y="956" font-size="10.5" fill="#222">• Frequent keynote at OMR,</text>
+    <text x="455" y="972" font-size="10.5" fill="#222">DMEXCO, MARCONOMY events</text>
+
+  <!-- Books -->
+  <text x="60" y="990" font-size="13" font-weight="bold" fill="#1D2660">SELECTED WORKS</text>
+  <line x1="60" y1="998" x2="740" y2="998" stroke="#00B388" stroke-width="1"/>
+  
+  <g>
+    <rect x="80" y="1015" width="120" height="170" fill="#1D2660"/>
+    <rect x="84" y="1019" width="112" height="162" fill="none" stroke="#FFD23F" stroke-width="1"/>
+    <text x="140" y="1050" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">AI IN</text>
+    <text x="140" y="1064" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">MARKETING,</text>
+    <text x="140" y="1078" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">SALES AND</text>
+    <text x="140" y="1092" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">SERVICE</text>
+    <line x1="100" y1="1111" x2="180" y2="1111" stroke="#FFD23F" stroke-width="1"/>
+    <text x="140" y="1135" text-anchor="middle" font-size="9" fill="#FFD23F">Palgrave</text>
+    <text x="140" y="1148" text-anchor="middle" font-size="9" fill="#FFD23F">Macmillan</text>
+    <text x="140" y="1175" text-anchor="middle" font-size="9" font-weight="bold" fill="#FFFFFF">GENTSCH · 2019</text>
+  </g>
+
+  <g>
+    <rect x="240" y="1015" width="120" height="170" fill="#7A1F2B"/>
+    <rect x="244" y="1019" width="112" height="162" fill="none" stroke="#FFFFFF" stroke-width="1"/>
+    <text x="300" y="1050" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">KÜNSTLICHE</text>
+    <text x="300" y="1064" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">INTELLIGENZ FÜR</text>
+    <text x="300" y="1078" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">SALES, MARKETING</text>
+    <text x="300" y="1092" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">UND SERVICE</text>
+    <line x1="260" y1="1111" x2="340" y2="1111" stroke="#FFFFFF" stroke-width="1"/>
+    <text x="300" y="1135" text-anchor="middle" font-size="9" fill="#FFFFFF">German edition</text>
+    <text x="300" y="1148" text-anchor="middle" font-size="9" fill="#FFFFFF">Springer Gabler</text>
+    <text x="300" y="1175" text-anchor="middle" font-size="9" font-weight="bold" fill="#FFFFFF">GENTSCH · 2018</text>
+  </g>
+
+  <g>
+    <rect x="400" y="1015" width="120" height="170" fill="#264653"/>
+    <rect x="404" y="1019" width="112" height="162" fill="none" stroke="#F4A261" stroke-width="1"/>
+    <text x="460" y="1055" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">CONVERSATIONAL</text>
+    <text x="460" y="1069" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">AI</text>
+    <line x1="420" y1="1088" x2="500" y2="1088" stroke="#F4A261" stroke-width="1"/>
+    <text x="460" y="1128" text-anchor="middle" font-size="9" fill="#F4A261">How (Chat)Bots Will</text>
+    <text x="460" y="1141" text-anchor="middle" font-size="9" fill="#F4A261">Reshape the Digital</text>
+    <text x="460" y="1154" text-anchor="middle" font-size="9" fill="#F4A261">Experience</text>
+    <text x="460" y="1175" text-anchor="middle" font-size="9" font-weight="bold" fill="#FFFFFF">GENTSCH · 2019</text>
+  </g>
+
+  <g>
+    <rect x="560" y="1015" width="120" height="170" fill="#0F4C3A"/>
+    <rect x="564" y="1019" width="112" height="162" fill="none" stroke="#FFFFFF" stroke-width="1"/>
+    <text x="620" y="1050" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">ALGORITH-</text>
+    <text x="620" y="1064" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">MISCHE</text>
+    <text x="620" y="1078" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">BUSINESS</text>
+    <line x1="580" y1="1097" x2="660" y2="1097" stroke="#FFFFFF" stroke-width="1"/>
+    <text x="620" y="1128" text-anchor="middle" font-size="9" fill="#FFFFFF">German essays on</text>
+    <text x="620" y="1141" text-anchor="middle" font-size="9" fill="#FFFFFF">AI and platform</text>
+    <text x="620" y="1154" text-anchor="middle" font-size="9" fill="#FFFFFF">competition</text>
+    <text x="620" y="1175" text-anchor="middle" font-size="9" font-weight="bold" fill="#FFFFFF">GENTSCH · 2018</text>
+  </g>
+
+  <!-- Footer -->
+  <line x1="60" y1="1210" x2="740" y2="1210" stroke="#00B388" stroke-width="1.5"/>
+  <text x="60" y="1228" font-size="10" fill="#1D2660">MARTI301 · Unit 3 — Customer Experience &amp; Marketing 6.0 · Slibrary</text>
+  <text x="740" y="1228" text-anchor="end" font-size="10" fill="#1D2660">©️ Dr. Hildegard Haas · EUBS</text>
+</svg>

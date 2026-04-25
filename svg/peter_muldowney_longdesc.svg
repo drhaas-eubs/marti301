@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1240" width="800" height="1240" font-family="Arial, Helvetica, sans-serif">
+  <!-- EUBS · MARTI301 · Slibrary · Long-Desc Modal · Peter Muldowney -->
+  <rect width="800" height="1240" fill="#FFFFFF"/>
+
+  <!-- Title -->
+  <text x="400" y="62" text-anchor="middle" font-size="42" font-weight="bold" fill="#1D2660">Peter Muldowney</text>
+  <text x="400" y="98" text-anchor="middle" font-size="20" font-weight="bold" fill="#1D2660">Technology, AI, and the Practitioner View of Investment Management</text>
+  <text x="400" y="124" text-anchor="middle" font-size="13" font-style="italic" fill="#555">b. ca. 1965 · SVP · Connor, Clark &amp; Lunn Financial Group</text>
+  <line x1="60" y1="148" x2="740" y2="148" stroke="#00B388" stroke-width="2"/>
+
+  <!-- LEFT COLUMN -->
+  <!-- Section 1: WHY -->
+  <rect x="40" y="170" width="360" height="32" fill="#1D2660"/>
+  <text x="52" y="191" font-size="13" font-weight="bold" fill="#FFFFFF">1. THE “WHY” — WHY MULDOWNEY, WHY NOW?</text>
+  <rect x="40" y="202" width="360" height="138" fill="#F4F5F8"/>
+    <text x="52" y="222" font-size="11.5" fill="#222">What does AI in investment management</text>
+    <text x="52" y="240" font-size="11.5" fill="#222">actually look like from inside the industry?</text>
+    <text x="52" y="258" font-size="11.5" fill="#222">Muldowney's article is the required reading</text>
+    <text x="52" y="276" font-size="11.5" fill="#222">for MARTI301 Unit 6 — a practitioner's voice</text>
+    <text x="52" y="294" font-size="11.5" fill="#222">on data, ML, and the augmentation question.</text>
+    <text x="52" y="312" font-size="11.5" fill="#222">The non-academic anchor of this unit.</text>
+
+  <!-- Section 2: FOUNDATION -->
+  <rect x="40" y="358" width="360" height="32" fill="#1D2660"/>
+  <text x="52" y="379" font-size="13" font-weight="bold" fill="#FFFFFF">2. INTELLECTUAL FOUNDATION</text>
+  <rect x="40" y="390" width="360" height="148" fill="#F4F5F8"/>
+    <text x="52" y="410" font-size="11.5" fill="#222">25+ years in investment industry across</text>
+    <text x="52" y="428" font-size="11.5" fill="#222">Canada, US, UK. Started in consulting; led</text>
+    <text x="52" y="446" font-size="11.5" fill="#222">two major Canadian investment consulting</text>
+    <text x="52" y="464" font-size="11.5" fill="#222">firms. Pioneered the first buy-in annuity in</text>
+    <text x="52" y="482" font-size="11.5" fill="#222">Canada at a major insurer. SVP and Head of</text>
+    <text x="52" y="500" font-size="11.5" fill="#222">Institutional &amp; Multi-Asset Strategy at Connor</text>
+    <text x="52" y="518" font-size="11.5" fill="#222">Clark &amp; Lunn. IFEBP MTMS faculty member.</text>
+
+  <!-- Section 3: FRAMEWORKS (yellow highlight) -->
+  <rect x="40" y="556" width="360" height="32" fill="#1D2660"/>
+  <text x="52" y="577" font-size="13" font-weight="bold" fill="#FFFFFF">3. THE FRAMEWORKS · TOOLS · MODELS</text>
+  <rect x="40" y="588" width="360" height="178" fill="#FFD23F"/>
+    <text x="52" y="610" font-size="11.5" font-weight="bold" fill="#1D2660">1. Tech Stack of AI</text>
+<text x="220" y="610" font-size="10" fill="#222">AI ⊇ ML ⊇ NLP — clarifying</text>
+<text x="220" y="626" font-size="10" fill="#222">the umbrella for managers</text>
+<text x="52" y="646" font-size="11.5" font-weight="bold" fill="#1D2660">2. Fundamental vs Systematic</text>
+<text x="220" y="646" font-size="10" fill="#222">Two big styles, both</text>
+<text x="220" y="662" font-size="10" fill="#222">transformed by AI differently</text>
+<text x="52" y="682" font-size="11.5" font-weight="bold" fill="#1D2660">3. Data Lifecycle</text>
+<text x="220" y="682" font-size="10" fill="#222">Sourcing → cleaning →</text>
+<text x="220" y="698" font-size="10" fill="#222">validating → signal extraction</text>
+<text x="52" y="718" font-size="11.5" font-weight="bold" fill="#1D2660">4. Augment Don't Replace</text>
+<text x="220" y="718" font-size="10" fill="#222">Computers + humans as</text>
+<text x="220" y="734" font-size="10" fill="#222">complementary roles in IM</text>
+<text x="52" y="754" font-size="11.5" font-weight="bold" fill="#1D2660">5. Known Unknowns</text>
+<text x="220" y="754" font-size="10" fill="#222">AI disruption likely</text>
+<text x="220" y="770" font-size="10" fill="#222">(“Blockbuster moment” analogy)</text>
+
+  <!-- Section 4: OPERATIONALIZATION -->
+  <rect x="40" y="784" width="360" height="32" fill="#1D2660"/>
+  <text x="52" y="805" font-size="13" font-weight="bold" fill="#FFFFFF">4. OPERATIONALIZATION — HOW TO USE IT</text>
+  <rect x="40" y="816" width="360" height="138" fill="#F4F5F8"/>
+    <text x="52" y="836" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">1.</tspan> Define your investment style — fundamental or systematic</text>
+    <text x="52" y="856" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">2.</tspan> Audit data sources for coverage + reliability</text>
+    <text x="52" y="876" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">3.</tspan> Apply ML for non-linear pattern detection</text>
+    <text x="52" y="896" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">4.</tspan> Use NLP for unstructured text signal extraction</text>
+    <text x="52" y="916" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">5.</tspan> Keep humans in the loop for judgement calls</text>
+    <text x="52" y="936" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">6.</tspan> Add AI as a quarterly committee discussion item</text>
+
+  <!-- RIGHT COLUMN -->
+  
+  <g id="portrait-placeholder">
+    <rect x="430" y="170" width="320" height="240" fill="#FAFAFA" stroke="#1D2660" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <g opacity="0.40">
+      <path d="M 455 402 C 455 328, 530 313, 590 313 C 650 313, 725 328, 725 402 Z" fill="#1D2660"/>
+      <circle cx="590" cy="278" r="48" fill="#1D2660"/>
+    </g>
+    <rect x="500" y="388" width="180" height="14" fill="#FFFFFF" opacity="0.85"/>
+    <text x="590" y="398" text-anchor="middle" font-size="10" font-style="italic" fill="#1D2660">[ Insert portrait sketch ]</text>
+  </g>
+
+  <!-- Quote 1 -->
+  <text x="590" y="438" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">&#8220;Technology and AI have</text>
+  <text x="590" y="456" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">revolutionised information flows.&#8221;</text>
+  <text x="590" y="475" text-anchor="middle" font-size="11" fill="#555">— Peter Muldowney</text>
+
+  <!-- Quote 2 -->
+  <text x="590" y="510" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">&#8220;ML cannot replace human</text>
+  <text x="590" y="528" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">judgement — it complements it.&#8221;</text>
+  <text x="590" y="547" text-anchor="middle" font-size="11" fill="#555">— Peter Muldowney</text>
+
+  <!-- Section 5: LIMITATIONS -->
+  <rect x="430" y="568" width="320" height="32" fill="#1D2660"/>
+  <text x="442" y="589" font-size="13" font-weight="bold" fill="#FFFFFF">5. LIMITATIONS — THE CRITICAL VIEW</text>
+  <rect x="430" y="600" width="320" height="158" fill="#F4F5F8"/>
+    <text x="442" y="620" font-size="10.5" fill="#222">• Practitioner article (6 pages)</text>
+    <text x="455" y="636" font-size="10.5" fill="#222">— not exhaustive treatment</text>
+    <text x="442" y="652" font-size="10.5" fill="#222">• Limited technical depth on</text>
+    <text x="455" y="668" font-size="10.5" fill="#222">specific ML architectures</text>
+    <text x="442" y="684" font-size="10.5" fill="#222">• Pre-LLM (late 2023) — GenAI</text>
+    <text x="455" y="700" font-size="10.5" fill="#222">shifts post-publication</text>
+    <text x="442" y="716" font-size="10.5" fill="#222">• Canadian / pension industry</text>
+    <text x="455" y="732" font-size="10.5" fill="#222">framing — limited global view</text>
+    <text x="442" y="748" font-size="10.5" fill="#222">• No vendor / tool benchmarks</text>
+
+  <!-- Section 6: ENDURING IMPACT -->
+  <rect x="430" y="776" width="320" height="32" fill="#1D2660"/>
+  <text x="442" y="797" font-size="13" font-weight="bold" fill="#FFFFFF">6. ENDURING IMPACT</text>
+  <rect x="430" y="808" width="320" height="160" fill="#F4F5F8"/>
+    <text x="442" y="828" font-size="10.5" fill="#222">• Required reading for the</text>
+    <text x="455" y="844" font-size="10.5" fill="#222">MARTI301 course</text>
+    <text x="442" y="860" font-size="10.5" fill="#222">• Connor, Clark &amp; Lunn</text>
+    <text x="455" y="876" font-size="10.5" fill="#222">manages &gt; $100B AUM</text>
+    <text x="442" y="892" font-size="10.5" fill="#222">• Pioneer of buy-in annuity</text>
+    <text x="455" y="908" font-size="10.5" fill="#222">in the Canadian market</text>
+    <text x="442" y="924" font-size="10.5" fill="#222">• IFEBP MTMS faculty —</text>
+    <text x="455" y="940" font-size="10.5" fill="#222">educates pension trustees</text>
+    <text x="442" y="956" font-size="10.5" fill="#222">• Clear, accessible practitioner</text>
+    <text x="455" y="972" font-size="10.5" fill="#222">voice for non-quants</text>
+
+  <!-- Books -->
+  <text x="60" y="990" font-size="13" font-weight="bold" fill="#1D2660">SELECTED WORKS</text>
+  <line x1="60" y1="998" x2="740" y2="998" stroke="#00B388" stroke-width="1"/>
+  
+  <g>
+    <rect x="80" y="1015" width="120" height="170" fill="#1D2660"/>
+    <rect x="84" y="1019" width="112" height="162" fill="none" stroke="#FFD23F" stroke-width="1"/>
+    <text x="140" y="1050" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">THE IMPACT</text>
+    <text x="140" y="1064" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">OF TECHNOLOGY</text>
+    <text x="140" y="1078" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">&amp; AI ON IM</text>
+    <line x1="100" y1="1097" x2="180" y2="1097" stroke="#FFD23F" stroke-width="1"/>
+    <text x="140" y="1128" text-anchor="middle" font-size="9" fill="#FFD23F">Plans &amp; Trusts</text>
+    <text x="140" y="1141" text-anchor="middle" font-size="9" fill="#FFD23F">41(6), 8–13</text>
+    <text x="140" y="1154" text-anchor="middle" font-size="9" fill="#FFD23F">(IFEBP)</text>
+    <text x="140" y="1175" text-anchor="middle" font-size="9" font-weight="bold" fill="#FFFFFF">MULDOWNEY · 2023</text>
+  </g>
+
+  <g>
+    <rect x="240" y="1015" width="120" height="170" fill="#7A1F2B"/>
+    <rect x="244" y="1019" width="112" height="162" fill="none" stroke="#FFFFFF" stroke-width="1"/>
+    <text x="300" y="1050" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">LIABILITY-</text>
+    <text x="300" y="1064" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">DRIVEN</text>
+    <text x="300" y="1078" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">INVESTING</text>
+    <line x1="260" y1="1097" x2="340" y2="1097" stroke="#FFFFFF" stroke-width="1"/>
+    <text x="300" y="1135" text-anchor="middle" font-size="9" fill="#FFFFFF">Practitioner papers</text>
+    <text x="300" y="1148" text-anchor="middle" font-size="9" fill="#FFFFFF">for pension plans</text>
+    <text x="300" y="1175" text-anchor="middle" font-size="9" font-weight="bold" fill="#FFFFFF">MULDOWNEY · 2018</text>
+  </g>
+
+  <g>
+    <rect x="400" y="1015" width="120" height="170" fill="#264653"/>
+    <rect x="404" y="1019" width="112" height="162" fill="none" stroke="#F4A261" stroke-width="1"/>
+    <text x="460" y="1055" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">MULTI-ASSET</text>
+    <text x="460" y="1069" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">STRATEGY</text>
+    <line x1="420" y1="1088" x2="500" y2="1088" stroke="#F4A261" stroke-width="1"/>
+    <text x="460" y="1128" text-anchor="middle" font-size="9" fill="#F4A261">Connor, Clark</text>
+    <text x="460" y="1141" text-anchor="middle" font-size="9" fill="#F4A261">&amp; Lunn</text>
+    <text x="460" y="1154" text-anchor="middle" font-size="9" fill="#F4A261">thought-leadership</text>
+    <text x="460" y="1175" text-anchor="middle" font-size="9" font-weight="bold" fill="#FFFFFF">MULDOWNEY · 2020</text>
+  </g>
+
+  <g>
+    <rect x="560" y="1015" width="120" height="170" fill="#0F4C3A"/>
+    <rect x="564" y="1019" width="112" height="162" fill="none" stroke="#FFFFFF" stroke-width="1"/>
+    <text x="620" y="1050" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">MTMS</text>
+    <text x="620" y="1064" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">TEACHING</text>
+    <text x="620" y="1078" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">MATERIALS</text>
+    <line x1="580" y1="1097" x2="660" y2="1097" stroke="#FFFFFF" stroke-width="1"/>
+    <text x="620" y="1128" text-anchor="middle" font-size="9" fill="#FFFFFF">IFEBP Master of</text>
+    <text x="620" y="1141" text-anchor="middle" font-size="9" fill="#FFFFFF">Trust Management</text>
+    <text x="620" y="1154" text-anchor="middle" font-size="9" fill="#FFFFFF">Standards</text>
+    <text x="620" y="1175" text-anchor="middle" font-size="9" font-weight="bold" fill="#FFFFFF">MULDOWNEY · 2022</text>
+  </g>
+
+  <!-- Footer -->
+  <line x1="60" y1="1210" x2="740" y2="1210" stroke="#00B388" stroke-width="1.5"/>
+  <text x="60" y="1228" font-size="10" fill="#1D2660">MARTI301 · Unit 6 — AI in Investment Management · Slibrary</text>
+  <text x="740" y="1228" text-anchor="end" font-size="10" fill="#1D2660">©️ Dr. Hildegard Haas · EUBS</text>
+</svg>

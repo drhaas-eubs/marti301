@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1240" width="800" height="1240" font-family="Arial, Helvetica, sans-serif">
+  <!-- EUBS · MARTI301 · Slibrary · Long-Desc Modal · Iansiti &amp; Lakhani -->
+  <rect width="800" height="1240" fill="#FFFFFF"/>
+
+  <!-- Title -->
+  <text x="400" y="62" text-anchor="middle" font-size="42" font-weight="bold" fill="#1D2660">Iansiti &amp; Lakhani</text>
+  <text x="400" y="98" text-anchor="middle" font-size="20" font-weight="bold" fill="#1D2660">The AI Factory and the Architecture of the Modern Digital Firm</text>
+  <text x="400" y="124" text-anchor="middle" font-size="13" font-style="italic" fill="#555">b. 1959 / b. 1969 · HBS · Co-authors of Competing in the Age of AI</text>
+  <line x1="60" y1="148" x2="740" y2="148" stroke="#00B388" stroke-width="2"/>
+
+  <!-- LEFT COLUMN -->
+  <!-- Section 1: WHY -->
+  <rect x="40" y="170" width="360" height="32" fill="#1D2660"/>
+  <text x="52" y="191" font-size="13" font-weight="bold" fill="#FFFFFF">1. THE “WHY” — WHY LAKHANI, WHY NOW?</text>
+  <rect x="40" y="202" width="360" height="138" fill="#F4F5F8"/>
+    <text x="52" y="222" font-size="11.5" fill="#222">What does an AI-native firm actually look</text>
+    <text x="52" y="240" font-size="11.5" fill="#222">like? Iansiti &amp; Lakhani give the operating</text>
+    <text x="52" y="258" font-size="11.5" fill="#222">model — the AI Factory — that turns data</text>
+    <text x="52" y="276" font-size="11.5" fill="#222">into decisions at scale and breaks the</text>
+    <text x="52" y="294" font-size="11.5" fill="#222">traditional scale-vs-scope trade-off.</text>
+    <text x="52" y="312" font-size="11.5" fill="#222">This is the playbook for AI-era strategy.</text>
+
+  <!-- Section 2: FOUNDATION -->
+  <rect x="40" y="358" width="360" height="32" fill="#1D2660"/>
+  <text x="52" y="379" font-size="13" font-weight="bold" fill="#FFFFFF">2. INTELLECTUAL FOUNDATION</text>
+  <rect x="40" y="390" width="360" height="148" fill="#F4F5F8"/>
+    <text x="52" y="410" font-size="11.5" fill="#222">Marco Iansiti: David Sarnoff Professor at HBS,</text>
+    <text x="52" y="428" font-size="11.5" fill="#222">founded the Digital Initiative. PhD Physics,</text>
+    <text x="52" y="446" font-size="11.5" fill="#222">Harvard. Karim Lakhani: Dorothy &amp; Michael</text>
+    <text x="52" y="464" font-size="11.5" fill="#222">Hintze Professor at HBS, founder of D^3 Lab.</text>
+    <text x="52" y="482" font-size="11.5" fill="#222">PhD Management of Innovation, MIT Sloan.</text>
+    <text x="52" y="500" font-size="11.5" fill="#222">Builds on platform / network-effects research</text>
+    <text x="52" y="518" font-size="11.5" fill="#222">and decades of digital transformation cases.</text>
+
+  <!-- Section 3: FRAMEWORKS (yellow highlight) -->
+  <rect x="40" y="556" width="360" height="32" fill="#1D2660"/>
+  <text x="52" y="577" font-size="13" font-weight="bold" fill="#FFFFFF">3. THE FRAMEWORKS · TOOLS · MODELS</text>
+  <rect x="40" y="588" width="360" height="178" fill="#FFD23F"/>
+    <text x="52" y="610" font-size="11.5" font-weight="bold" fill="#1D2660">1. AI Factory</text>
+<text x="220" y="610" font-size="10" fill="#222">Data pipeline + algorithms +</text>
+<text x="220" y="626" font-size="10" fill="#222">experimentation as core engine</text>
+<text x="52" y="646" font-size="11.5" font-weight="bold" fill="#1D2660">2. Operating Model Re-design</text>
+<text x="220" y="646" font-size="10" fill="#222">From silos to AI-orchestrated</text>
+<text x="220" y="662" font-size="10" fill="#222">process flows</text>
+<text x="52" y="682" font-size="11.5" font-weight="bold" fill="#1D2660">3. Digital Network Effects</text>
+<text x="220" y="682" font-size="10" fill="#222">AI-driven feedback loops as</text>
+<text x="220" y="698" font-size="10" fill="#222">moat (data → model → product)</text>
+<text x="52" y="718" font-size="11.5" font-weight="bold" fill="#1D2660">4. Collisions vs Hubs</text>
+<text x="220" y="718" font-size="10" fill="#222">Where AI-native firms collide</text>
+<text x="220" y="734" font-size="10" fill="#222">with traditional industries</text>
+<text x="52" y="754" font-size="11.5" font-weight="bold" fill="#1D2660">5. Scale + Scope + Learning</text>
+<text x="220" y="754" font-size="10" fill="#222">The 3 forces simultaneously</text>
+<text x="220" y="770" font-size="10" fill="#222">unlocked by AI-native firms</text>
+
+  <!-- Section 4: OPERATIONALIZATION -->
+  <rect x="40" y="784" width="360" height="32" fill="#1D2660"/>
+  <text x="52" y="805" font-size="13" font-weight="bold" fill="#FFFFFF">4. OPERATIONALIZATION — HOW TO USE IT</text>
+  <rect x="40" y="816" width="360" height="138" fill="#F4F5F8"/>
+    <text x="52" y="836" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">1.</tspan> Map your firm's current operating model bottlenecks</text>
+    <text x="52" y="856" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">2.</tspan> Build the data pipeline before building the algorithm</text>
+    <text x="52" y="876" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">3.</tspan> Centralise the AI Factory — federate use cases</text>
+    <text x="52" y="896" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">4.</tspan> Identify which traditional silos must dissolve</text>
+    <text x="52" y="916" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">5.</tspan> Watch for collisions from AI-native challengers</text>
+    <text x="52" y="936" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">6.</tspan> Re-engineer governance for algorithmic decisions</text>
+
+  <!-- RIGHT COLUMN -->
+  
+  <g id="portrait-placeholder">
+    <rect x="430" y="170" width="320" height="240" fill="#FAFAFA" stroke="#1D2660" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <g opacity="0.40">
+      <path d="M 455 402 C 455 328, 530 313, 590 313 C 650 313, 725 328, 725 402 Z" fill="#1D2660"/>
+      <circle cx="590" cy="278" r="48" fill="#1D2660"/>
+    </g>
+    <rect x="500" y="388" width="180" height="14" fill="#FFFFFF" opacity="0.85"/>
+    <text x="590" y="398" text-anchor="middle" font-size="10" font-style="italic" fill="#1D2660">[ Insert portrait sketch ]</text>
+  </g>
+
+  <!-- Quote 1 -->
+  <text x="590" y="438" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">&#8220;AI is rewriting the rules of</text>
+  <text x="590" y="456" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">competition.&#8221;</text>
+  <text x="590" y="475" text-anchor="middle" font-size="11" fill="#555">— Iansiti &amp; Lakhani</text>
+
+  <!-- Quote 2 -->
+  <text x="590" y="510" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">&#8220;Every firm is becoming a</text>
+  <text x="590" y="528" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">software firm.&#8221;</text>
+  <text x="590" y="547" text-anchor="middle" font-size="11" fill="#555">— Iansiti &amp; Lakhani</text>
+
+  <!-- Section 5: LIMITATIONS -->
+  <rect x="430" y="568" width="320" height="32" fill="#1D2660"/>
+  <text x="442" y="589" font-size="13" font-weight="bold" fill="#FFFFFF">5. LIMITATIONS — THE CRITICAL VIEW</text>
+  <rect x="430" y="600" width="320" height="158" fill="#F4F5F8"/>
+    <text x="442" y="620" font-size="10.5" fill="#222">• Examples skew toward US tech</text>
+    <text x="455" y="636" font-size="10.5" fill="#222">giants (Ant, Microsoft, Amazon)</text>
+    <text x="442" y="652" font-size="10.5" fill="#222">• Heavy capex / data assumptions</text>
+    <text x="455" y="668" font-size="10.5" fill="#222">hard for SME / non-tech firms</text>
+    <text x="442" y="684" font-size="10.5" fill="#222">• Less coverage of regulatory</text>
+    <text x="455" y="700" font-size="10.5" fill="#222">friction in the EU / financial</text>
+    <text x="455" y="716" font-size="10.5" fill="#222">services context</text>
+    <text x="442" y="732" font-size="10.5" fill="#222">• Critics: “AI Factory” brand</text>
+    <text x="455" y="748" font-size="10.5" fill="#222">outpaces the rigour of the model</text>
+
+  <!-- Section 6: ENDURING IMPACT -->
+  <rect x="430" y="776" width="320" height="32" fill="#1D2660"/>
+  <text x="442" y="797" font-size="13" font-weight="bold" fill="#FFFFFF">6. ENDURING IMPACT</text>
+  <rect x="430" y="808" width="320" height="160" fill="#F4F5F8"/>
+    <text x="442" y="828" font-size="10.5" fill="#222">• “AI Factory” entered the C-suite</text>
+    <text x="455" y="844" font-size="10.5" fill="#222">vocabulary post-2020</text>
+    <text x="442" y="860" font-size="10.5" fill="#222">• HBS D^3 Lab a hub for AI-</text>
+    <text x="455" y="876" font-size="10.5" fill="#222">business research worldwide</text>
+    <text x="442" y="892" font-size="10.5" fill="#222">• Lakhani named one of HBR's</text>
+    <text x="455" y="908" font-size="10.5" fill="#222">most influential academics</text>
+    <text x="442" y="924" font-size="10.5" fill="#222">• Direct influence on the AI</text>
+    <text x="455" y="940" font-size="10.5" fill="#222">strategy chapters of MARTI301</text>
+    <text x="442" y="956" font-size="10.5" fill="#222">• Frequent McKinsey, Deloitte,</text>
+    <text x="455" y="972" font-size="10.5" fill="#222">WEF speakers on AI strategy</text>
+
+  <!-- Books -->
+  <text x="60" y="990" font-size="13" font-weight="bold" fill="#1D2660">SELECTED WORKS</text>
+  <line x1="60" y1="998" x2="740" y2="998" stroke="#00B388" stroke-width="1"/>
+  
+  <g>
+    <rect x="80" y="1015" width="120" height="170" fill="#1D2660"/>
+    <rect x="84" y="1019" width="112" height="162" fill="none" stroke="#FFD23F" stroke-width="1"/>
+    <text x="140" y="1055" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">COMPETING IN</text>
+    <text x="140" y="1069" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">THE AGE OF AI</text>
+    <line x1="100" y1="1088" x2="180" y2="1088" stroke="#FFD23F" stroke-width="1"/>
+    <text x="140" y="1128" text-anchor="middle" font-size="9" fill="#FFD23F">Strategy &amp;</text>
+    <text x="140" y="1141" text-anchor="middle" font-size="9" fill="#FFD23F">Leadership</text>
+    <text x="140" y="1154" text-anchor="middle" font-size="9" fill="#FFD23F">When Algorithms</text>
+    <text x="140" y="1167" text-anchor="middle" font-size="9" fill="#FFD23F">Run the World</text>
+    <text x="140" y="1175" text-anchor="middle" font-size="9" font-weight="bold" fill="#FFFFFF">LAKHANI · 2020</text>
+  </g>
+
+  <g>
+    <rect x="240" y="1015" width="120" height="170" fill="#264653"/>
+    <rect x="244" y="1019" width="112" height="162" fill="none" stroke="#F4A261" stroke-width="1"/>
+    <text x="300" y="1055" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">KEYSTONE</text>
+    <text x="300" y="1069" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">ADVANTAGE</text>
+    <line x1="260" y1="1088" x2="340" y2="1088" stroke="#F4A261" stroke-width="1"/>
+    <text x="300" y="1128" text-anchor="middle" font-size="9" fill="#F4A261">What the New</text>
+    <text x="300" y="1141" text-anchor="middle" font-size="9" fill="#F4A261">Dynamics of</text>
+    <text x="300" y="1154" text-anchor="middle" font-size="9" fill="#F4A261">Business Ecosystems</text>
+    <text x="300" y="1167" text-anchor="middle" font-size="9" fill="#F4A261">Mean (Iansiti)</text>
+    <text x="300" y="1175" text-anchor="middle" font-size="9" font-weight="bold" fill="#FFFFFF">LAKHANI · 2004</text>
+  </g>
+
+  <g>
+    <rect x="400" y="1015" width="120" height="170" fill="#7A1F2B"/>
+    <rect x="404" y="1019" width="112" height="162" fill="none" stroke="#FFFFFF" stroke-width="1"/>
+    <text x="460" y="1050" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">THE TECH-</text>
+    <text x="460" y="1064" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">NOLOGICAL</text>
+    <text x="460" y="1078" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">BUSINESS</text>
+    <line x1="420" y1="1097" x2="500" y2="1097" stroke="#FFFFFF" stroke-width="1"/>
+    <text x="460" y="1128" text-anchor="middle" font-size="9" fill="#FFFFFF">Iansiti's classic</text>
+    <text x="460" y="1141" text-anchor="middle" font-size="9" fill="#FFFFFF">on platform</text>
+    <text x="460" y="1154" text-anchor="middle" font-size="9" fill="#FFFFFF">competition</text>
+    <text x="460" y="1175" text-anchor="middle" font-size="9" font-weight="bold" fill="#FFFFFF">LAKHANI · 1998</text>
+  </g>
+
+  <g>
+    <rect x="560" y="1015" width="120" height="170" fill="#0F4C3A"/>
+    <rect x="564" y="1019" width="112" height="162" fill="none" stroke="#FFFFFF" stroke-width="1"/>
+    <text x="620" y="1050" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">WORKING IN</text>
+    <text x="620" y="1064" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">THE AGE OF</text>
+    <text x="620" y="1078" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">INTELLIGENT</text>
+    <text x="620" y="1092" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">MACHINES</text>
+    <line x1="580" y1="1111" x2="660" y2="1111" stroke="#FFFFFF" stroke-width="1"/>
+    <text x="620" y="1128" text-anchor="middle" font-size="9" fill="#FFFFFF">Lakhani's HBR</text>
+    <text x="620" y="1141" text-anchor="middle" font-size="9" fill="#FFFFFF">essays on AI</text>
+    <text x="620" y="1154" text-anchor="middle" font-size="9" fill="#FFFFFF">&amp; open innovation</text>
+    <text x="620" y="1175" text-anchor="middle" font-size="9" font-weight="bold" fill="#FFFFFF">LAKHANI · 2024</text>
+  </g>
+
+  <!-- Footer -->
+  <line x1="60" y1="1210" x2="740" y2="1210" stroke="#00B388" stroke-width="1.5"/>
+  <text x="60" y="1228" font-size="10" fill="#1D2660">MARTI301 · Unit 1 — AI Strategy &amp; Competitive Advantage · Slibrary</text>
+  <text x="740" y="1228" text-anchor="end" font-size="10" fill="#1D2660">©️ Dr. Hildegard Haas · EUBS</text>
+</svg>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1240" width="800" height="1240" font-family="Arial, Helvetica, sans-serif">
+  <!-- EUBS · MARTI301 · Slibrary · Long-Desc Modal · Andrew Ng -->
+  <rect width="800" height="1240" fill="#FFFFFF"/>
+
+  <!-- Title -->
+  <text x="400" y="62" text-anchor="middle" font-size="42" font-weight="bold" fill="#1D2660">Andrew Ng</text>
+  <text x="400" y="98" text-anchor="middle" font-size="20" font-weight="bold" fill="#1D2660">Democratising Machine Learning and the AI Transformation Playbook</text>
+  <text x="400" y="124" text-anchor="middle" font-size="13" font-style="italic" fill="#555">b. 1976 · Founder DeepLearning.AI · Adjunct Professor Stanford</text>
+  <line x1="60" y1="148" x2="740" y2="148" stroke="#00B388" stroke-width="2"/>
+
+  <!-- LEFT COLUMN -->
+  <!-- Section 1: WHY -->
+  <rect x="40" y="170" width="360" height="32" fill="#1D2660"/>
+  <text x="52" y="191" font-size="13" font-weight="bold" fill="#FFFFFF">1. THE “WHY” — WHY NG, WHY NOW?</text>
+  <rect x="40" y="202" width="360" height="138" fill="#F4F5F8"/>
+    <text x="52" y="222" font-size="11.5" fill="#222">Why has ML gone from research curiosity to</text>
+    <text x="52" y="240" font-size="11.5" fill="#222">general-purpose technology in fifteen years?</text>
+    <text x="52" y="258" font-size="11.5" fill="#222">Andrew Ng is one of the people who actually</text>
+    <text x="52" y="276" font-size="11.5" fill="#222">made that happen — Google Brain, Coursera,</text>
+    <text x="52" y="294" font-size="11.5" fill="#222">Baidu — and his AI Transformation Playbook</text>
+    <text x="52" y="312" font-size="11.5" fill="#222">is the operational guide for non-tech firms.</text>
+
+  <!-- Section 2: FOUNDATION -->
+  <rect x="40" y="358" width="360" height="32" fill="#1D2660"/>
+  <text x="52" y="379" font-size="13" font-weight="bold" fill="#FFFFFF">2. INTELLECTUAL FOUNDATION</text>
+  <rect x="40" y="390" width="360" height="148" fill="#F4F5F8"/>
+    <text x="52" y="410" font-size="11.5" fill="#222">PhD Computer Science, UC Berkeley (2002).</text>
+    <text x="52" y="428" font-size="11.5" fill="#222">Founded Google Brain (2011), led Baidu AI</text>
+    <text x="52" y="446" font-size="11.5" fill="#222">Group as Chief Scientist (2014–2017),</text>
+    <text x="52" y="464" font-size="11.5" fill="#222">co-founded Coursera (2012) and</text>
+    <text x="52" y="482" font-size="11.5" fill="#222">DeepLearning.AI (2017). Adjunct Professor at</text>
+    <text x="52" y="500" font-size="11.5" fill="#222">Stanford. Trained millions of engineers.</text>
+    <text x="52" y="518" font-size="11.5" fill="#222">Founder of Landing AI (2017) and AI Fund.</text>
+
+  <!-- Section 3: FRAMEWORKS (yellow highlight) -->
+  <rect x="40" y="556" width="360" height="32" fill="#1D2660"/>
+  <text x="52" y="577" font-size="13" font-weight="bold" fill="#FFFFFF">3. THE FRAMEWORKS · TOOLS · MODELS</text>
+  <rect x="40" y="588" width="360" height="178" fill="#FFD23F"/>
+    <text x="52" y="610" font-size="11.5" font-weight="bold" fill="#1D2660">1. AI Transformation Playbook</text>
+<text x="220" y="610" font-size="10" fill="#222">5 steps from pilot to</text>
+<text x="220" y="626" font-size="10" fill="#222">AI-first organisation</text>
+<text x="52" y="646" font-size="11.5" font-weight="bold" fill="#1D2660">2. Data-Centric AI</text>
+<text x="220" y="646" font-size="10" fill="#222">Improve the data, not the</text>
+<text x="220" y="662" font-size="10" fill="#222">model — counter-orthodoxy</text>
+<text x="52" y="682" font-size="11.5" font-weight="bold" fill="#1D2660">3. ML Yearning</text>
+<text x="220" y="682" font-size="10" fill="#222">How to set up ML projects</text>
+<text x="220" y="698" font-size="10" fill="#222">(error analysis, splits)</text>
+<text x="52" y="718" font-size="11.5" font-weight="bold" fill="#1D2660">4. Virtuous Cycle of AI</text>
+<text x="220" y="718" font-size="10" fill="#222">Users → data → model →</text>
+<text x="220" y="734" font-size="10" fill="#222">better product → more users</text>
+<text x="52" y="754" font-size="11.5" font-weight="bold" fill="#1D2660">5. Bias / Variance Workflow</text>
+<text x="220" y="754" font-size="10" fill="#222">Diagnostic playbook for</text>
+<text x="220" y="770" font-size="10" fill="#222">every ML practitioner</text>
+
+  <!-- Section 4: OPERATIONALIZATION -->
+  <rect x="40" y="784" width="360" height="32" fill="#1D2660"/>
+  <text x="52" y="805" font-size="13" font-weight="bold" fill="#FFFFFF">4. OPERATIONALIZATION — HOW TO USE IT</text>
+  <rect x="40" y="816" width="360" height="138" fill="#F4F5F8"/>
+    <text x="52" y="836" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">1.</tspan> Start with pilot projects (months not years)</text>
+    <text x="52" y="856" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">2.</tspan> Build an in-house AI team alongside vendors</text>
+    <text x="52" y="876" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">3.</tspan> Provide broad AI training across the org</text>
+    <text x="52" y="896" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">4.</tspan> Develop an AI strategy aligned to value</text>
+    <text x="52" y="916" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">5.</tspan> Communicate internally and externally</text>
+    <text x="52" y="936" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">6.</tspan> Iterate via the virtuous data-cycle</text>
+
+  <!-- RIGHT COLUMN -->
+  
+  <g id="portrait-placeholder">
+    <rect x="430" y="170" width="320" height="240" fill="#FAFAFA" stroke="#1D2660" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <g opacity="0.40">
+      <path d="M 455 402 C 455 328, 530 313, 590 313 C 650 313, 725 328, 725 402 Z" fill="#1D2660"/>
+      <circle cx="590" cy="278" r="48" fill="#1D2660"/>
+    </g>
+    <rect x="500" y="388" width="180" height="14" fill="#FFFFFF" opacity="0.85"/>
+    <text x="590" y="398" text-anchor="middle" font-size="10" font-style="italic" fill="#1D2660">[ Insert portrait sketch ]</text>
+  </g>
+
+  <!-- Quote 1 -->
+  <text x="590" y="438" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">&#8220;AI is the new electricity.&#8221;</text>
+  <text x="590" y="456" text-anchor="middle" font-size="13" font-weight="bold" fill="#222"></text>
+  <text x="590" y="475" text-anchor="middle" font-size="11" fill="#555">— Andrew Ng</text>
+
+  <!-- Quote 2 -->
+  <text x="590" y="510" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">&#8220;Don't fear AI — automate</text>
+  <text x="590" y="528" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">yourself first.&#8221;</text>
+  <text x="590" y="547" text-anchor="middle" font-size="11" fill="#555">— Andrew Ng</text>
+
+  <!-- Section 5: LIMITATIONS -->
+  <rect x="430" y="568" width="320" height="32" fill="#1D2660"/>
+  <text x="442" y="589" font-size="13" font-weight="bold" fill="#FFFFFF">5. LIMITATIONS — THE CRITICAL VIEW</text>
+  <rect x="430" y="600" width="320" height="158" fill="#F4F5F8"/>
+    <text x="442" y="620" font-size="10.5" fill="#222">• Optimism on “AI as electricity”</text>
+    <text x="455" y="636" font-size="10.5" fill="#222">challenged by deployment realities</text>
+    <text x="442" y="652" font-size="10.5" fill="#222">• Less attention to GenAI-specific</text>
+    <text x="455" y="668" font-size="10.5" fill="#222">enterprise risks (hallucination)</text>
+    <text x="442" y="684" font-size="10.5" fill="#222">• Self-driving timelines proved</text>
+    <text x="455" y="700" font-size="10.5" fill="#222">optimistic (his early Baidu bets)</text>
+    <text x="442" y="716" font-size="10.5" fill="#222">• Critics: data-centric framing</text>
+    <text x="455" y="732" font-size="10.5" fill="#222">underplays model architecture</text>
+    <text x="442" y="748" font-size="10.5" fill="#222">• Online courses simplify nuance</text>
+
+  <!-- Section 6: ENDURING IMPACT -->
+  <rect x="430" y="776" width="320" height="32" fill="#1D2660"/>
+  <text x="442" y="797" font-size="13" font-weight="bold" fill="#FFFFFF">6. ENDURING IMPACT</text>
+  <rect x="430" y="808" width="320" height="160" fill="#F4F5F8"/>
+    <text x="442" y="828" font-size="10.5" fill="#222">• Coursera ML course: 5M+</text>
+    <text x="455" y="844" font-size="10.5" fill="#222">students, set the global bar</text>
+    <text x="442" y="860" font-size="10.5" fill="#222">• DeepLearning.AI specialisations</text>
+    <text x="455" y="876" font-size="10.5" fill="#222">retrained an entire field</text>
+    <text x="442" y="892" font-size="10.5" fill="#222">• Founded Google Brain — direct</text>
+    <text x="455" y="908" font-size="10.5" fill="#222">line to today's foundation models</text>
+    <text x="442" y="924" font-size="10.5" fill="#222">• AI Fund accelerated 50+</text>
+    <text x="455" y="940" font-size="10.5" fill="#222">AI-first startups</text>
+    <text x="442" y="956" font-size="10.5" fill="#222">• Time 100 Most Influential</text>
+    <text x="455" y="972" font-size="10.5" fill="#222">in AI (multiple years)</text>
+
+  <!-- Books -->
+  <text x="60" y="990" font-size="13" font-weight="bold" fill="#1D2660">SELECTED WORKS</text>
+  <line x1="60" y1="998" x2="740" y2="998" stroke="#00B388" stroke-width="1"/>
+  
+  <g>
+    <rect x="80" y="1015" width="120" height="170" fill="#1A1A1A"/>
+    <rect x="84" y="1019" width="112" height="162" fill="none" stroke="#E63946" stroke-width="1"/>
+    <text x="140" y="1050" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">MACHINE</text>
+    <text x="140" y="1064" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">LEARNING</text>
+    <text x="140" y="1078" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">YEARNING</text>
+    <line x1="100" y1="1097" x2="180" y2="1097" stroke="#E63946" stroke-width="1"/>
+    <text x="140" y="1128" text-anchor="middle" font-size="9" fill="#E63946">Free e-book on</text>
+    <text x="140" y="1141" text-anchor="middle" font-size="9" fill="#E63946">structuring ML</text>
+    <text x="140" y="1154" text-anchor="middle" font-size="9" fill="#E63946">projects</text>
+    <text x="140" y="1175" text-anchor="middle" font-size="9" font-weight="bold" fill="#FFFFFF">NG · 2018</text>
+  </g>
+
+  <g>
+    <rect x="240" y="1015" width="120" height="170" fill="#1D2660"/>
+    <rect x="244" y="1019" width="112" height="162" fill="none" stroke="#FFD23F" stroke-width="1"/>
+    <text x="300" y="1050" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">AI TRANS-</text>
+    <text x="300" y="1064" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">FORMATION</text>
+    <text x="300" y="1078" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">PLAYBOOK</text>
+    <line x1="260" y1="1097" x2="340" y2="1097" stroke="#FFD23F" stroke-width="1"/>
+    <text x="300" y="1135" text-anchor="middle" font-size="9" fill="#FFD23F">Landing AI</text>
+    <text x="300" y="1148" text-anchor="middle" font-size="9" fill="#FFD23F">white paper</text>
+    <text x="300" y="1175" text-anchor="middle" font-size="9" font-weight="bold" fill="#FFFFFF">NG · 2018</text>
+  </g>
+
+  <g>
+    <rect x="400" y="1015" width="120" height="170" fill="#264653"/>
+    <rect x="404" y="1019" width="112" height="162" fill="none" stroke="#F4A261" stroke-width="1"/>
+    <text x="460" y="1055" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">DATA-</text>
+    <text x="460" y="1069" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">CENTRIC AI</text>
+    <line x1="420" y1="1088" x2="500" y2="1088" stroke="#F4A261" stroke-width="1"/>
+    <text x="460" y="1128" text-anchor="middle" font-size="9" fill="#F4A261">NeurIPS workshops</text>
+    <text x="460" y="1141" text-anchor="middle" font-size="9" fill="#F4A261">&amp; Landing AI</text>
+    <text x="460" y="1154" text-anchor="middle" font-size="9" fill="#F4A261">platform</text>
+    <text x="460" y="1175" text-anchor="middle" font-size="9" font-weight="bold" fill="#FFFFFF">NG · 2021</text>
+  </g>
+
+  <g>
+    <rect x="560" y="1015" width="120" height="170" fill="#0F4C3A"/>
+    <rect x="564" y="1019" width="112" height="162" fill="none" stroke="#FFFFFF" stroke-width="1"/>
+    <text x="620" y="1055" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">THE BATCH</text>
+    <line x1="580" y1="1074" x2="660" y2="1074" stroke="#FFFFFF" stroke-width="1"/>
+    <text x="620" y="1128" text-anchor="middle" font-size="9" fill="#FFFFFF">Weekly AI</text>
+    <text x="620" y="1141" text-anchor="middle" font-size="9" fill="#FFFFFF">newsletter via</text>
+    <text x="620" y="1154" text-anchor="middle" font-size="9" fill="#FFFFFF">DeepLearning.AI</text>
+    <text x="620" y="1175" text-anchor="middle" font-size="9" font-weight="bold" fill="#FFFFFF">NG · 2019</text>
+  </g>
+
+  <!-- Footer -->
+  <line x1="60" y1="1210" x2="740" y2="1210" stroke="#00B388" stroke-width="1.5"/>
+  <text x="60" y="1228" font-size="10" fill="#1D2660">MARTI301 · Unit 2 — Machine Learning &amp; Data-Driven Decisions · Slibrary</text>
+  <text x="740" y="1228" text-anchor="end" font-size="10" fill="#1D2660">©️ Dr. Hildegard Haas · EUBS</text>
+</svg>
