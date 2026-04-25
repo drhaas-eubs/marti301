@@ -5,7 +5,7 @@
 
   <!-- Title -->
   <text x="400" y="62" text-anchor="middle" font-size="42" font-weight="bold" fill="#1D2660">Cathy O'Neil</text>
-  <text x="400" y="98" text-anchor="middle" font-size="20" font-weight="bold" fill="#1D2660">Weapons of Math Destruction and the Audit of Algorithms</text>
+  <text x="400" y="98" text-anchor="middle" font-size="20" font-weight="bold" fill="#1D2660">Algorithmic Bias Audit and Weapons of Math Destruction</text>
   <text x="400" y="124" text-anchor="middle" font-size="13" font-style="italic" fill="#555">b. 1972 · Mathematician · Founder, ORCAA · Author of WMD</text>
   <line x1="60" y1="148" x2="740" y2="148" stroke="#00B388" stroke-width="2"/>
 
@@ -14,12 +14,13 @@
   <rect x="40" y="170" width="360" height="32" fill="#1D2660"/>
   <text x="52" y="191" font-size="13" font-weight="bold" fill="#FFFFFF">1. THE “WHY” — WHY O'NEIL, WHY NOW?</text>
   <rect x="40" y="202" width="360" height="138" fill="#F4F5F8"/>
-    <text x="52" y="222" font-size="11.5" fill="#222">What goes wrong when ML decisions hit real</text>
-    <text x="52" y="240" font-size="11.5" fill="#222">lives at scale? O'Neil names the phenomenon:</text>
-    <text x="52" y="258" font-size="11.5" fill="#222">Weapons of Math Destruction. Her work is the</text>
-    <text x="52" y="276" font-size="11.5" fill="#222">indispensable critical lens on data-driven</text>
-    <text x="52" y="294" font-size="11.5" fill="#222">decisions — and the foundation of modern</text>
-    <text x="52" y="312" font-size="11.5" fill="#222">algorithmic auditing for MARTI301 students.</text>
+    <text x="52" y="222" font-size="11.5" fill="#222">What goes wrong when ML decisions you</text>
+    <text x="52" y="240" font-size="11.5" fill="#222">deploy hit real lives at scale? O'Neil</text>
+    <text x="52" y="258" font-size="11.5" fill="#222">names the phenomenon: Weapons of Math</text>
+    <text x="52" y="276" font-size="11.5" fill="#222">Destruction. Her work is your indispensable</text>
+    <text x="52" y="294" font-size="11.5" fill="#222">critical lens — and the foundation of</text>
+    <text x="52" y="312" font-size="11.5" fill="#222">the Algorithmic Bias Audit framework</text>
+    <text x="52" y="330" font-size="11.5" fill="#222">you'll learn to run on every AI model.</text>
 
   <!-- Section 2: FOUNDATION -->
   <rect x="40" y="358" width="360" height="32" fill="#1D2660"/>
@@ -27,22 +28,22 @@
   <rect x="40" y="390" width="360" height="148" fill="#F4F5F8"/>
     <text x="52" y="410" font-size="11.5" fill="#222">PhD Mathematics, Harvard (1999). Postdoc</text>
     <text x="52" y="428" font-size="11.5" fill="#222">MIT, professor at Barnard, then quantitative</text>
-    <text x="52" y="446" font-size="11.5" fill="#222">analyst at hedge fund D.E. Shaw — left after</text>
-    <text x="52" y="464" font-size="11.5" fill="#222">the 2008 crisis. Joined Occupy Wall Street.</text>
-    <text x="52" y="482" font-size="11.5" fill="#222">Founded ORCAA (O'Neil Risk Consulting &amp;</text>
-    <text x="52" y="500" font-size="11.5" fill="#222">Algorithmic Auditing) in 2017. Bloomberg</text>
-    <text x="52" y="518" font-size="11.5" fill="#222">Opinion columnist on data and ethics.</text>
+    <text x="52" y="446" font-size="11.5" fill="#222">analyst at hedge fund D.E. Shaw — left</text>
+    <text x="52" y="464" font-size="11.5" fill="#222">after the 2008 crisis. Joined Occupy Wall</text>
+    <text x="52" y="482" font-size="11.5" fill="#222">Street. Founded ORCAA (O'Neil Risk</text>
+    <text x="52" y="500" font-size="11.5" fill="#222">Consulting &amp; Algorithmic Auditing) in</text>
+    <text x="52" y="518" font-size="11.5" fill="#222">2017. Bloomberg Opinion columnist.</text>
 
   <!-- Section 3: FRAMEWORKS (yellow highlight) -->
   <rect x="40" y="556" width="360" height="32" fill="#1D2660"/>
   <text x="52" y="577" font-size="13" font-weight="bold" fill="#FFFFFF">3. THE FRAMEWORKS · TOOLS · MODELS</text>
   <rect x="40" y="588" width="360" height="178" fill="#FFD23F"/>
-    <text x="52" y="610" font-size="11.5" font-weight="bold" fill="#1D2660">1. WMD Test (3 criteria)</text>
-<text x="220" y="610" font-size="10" fill="#222">Opacity · Scale · Damage —</text>
-<text x="220" y="626" font-size="10" fill="#222">test for any algorithm</text>
-<text x="52" y="646" font-size="11.5" font-weight="bold" fill="#1D2660">2. Algorithmic Audit</text>
-<text x="220" y="646" font-size="10" fill="#222">ORCAA's structured review</text>
-<text x="220" y="662" font-size="10" fill="#222">of model outcomes &amp; harms</text>
+    <text x="52" y="610" font-size="11.5" font-weight="bold" fill="#1D2660">1. Algorithmic Bias Audit</text>
+<text x="220" y="610" font-size="10" fill="#222">ORCAA's 4-step audit:</text>
+<text x="220" y="626" font-size="10" fill="#222">Define → Measure → Mitigate → Monitor</text>
+<text x="52" y="646" font-size="11.5" font-weight="bold" fill="#1D2660">2. WMD Test (3 criteria)</text>
+<text x="220" y="646" font-size="10" fill="#222">Opacity · Scale · Damage</text>
+<text x="220" y="662" font-size="10" fill="#222">= weapon of math destruction</text>
 <text x="52" y="682" font-size="11.5" font-weight="bold" fill="#1D2660">3. Feedback-Loop Hazard</text>
 <text x="220" y="682" font-size="10" fill="#222">When predictions become</text>
 <text x="220" y="698" font-size="10" fill="#222">self-fulfilling at scale</text>
@@ -57,11 +58,11 @@
   <rect x="40" y="784" width="360" height="32" fill="#1D2660"/>
   <text x="52" y="805" font-size="13" font-weight="bold" fill="#FFFFFF">4. OPERATIONALIZATION — HOW TO USE IT</text>
   <rect x="40" y="816" width="360" height="138" fill="#F4F5F8"/>
-    <text x="52" y="836" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">1.</tspan> Score every model against the 3 WMD criteria</text>
-    <text x="52" y="856" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">2.</tspan> Identify proxies — challenge their validity</text>
-    <text x="52" y="876" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">3.</tspan> Test for feedback loops over time</text>
-    <text x="52" y="896" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">4.</tspan> Apply ORCAA-style audit before deployment</text>
-    <text x="52" y="916" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">5.</tspan> Map stakeholders × values in an ethical matrix</text>
+    <text x="52" y="836" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">1.</tspan> Define the model's intended outcome and stakeholders</text>
+    <text x="52" y="856" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">2.</tspan> Measure outcomes by demographic + other axes</text>
+    <text x="52" y="876" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">3.</tspan> Mitigate disparities — rebalance, reweight, or replace</text>
+    <text x="52" y="896" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">4.</tspan> Monitor over time for feedback-loop effects</text>
+    <text x="52" y="916" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">5.</tspan> Score every model against the 3 WMD criteria</text>
     <text x="52" y="936" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">6.</tspan> Build an appeal mechanism for affected users</text>
 
   <!-- RIGHT COLUMN -->
@@ -106,14 +107,14 @@
   <rect x="430" y="808" width="320" height="160" fill="#F4F5F8"/>
     <text x="442" y="828" font-size="10.5" fill="#222">• “WMD” entered the public</text>
     <text x="455" y="844" font-size="10.5" fill="#222">vocabulary on AI risk (2016)</text>
-    <text x="442" y="860" font-size="10.5" fill="#222">• National Book Award longlist;</text>
-    <text x="455" y="876" font-size="10.5" fill="#222">best business book of the year</text>
-    <text x="442" y="892" font-size="10.5" fill="#222">• ORCAA pioneered third-party</text>
-    <text x="455" y="908" font-size="10.5" fill="#222">algorithmic auditing as a service</text>
-    <text x="442" y="924" font-size="10.5" fill="#222">• Influenced EU AI Act, NYC</text>
-    <text x="455" y="940" font-size="10.5" fill="#222">bias audit law, NIST RMF</text>
-    <text x="442" y="956" font-size="10.5" fill="#222">• Required reading in AI-ethics</text>
-    <text x="455" y="972" font-size="10.5" fill="#222">courses worldwide</text>
+    <text x="442" y="860" font-size="10.5" fill="#222">• ORCAA pioneered third-party</text>
+    <text x="455" y="876" font-size="10.5" fill="#222">algorithmic auditing as a service</text>
+    <text x="442" y="892" font-size="10.5" fill="#222">• Influenced EU AI Act, NYC</text>
+    <text x="455" y="908" font-size="10.5" fill="#222">bias audit law, NIST RMF</text>
+    <text x="442" y="924" font-size="10.5" fill="#222">• Required reading in AI-ethics</text>
+    <text x="455" y="940" font-size="10.5" fill="#222">courses worldwide</text>
+    <text x="442" y="956" font-size="10.5" fill="#222">• Direct anchor for MARTI301</text>
+    <text x="455" y="972" font-size="10.5" fill="#222">Unit 4 Bias Audit framework</text>
 
   <!-- Books -->
   <text x="60" y="990" font-size="13" font-weight="bold" fill="#1D2660">SELECTED WORKS</text>
@@ -169,6 +170,6 @@
 
   <!-- Footer -->
   <line x1="60" y1="1210" x2="740" y2="1210" stroke="#00B388" stroke-width="1.5"/>
-  <text x="60" y="1228" font-size="10" fill="#1D2660">MARTI301 · Unit 2 — Machine Learning &amp; Data-Driven Decisions · Slibrary</text>
+  <text x="60" y="1228" font-size="10" fill="#1D2660">MARTI301 · Unit 4 — Financial Side of AI · Risk Management · Slibrary</text>
   <text x="740" y="1228" text-anchor="end" font-size="10" fill="#1D2660">©️ Dr. Hildegard Haas · EUBS</text>
 </svg>

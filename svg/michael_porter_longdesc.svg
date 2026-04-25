@@ -15,11 +15,12 @@
   <text x="52" y="191" font-size="13" font-weight="bold" fill="#FFFFFF">1. THE “WHY” — WHY PORTER, WHY NOW?</text>
   <rect x="40" y="202" width="360" height="138" fill="#F4F5F8"/>
     <text x="52" y="222" font-size="11.5" fill="#222">In an era of AI disruption and platform</text>
-    <text x="52" y="240" font-size="11.5" fill="#222">economics, students still need rigorous</text>
+    <text x="52" y="240" font-size="11.5" fill="#222">economics, you still need rigorous</text>
     <text x="52" y="258" font-size="11.5" fill="#222">frameworks for competitive analysis.</text>
     <text x="52" y="276" font-size="11.5" fill="#222">Porter's vocabulary — industry structure,</text>
     <text x="52" y="294" font-size="11.5" fill="#222">value creation, competitive advantage —</text>
-    <text x="52" y="312" font-size="11.5" fill="#222">underpins every strategic AI decision.</text>
+    <text x="52" y="312" font-size="11.5" fill="#222">underpins every strategic AI decision</text>
+    <text x="52" y="330" font-size="11.5" fill="#222">you will face in your career.</text>
 
   <!-- Section 2: FOUNDATION -->
   <rect x="40" y="358" width="360" height="32" fill="#1D2660"/>
@@ -27,7 +28,7 @@
   <rect x="40" y="390" width="360" height="148" fill="#F4F5F8"/>
     <text x="52" y="410" font-size="11.5" fill="#222">PhD Business Economics, Harvard (1973).</text>
     <text x="52" y="428" font-size="11.5" fill="#222">Drew on Industrial Organization economics</text>
-    <text x="52" y="446" font-size="11.5" fill="#222">and Joe Bain's Structure–Conduct–Performance</text>
+    <text x="52" y="446" font-size="11.5" fill="#222">and Joe Bain's Structure-Conduct-Performance</text>
     <text x="52" y="464" font-size="11.5" fill="#222">paradigm. Bishop William Lawrence University</text>
     <text x="52" y="482" font-size="11.5" fill="#222">Professor at HBS since 1981. Reframed</text>
     <text x="52" y="500" font-size="11.5" fill="#222">Schumpeter's dynamic competition for</text>
@@ -129,25 +130,25 @@
 
   <g>
     <rect x="240" y="1015" width="120" height="170" fill="#7A1F2B"/>
-    <rect x="244" y="1019" width="112" height="162" fill="none" stroke="#FFFFFF" stroke-width="1"/>
+    <rect x="244" y="1019" width="112" height="162" fill="none" stroke="#FFD23F" stroke-width="1"/>
     <text x="300" y="1055" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">COMPETITIVE</text>
     <text x="300" y="1069" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">ADVANTAGE</text>
-    <line x1="260" y1="1088" x2="340" y2="1088" stroke="#FFFFFF" stroke-width="1"/>
-    <text x="300" y="1128" text-anchor="middle" font-size="9" fill="#FFFFFF">Creating &amp;</text>
-    <text x="300" y="1141" text-anchor="middle" font-size="9" fill="#FFFFFF">Sustaining Superior</text>
-    <text x="300" y="1154" text-anchor="middle" font-size="9" fill="#FFFFFF">Performance</text>
+    <line x1="260" y1="1088" x2="340" y2="1088" stroke="#FFD23F" stroke-width="1"/>
+    <text x="300" y="1128" text-anchor="middle" font-size="9" fill="#FFD23F">Creating &amp;</text>
+    <text x="300" y="1141" text-anchor="middle" font-size="9" fill="#FFD23F">Sustaining Superior</text>
+    <text x="300" y="1154" text-anchor="middle" font-size="9" fill="#FFD23F">Performance</text>
     <text x="300" y="1175" text-anchor="middle" font-size="9" font-weight="bold" fill="#FFFFFF">PORTER · 1985</text>
   </g>
 
   <g>
-    <rect x="400" y="1015" width="120" height="170" fill="#0B3C5D"/>
-    <rect x="404" y="1019" width="112" height="162" fill="none" stroke="#D9B310" stroke-width="1"/>
+    <rect x="400" y="1015" width="120" height="170" fill="#264653"/>
+    <rect x="404" y="1019" width="112" height="162" fill="none" stroke="#F4A261" stroke-width="1"/>
     <text x="460" y="1050" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">THE COMPETITIVE</text>
     <text x="460" y="1064" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">ADVANTAGE OF</text>
     <text x="460" y="1078" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">NATIONS</text>
-    <line x1="420" y1="1097" x2="500" y2="1097" stroke="#D9B310" stroke-width="1"/>
-    <text x="460" y="1135" text-anchor="middle" font-size="9" fill="#D9B310">The Diamond</text>
-    <text x="460" y="1148" text-anchor="middle" font-size="9" fill="#D9B310">Model</text>
+    <line x1="420" y1="1097" x2="500" y2="1097" stroke="#F4A261" stroke-width="1"/>
+    <text x="460" y="1135" text-anchor="middle" font-size="9" fill="#F4A261">The Diamond</text>
+    <text x="460" y="1148" text-anchor="middle" font-size="9" fill="#F4A261">Model</text>
     <text x="460" y="1175" text-anchor="middle" font-size="9" font-weight="bold" fill="#FFFFFF">PORTER · 1990</text>
   </g>
 
@@ -165,6 +166,6 @@
 
   <!-- Footer -->
   <line x1="60" y1="1210" x2="740" y2="1210" stroke="#00B388" stroke-width="1.5"/>
-  <text x="60" y="1228" font-size="10" fill="#1D2660">MARTI301 · Unit 1 — AI Strategy &amp; Competitive Advantage · Slibrary</text>
+  <text x="60" y="1228" font-size="10" fill="#1D2660">MARTI301 · Unit 1 — AI Strategy, Governance &amp; Competitive Advantage · Slibrary</text>
   <text x="740" y="1228" text-anchor="end" font-size="10" fill="#1D2660">©️ Dr. Hildegard Haas · EUBS</text>
 </svg>

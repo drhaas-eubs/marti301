@@ -14,12 +14,13 @@
   <rect x="40" y="170" width="360" height="32" fill="#1D2660"/>
   <text x="52" y="191" font-size="13" font-weight="bold" fill="#FFFFFF">1. THE “WHY” — WHY KOTLER, WHY NOW?</text>
   <rect x="40" y="202" width="360" height="138" fill="#F4F5F8"/>
-    <text x="52" y="222" font-size="11.5" fill="#222">How does marketing thinking evolve from</text>
-    <text x="52" y="240" font-size="11.5" fill="#222">transactions to immersive, AI-enabled</text>
-    <text x="52" y="258" font-size="11.5" fill="#222">experiences? Kotler is the only thinker who</text>
-    <text x="52" y="276" font-size="11.5" fill="#222">has written the textbook on every era from</text>
-    <text x="52" y="294" font-size="11.5" fill="#222">the 1960s to GenAI. His Marketing 6.0 frames</text>
-    <text x="52" y="312" font-size="11.5" fill="#222">Unit 3 directly: phygital, immersive CX.</text>
+    <text x="52" y="222" font-size="11.5" fill="#222">How does your marketing thinking need to</text>
+    <text x="52" y="240" font-size="11.5" fill="#222">evolve from transactions to immersive,</text>
+    <text x="52" y="258" font-size="11.5" fill="#222">AI-enabled experiences? Kotler is the</text>
+    <text x="52" y="276" font-size="11.5" fill="#222">only thinker who has written the textbook</text>
+    <text x="52" y="294" font-size="11.5" fill="#222">on every era from the 1960s to GenAI.</text>
+    <text x="52" y="312" font-size="11.5" fill="#222">His Marketing 6.0 frames Unit 3 directly:</text>
+    <text x="52" y="330" font-size="11.5" fill="#222">the phygital, immersive CX you'll deliver.</text>
 
   <!-- Section 2: FOUNDATION -->
   <rect x="40" y="358" width="360" height="32" fill="#1D2660"/>
@@ -45,13 +46,13 @@
 <text x="220" y="662" font-size="10" fill="#222">Positioning</text>
 <text x="52" y="682" font-size="11.5" font-weight="bold" fill="#1D2660">3. Marketing 3.0 → 6.0</text>
 <text x="220" y="682" font-size="10" fill="#222">Product → Customer → Human</text>
-<text x="220" y="698" font-size="10" fill="#222">→ Digital → Tech-for-Humanity → Immersive</text>
-<text x="52" y="718" font-size="11.5" font-weight="bold" fill="#1D2660">4. CDJ — 5 As</text>
-<text x="220" y="718" font-size="10" fill="#222">Aware · Appeal · Ask ·</text>
-<text x="220" y="734" font-size="10" fill="#222">Act · Advocate</text>
-<text x="52" y="754" font-size="11.5" font-weight="bold" fill="#1D2660">5. Marketing 6.0 (2023)</text>
-<text x="220" y="754" font-size="10" fill="#222">Phygital · Metamarketing ·</text>
-<text x="220" y="770" font-size="10" fill="#222">Immersive CX with AR / AI</text>
+<text x="220" y="698" font-size="10" fill="#222">→ Digital → Tech → Immersive</text>
+<text x="52" y="718" font-size="11.5" font-weight="bold" fill="#1D2660">4. Phygital Experience</text>
+<text x="220" y="718" font-size="10" fill="#222">Physical + digital seamless</text>
+<text x="220" y="734" font-size="10" fill="#222">overlap (in 6.0)</text>
+<text x="52" y="754" font-size="11.5" font-weight="bold" fill="#1D2660">5. Kotler 6.0 Ecosystem</text>
+<text x="220" y="754" font-size="10" fill="#222">5 immersive technologies</text>
+<text x="220" y="770" font-size="10" fill="#222">centred on customer value</text>
 
   <!-- Section 4: OPERATIONALIZATION -->
   <rect x="40" y="784" width="360" height="32" fill="#1D2660"/>
@@ -59,9 +60,9 @@
   <rect x="40" y="816" width="360" height="138" fill="#F4F5F8"/>
     <text x="52" y="836" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">1.</tspan> Map your offer onto the 4 Ps + 3 service Ps</text>
     <text x="52" y="856" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">2.</tspan> Run STP — segment, target, position cleanly</text>
-    <text x="52" y="876" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">3.</tspan> Trace the customer journey through 5 As</text>
-    <text x="52" y="896" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">4.</tspan> Audit which Marketing era your firm is in</text>
-    <text x="52" y="916" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">5.</tspan> Pilot one Marketing 6.0 immersive touchpoint</text>
+    <text x="52" y="876" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">3.</tspan> Audit which Marketing era your firm is in</text>
+    <text x="52" y="896" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">4.</tspan> Pilot one Marketing 6.0 immersive touchpoint</text>
+    <text x="52" y="916" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">5.</tspan> Design the phygital overlap zone explicitly</text>
     <text x="52" y="936" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">6.</tspan> Re-anchor strategy on “humanity-centric” brand</text>
 
   <!-- RIGHT COLUMN -->
@@ -143,11 +144,11 @@
 
   <g>
     <rect x="400" y="1015" width="120" height="170" fill="#264653"/>
-    <rect x="404" y="1019" width="112" height="162" fill="none" stroke="#2A9D8F" stroke-width="1"/>
+    <rect x="404" y="1019" width="112" height="162" fill="none" stroke="#F4A261" stroke-width="1"/>
     <text x="460" y="1055" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">MARKETING 5.0</text>
-    <line x1="420" y1="1074" x2="500" y2="1074" stroke="#2A9D8F" stroke-width="1"/>
-    <text x="460" y="1135" text-anchor="middle" font-size="9" fill="#2A9D8F">Technology</text>
-    <text x="460" y="1148" text-anchor="middle" font-size="9" fill="#2A9D8F">for Humanity</text>
+    <line x1="420" y1="1074" x2="500" y2="1074" stroke="#F4A261" stroke-width="1"/>
+    <text x="460" y="1135" text-anchor="middle" font-size="9" fill="#F4A261">Technology</text>
+    <text x="460" y="1148" text-anchor="middle" font-size="9" fill="#F4A261">for Humanity</text>
     <text x="460" y="1175" text-anchor="middle" font-size="9" font-weight="bold" fill="#FFFFFF">KOTLER · 2021</text>
   </g>
 

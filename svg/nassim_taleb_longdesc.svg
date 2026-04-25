@@ -5,7 +5,7 @@
 
   <!-- Title -->
   <text x="400" y="62" text-anchor="middle" font-size="42" font-weight="bold" fill="#1D2660">Nassim Nicholas Taleb</text>
-  <text x="400" y="98" text-anchor="middle" font-size="20" font-weight="bold" fill="#1D2660">Black Swans, Antifragility, and Skin in the Game in the AI Era</text>
+  <text x="400" y="98" text-anchor="middle" font-size="20" font-weight="bold" fill="#1D2660">Black Swans, Antifragility, and the Risk Frameworks AI Cannot Replace</text>
   <text x="400" y="124" text-anchor="middle" font-size="13" font-style="italic" fill="#555">b. 1960 · Distinguished Professor of Risk Engineering · NYU Tandon</text>
   <line x1="60" y1="148" x2="740" y2="148" stroke="#00B388" stroke-width="2"/>
 
@@ -14,12 +14,13 @@
   <rect x="40" y="170" width="360" height="32" fill="#1D2660"/>
   <text x="52" y="191" font-size="13" font-weight="bold" fill="#FFFFFF">1. THE “WHY” — WHY TALEB, WHY NOW?</text>
   <rect x="40" y="202" width="360" height="138" fill="#F4F5F8"/>
-    <text x="52" y="222" font-size="11.5" fill="#222">Why do AI risk models keep blowing up at</text>
-    <text x="52" y="240" font-size="11.5" fill="#222">the worst moment? Taleb supplies the</text>
-    <text x="52" y="258" font-size="11.5" fill="#222">vocabulary every quant needs but few</text>
-    <text x="52" y="276" font-size="11.5" fill="#222">embrace: fat tails, black swans, antifragility,</text>
-    <text x="52" y="294" font-size="11.5" fill="#222">skin in the game. Required mental model for</text>
-    <text x="52" y="312" font-size="11.5" fill="#222">Unit 4 — financial AI risk management.</text>
+    <text x="52" y="222" font-size="11.5" fill="#222">Why do AI risk models keep blowing up</text>
+    <text x="52" y="240" font-size="11.5" fill="#222">at the worst moment — and how do you</text>
+    <text x="52" y="258" font-size="11.5" fill="#222">avoid being the one holding them? Taleb</text>
+    <text x="52" y="276" font-size="11.5" fill="#222">supplies the vocabulary every quant</text>
+    <text x="52" y="294" font-size="11.5" fill="#222">needs but few embrace: fat tails, black</text>
+    <text x="52" y="312" font-size="11.5" fill="#222">swans, antifragility, skin in the game.</text>
+    <text x="52" y="330" font-size="11.5" fill="#222">Required mental model for Unit 4.</text>
 
   <!-- Section 2: FOUNDATION -->
   <rect x="40" y="358" width="360" height="32" fill="#1D2660"/>
@@ -37,9 +38,9 @@
   <rect x="40" y="556" width="360" height="32" fill="#1D2660"/>
   <text x="52" y="577" font-size="13" font-weight="bold" fill="#FFFFFF">3. THE FRAMEWORKS · TOOLS · MODELS</text>
   <rect x="40" y="588" width="360" height="178" fill="#FFD23F"/>
-    <text x="52" y="610" font-size="11.5" font-weight="bold" fill="#1D2660">1. Black Swan</text>
-<text x="220" y="610" font-size="10" fill="#222">Rare, high-impact, retro-</text>
-<text x="220" y="626" font-size="10" fill="#222">fitted events (2007)</text>
+    <text x="52" y="610" font-size="11.5" font-weight="bold" fill="#1D2660">1. Black Swan Radar</text>
+<text x="220" y="610" font-size="10" fill="#222">Concentric risk rings:</text>
+<text x="220" y="626" font-size="10" fill="#222">knowns → unknown unknowns</text>
 <text x="52" y="646" font-size="11.5" font-weight="bold" fill="#1D2660">2. Antifragility</text>
 <text x="220" y="646" font-size="10" fill="#222">Systems that gain from</text>
 <text x="220" y="662" font-size="10" fill="#222">disorder, not just survive</text>
@@ -113,8 +114,8 @@
     <text x="455" y="908" font-size="10.5" fill="#222">(4,000% return on tail hedges)</text>
     <text x="442" y="924" font-size="10.5" fill="#222">• Sells &gt; 4 million books in</text>
     <text x="455" y="940" font-size="10.5" fill="#222">Incerto series (5 volumes)</text>
-    <text x="442" y="956" font-size="10.5" fill="#222">• Direct intellectual influence</text>
-    <text x="455" y="972" font-size="10.5" fill="#222">on López de Prado et al.</text>
+    <text x="442" y="956" font-size="10.5" fill="#222">• Direct anchor for MARTI301</text>
+    <text x="455" y="972" font-size="10.5" fill="#222">Unit 4 Black Swan Radar</text>
 
   <!-- Books -->
   <text x="60" y="990" font-size="13" font-weight="bold" fill="#1D2660">SELECTED WORKS</text>

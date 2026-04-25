@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1240" width="800" height="1240" font-family="Arial, Helvetica, sans-serif">
+  <!-- EUBS · MARTI301 · Slibrary · Long-Desc Modal · Schwartz · Dodge · Smith · Etzioni -->
+  <rect width="800" height="1240" fill="#FFFFFF"/>
+
+  <!-- Title -->
+  <text x="400" y="62" text-anchor="middle" font-size="42" font-weight="bold" fill="#1D2660">Schwartz · Dodge · Smith · Etzioni</text>
+  <text x="400" y="98" text-anchor="middle" font-size="20" font-weight="bold" fill="#1D2660">Green AI vs Red AI — The Efficiency Imperative</text>
+  <text x="400" y="124" text-anchor="middle" font-size="13" font-style="italic" fill="#555">Green AI · 2019 · AI2 · Allen Institute · UW · Hebrew University</text>
+  <line x1="60" y1="148" x2="740" y2="148" stroke="#00B388" stroke-width="2"/>
+
+  <!-- LEFT COLUMN -->
+  <!-- Section 1: WHY -->
+  <rect x="40" y="170" width="360" height="32" fill="#1D2660"/>
+  <text x="52" y="191" font-size="13" font-weight="bold" fill="#FFFFFF">1. THE “WHY” — WHY ETZIONI, WHY NOW?</text>
+  <rect x="40" y="202" width="360" height="138" fill="#F4F5F8"/>
+    <text x="52" y="222" font-size="11.5" fill="#222">Why is your firm's AI carbon footprint</text>
+    <text x="52" y="240" font-size="11.5" fill="#222">your problem — not just the cloud</text>
+    <text x="52" y="258" font-size="11.5" fill="#222">vendor's? Schwartz et al. coined Green</text>
+    <text x="52" y="276" font-size="11.5" fill="#222">AI vs Red AI in 2019, arguing compute</text>
+    <text x="52" y="294" font-size="11.5" fill="#222">efficiency must be a first-class metric.</text>
+    <text x="52" y="312" font-size="11.5" fill="#222">Your framework for the responsible AI</text>
+    <text x="52" y="330" font-size="11.5" fill="#222">investment decisions you'll soon defend.</text>
+
+  <!-- Section 2: FOUNDATION -->
+  <rect x="40" y="358" width="360" height="32" fill="#1D2660"/>
+  <text x="52" y="379" font-size="13" font-weight="bold" fill="#FFFFFF">2. INTELLECTUAL FOUNDATION</text>
+  <rect x="40" y="390" width="360" height="148" fill="#F4F5F8"/>
+    <text x="52" y="410" font-size="11.5" fill="#222">Roy Schwartz (Hebrew University), Jesse</text>
+    <text x="52" y="428" font-size="11.5" fill="#222">Dodge (AI2/Allen Institute), Noah Smith</text>
+    <text x="52" y="446" font-size="11.5" fill="#222">(University of Washington / AI2), and</text>
+    <text x="52" y="464" font-size="11.5" fill="#222">Oren Etzioni (founding CEO of AI2).</text>
+    <text x="52" y="482" font-size="11.5" fill="#222">Their 2019 arXiv paper became 2020</text>
+    <text x="52" y="500" font-size="11.5" fill="#222">Communications of the ACM article —</text>
+    <text x="52" y="518" font-size="11.5" fill="#222">the foundational efficiency-AI text.</text>
+
+  <!-- Section 3: FRAMEWORKS (yellow highlight) -->
+  <rect x="40" y="556" width="360" height="32" fill="#1D2660"/>
+  <text x="52" y="577" font-size="13" font-weight="bold" fill="#FFFFFF">3. THE FRAMEWORKS · TOOLS · MODELS</text>
+  <rect x="40" y="588" width="360" height="178" fill="#FFD23F"/>
+    <text x="52" y="610" font-size="11.5" font-weight="bold" fill="#1D2660">1. Green AI vs Red AI</text>
+<text x="220" y="610" font-size="10" fill="#222">Efficiency-first AI vs</text>
+<text x="220" y="626" font-size="10" fill="#222">accuracy-at-any-cost AI</text>
+<text x="52" y="646" font-size="11.5" font-weight="bold" fill="#1D2660">2. Compute Efficiency Curve</text>
+<text x="220" y="646" font-size="10" fill="#222">Diminishing returns of</text>
+<text x="220" y="662" font-size="10" fill="#222">model scale per FLOP</text>
+<text x="52" y="682" font-size="11.5" font-weight="bold" fill="#1D2660">3. Carbon-Aware Training</text>
+<text x="220" y="682" font-size="10" fill="#222">Train when grid is greenest;</text>
+<text x="220" y="698" font-size="10" fill="#222">report kg CO₂e per run</text>
+<text x="52" y="718" font-size="11.5" font-weight="bold" fill="#1D2660">4. FLOPs as Reporting</text>
+<text x="220" y="718" font-size="10" fill="#222">Make compute cost a</text>
+<text x="220" y="734" font-size="10" fill="#222">standard ML paper metric</text>
+<text x="52" y="754" font-size="11.5" font-weight="bold" fill="#1D2660">5. Energy / Param. Reporting</text>
+<text x="220" y="754" font-size="10" fill="#222">Disclose hardware, hours,</text>
+<text x="220" y="770" font-size="10" fill="#222">kWh, model size</text>
+
+  <!-- Section 4: OPERATIONALIZATION -->
+  <rect x="40" y="784" width="360" height="32" fill="#1D2660"/>
+  <text x="52" y="805" font-size="13" font-weight="bold" fill="#FFFFFF">4. OPERATIONALIZATION — HOW TO USE IT</text>
+  <rect x="40" y="816" width="360" height="138" fill="#F4F5F8"/>
+    <text x="52" y="836" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">1.</tspan> Audit your AI workloads' compute + energy footprint</text>
+    <text x="52" y="856" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">2.</tspan> Set efficiency targets (FLOPs, kWh, CO₂e per task)</text>
+    <text x="52" y="876" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">3.</tspan> Schedule training when grid carbon is lowest</text>
+    <text x="52" y="896" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">4.</tspan> Choose smaller models when accuracy gain is marginal</text>
+    <text x="52" y="916" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">5.</tspan> Report Green AI metrics in board updates</text>
+    <text x="52" y="936" font-size="11" fill="#222"><tspan font-weight="bold" fill="#1D2660">6.</tspan> Pair with offset / renewable strategy where unavoidable</text>
+
+  <!-- RIGHT COLUMN -->
+  
+  <g id="portrait-placeholder">
+    <rect x="430" y="170" width="320" height="240" fill="#FAFAFA" stroke="#1D2660" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <g opacity="0.40">
+      <path d="M 455 402 C 455 328, 530 313, 590 313 C 650 313, 725 328, 725 402 Z" fill="#1D2660"/>
+      <circle cx="590" cy="278" r="48" fill="#1D2660"/>
+    </g>
+    <rect x="500" y="388" width="180" height="14" fill="#FFFFFF" opacity="0.85"/>
+    <text x="590" y="398" text-anchor="middle" font-size="10" font-style="italic" fill="#1D2660">[ Insert portrait sketch ]</text>
+  </g>
+
+  <!-- Quote 1 -->
+  <text x="590" y="438" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">&#8220;Increasing efficiency, not</text>
+  <text x="590" y="456" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">just accuracy.&#8221;</text>
+  <text x="590" y="475" text-anchor="middle" font-size="11" fill="#555">— Schwartz · Dodge · Smith · Etzioni</text>
+
+  <!-- Quote 2 -->
+  <text x="590" y="510" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">&#8220;Compute cost is a first-class</text>
+  <text x="590" y="528" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">metric, not an afterthought.&#8221;</text>
+  <text x="590" y="547" text-anchor="middle" font-size="11" fill="#555">— Schwartz · Dodge · Smith · Etzioni</text>
+
+  <!-- Section 5: LIMITATIONS -->
+  <rect x="430" y="568" width="320" height="32" fill="#1D2660"/>
+  <text x="442" y="589" font-size="13" font-weight="bold" fill="#FFFFFF">5. LIMITATIONS — THE CRITICAL VIEW</text>
+  <rect x="430" y="600" width="320" height="158" fill="#F4F5F8"/>
+    <text x="442" y="620" font-size="10.5" fill="#222">• Doesn't address inference</text>
+    <text x="455" y="636" font-size="10.5" fill="#222">carbon (training-only focus)</text>
+    <text x="442" y="652" font-size="10.5" fill="#222">• Hard to compare efficiency</text>
+    <text x="455" y="668" font-size="10.5" fill="#222">across model architectures</text>
+    <text x="442" y="684" font-size="10.5" fill="#222">• “Red AI” label political —</text>
+    <text x="455" y="700" font-size="10.5" fill="#222">some researchers reject it</text>
+    <text x="442" y="716" font-size="10.5" fill="#222">• Critics: efficiency may slow</text>
+    <text x="455" y="732" font-size="10.5" fill="#222">scientific progress</text>
+    <text x="442" y="748" font-size="10.5" fill="#222">• Less detail on data-centre</text>
+    <text x="455" y="764" font-size="10.5" fill="#222">procurement and PUE</text>
+
+  <!-- Section 6: ENDURING IMPACT -->
+  <rect x="430" y="776" width="320" height="32" fill="#1D2660"/>
+  <text x="442" y="797" font-size="13" font-weight="bold" fill="#FFFFFF">6. ENDURING IMPACT</text>
+  <rect x="430" y="808" width="320" height="160" fill="#F4F5F8"/>
+    <text x="442" y="828" font-size="10.5" fill="#222">• “Green AI” entered ML</text>
+    <text x="455" y="844" font-size="10.5" fill="#222">research vocabulary post-2020</text>
+    <text x="442" y="860" font-size="10.5" fill="#222">• Triggered carbon-reporting</text>
+    <text x="455" y="876" font-size="10.5" fill="#222">norms at NeurIPS, ACL</text>
+    <text x="442" y="892" font-size="10.5" fill="#222">• Etzioni's AI2 ML Sustainability</text>
+    <text x="455" y="908" font-size="10.5" fill="#222">team a global hub</text>
+    <text x="442" y="924" font-size="10.5" fill="#222">• Influenced Hugging Face,</text>
+    <text x="455" y="940" font-size="10.5" fill="#222">Microsoft, Google green-AI</text>
+    <text x="442" y="956" font-size="10.5" fill="#222">• Direct anchor for MARTI301</text>
+    <text x="455" y="972" font-size="10.5" fill="#222">Unit 4 Green vs Red AI</text>
+
+  <!-- Books -->
+  <text x="60" y="990" font-size="13" font-weight="bold" fill="#1D2660">SELECTED WORKS</text>
+  <line x1="60" y1="998" x2="740" y2="998" stroke="#00B388" stroke-width="1"/>
+  
+  <g>
+    <rect x="80" y="1015" width="120" height="170" fill="#0F4C3A"/>
+    <rect x="84" y="1019" width="112" height="162" fill="none" stroke="#FFD23F" stroke-width="1"/>
+    <text x="140" y="1055" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">GREEN AI</text>
+    <line x1="100" y1="1074" x2="180" y2="1074" stroke="#FFD23F" stroke-width="1"/>
+    <text x="140" y="1128" text-anchor="middle" font-size="9" fill="#FFD23F">Communications</text>
+    <text x="140" y="1141" text-anchor="middle" font-size="9" fill="#FFD23F">of the ACM</text>
+    <text x="140" y="1154" text-anchor="middle" font-size="9" fill="#FFD23F">December 2020</text>
+    <text x="140" y="1175" text-anchor="middle" font-size="9" font-weight="bold" fill="#FFFFFF">ETZIONI · 2020</text>
+  </g>
+
+  <g>
+    <rect x="240" y="1015" width="120" height="170" fill="#1D2660"/>
+    <rect x="244" y="1019" width="112" height="162" fill="none" stroke="#FFD23F" stroke-width="1"/>
+    <text x="300" y="1050" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">ENERGY &amp;</text>
+    <text x="300" y="1064" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">POLICY</text>
+    <text x="300" y="1078" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">CONSIDERATIONS</text>
+    <line x1="260" y1="1097" x2="340" y2="1097" stroke="#FFD23F" stroke-width="1"/>
+    <text x="300" y="1128" text-anchor="middle" font-size="9" fill="#FFD23F">for Deep Learning</text>
+    <text x="300" y="1141" text-anchor="middle" font-size="9" fill="#FFD23F">in NLP (Strubell</text>
+    <text x="300" y="1154" text-anchor="middle" font-size="9" fill="#FFD23F">et al., 2019)</text>
+    <text x="300" y="1175" text-anchor="middle" font-size="9" font-weight="bold" fill="#FFFFFF">ETZIONI · 2019</text>
+  </g>
+
+  <g>
+    <rect x="400" y="1015" width="120" height="170" fill="#264653"/>
+    <rect x="404" y="1019" width="112" height="162" fill="none" stroke="#F4A261" stroke-width="1"/>
+    <text x="460" y="1055" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">AI FOR THE</text>
+    <text x="460" y="1069" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">COMMON GOOD</text>
+    <line x1="420" y1="1088" x2="500" y2="1088" stroke="#F4A261" stroke-width="1"/>
+    <text x="460" y="1135" text-anchor="middle" font-size="9" fill="#F4A261">Etzioni essays</text>
+    <text x="460" y="1148" text-anchor="middle" font-size="9" fill="#F4A261">on responsible AI</text>
+    <text x="460" y="1175" text-anchor="middle" font-size="9" font-weight="bold" fill="#FFFFFF">ETZIONI · 2021</text>
+  </g>
+
+  <g>
+    <rect x="560" y="1015" width="120" height="170" fill="#7A1F2B"/>
+    <rect x="564" y="1019" width="112" height="162" fill="none" stroke="#FFFFFF" stroke-width="1"/>
+    <text x="620" y="1055" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">AI2 MOSAIC</text>
+    <text x="620" y="1069" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFFFFF">PROJECT</text>
+    <line x1="580" y1="1088" x2="660" y2="1088" stroke="#FFFFFF" stroke-width="1"/>
+    <text x="620" y="1128" text-anchor="middle" font-size="9" fill="#FFFFFF">Common-sense</text>
+    <text x="620" y="1141" text-anchor="middle" font-size="9" fill="#FFFFFF">+ efficiency-aware</text>
+    <text x="620" y="1154" text-anchor="middle" font-size="9" fill="#FFFFFF">research papers</text>
+    <text x="620" y="1175" text-anchor="middle" font-size="9" font-weight="bold" fill="#FFFFFF">ETZIONI · 2022</text>
+  </g>
+
+  <!-- Footer -->
+  <line x1="60" y1="1210" x2="740" y2="1210" stroke="#00B388" stroke-width="1.5"/>
+  <text x="60" y="1228" font-size="10" fill="#1D2660">MARTI301 · Unit 4 — Financial Side of AI · Risk Management · Slibrary</text>
+  <text x="740" y="1228" text-anchor="end" font-size="10" fill="#1D2660">©️ Dr. Hildegard Haas · EUBS</text>
+</svg>
