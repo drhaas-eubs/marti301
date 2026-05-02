@@ -79,6 +79,29 @@ body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--tex
 .page-footer strong{color:var(--navy)}
 @media (max-width:640px){.unit-name{font-size:1rem}.set-title{font-size:.85rem}.set-count{display:none}}
 
+
+/* ===== Search bar ===== */
+.search-bar{position:sticky;top:0;z-index:90;background:linear-gradient(180deg,#fff 0,#fff 80%,rgba(255,255,255,0));padding:1rem 1.5rem .5rem;margin:-.5rem -1.5rem 1rem;border-bottom:1px solid var(--rule)}
+.search-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:.75rem}
+.search-input-wrap{flex:1;position:relative;max-width:520px}
+.search-input{width:100%;padding:.7rem 2.5rem .7rem 2.5rem;border:1.5px solid var(--rule);border-radius:999px;font-size:.95rem;font-family:inherit;color:var(--ink);background:#fff;transition:border-color .15s,box-shadow .15s}
+.search-input:focus{outline:none;border-color:var(--teal,#00B388);box-shadow:0 0 0 3px rgba(0,179,136,.15)}
+.search-icon{position:absolute;left:.85rem;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--muted);pointer-events:none}
+.search-clear{position:absolute;right:.5rem;top:50%;transform:translateY(-50%);background:#f1f5f9;border:none;border-radius:50%;width:24px;height:24px;font-size:14px;cursor:pointer;color:var(--muted);display:none;align-items:center;justify-content:center;line-height:1}
+.search-clear:hover{background:#e2e8f0;color:var(--ink)}
+.search-input:not(:placeholder-shown)+.search-clear{display:flex}
+.search-results-count{font-size:.85rem;color:var(--muted);font-weight:500;white-space:nowrap}
+.search-results-count strong{color:var(--navy)}
+.search-no-results{text-align:center;padding:3rem 1rem;color:var(--muted);font-size:1rem}
+.search-no-results strong{display:block;color:var(--navy);font-size:1.1rem;margin-bottom:.5rem}
+/* When filtering, hide non-matching cards/sets/units */
+.card.search-hidden,.set-header.search-hidden,.unit-block.search-hidden{display:none!important}
+.card.search-match{animation:matchFlash .25s ease-out}
+@keyframes matchFlash{from{box-shadow:0 0 0 3px rgba(0,179,136,.3)}to{box-shadow:none}}
+/* Highlight matched text in card title */
+mark.search-hl{background:#fff3a3;color:var(--ink);padding:0 1px;border-radius:2px}
+@media (max-width:640px){.search-bar{padding:.75rem 1rem .5rem;margin:-.5rem -1rem 1rem}.search-inner{flex-wrap:wrap}.search-results-count{order:3;width:100%;text-align:right}}
+
 </style>
 <link rel="stylesheet" href="assets/css/framework-viewer.css">
 </head>
@@ -92,6 +115,18 @@ body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--tex
     <a href="index.html" class="back-link">← Back to course home</a>
   </div>
 </header>
+
+
+<div class="search-bar">
+  <div class="search-inner">
+    <div class="search-input-wrap">
+      <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" id="fwSearch" class="search-input" placeholder="Search frameworks by name, description, or Slibrary…" aria-label="Search frameworks" autocomplete="off">
+      <button type="button" class="search-clear" id="fwSearchClear" aria-label="Clear search" title="Clear">×</button>
+    </div>
+    <div class="search-results-count" id="fwSearchCount"><strong>120</strong> frameworks</div>
+  </div>
+</div>
 
 <main class="container">
   <!-- ═══════ UNIT 1 ═══════ -->
@@ -1126,7 +1161,8 @@ body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--tex
       </div>
     </div>
   </section>
-</main>
+<div id="fwSearchNoResults" class="search-no-results" style="display:none"><strong>No frameworks match your search</strong>Try a different keyword or clear the search to see all 120 frameworks.</div>
+  </main>
 
 <footer class="page-footer">
   <strong>MARTI301 · Complete Framework Gallery</strong> · 120 reference sheets · © 2026 Dr. Hildegard Haas · EU Business School
@@ -1424,6 +1460,104 @@ document.getElementById('thumb-117').innerHTML=getSVG('cycle','#7C3AED');
 document.getElementById('thumb-118').innerHTML=getSVG('stairs','#7C3AED');
 document.getElementById('thumb-119').innerHTML=getSVG('stairs','#7C3AED');
 </script>
+
+<script>
+/* ===== Live card search ===== */
+(function(){
+  const input    = document.getElementById('fwSearch');
+  const clearBtn = document.getElementById('fwSearchClear');
+  const counter  = document.getElementById('fwSearchCount');
+  const noRes    = document.getElementById('fwSearchNoResults');
+  if(!input) return;
+
+  /* Index cards: precompute searchable text per card */
+  const cards = Array.from(document.querySelectorAll('.card'));
+  const idx = cards.map((card, i) => {
+    const fw = FW[i];
+    const blob = [
+      fw.name, fw.desc, fw.def,
+      fw.slibTitle, 'slibrary ' + fw.slibNum,
+      'unit ' + fw.unit
+    ].join(' | ').toLowerCase();
+    return { card, fw, blob, originalTitle: card.querySelector('.card-title').innerHTML };
+  });
+
+  function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
+  function escapeReg(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
+  function highlight(text, q){
+    if(!q) return text;
+    const re = new RegExp('('+escapeReg(q)+')','gi');
+    return text.replace(re,'<mark class="search-hl">$1</mark>');
+  }
+
+  let dbTimer = null;
+  function applyFilter(){
+    const q = input.value.trim().toLowerCase();
+    let matches = 0;
+    idx.forEach(({card, blob, originalTitle, fw}) => {
+      const titleEl = card.querySelector('.card-title');
+      if(!q){
+        card.classList.remove('search-hidden');
+        titleEl.innerHTML = originalTitle;
+        matches++;
+      } else if(blob.includes(q)){
+        card.classList.remove('search-hidden');
+        titleEl.innerHTML = highlight(escapeHtml(fw.name), q);
+        matches++;
+      } else {
+        card.classList.add('search-hidden');
+      }
+    });
+
+    /* Hide entire slibrary headers + unit blocks if all their cards are hidden */
+    document.querySelectorAll('.unit-block').forEach(unit => {
+      const visibleCards = unit.querySelectorAll('.card:not(.search-hidden)').length;
+      unit.classList.toggle('search-hidden', visibleCards === 0);
+    });
+    document.querySelectorAll('.set-header').forEach(setH => {
+      let next = setH.nextElementSibling;
+      if(next && next.classList.contains('cards-grid')){
+        const visibleInSet = next.querySelectorAll('.card:not(.search-hidden)').length;
+        setH.classList.toggle('search-hidden', visibleInSet === 0);
+        next.classList.toggle('search-hidden', visibleInSet === 0);
+      }
+    });
+
+    /* Update counter */
+    if(!q){
+      counter.innerHTML = '<strong>120</strong> frameworks';
+    } else {
+      counter.innerHTML = '<strong>'+matches+'</strong> of 120';
+    }
+    noRes.style.display = (q && matches===0) ? 'block' : 'none';
+  }
+
+  input.addEventListener('input', () => {
+    clearTimeout(dbTimer);
+    dbTimer = setTimeout(applyFilter, 80);
+  });
+  clearBtn.addEventListener('click', () => { input.value=''; input.focus(); applyFilter(); });
+  /* Esc clears search if input has focus and is not empty */
+  input.addEventListener('keydown', e => {
+    if(e.key==='Escape' && input.value){
+      e.stopPropagation();
+      input.value=''; applyFilter();
+    }
+  });
+  /* Keyboard shortcut: "/" focuses search (skip when modal is open or in form fields) */
+  document.addEventListener('keydown', e => {
+    if(e.key==='/' && !e.ctrlKey && !e.metaKey){
+      const tag = (e.target.tagName||'').toLowerCase();
+      if(tag==='input'||tag==='textarea'||tag==='select') return;
+      const modalOpen = document.querySelector('.modal-overlay.open, #fw-viewer-overlay.fw-open');
+      if(modalOpen) return;
+      e.preventDefault();
+      input.focus();
+    }
+  });
+})();
+</script>
+
 <script src="assets/js/framework-viewer.js"></script>
 </body>
 </html>
