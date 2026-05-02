@@ -102,6 +102,7 @@ footer strong{color:var(--teal)}
   .ped-grid{grid-template-columns:1fr}
 }
 </style>
+<link rel="stylesheet" href="assets/css/framework-viewer.css">
 </head>
 <body>
 
@@ -420,7 +421,7 @@ footer strong{color:var(--teal)}
 <!-- ═══════ COMPLETE GALLERY LINK ═══════ -->
 <div class="section-title">Complete Gallery</div>
 <div class="gallery-link">
-  <a href="https://drhaas-eubs.github.io/marti301/complete.html">
+  <a href="javascript:void(0)" onclick="FrameworkSheets.openPage(1); return false;" role="button">
     <span>■</span> All 120 Frameworks — Complete Gallery Wall
   </a>
 </div>
@@ -542,5 +543,6 @@ searchInput.addEventListener('keydown', function(e){
 });
 </script>
 
+<script src="assets/js/framework-viewer.js"></script>
 </body>
 </html>
