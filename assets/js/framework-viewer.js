@@ -192,6 +192,51 @@
   /* Unit overview pages: jump to that unit's first sheet */
   const UNIT_PAGES = { 1: 9, 2: 29, 3: 49, 4: 69, 5: 89, 6: 109 };
 
+  /* ----- Slibrary metadata (from Dr. Haas's actual unit files) - */
+  const UNIT_TITLES = {
+    1: 'AI Strategy, Governance & Competitive Advantage',
+    2: 'ML & Data-Driven Decisions',
+    3: 'Enhanced Customer Experience',
+    4: 'The Financial Side of AI',
+    5: 'IP & Value Creation through AI',
+    6: 'Finance & Investment Plans'
+  };
+
+  const SLIBRARIES = [
+    /* Unit 1 */
+    { num: 1,  unit: 1, title: 'AI Strategy & Governance',         color: '#2563EB' },
+    { num: 2,  unit: 1, title: 'Competitive Advantage',            color: '#DC2626' },
+    { num: 3,  unit: 1, title: 'AI Project Lifecycle',             color: '#D97706' },
+    { num: 4,  unit: 1, title: 'Human-AI Collaboration',           color: '#059669' },
+    /* Unit 2 */
+    { num: 5,  unit: 2, title: 'ML Models & Techniques',           color: '#D4872C' },
+    { num: 6,  unit: 2, title: 'Decision Intelligence',            color: '#7C3AED' },
+    { num: 7,  unit: 2, title: 'Data Strategy',                    color: '#2563EB' },
+    { num: 8,  unit: 2, title: 'AI-Driven Marketing',              color: '#DC2626' },
+    /* Unit 3 */
+    { num: 9,  unit: 3, title: 'Customer Journey & CX',            color: '#DC2626' },
+    { num: 10, unit: 3, title: 'Conversational AI & NLP',          color: '#2563EB' },
+    { num: 11, unit: 3, title: 'CX Metrics & Business Impact',     color: '#059669' },
+    { num: 12, unit: 3, title: 'Marketing 6.0 & Immersive',        color: '#7C3AED' },
+    /* Unit 4 */
+    { num: 13, unit: 4, title: 'AI in Financial Markets',          color: '#059669' },
+    { num: 14, unit: 4, title: 'AI Risk Management',               color: '#DC2626' },
+    { num: 15, unit: 4, title: 'Talent & Resources',               color: '#D97706' },
+    { num: 16, unit: 4, title: 'Sustainable & Green AI',           color: '#2563EB' },
+    /* Unit 5 */
+    { num: 17, unit: 5, title: 'AI & Copyright',                   color: '#7C3AED' },
+    { num: 18, unit: 5, title: 'Data as IP',                       color: '#DC2626' },
+    { num: 19, unit: 5, title: 'IP Strategy & Competition',        color: '#059669' },
+    { num: 20, unit: 5, title: 'Liability & Protection',           color: '#D97706' },
+    /* Unit 6 */
+    { num: 21, unit: 6, title: 'AI in Investment Management',      color: '#D97706' },
+    { num: 22, unit: 6, title: 'Portfolio Optimisation & ML',      color: '#DC2626' },
+    { num: 23, unit: 6, title: 'Financial Analysis & Modelling',   color: '#059669' },
+    { num: 24, unit: 6, title: 'Plan-to-Implementation',           color: '#7C3AED' }
+  ];
+  /* First page of each Slibrary in the PDF: page = 9 + 5*(num-1) */
+  SLIBRARIES.forEach(s => { s.firstPage = 9 + 5 * (s.num - 1); });
+
   /* ----- State ----------------------------------------------- */
   let pdfDoc = null;
   let currentPage = 1;
@@ -217,6 +262,14 @@
             <span class="fw-viewer-title-meta" id="fw-viewer-meta">MARTI301 · Framework Library</span>
           </div>
           <div class="fw-viewer-controls">
+            <div class="fw-search-wrap" id="fw-search-wrap">
+              <svg class="fw-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+              <input type="search" id="fw-search-input" class="fw-search-input" placeholder="Search PDF…" aria-label="Search PDF text" autocomplete="off">
+              <span class="fw-search-status" id="fw-search-status"></span>
+              <button type="button" class="fw-search-nav-btn" id="fw-search-prev" aria-label="Previous match" title="Previous match (Shift+Enter)" disabled>‹</button>
+              <button type="button" class="fw-search-nav-btn" id="fw-search-next" aria-label="Next match" title="Next match (Enter)" disabled>›</button>
+              <button type="button" class="fw-search-clear-btn" id="fw-search-clear" aria-label="Clear search" title="Clear">×</button>
+            </div>
             <button type="button" class="fw-btn" id="fw-btn-prev" aria-label="Previous sheet" title="Previous (←)">‹</button>
             <span class="fw-page-indicator" id="fw-page-indicator">– / –</span>
             <button type="button" class="fw-btn" id="fw-btn-next" aria-label="Next sheet" title="Next (→)">›</button>
@@ -229,6 +282,7 @@
           <div class="fw-loading" id="fw-loading">Loading framework library…</div>
           <div class="fw-canvas-wrap" id="fw-canvas-wrap" style="display:none;">
             <canvas class="fw-canvas" id="fw-canvas"></canvas>
+            <div class="fw-highlight-layer" id="fw-highlight-layer" aria-hidden="true"></div>
           </div>
         </div>
         <footer class="fw-viewer-footer">
@@ -298,6 +352,8 @@
 
       updateMeta(pageNum);
       updateNavButtons();
+      /* Redraw search highlights for the newly rendered page */
+      if (searchQuery) drawHighlights();
     } catch (err) {
       console.error('FW viewer render error:', err);
       loading.textContent = 'Could not load the framework sheet. Please try again.';
@@ -337,6 +393,196 @@
     document.getElementById('fw-btn-next').disabled = (currentPage >= totalPages);
     document.getElementById('fw-btn-zoom-out').disabled = (zoomScale <= ZOOM_MIN + 0.01);
     document.getElementById('fw-btn-zoom-in').disabled  = (zoomScale >= ZOOM_MAX - 0.01);
+  }
+
+  /* ----- PDF text search ------------------------------------- */
+  /* On-demand text indexing: extract page text via PDF.js getTextContent
+     the first time the user searches, then cache. */
+  const pageTextCache = new Map();   /* pageNum -> [{ str, transform, width, height, fontName }, ...] */
+  let searchMatches   = [];          /* [{ pageNum, items: [{itemIdx, charStart, charEnd}], pageStr, pageMatchIdx }, ...]
+                                        flattened: each match is one occurrence on one page */
+  let currentMatchIdx = -1;
+  let searchQuery     = '';
+  let searchIndexing  = false;
+
+  async function indexAllPages() {
+    if (pageTextCache.size === totalPages) return;
+    searchIndexing = true;
+    setSearchStatus('Indexing…');
+    /* Index in chunks so the UI stays responsive */
+    for (let p = 1; p <= totalPages; p++) {
+      if (pageTextCache.has(p)) continue;
+      try {
+        const page = await pdfDoc.getPage(p);
+        const tc = await page.getTextContent();
+        /* Build a contiguous text string for this page + map back to items */
+        let pageStr = '';
+        const itemRanges = [];
+        for (let i = 0; i < tc.items.length; i++) {
+          const it = tc.items[i];
+          const start = pageStr.length;
+          pageStr += it.str;
+          itemRanges.push({ start, end: pageStr.length, item: it });
+          /* Add a space between items if PDF.js indicates a hard break */
+          if (it.hasEOL) pageStr += '\n';
+          else pageStr += ' ';
+        }
+        pageTextCache.set(p, { pageStr, itemRanges });
+      } catch (err) {
+        console.warn('PDF index error on page', p, err);
+        pageTextCache.set(p, { pageStr: '', itemRanges: [] });
+      }
+      /* Yield to browser every 16 pages */
+      if (p % 16 === 0) await new Promise(r => setTimeout(r, 0));
+    }
+    searchIndexing = false;
+  }
+
+  function findAllMatches(query) {
+    const matches = [];
+    if (!query) return matches;
+    const q = query.toLowerCase();
+    for (let p = 1; p <= totalPages; p++) {
+      const cache = pageTextCache.get(p);
+      if (!cache || !cache.pageStr) continue;
+      const lower = cache.pageStr.toLowerCase();
+      let from = 0;
+      while (true) {
+        const idx = lower.indexOf(q, from);
+        if (idx === -1) break;
+        matches.push({ pageNum: p, charStart: idx, charEnd: idx + q.length });
+        from = idx + q.length;
+      }
+    }
+    return matches;
+  }
+
+  async function performSearch(query) {
+    searchQuery = query.trim();
+    if (!searchQuery) {
+      searchMatches = [];
+      currentMatchIdx = -1;
+      setSearchStatus('');
+      clearHighlights();
+      updateSearchNavButtons();
+      return;
+    }
+    if (!pdfDoc) return;
+    if (!pageTextCache.size || pageTextCache.size < totalPages) {
+      await indexAllPages();
+    }
+    searchMatches = findAllMatches(searchQuery);
+    if (searchMatches.length === 0) {
+      currentMatchIdx = -1;
+      setSearchStatus('No matches');
+      clearHighlights();
+      updateSearchNavButtons();
+      return;
+    }
+    /* Jump to first match's page */
+    currentMatchIdx = 0;
+    await jumpToMatch(0);
+  }
+
+  async function jumpToMatch(idx) {
+    if (idx < 0 || idx >= searchMatches.length) return;
+    currentMatchIdx = idx;
+    const m = searchMatches[idx];
+    setSearchStatus(`${idx + 1} of ${searchMatches.length}`);
+    updateSearchNavButtons();
+    if (currentPage !== m.pageNum) {
+      await renderPage(m.pageNum);
+      /* renderPage calls drawHighlights via the post-render hook below */
+    } else {
+      drawHighlights();
+    }
+  }
+
+  function setSearchStatus(text) {
+    const el = document.getElementById('fw-search-status');
+    if (el) el.textContent = text;
+  }
+
+  function updateSearchNavButtons() {
+    const prev = document.getElementById('fw-search-prev');
+    const next = document.getElementById('fw-search-next');
+    if (!prev || !next) return;
+    const has = searchMatches.length > 0;
+    prev.disabled = !has;
+    next.disabled = !has;
+  }
+
+  function clearHighlights() {
+    const layer = document.getElementById('fw-highlight-layer');
+    if (layer) layer.innerHTML = '';
+  }
+
+  function drawHighlights() {
+    const layer  = document.getElementById('fw-highlight-layer');
+    const canvas = document.getElementById('fw-canvas');
+    if (!layer || !canvas || !searchQuery) { clearHighlights(); return; }
+
+    /* Match the highlight layer to canvas dimensions */
+    layer.style.width  = canvas.style.width;
+    layer.style.height = canvas.style.height;
+    layer.innerHTML    = '';
+
+    const cache = pageTextCache.get(currentPage);
+    if (!cache) return;
+
+    /* Get matches on the current page only */
+    const pageMatchesGlobal = searchMatches
+      .map((m, gi) => ({ ...m, gi }))
+      .filter(m => m.pageNum === currentPage);
+    if (pageMatchesGlobal.length === 0) return;
+
+    /* For each match, find which text item(s) it overlaps and compute screen bbox */
+    pdfDoc.getPage(currentPage).then(async page => {
+      const baseViewport = page.getViewport({ scale: 1.0 });
+      const containerWidth = document.getElementById('fw-viewer-body').clientWidth - 40;
+      const fitScale = Math.min(containerWidth / baseViewport.width, 1.6);
+      const viewport = page.getViewport({ scale: fitScale * zoomScale });
+
+      pageMatchesGlobal.forEach(m => {
+        for (const r of cache.itemRanges) {
+          /* Check if this item intersects the match span */
+          if (r.end <= m.charStart) continue;
+          if (r.start >= m.charEnd) break;
+          const item = r.item;
+          if (!item.transform) continue;
+          /* PDF.js transform: [scaleX, skewY, skewX, scaleY, x, y]
+             where (x,y) is bottom-left of the text in PDF coords */
+          const [a, b, c, d, e, f] = item.transform;
+          const fontHeight = Math.hypot(c, d) || item.height || 12;
+          const fontWidth  = Math.hypot(a, b) || 0;
+
+          /* Compute the portion of the item that's matched */
+          const overlapStart = Math.max(0, m.charStart - r.start);
+          const overlapEnd   = Math.min(item.str.length, m.charEnd - r.start);
+          if (overlapEnd <= overlapStart) continue;
+          const fracStart = overlapStart / Math.max(1, item.str.length);
+          const fracEnd   = overlapEnd   / Math.max(1, item.str.length);
+
+          /* PDF coords → viewport coords */
+          const pt1 = viewport.convertToViewportPoint(e + fracStart * (item.width || fontWidth), f);
+          const pt2 = viewport.convertToViewportPoint(e + fracEnd   * (item.width || fontWidth), f);
+          const left   = Math.min(pt1[0], pt2[0]);
+          const right  = Math.max(pt1[0], pt2[0]);
+          const top    = pt1[1] - fontHeight * fitScale * zoomScale;
+          const width  = Math.max(2, right - left);
+          const height = fontHeight * fitScale * zoomScale;
+
+          const div = document.createElement('div');
+          div.className = 'fw-highlight';
+          if (m.gi === currentMatchIdx) div.classList.add('fw-highlight-current');
+          div.style.left   = left   + 'px';
+          div.style.top    = top    + 'px';
+          div.style.width  = width  + 'px';
+          div.style.height = height + 'px';
+          layer.appendChild(div);
+        }
+      });
+    });
   }
 
   /* ----- Open / close ---------------------------------------- */
@@ -379,6 +625,15 @@
     if (overlay) overlay.classList.remove('fw-open');
     document.body.style.overflow = '';
     disableProtection();
+    /* Reset search state so the next session starts clean */
+    searchQuery = '';
+    searchMatches = [];
+    currentMatchIdx = -1;
+    const si = document.getElementById('fw-search-input');
+    if (si) si.value = '';
+    setSearchStatus('');
+    clearHighlights();
+    updateSearchNavButtons();
   }
 
   function openSlug(slug) {
@@ -390,6 +645,104 @@
   function openUnit(unitNum) {
     const p = UNIT_PAGES[unitNum] || 1;
     openPage(p);
+  }
+
+  /* ----- Slibrary picker modal ------------------------------- */
+  function buildPickerDOM() {
+    if (document.getElementById('fw-picker-overlay')) return;
+
+    const overlay = document.createElement('div');
+    overlay.id = 'fw-picker-overlay';
+    overlay.className = 'fw-picker-overlay';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.setAttribute('aria-labelledby', 'fw-picker-title');
+
+    /* Group slibraries by unit */
+    const byUnit = {};
+    SLIBRARIES.forEach(s => {
+      if (!byUnit[s.unit]) byUnit[s.unit] = [];
+      byUnit[s.unit].push(s);
+    });
+
+    let unitsHTML = '';
+    Object.keys(byUnit).sort().forEach(u => {
+      const tilesHTML = byUnit[u].map(s => `
+        <button type="button" class="fw-picker-tile"
+                style="--tile-color:${s.color}"
+                data-slibrary-page="${s.firstPage}"
+                aria-label="Open Slibrary ${s.num}: ${s.title}">
+          <span class="fw-picker-tile-num">Slibrary ${String(s.num).padStart(2,'0')}</span>
+          <span class="fw-picker-tile-title">${s.title}</span>
+          <span class="fw-picker-tile-meta">5 sheets · pp. ${s.firstPage}–${s.firstPage + 4}</span>
+          <span class="fw-picker-tile-arrow">→</span>
+        </button>`).join('');
+      unitsHTML += `
+        <section class="fw-picker-unit">
+          <div class="fw-picker-unit-title"><strong>Unit ${u}</strong>${UNIT_TITLES[u] || ''}</div>
+          <div class="fw-picker-grid">${tilesHTML}</div>
+        </section>`;
+    });
+
+    overlay.innerHTML = `
+      <div class="fw-picker-modal">
+        <header class="fw-picker-header">
+          <div>
+            <h2 id="fw-picker-title">Framework Sheet Library</h2>
+            <span class="sub">24 Slibraries · 120 Reference Sheets · select a Slibrary to open</span>
+          </div>
+          <button type="button" class="fw-picker-close" id="fw-picker-close-btn"
+                  aria-label="Close (Esc)" title="Close (Esc)">×</button>
+        </header>
+        <div class="fw-picker-body">${unitsHTML}</div>
+        <footer class="fw-picker-footer">
+          <strong>MARTI301 · Framework Sheet Library</strong> · © 2026 Dr. Hildegard Haas · EU Business School
+        </footer>
+      </div>
+    `;
+    document.body.appendChild(overlay);
+
+    /* Wire up tile clicks */
+    overlay.querySelectorAll('.fw-picker-tile').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const page = parseInt(btn.getAttribute('data-slibrary-page'), 10);
+        closePicker();
+        openPage(page);
+      });
+    });
+
+    /* Close button */
+    document.getElementById('fw-picker-close-btn').addEventListener('click', closePicker);
+
+    /* Click outside modal closes */
+    overlay.addEventListener('click', e => {
+      if (e.target.id === 'fw-picker-overlay') closePicker();
+    });
+  }
+
+  function openSlibraryPicker() {
+    buildPickerDOM();
+    const overlay = document.getElementById('fw-picker-overlay');
+    overlay.classList.add('fw-open');
+    document.body.style.overflow = 'hidden';
+    /* Esc to close */
+    document.addEventListener('keydown', onPickerKeydown, true);
+  }
+
+  function closePicker() {
+    const overlay = document.getElementById('fw-picker-overlay');
+    if (overlay) overlay.classList.remove('fw-open');
+    /* Only restore body overflow if PDF viewer isn't open */
+    const pdfOpen = document.getElementById('fw-viewer-overlay')?.classList.contains('fw-open');
+    if (!pdfOpen) document.body.style.overflow = '';
+    document.removeEventListener('keydown', onPickerKeydown, true);
+  }
+
+  function onPickerKeydown(e) {
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      closePicker();
+    }
   }
 
   /* ----- Controls -------------------------------------------- */
@@ -416,6 +769,62 @@
       zoomScale = Math.max(ZOOM_MIN, zoomScale - ZOOM_STEP);
       renderPage(currentPage);
     });
+
+    /* ---- Search controls ---- */
+    const searchInput = document.getElementById('fw-search-input');
+    const searchPrev  = document.getElementById('fw-search-prev');
+    const searchNext  = document.getElementById('fw-search-next');
+    const searchClear = document.getElementById('fw-search-clear');
+    let searchDebounce = null;
+
+    if (searchInput) {
+      searchInput.addEventListener('input', () => {
+        clearTimeout(searchDebounce);
+        searchDebounce = setTimeout(() => performSearch(searchInput.value), 220);
+      });
+      searchInput.addEventListener('keydown', e => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          if (searchMatches.length === 0) return;
+          if (e.shiftKey) {
+            const next = (currentMatchIdx - 1 + searchMatches.length) % searchMatches.length;
+            jumpToMatch(next);
+          } else {
+            const next = (currentMatchIdx + 1) % searchMatches.length;
+            jumpToMatch(next);
+          }
+        } else if (e.key === 'Escape') {
+          if (searchInput.value) {
+            e.stopPropagation();
+            searchInput.value = '';
+            performSearch('');
+          }
+        }
+      });
+    }
+    if (searchPrev) {
+      searchPrev.addEventListener('click', () => {
+        if (searchMatches.length === 0) return;
+        const next = (currentMatchIdx - 1 + searchMatches.length) % searchMatches.length;
+        jumpToMatch(next);
+      });
+    }
+    if (searchNext) {
+      searchNext.addEventListener('click', () => {
+        if (searchMatches.length === 0) return;
+        const next = (currentMatchIdx + 1) % searchMatches.length;
+        jumpToMatch(next);
+      });
+    }
+    if (searchClear) {
+      searchClear.addEventListener('click', () => {
+        if (searchInput) {
+          searchInput.value = '';
+          searchInput.focus();
+        }
+        performSearch('');
+      });
+    }
   }
 
   /* ----- Protection layer ------------------------------------ */
@@ -428,12 +837,14 @@
     }
   }
   function onSelectStart(e) {
+    if (e.target && e.target.id === 'fw-search-input') return; /* allow in search */
     if (e.target.closest('#fw-viewer-overlay')) {
       e.preventDefault();
       return false;
     }
   }
   function onCopy(e) {
+    if (e.target && e.target.id === 'fw-search-input') return; /* allow in search */
     if (document.getElementById('fw-viewer-overlay')?.classList.contains('fw-open')) {
       e.preventDefault();
       e.clipboardData?.setData('text/plain', '');
@@ -443,24 +854,38 @@
     const overlay = document.getElementById('fw-viewer-overlay');
     if (!overlay || !overlay.classList.contains('fw-open')) return;
 
-    /* Esc closes */
-    if (e.key === 'Escape') { close(); return; }
+    /* Allow normal keyboard interaction inside the search input */
+    const inSearch = e.target && e.target.id === 'fw-search-input';
 
-    /* Arrow keys navigate */
-    if (e.key === 'ArrowLeft' && currentPage > 1) {
+    /* Esc closes (unless search is active and clearing it) */
+    if (e.key === 'Escape' && !inSearch) { close(); return; }
+
+    /* Arrow keys navigate (skip when typing in search) */
+    if (!inSearch && e.key === 'ArrowLeft' && currentPage > 1) {
       e.preventDefault();
       renderPage(currentPage - 1);
       return;
     }
-    if (e.key === 'ArrowRight' && currentPage < totalPages) {
+    if (!inSearch && e.key === 'ArrowRight' && currentPage < totalPages) {
       e.preventDefault();
       renderPage(currentPage + 1);
       return;
     }
 
+    /* Inside search input: allow normal typing & basic keys */
+    if (inSearch) return;
+
     /* Block save / print / find / view-source / dev-tools shortcuts */
     const ck = e.ctrlKey || e.metaKey;
     if (ck && ['s','p','c','x','a','f','u','j'].includes(e.key.toLowerCase())) {
+      /* Cmd+F → focus our search input instead of native find */
+      if (e.key.toLowerCase() === 'f') {
+        e.preventDefault();
+        e.stopPropagation();
+        const si = document.getElementById('fw-search-input');
+        if (si) { si.focus(); si.select(); }
+        return false;
+      }
       e.preventDefault();
       e.stopPropagation();
       return false;
@@ -567,8 +992,11 @@
     openPage,
     openSlug,
     openUnit,
+    openSlibraryPicker,
     close,
+    closePicker,
     list: () => FRAMEWORKS.slice(),
+    slibraries: () => SLIBRARIES.slice(),
     get: slug => SLUG_TO_FW[slug] || null
   };
 
