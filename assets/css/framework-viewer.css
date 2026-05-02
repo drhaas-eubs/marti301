@@ -4,6 +4,181 @@
    © 2026 Dr. Hildegard Haas · EU Business School
    ============================================================ */
 
+/* ============================================================
+   SLIBRARY PICKER MODAL
+   Intermediate modal: Complete Gallery → pick Slibrary → PDF
+   ============================================================ */
+.fw-picker-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9998;       /* below the PDF viewer (9999) */
+  background: rgba(11, 31, 58, 0.9);
+  -webkit-backdrop-filter: blur(6px);
+          backdrop-filter: blur(6px);
+  align-items: flex-start;
+  justify-content: center;
+  padding: 24px 16px;
+  overflow-y: auto;
+  animation: fw-fade 0.18s ease;
+}
+.fw-picker-overlay.fw-open { display: flex; }
+
+.fw-picker-modal {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  background: #f5f6f8;
+  border-radius: 14px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: auto;
+}
+
+.fw-picker-header {
+  background: #0b1f3a;
+  color: #ffffff;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 3px solid #14b87a;
+}
+.fw-picker-header h2 {
+  margin: 0 0 2px;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+.fw-picker-header .sub {
+  font-size: 11px;
+  color: #8fb8c8;
+  letter-spacing: 0.4px;
+  font-weight: 400;
+}
+.fw-picker-close {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 12px;
+  border-radius: 6px;
+}
+.fw-picker-close:hover { background: rgba(255,255,255,0.12); }
+
+.fw-picker-body {
+  padding: 22px 24px 28px;
+}
+
+.fw-picker-unit {
+  margin-bottom: 22px;
+}
+.fw-picker-unit:last-child { margin-bottom: 6px; }
+
+.fw-picker-unit-title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: #6b7a90;
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #dde3ec;
+}
+.fw-picker-unit-title strong { color: #0b1f3a; margin-right: 8px; }
+
+.fw-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.fw-picker-tile {
+  background: #fff;
+  border-radius: 10px;
+  padding: 14px 14px 16px;
+  cursor: pointer;
+  border: 1px solid #e5e7eb;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-height: 100px;
+}
+.fw-picker-tile:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(11, 31, 58, 0.14);
+  border-color: transparent;
+}
+.fw-picker-tile::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: var(--tile-color, #2563EB);
+}
+.fw-picker-tile-num {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  color: var(--tile-color, #2563EB);
+  text-transform: uppercase;
+}
+.fw-picker-tile-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a2233;
+  line-height: 1.25;
+  margin-top: 2px;
+}
+.fw-picker-tile-meta {
+  font-size: 11px;
+  color: #6b7a90;
+  margin-top: auto;
+  padding-top: 6px;
+}
+.fw-picker-tile-arrow {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-size: 14px;
+  color: var(--tile-color, #2563EB);
+  opacity: 0;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.fw-picker-tile:hover .fw-picker-tile-arrow {
+  opacity: 1;
+  transform: translateX(2px);
+}
+
+.fw-picker-footer {
+  background: #0b1f3a;
+  color: #6b8fa3;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  text-align: center;
+  padding: 10px 24px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.fw-picker-footer strong { color: #b3c9da; font-weight: 600; }
+
+@media (max-width: 900px) {
+  .fw-picker-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 520px) {
+  .fw-picker-overlay { padding: 0; }
+  .fw-picker-modal { border-radius: 0; min-height: 100vh; }
+  .fw-picker-grid { grid-template-columns: 1fr; }
+}
+
 /* ----- CTA pill inside Dr. Haas's existing detail modal ------- */
 .fw-sheet-cta {
   margin-top: 1rem;
@@ -232,6 +407,104 @@
   padding: 0 10px;
   white-space: nowrap;
   letter-spacing: 0.3px;
+}
+
+/* ----- PDF search bar in viewer header ------------------------ */
+.fw-search-wrap {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  padding: 4px 6px 4px 10px;
+  margin-right: 8px;
+  transition: background 0.15s;
+}
+.fw-search-wrap:focus-within {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(20, 184, 122, 0.4);
+}
+.fw-search-icon {
+  width: 13px;
+  height: 13px;
+  color: #b3c9da;
+  flex-shrink: 0;
+}
+.fw-search-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 12.5px;
+  width: 150px;
+  min-width: 0;
+  -webkit-user-select: text;
+          user-select: text;
+}
+.fw-search-input::placeholder { color: #6b8fa3; font-weight: 400; }
+.fw-search-input::-webkit-search-cancel-button { display: none; }
+.fw-search-status {
+  font-size: 10.5px;
+  color: #8fb8c8;
+  font-weight: 500;
+  white-space: nowrap;
+  padding: 0 4px;
+  min-width: 0;
+}
+.fw-search-nav-btn,
+.fw-search-clear-btn {
+  background: transparent;
+  border: none;
+  color: #b3c9da;
+  font-size: 14px;
+  font-weight: 700;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  flex-shrink: 0;
+  line-height: 1;
+}
+.fw-search-nav-btn:hover:not(:disabled),
+.fw-search-clear-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+.fw-search-nav-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* ----- Highlight layer over PDF canvas ------------------------ */
+.fw-highlight-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.fw-highlight {
+  position: absolute;
+  background: rgba(255, 213, 79, 0.45);
+  border-radius: 1px;
+  mix-blend-mode: multiply;
+  transition: background 0.1s;
+}
+.fw-highlight-current {
+  background: rgba(255, 152, 0, 0.6);
+  outline: 1.5px solid rgba(255, 109, 0, 0.85);
+}
+
+/* Hide PDF search on very narrow screens */
+@media (max-width: 768px) {
+  .fw-search-wrap {
+    display: none;
+  }
 }
 
 /* ----- Canvas viewport ----- */
