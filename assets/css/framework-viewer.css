@@ -1,0 +1,352 @@
+/* ============================================================
+   MARTI301 · Framework Sheet Viewer
+   Protected PDF viewer modal — inherits MARTI301 brand variables
+   © 2026 Dr. Hildegard Haas · EU Business School
+   ============================================================ */
+
+/* ----- CTA pill inside Dr. Haas's existing detail modal ------- */
+.fw-sheet-cta {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #F1F5F9;
+  display: flex;
+  justify-content: center;
+}
+
+.fw-sheet-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #00B388 0%, #14b87a 100%);
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 179, 136, 0.3);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.fw-sheet-cta-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 179, 136, 0.45);
+}
+
+.fw-sheet-cta-btn:active { transform: translateY(0); }
+
+.fw-sheet-cta-btn::before {
+  content: "";
+  width: 14px;
+  height: 14px;
+  background: #ffffff;
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black'><path d='M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z'/></svg>") center / contain no-repeat;
+          mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black'><path d='M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z'/></svg>") center / contain no-repeat;
+}
+
+/* ----- Pill button that opens the viewer ----- */
+.fw-viewer-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #1f9e6c 0%, #14b87a 100%);
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(31, 158, 108, 0.3);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.fw-viewer-pill:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(31, 158, 108, 0.45);
+}
+
+.fw-viewer-pill:active { transform: translateY(0); }
+
+.fw-viewer-pill::before {
+  content: "";
+  width: 14px;
+  height: 14px;
+  background: #ffffff;
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black'><path d='M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z'/></svg>") center / contain no-repeat;
+          mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black'><path d='M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z'/></svg>") center / contain no-repeat;
+}
+
+/* ----- Click-target styling on framework thumbnails ----- */
+.fw-clickable {
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.fw-clickable:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(11, 31, 58, 0.18);
+}
+
+.fw-clickable::after {
+  content: "View sheet →";
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #1f9e6c;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  pointer-events: none;
+}
+
+.fw-clickable:hover::after { opacity: 1; }
+
+/* ----- Modal overlay ----- */
+.fw-viewer-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(11, 31, 58, 0.92);
+  -webkit-backdrop-filter: blur(6px);
+          backdrop-filter: blur(6px);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fw-fade 0.18s ease;
+}
+
+.fw-viewer-overlay.fw-open { display: flex; }
+
+@keyframes fw-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ----- Modal frame ----- */
+.fw-viewer-modal {
+  position: relative;
+  width: 100%;
+  max-width: 980px;
+  height: 100%;
+  max-height: 96vh;
+  background: #f5f6f8;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ----- Header bar ----- */
+.fw-viewer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  background: #0b1f3a;
+  color: #ffffff;
+  border-bottom: 2px solid #14b87a;
+  flex-shrink: 0;
+}
+
+.fw-viewer-title {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fw-viewer-title-meta {
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+  color: #8fb8c8;
+  letter-spacing: 0.4px;
+  margin-top: 2px;
+}
+
+.fw-viewer-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.fw-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  min-width: 32px;
+}
+
+.fw-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.fw-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.fw-btn-close {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 10px;
+  margin-left: 4px;
+  border-radius: 6px;
+}
+
+.fw-btn-close:hover { background: rgba(255, 255, 255, 0.12); }
+
+.fw-page-indicator {
+  font-size: 12px;
+  font-weight: 600;
+  color: #b3c9da;
+  padding: 0 10px;
+  white-space: nowrap;
+  letter-spacing: 0.3px;
+}
+
+/* ----- Canvas viewport ----- */
+.fw-viewer-body {
+  flex: 1;
+  overflow: auto;
+  background: #2a3650;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 24px 16px;
+  /* Block text selection at the container level too */
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.fw-canvas-wrap {
+  position: relative;
+  background: #ffffff;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.fw-canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  /* Hard-block any user interaction */
+  pointer-events: none;
+  -webkit-user-select: none;
+          user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* ----- Loading state ----- */
+.fw-loading {
+  color: #b3c9da;
+  font-size: 13px;
+  padding: 60px 30px;
+  text-align: center;
+}
+
+.fw-loading::before {
+  content: "";
+  display: block;
+  width: 32px;
+  height: 32px;
+  margin: 0 auto 16px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top-color: #14b87a;
+  border-radius: 50%;
+  animation: fw-spin 0.8s linear infinite;
+}
+
+@keyframes fw-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ----- Footer with attribution ----- */
+.fw-viewer-footer {
+  padding: 8px 18px;
+  background: #0b1f3a;
+  color: #6b8fa3;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  flex-shrink: 0;
+}
+
+.fw-viewer-footer strong {
+  color: #b3c9da;
+  font-weight: 600;
+}
+
+/* ----- Mobile adaptation ----- */
+@media (max-width: 640px) {
+  .fw-viewer-overlay { padding: 0; }
+  .fw-viewer-modal {
+    max-width: 100%;
+    max-height: 100%;
+    height: 100vh;
+    border-radius: 0;
+  }
+  .fw-viewer-header {
+    padding: 10px 12px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .fw-viewer-title { font-size: 12px; }
+  .fw-page-indicator { font-size: 11px; padding: 0 4px; }
+  .fw-btn { padding: 5px 9px; font-size: 12px; }
+  .fw-viewer-body { padding: 12px 8px; }
+  .fw-clickable::after { display: none; }
+}
+
+/* ----- Print blocking ----- */
+@media print {
+  .fw-viewer-overlay,
+  .fw-viewer-modal,
+  .fw-canvas,
+  .fw-canvas-wrap {
+    display: none !important;
+    visibility: hidden !important;
+  }
+  body.fw-printing-blocked::before {
+    content: "Printing of framework sheets is not permitted.";
+    display: block;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    padding: 40px;
+    text-align: center;
+  }
+}
